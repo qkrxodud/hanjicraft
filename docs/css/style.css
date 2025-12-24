@@ -274,9 +274,7 @@ body {
     position: relative;
 }
 
-.gallery-item:hover {
-    transform: translateY(-5px);
-}
+/* 기본 호버는 제거 - 로드 완료된 것만 호버 허용 */
 
 /* Loading state for images */
 .image-loading::before {
@@ -308,33 +306,43 @@ body {
     /* will-change 제거하여 불필요한 컴포지팅 레이어 생성 방지 */
 }
 
-/* 이미지 로드 완료 상태 */
+/* 이미지 로드 완료 상태 - 절대적으로 고정 */
 .image-loaded {
     opacity: 1 !important;
     transform: translateY(0) !important;
+    transition: none !important; /* 모든 transition 완전 제거 */
+    animation: none !important; /* 애니메이션도 제거 */
 }
 
-/* Hero 섹션 특별 처리 */
+/* Hero 섹션은 로드 완료 후 고정 */
 .hero-section.image-loaded {
-    animation: heroFadeIn 1.5s ease-out;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    transition: none !important;
+    animation: none !important;
 }
 
-@keyframes heroFadeIn {
-    0% {
-        opacity: 0;
-        transform: scale(1.05);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+/* 로드되지 않은 이미지들의 초기 상태 */
+.product-image-full:not(.image-loaded),
+.split-image:not(.image-loaded),
+.gallery-item:not(.image-loaded),
+.hero-section:not(.image-loaded) {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* 스크롤 중 깜빡임 방지 */
-.product-image-full.image-loaded,
-.split-image.image-loaded,
-.gallery-item.image-loaded {
-    transition: none; /* 로드 완료 후 transition 제거 */
+/* 로딩 중 상태만 애니메이션 허용 */
+.image-loading {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease;
+}
+
+/* 갤러리 아이템 호버는 로드 완료된 것만 */
+.gallery-item.image-loaded:hover {
+    transform: translateY(-5px) !important;
+    transition: transform 0.3s ease !important;
 }
 
 /* Reduce image quality on smaller screens */

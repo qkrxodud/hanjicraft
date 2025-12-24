@@ -34,13 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     const element = entry.target;
                     const elementId = element.dataset.imageId;
 
-                    // 이미 로드된 이미지는 건너뛰기
-                    if (loadedImages.has(elementId)) {
+                    // 이미 로드된 이미지는 완전히 건너뛰고 관찰 중단
+                    if (loadedImages.has(elementId) || element.classList.contains('image-loaded')) {
+                        imageObserver.unobserve(element);
                         return;
                     }
 
                     // 백그라운드 이미지가 있는 요소 처리
-                    if (element.dataset.bg && !element.classList.contains('image-loaded')) {
+                    if (element.dataset.bg) {
                         let imageSrc = element.dataset.bg;
 
                         // WebP를 지원하지 않는 경우 JPEG/JPG로 변경
@@ -54,23 +55,28 @@ document.addEventListener('DOMContentLoaded', function() {
                         // 실제 이미지를 미리 로드하여 준비되었을 때만 표시
                         const img = new Image();
                         img.onload = () => {
+                            // 이미지 설정
                             element.style.backgroundImage = `url('${imageSrc}')`;
-                            element.classList.add('image-loaded');
-                            element.classList.remove('image-loading');
 
-                            // 페이드 인 효과
+                            // 로딩 상태 제거 및 완료 상태 추가
+                            element.classList.remove('image-loading');
+                            element.classList.add('image-loaded');
+
+                            // 최종 스타일 고정 (더 이상 변경되지 않음)
                             element.style.opacity = '1';
                             element.style.transform = 'translateY(0)';
+                            element.style.transition = 'none'; // transition 완전 제거
 
                             // 로드 완료 추적
                             loadedImages.add(elementId);
 
-                            // 더 이상 관찰하지 않음
+                            // 즉시 관찰 중단 (매우 중요!)
                             imageObserver.unobserve(element);
                         };
 
                         img.onerror = () => {
                             element.classList.remove('image-loading');
+                            imageObserver.unobserve(element); // 실패해도 관찰 중단
                             console.warn(`Failed to load image: ${imageSrc}`);
                         };
 
@@ -80,8 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, {
             threshold: 0.1,
-            rootMargin: '100px 0px', // 더 넓은 마진으로 미리 로딩
-            // root 옵션 제거하여 기본 뷰포트 사용
+            rootMargin: '100px 0px'
         });
 
         // 모든 백그라운드 이미지 요소에 lazy loading 적용
