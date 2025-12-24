@@ -1,5 +1,35 @@
 // Hanji Craft - Optimized JavaScript with WebP Support and Multi-language
+
+// 전역 에러 핸들러 - 브라우저 확장 프로그램 충돌 방지
+window.addEventListener('error', function(event) {
+    // Solana Actions나 기타 확장 프로그램 에러 무시
+    if (event.filename && (
+        event.filename.includes('solanaActionsContentScript') ||
+        event.filename.includes('chrome-extension') ||
+        event.filename.includes('moz-extension') ||
+        event.filename.includes('safari-extension')
+    )) {
+        event.preventDefault();
+        return false;
+    }
+});
+
+// unhandled promise rejection 에러 핸들러
+window.addEventListener('unhandledrejection', function(event) {
+    // 확장 프로그램 관련 에러 무시
+    if (event.reason && event.reason.stack && (
+        event.reason.stack.includes('solanaActionsContentScript') ||
+        event.reason.stack.includes('chrome-extension') ||
+        event.reason.stack.includes('extension')
+    )) {
+        event.preventDefault();
+        return false;
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+    // 안전한 실행을 위한 try-catch wrapper
+    try {
     // 다국어 번역 데이터
     const translations = {
         ko: {
@@ -350,6 +380,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
             console.warn('Slow network detected, reducing image quality...');
             document.documentElement.classList.add('slow-network');
+        }
+    }
+
+    } catch (error) {
+        // 실행 중 오류 발생 시 콘솔에만 로그하고 사용자에게는 영향 주지 않음
+        console.error('Website script error:', error);
+
+        // 기본적인 언어 기능은 유지
+        const languageSelector = document.getElementById('languageSelector');
+        if (languageSelector) {
+            languageSelector.addEventListener('change', function() {
+                location.reload(); // 간단한 페이지 새로고침으로 언어 변경
+            });
         }
     }
 });
