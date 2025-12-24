@@ -136,6 +136,17 @@ body {
     background-repeat: no-repeat;
     position: relative;
     background-attachment: scroll;
+    /* 이미지 압축 및 성능 최적화 */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    /* 로딩 플레이스홀더 */
+    background-color: var(--gray-light);
+    background-image: linear-gradient(45deg, var(--cream-primary) 25%, transparent 25%),
+                      linear-gradient(-45deg, var(--cream-primary) 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, var(--cream-primary) 75%),
+                      linear-gradient(-45deg, transparent 75%, var(--cream-primary) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 /* 특정 이미지들에 대한 개별 조정 */
@@ -144,6 +155,8 @@ body {
     background-position: center center;
     background-size: contain;
     background-color: var(--cream-primary);
+    /* 작은 이미지는 추가 압축 */
+    image-rendering: -webkit-optimize-contrast;
 }
 
 .product-overlay {
@@ -257,11 +270,68 @@ body {
     background-repeat: no-repeat;
     background-color: var(--cream-primary);
     border-radius: 8px;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.6s ease;
+    position: relative;
 }
 
 .gallery-item:hover {
     transform: translateY(-5px);
+}
+
+/* Loading state for images */
+.gallery-item:not(.loaded)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 3px solid var(--cream-secondary);
+    border-top: 3px solid var(--brown-medium);
+    border-radius: 50%;
+    animation: loading-spin 1s linear infinite;
+}
+
+@keyframes loading-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Optimized background image loading */
+.product-image-full,
+.split-image,
+.hero-section {
+    background-attachment: scroll; /* Better performance than fixed */
+    will-change: opacity, transform; /* Optimize animations */
+}
+
+.product-image-full.loaded,
+.split-image.loaded,
+.gallery-item.loaded,
+.hero-section.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reduce image quality on smaller screens */
+@media (max-width: 768px) {
+    .product-image-full,
+    .split-image,
+    .gallery-item {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Progressive enhancement for modern browsers */
+@supports (background-image: url('image.webp')) {
+    .gallery-item,
+    .product-image-full,
+    .split-image {
+        background-size: cover; /* Better compression for WebP */
+    }
 }
 
 /* Responsive - Tablet */
