@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: hanji-craft
+
+  web:
+    resources:
+      static-locations: classpath:/static/
+      cache:
+        period: 0
+    locale:
+      default-locale: ko
+      param-name: lang
+
+  mvc:
+    static-path-pattern: /**
+
+  messages:
+    basename: messages
+    encoding: UTF-8
+    cache-duration: PT1H

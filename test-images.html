@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Test</title>
+    <style>
+        .test-image {
+            width: 300px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ccc;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>이미지 테스트</h1>
+    <div class="test-image" style="background-image: url('./src/main/resources/static/img/01.jpeg');"></div>
+    <div class="test-image" style="background-image: url('./src/main/resources/static/img/02.jpeg');"></div>
+    <div class="test-image" style="background-image: url('./src/main/resources/static/img/03.jpeg');"></div>
+    <div class="test-image" style="background-image: url('./src/main/resources/static/img/04.jpeg');"></div>
+
+    <br><br>
+
+    <!-- img 태그로도 테스트 -->
+    <img src="./src/main/resources/static/img/01.jpeg" style="width:200px;" alt="test 1">
+    <img src="./src/main/resources/static/img/02.jpeg" style="width:200px;" alt="test 2">
+</body>
+</html>
