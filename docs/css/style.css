@@ -279,7 +279,7 @@ body {
 }
 
 /* Loading state for images */
-.gallery-item:not(.loaded)::before {
+.image-loading::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -291,6 +291,7 @@ body {
     border-top: 3px solid var(--brown-medium);
     border-radius: 50%;
     animation: loading-spin 1s linear infinite;
+    z-index: 10;
 }
 
 @keyframes loading-spin {
@@ -301,17 +302,39 @@ body {
 /* Optimized background image loading */
 .product-image-full,
 .split-image,
-.hero-section {
+.hero-section,
+.gallery-item {
     background-attachment: scroll; /* Better performance than fixed */
-    will-change: opacity, transform; /* Optimize animations */
+    /* will-change 제거하여 불필요한 컴포지팅 레이어 생성 방지 */
 }
 
-.product-image-full.loaded,
-.split-image.loaded,
-.gallery-item.loaded,
-.hero-section.loaded {
-    opacity: 1;
-    transform: translateY(0);
+/* 이미지 로드 완료 상태 */
+.image-loaded {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Hero 섹션 특별 처리 */
+.hero-section.image-loaded {
+    animation: heroFadeIn 1.5s ease-out;
+}
+
+@keyframes heroFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 스크롤 중 깜빡임 방지 */
+.product-image-full.image-loaded,
+.split-image.image-loaded,
+.gallery-item.image-loaded {
+    transition: none; /* 로드 완료 후 transition 제거 */
 }
 
 /* Reduce image quality on smaller screens */

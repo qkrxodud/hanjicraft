@@ -24,14 +24,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // WebP 지원 확인 및 이미지 로딩 초기화
     supportsWebP().then(isWebPSupported => {
+        // 로드된 이미지를 추적하는 Set
+        const loadedImages = new Set();
+
         // 이미지 lazy loading을 위한 Intersection Observer
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const element = entry.target;
+                    const elementId = element.dataset.imageId;
+
+                    // 이미 로드된 이미지는 건너뛰기
+                    if (loadedImages.has(elementId)) {
+                        return;
+                    }
 
                     // 백그라운드 이미지가 있는 요소 처리
-                    if (element.dataset.bg) {
+                    if (element.dataset.bg && !element.classList.contains('image-loaded')) {
                         let imageSrc = element.dataset.bg;
 
                         // WebP를 지원하지 않는 경우 JPEG/JPG로 변경
@@ -39,20 +48,40 @@ document.addEventListener('DOMContentLoaded', function() {
                             imageSrc = imageSrc.replace(/\.webp$/i, '.jpeg');
                         }
 
-                        element.style.backgroundImage = `url('${imageSrc}')`;
-                        element.classList.add('loaded');
+                        // 이미지 로딩 상태 표시
+                        element.classList.add('image-loading');
+
+                        // 실제 이미지를 미리 로드하여 준비되었을 때만 표시
+                        const img = new Image();
+                        img.onload = () => {
+                            element.style.backgroundImage = `url('${imageSrc}')`;
+                            element.classList.add('image-loaded');
+                            element.classList.remove('image-loading');
+
+                            // 페이드 인 효과
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+
+                            // 로드 완료 추적
+                            loadedImages.add(elementId);
+
+                            // 더 이상 관찰하지 않음
+                            imageObserver.unobserve(element);
+                        };
+
+                        img.onerror = () => {
+                            element.classList.remove('image-loading');
+                            console.warn(`Failed to load image: ${imageSrc}`);
+                        };
+
+                        img.src = imageSrc;
                     }
-
-                    // 페이드 인 효과
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-
-                    imageObserver.unobserve(element);
                 }
             });
         }, {
             threshold: 0.1,
-            rootMargin: '50px 0px'
+            rootMargin: '100px 0px', // 더 넓은 마진으로 미리 로딩
+            // root 옵션 제거하여 기본 뷰포트 사용
         });
 
         // 모든 백그라운드 이미지 요소에 lazy loading 적용
@@ -62,6 +91,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const urlMatch = bgImage.match(/url\(['"]?(.+?)['"]?\)/);
 
             if (urlMatch && urlMatch[1]) {
+                // 고유 ID 생성
+                const imageId = `img-${index}-${Date.now()}`;
+                element.dataset.imageId = imageId;
+
                 // 원본 이미지 URL을 data 속성에 저장
                 element.dataset.bg = urlMatch[1];
 
@@ -69,11 +102,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 element.style.backgroundImage = 'none';
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(20px)';
-                element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                element.style.transition = `opacity 0.8s ease, transform 0.8s ease`;
                 element.style.backgroundColor = 'var(--gray-light)';
 
-                // 관찰 시작
-                imageObserver.observe(element);
+                // Hero 섹션은 즉시 로드
+                if (element.classList.contains('hero-section')) {
+                    element.style.opacity = '0';
+                    let heroImageSrc = element.dataset.bg;
+                    if (!isWebPSupported) {
+                        heroImageSrc = heroImageSrc.replace(/\.webp$/i, '.jpeg');
+                    }
+
+                    const heroImg = new Image();
+                    heroImg.onload = () => {
+                        element.style.backgroundImage = `url('${heroImageSrc}')`;
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                        element.classList.add('image-loaded');
+                        loadedImages.add(imageId);
+                    };
+                    heroImg.src = heroImageSrc;
+                } else {
+                    // 다른 이미지들은 lazy loading
+                    imageObserver.observe(element);
+                }
             }
         });
 
