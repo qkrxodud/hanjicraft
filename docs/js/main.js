@@ -52,11 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         // 이미지 로딩 상태 표시
                         element.classList.add('image-loading');
 
-                        // 실제 이미지를 미리 로드하여 준비되었을 때만 표시
+                        // 큰 이미지를 위한 점진적 로딩
                         const img = new Image();
+
+                        // 로딩 시작 시간 추적
+                        const loadStartTime = Date.now();
+                        let loadTimeout;
+
                         img.onload = () => {
+                            clearTimeout(loadTimeout);
+
                             // 이미지 설정
                             element.style.backgroundImage = `url('${imageSrc}')`;
+                            element.style.backgroundSize = 'cover';
+                            element.style.backgroundPosition = 'center';
 
                             // 로딩 상태 제거 및 완료 상태 추가
                             element.classList.remove('image-loading');
@@ -65,29 +74,59 @@ document.addEventListener('DOMContentLoaded', function() {
                             // 최종 스타일 고정 (더 이상 변경되지 않음)
                             element.style.opacity = '1';
                             element.style.transform = 'translateY(0)';
-                            element.style.transition = 'none'; // transition 완전 제거
+                            element.style.transition = 'none';
 
                             // 로드 완료 추적
                             loadedImages.add(elementId);
 
-                            // 즉시 관찰 중단 (매우 중요!)
+                            // 즉시 관찰 중단
                             imageObserver.unobserve(element);
+
+                            console.log(`Image loaded in ${Date.now() - loadStartTime}ms: ${imageSrc}`);
                         };
 
                         img.onerror = () => {
+                            clearTimeout(loadTimeout);
                             element.classList.remove('image-loading');
-                            imageObserver.unobserve(element); // 실패해도 관찰 중단
+                            element.classList.add('image-error');
+                            imageObserver.unobserve(element);
                             console.warn(`Failed to load image: ${imageSrc}`);
                         };
 
+                        // 대용량 이미지를 위한 타임아웃 (30초)
+                        loadTimeout = setTimeout(() => {
+                            element.classList.remove('image-loading');
+                            element.classList.add('image-timeout');
+                            imageObserver.unobserve(element);
+                            console.warn(`Image load timeout: ${imageSrc}`);
+                        }, 30000);
+
+                        // 이미지 로딩 시작
                         img.src = imageSrc;
                     }
                 }
             });
         }, {
             threshold: 0.1,
-            rootMargin: '100px 0px'
+            rootMargin: '200px 0px' // 더 넓은 영역에서 미리 로딩 시작
         });
+
+        // 이미지 우선순위 큐 (작은 이미지부터 로딩)
+        const imageQueue = [];
+        let isProcessingQueue = false;
+
+        function processImageQueue() {
+            if (isProcessingQueue || imageQueue.length === 0) return;
+
+            isProcessingQueue = true;
+            const nextImage = imageQueue.shift();
+
+            // 큐에서 다음 이미지 처리 후 잠시 대기
+            setTimeout(() => {
+                isProcessingQueue = false;
+                processImageQueue(); // 다음 이미지 처리
+            }, 100); // 100ms 간격으로 순차 로딩
+        }
 
         // 모든 백그라운드 이미지 요소에 lazy loading 적용
         document.querySelectorAll('.product-image-full, .split-image, .gallery-item, .hero-section').forEach((element, index) => {
@@ -180,4 +219,19 @@ document.addEventListener('DOMContentLoaded', function() {
     prefetch.rel = 'dns-prefetch';
     prefetch.href = './img';
     document.head.appendChild(prefetch);
+
+    // 메모리 사용량 모니터링 (가능한 경우)
+    if ('memory' in performance) {
+        const memoryInfo = performance.memory;
+        console.log(`Memory usage: ${(memoryInfo.usedJSHeapSize / 1048576).toFixed(2)} MB`);
+    }
+
+    // 네트워크 상태 감지 (가능한 경우)
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+            console.warn('Slow network detected, reducing image quality...');
+            document.documentElement.classList.add('slow-network');
+        }
+    }
 });
