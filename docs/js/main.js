@@ -71,10 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
                             element.classList.remove('image-loading');
                             element.classList.add('image-loaded');
 
-                            // 최종 스타일 고정 (더 이상 변경되지 않음)
+                            // 최종 스타일 완전 고정 - 더 이상 변경되지 않도록 강제
                             element.style.opacity = '1';
-                            element.style.transform = 'translateY(0)';
+                            element.style.transform = 'translateY(0) translateZ(0)';
                             element.style.transition = 'none';
+                            element.style.animation = 'none';
+                            element.style.willChange = 'auto'; // GPU 레이어 최적화 중단
+                            element.style.filter = 'none'; // 모든 필터 제거
+
+                            // 추가 정적 속성 설정
+                            element.style.backfaceVisibility = 'visible';
+                            element.style.transformStyle = 'flat';
 
                             // 로드 완료 추적
                             loadedImages.add(elementId);
@@ -82,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             // 즉시 관찰 중단
                             imageObserver.unobserve(element);
 
-                            console.log(`Image loaded in ${Date.now() - loadStartTime}ms: ${imageSrc}`);
+                            console.log(`Image permanently loaded in ${Date.now() - loadStartTime}ms: ${imageSrc}`);
                         };
 
                         img.onerror = () => {
@@ -161,7 +168,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     heroImg.onload = () => {
                         element.style.backgroundImage = `url('${heroImageSrc}')`;
                         element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
+                        element.style.transform = 'scale(1) translateZ(0)';
+                        element.style.transition = 'none';
+                        element.style.animation = 'none';
+                        element.style.willChange = 'auto';
+                        element.style.filter = 'none';
                         element.classList.add('image-loaded');
                         loadedImages.add(imageId);
                     };

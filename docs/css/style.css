@@ -362,24 +362,30 @@ body {
 .hero-section,
 .gallery-item {
     background-attachment: scroll; /* Better performance than fixed */
-    /* will-change 제거하여 불필요한 컴포지팅 레이어 생성 방지 */
 
     /* 이미지 압축 및 렌더링 최적화 */
     image-rendering: -webkit-optimize-contrast;
     image-rendering: optimize-contrast;
     image-rendering: optimizeQuality;
 
-    /* 대용량 이미지를 위한 메모리 최적화 */
-    transform: translateZ(0); /* 하드웨어 가속 강제 활성화 */
-    backface-visibility: hidden; /* 백페이스 컬링 */
-    perspective: 1000px; /* 3D 렌더링 컨텍스트 생성 */
+    /* 로딩 중에만 will-change 사용, 로드 후에는 제거 */
+    will-change: transform, opacity;
 }
 
-/* 이미지 로딩 중에는 blur 효과로 성능 개선 */
+/* 로드 완료된 이미지는 will-change 제거하여 컴포지팅 레이어 해제 */
+.product-image-full.image-loaded,
+.split-image.image-loaded,
+.hero-section.image-loaded,
+.gallery-item.image-loaded {
+    will-change: auto !important; /* 컴포지팅 레이어 해제 */
+    transform: translateZ(0); /* 하드웨어 가속은 유지하되 정적으로 */
+    backface-visibility: visible; /* 불필요한 최적화 제거 */
+}
+
+/* 이미지 로딩 중 상태 - 단순하게 유지 */
 .image-loading {
-    filter: blur(2px);
-    transform: scale(1.02); /* 미세한 스케일링으로 blur 경계 숨김 */
-    transition: filter 0.3s ease, transform 0.3s ease;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
 /* 메모리 사용량이 큰 이미지들을 위한 특별 최적화 */
@@ -392,17 +398,21 @@ body {
 /* 이미지 로드 완료 상태 - 절대적으로 고정 */
 .image-loaded {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: translateY(0) translateZ(0) !important;
     transition: none !important; /* 모든 transition 완전 제거 */
     animation: none !important; /* 애니메이션도 제거 */
+    will-change: auto !important; /* GPU 레이어 최적화 중단 */
+    filter: none !important; /* 모든 필터 효과 제거 */
 }
 
 /* Hero 섹션은 로드 완료 후 고정 */
 .hero-section.image-loaded {
     opacity: 1 !important;
-    transform: scale(1) !important;
+    transform: scale(1) translateZ(0) !important;
     transition: none !important;
     animation: none !important;
+    will-change: auto !important;
+    filter: none !important;
 }
 
 /* 로드되지 않은 이미지들의 초기 상태 */
@@ -415,17 +425,17 @@ body {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* 로딩 중 상태만 애니메이션 허용 */
-.image-loading {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease;
+/* 갤러리 아이템 호버 완전 제거 - 로드 후 깜박임 방지 */
+.gallery-item.image-loaded {
+    transform: translateY(0) translateZ(0) !important;
+    transition: none !important;
+    animation: none !important;
 }
 
-/* 갤러리 아이템 호버는 로드 완료된 것만 */
+/* 모든 호버 효과 제거 */
 .gallery-item.image-loaded:hover {
-    transform: translateY(-5px) !important;
-    transition: transform 0.3s ease !important;
+    transform: translateY(0) translateZ(0) !important;
+    transition: none !important;
 }
 
 /* Reduce image quality on smaller screens */
