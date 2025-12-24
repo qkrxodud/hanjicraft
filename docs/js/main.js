@@ -1,5 +1,14 @@
-// Hanji Craft - Optimized JavaScript with Image Loading
+// Hanji Craft - Optimized JavaScript with WebP Support
 document.addEventListener('DOMContentLoaded', function() {
+    // WebP 지원 확인
+    function supportsWebP() {
+        return new Promise(resolve => {
+            const webp = new Image();
+            webp.onload = webp.onerror = () => resolve(webp.height === 2);
+            webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        });
+    }
+
     // 스무스 스크롤링
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -13,50 +22,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 이미지 lazy loading을 위한 Intersection Observer
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const element = entry.target;
+    // WebP 지원 확인 및 이미지 로딩 초기화
+    supportsWebP().then(isWebPSupported => {
+        // 이미지 lazy loading을 위한 Intersection Observer
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
 
-                // 백그라운드 이미지가 있는 요소 처리
-                if (element.dataset.bg) {
-                    element.style.backgroundImage = `url('${element.dataset.bg}')`;
-                    element.classList.add('loaded');
+                    // 백그라운드 이미지가 있는 요소 처리
+                    if (element.dataset.bg) {
+                        let imageSrc = element.dataset.bg;
+
+                        // WebP를 지원하지 않는 경우 JPEG/JPG로 변경
+                        if (!isWebPSupported) {
+                            imageSrc = imageSrc.replace(/\.webp$/i, '.jpeg');
+                        }
+
+                        element.style.backgroundImage = `url('${imageSrc}')`;
+                        element.classList.add('loaded');
+                    }
+
+                    // 페이드 인 효과
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+
+                    imageObserver.unobserve(element);
                 }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px 0px'
+        });
 
-                // 페이드 인 효과
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
+        // 모든 백그라운드 이미지 요소에 lazy loading 적용
+        document.querySelectorAll('.product-image-full, .split-image, .gallery-item, .hero-section').forEach((element, index) => {
+            // 현재 background-image URL 추출
+            const bgImage = getComputedStyle(element).backgroundImage;
+            const urlMatch = bgImage.match(/url\(['"]?(.+?)['"]?\)/);
 
-                imageObserver.unobserve(element);
+            if (urlMatch && urlMatch[1]) {
+                // 원본 이미지 URL을 data 속성에 저장
+                element.dataset.bg = urlMatch[1];
+
+                // 초기에는 이미지 제거 및 로딩 상태 설정
+                element.style.backgroundImage = 'none';
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                element.style.backgroundColor = 'var(--gray-light)';
+
+                // 관찰 시작
+                imageObserver.observe(element);
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '50px 0px'
-    });
 
-    // 모든 백그라운드 이미지 요소에 lazy loading 적용
-    document.querySelectorAll('.product-image-full, .split-image, .gallery-item, .hero-section').forEach((element, index) => {
-        // 현재 background-image URL 추출
-        const bgImage = getComputedStyle(element).backgroundImage;
-        const urlMatch = bgImage.match(/url\(['"]?(.+?)['"]?\)/);
-
-        if (urlMatch && urlMatch[1]) {
-            // 원본 이미지 URL을 data 속성에 저장
-            element.dataset.bg = urlMatch[1];
-
-            // 초기에는 이미지 제거 및 로딩 상태 설정
-            element.style.backgroundImage = 'none';
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-            element.style.backgroundColor = 'var(--gray-light)';
-
-            // 관찰 시작
-            imageObserver.observe(element);
-        }
+        // 이미지 프리로딩 (중요한 첫 번째 이미지만)
+        const criticalImage = new Image();
+        criticalImage.src = isWebPSupported ? './img/01.webp' : './img/01.jpeg';
     });
 
     // 네비게이션 스크롤 효과
@@ -94,10 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
         overlayObserver.observe(overlay);
     });
-
-    // 이미지 프리로딩 (중요한 첫 번째 이미지만)
-    const criticalImage = new Image();
-    criticalImage.src = './img/01.jpeg';
 
     // Connection hint for better loading
     const prefetch = document.createElement('link');

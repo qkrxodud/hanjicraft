@@ -7,8 +7,21 @@
     <meta name="description" content="Korean Traditional Hanji Craft Introduction Project">
 
     <!-- Preload critical resources -->
-    <link rel="preload" as="image" href="./img/01.jpeg">
+    <link rel="preload" as="image" href="./img/01.webp">
     <link rel="dns-prefetch" href="./img/">
+
+    <!-- WebP support detection script (inline for immediate execution) -->
+    <script>
+        // WebP 지원 확인 및 HTML 클래스 추가
+        function checkWebPSupport() {
+            const webp = new Image();
+            webp.onload = webp.onerror = function () {
+                document.documentElement.classList.add(webp.height === 2 ? 'webp' : 'no-webp');
+            };
+            webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+        }
+        checkWebPSupport();
+    </script>
 
     <!-- Optimize page loading -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,7 +63,7 @@
     </nav>
 
     <!-- 히어로 섹션 -->
-    <section id="home" class="hero-section" style="background-image: url('./img/01.jpeg');">
+    <section id="home" class="hero-section" style="background-image: url('./img/01.webp');">
         <div class="hero-content">
             <h1 class="hero-title">Hanji Craft</h1>
             <p class="hero-subtitle">Korean Traditional Paper Art</p>
@@ -61,7 +74,7 @@
     <section id="collection">
         <!-- 제품 1: 한지 조명 -->
         <div class="product-section">
-            <div class="product-image-full" style="background-image: url('./img/01.jpeg');">
+            <div class="product-image-full" style="background-image: url('./img/01.webp');">
                 <div class="product-overlay">
                     <h2 class="product-title">Hanji Lamp</h2>
                     <p class="product-subtitle">천년의 빛을 품은 전통 조명</p>
@@ -83,12 +96,12 @@
                     현대적 미감이 조화롭게 어우러진 독특한 작품입니다.
                 </p>
             </div>
-            <div class="split-image product-image-02" style="background-image: url('./img/02.jpeg');"></div>
+            <div class="split-image product-image-02" style="background-image: url('./img/02.webp');"></div>
         </div>
 
         <!-- 제품 3: 한지 함 -->
         <div class="product-section">
-            <div class="product-image-full product-image-03" style="background-image: url('./img/03.jpeg');">
+            <div class="product-image-full product-image-03" style="background-image: url('./img/03.webp');">
                 <div class="product-overlay">
                     <h2 class="product-title">Hanji Storage</h2>
                     <p class="product-subtitle">전통 기법의 현대적 해석</p>
@@ -102,7 +115,7 @@
 
         <!-- 제품 4: 한지 액자 (Split Layout Reverse) -->
         <div class="split-section">
-            <div class="split-image product-image-04" style="background-image: url('./img/04.jpeg');"></div>
+            <div class="split-image product-image-04" style="background-image: url('./img/04.webp');"></div>
             <div class="split-content">
                 <h2 class="section-title">Hanji Frame</h2>
                 <p class="section-description">
@@ -115,7 +128,7 @@
 
         <!-- 제품 5: 한지 인형 -->
         <div class="product-section">
-            <div class="product-image-full product-image-05" style="background-image: url('./img/05.jpeg');">
+            <div class="product-image-full product-image-05" style="background-image: url('./img/05.webp');">
                 <div class="product-overlay">
                     <h2 class="product-title">Hanji Doll</h2>
                     <p class="product-subtitle">한국의 정신을 담은 예술품</p>
@@ -137,12 +150,12 @@
                     공간에 자연스러운 따뜻함과 깊이를 더하는 인테리어 오브제로 완벽합니다.
                 </p>
             </div>
-            <div class="split-image product-image-06" style="background-image: url('./img/06.jpg');"></div>
+            <div class="split-image product-image-06" style="background-image: url('./img/06.webp');"></div>
         </div>
 
         <!-- 제품 7: 한지 장신구 -->
         <div class="product-section">
-            <div class="product-image-full product-image-07" style="background-image: url('./img/07.jpg');">
+            <div class="product-image-full product-image-07" style="background-image: url('./img/07.webp');">
                 <div class="product-overlay">
                     <h2 class="product-title">Hanji Jewelry</h2>
                     <p class="product-subtitle">일상에 스며드는 전통의 아름다움</p>
@@ -156,7 +169,7 @@
 
         <!-- 제품 8: 한지 예술품 (Split Layout Reverse) -->
         <div class="split-section">
-            <div class="split-image product-image-08" style="background-image: url('./img/08.jpg');"></div>
+            <div class="split-image product-image-08" style="background-image: url('./img/08.webp');"></div>
             <div class="split-content" style="background: var(--cream-secondary);">
                 <h2 class="section-title">Hanji Art</h2>
                 <p class="section-description">
@@ -180,14 +193,14 @@
                 </div>
             </div>
             <div class="gallery-grid">
-                <div class="gallery-item" style="background-image: url('./img/01.jpeg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/02.jpeg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/03.jpeg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/04.jpeg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/05.jpeg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/06.jpg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/07.jpg');"></div>
-                <div class="gallery-item" style="background-image: url('./img/08.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('./img/01.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/02.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/03.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/04.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/05.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/06.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/07.webp');"></div>
+                <div class="gallery-item" style="background-image: url('./img/08.webp');"></div>
             </div>
         </div>
     </section>
@@ -205,7 +218,7 @@
                 현대인의 라이프스타일에 조화롭게 어우러지는 특별한 가치를 제공합니다.
             </p>
         </div>
-        <div class="split-image" style="background-image: url('./img/01.jpeg');"></div>
+        <div class="split-image" style="background-image: url('./img/01.webp');"></div>
     </section>
 
     <!-- Contact Section -->
