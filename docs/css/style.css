@@ -56,31 +56,55 @@ body {
     color: var(--brown-medium) !important;
 }
 
+/* 언어 선택자 컨테이너 */
+.language-selector-container {
+    position: relative;
+    margin-left: 15px;
+}
+
 /* 언어 선택자 스타일 */
 #languageSelector {
-    border: none !important;
-    background: transparent !important;
+    border: 1px solid rgba(44, 44, 44, 0.2) !important;
+    background: var(--white-pure) !important;
     color: var(--text-primary) !important;
-    font-size: 13px;
-    font-weight: 300;
+    font-size: 12px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     cursor: pointer;
     outline: none;
+    padding: 6px 25px 6px 10px !important;
+    border-radius: 4px;
+    min-width: 80px;
+
+    /* 커스텀 드롭다운 화살표 */
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+}
+
+#languageSelector:hover {
+    border-color: var(--brown-medium) !important;
+    background-color: rgba(247, 241, 232, 0.5) !important;
 }
 
 #languageSelector:focus {
-    box-shadow: none !important;
+    box-shadow: 0 0 0 2px rgba(196, 168, 130, 0.3) !important;
+    border-color: var(--brown-medium) !important;
     outline: none !important;
 }
 
 #languageSelector option {
     background: var(--white-pure);
     color: var(--text-primary);
-    font-size: 13px;
+    font-size: 12px;
+    padding: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Hero Section */
@@ -556,6 +580,21 @@ body {
     .nav-link {
         padding: 6px 15px !important;
         font-size: 12px;
+    }
+
+    /* 모바일에서 언어 선택자 개선 */
+    .language-selector-container {
+        margin-left: 0;
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+    }
+
+    #languageSelector {
+        width: 100px;
+        font-size: 11px;
+        padding: 8px 20px 8px 10px !important;
+        margin: 0 auto;
     }
 
     .hero-section {
