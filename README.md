@@ -33,7 +33,7 @@ hanji-craft/
 └── README.md
 ```
 
-## 🚀 GitHub에 업로드하기
+## 🚀 GitHub Pages로 배포하기
 
 ### 1. GitHub 저장소 생성
 
@@ -41,10 +41,10 @@ hanji-craft/
 2. `New repository` 클릭
 3. Repository name: `hanji-craft`
 4. Description: `Korean Traditional Hanji Craft Introduction Project`
-5. Public으로 설정
+5. Public으로 설정 (GitHub Pages 무료 사용을 위해 필수)
 6. `Create repository` 클릭
 
-### 2. 로컬 저장소와 연결
+### 2. 로컬 저장소와 연결 및 푸시
 
 ```bash
 # 원격 저장소 추가 (GitHub username을 본인 것으로 변경)
@@ -55,31 +55,32 @@ git branch -M main
 git push -u origin main
 ```
 
-## 🌐 도메인 연결 가이드
+### 3. GitHub Pages 설정
 
-### 방법 1: GitHub Pages (무료)
+1. **Repository Settings 접속**
+   - GitHub 저장소 페이지에서 `Settings` 탭 클릭
 
-1. **GitHub Repository 설정**
-   ```bash
-   # 정적 파일 생성용 브랜치 생성
-   git checkout -b gh-pages
-   git push origin gh-pages
-   ```
+2. **Pages 설정**
+   - 왼쪽 메뉴에서 `Pages` 클릭
+   - Source: `GitHub Actions` 선택
+   - 저장하면 자동으로 워크플로우가 실행됨
 
-2. **Repository Settings > Pages**
-   - Source: `Deploy from a branch`
-   - Branch: `gh-pages`
-   - Folder: `/ (root)`
+3. **배포 완료 확인**
+   - `Actions` 탭에서 배포 상태 확인
+   - 성공하면 `https://[YOUR_USERNAME].github.io/hanji-craft`에서 사이트 확인 가능
 
-3. **커스텀 도메인 설정**
-   - `Custom domain`에 도메인 입력 (예: `hanjicraft.com`)
-   - CNAME 파일이 자동 생성됨
+### 4. 커스텀 도메인 연결 (선택사항)
 
-4. **DNS 설정** (도메인 제공업체에서)
+1. **도메인 설정**
+   - Settings > Pages에서 `Custom domain` 입력
+   - 예: `hanjicraft.com`
+   - `Enforce HTTPS` 체크
+
+2. **DNS 설정** (도메인 제공업체에서)
    ```
    Type: CNAME
    Name: www
-   Value: [username].github.io
+   Value: [YOUR_USERNAME].github.io
 
    Type: A
    Name: @
@@ -89,78 +90,29 @@ git push -u origin main
    Value: 185.199.111.153
    ```
 
-### 방법 2: Vercel (추천)
+## 📁 프로젝트 파일 구조 (GitHub Pages)
 
-1. **Vercel 계정 생성**: [vercel.com](https://vercel.com)
+```
+docs/                    # GitHub Pages 정적 파일
+├── index.html          # 메인 페이지
+├── css/
+│   └── style.css       # 커스텀 스타일시트
+├── js/
+│   └── main.js         # 커스텀 JavaScript
+└── img/                # 한지공예 이미지들
+    ├── 01.jpeg
+    ├── 02.jpeg
+    ├── ...
+    └── 08.jpg
+```
 
-2. **GitHub 연동**
-   - `New Project` 클릭
-   - GitHub 저장소 `hanji-craft` 선택
-   - Import
+## 🎯 주요 기능
 
-3. **빌드 설정**
-   ```
-   Framework Preset: Other
-   Build Command: ./gradlew build
-   Output Directory: build/libs
-   Install Command: (비워두기)
-   ```
-
-4. **도메인 연결**
-   - Project Settings > Domains
-   - 커스텀 도메인 추가
-   - DNS 설정 안내에 따라 도메인 제공업체에서 설정
-
-### 방법 3: Railway
-
-1. **Railway 계정 생성**: [railway.app](https://railway.app)
-
-2. **GitHub 연동 배포**
-   - `New Project` > `Deploy from GitHub repo`
-   - `hanji-craft` 저장소 선택
-
-3. **환경 변수 설정**
-   ```
-   PORT=8080
-   SPRING_PROFILES_ACTIVE=production
-   ```
-
-4. **도메인 설정**
-   - Settings > Domains
-   - Custom Domain 추가
-
-### 방법 4: Heroku
-
-1. **Heroku CLI 설치 및 로그인**
-   ```bash
-   heroku login
-   ```
-
-2. **Heroku 앱 생성**
-   ```bash
-   heroku create hanji-craft-app
-   ```
-
-3. **Java Buildpack 설정**
-   ```bash
-   heroku buildpacks:set heroku/gradle
-   ```
-
-4. **환경 변수 설정**
-   ```bash
-   heroku config:set SPRING_PROFILES_ACTIVE=production
-   ```
-
-5. **배포**
-   ```bash
-   git push heroku main
-   ```
-
-6. **도메인 연결**
-   ```bash
-   heroku domains:add hanjicraft.com
-   # DNS 설정 안내 출력됨
-   ```
+- **반응형 디자인**: 모바일, 태블릿, 데스크톱 완벽 지원
+- **스무스 스크롤**: 부드러운 페이지 내 네비게이션
+- **갤러리 애니메이션**: 이미지 로딩 시 페이드 인 효과
+- **성능 최적화**: CSS/JS 파일 분리, 이미지 최적화
+- **SEO 친화적**: 메타 태그 및 시맨틱 HTML 구조
 
 ## 🐳 Docker로 로컬 실행
 
