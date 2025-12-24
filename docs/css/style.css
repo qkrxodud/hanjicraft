@@ -56,6 +56,33 @@ body {
     color: var(--brown-medium) !important;
 }
 
+/* 언어 선택자 스타일 */
+#languageSelector {
+    border: none !important;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#languageSelector:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#languageSelector option {
+    background: var(--white-pure);
+    color: var(--text-primary);
+    font-size: 13px;
+}
+
 /* Hero Section */
 .hero-section {
     background: var(--cream-primary);
