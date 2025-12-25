@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             nav_collection: "작품집",
             nav_gallery: "전시관",
             nav_about: "브랜드 소개",
+            nav_making: "제작 과정",
             nav_contact: "연락처",
             hero_title: "한지공예",
             hero_subtitle: "한국 전통 종이 예술",
@@ -93,13 +94,32 @@ document.addEventListener('DOMContentLoaded', function() {
             contact_title: "연락처",
             contact_phone: "전화: 02-123-4567",
             contact_email: "이메일: info@hanjicraft.com",
-            contact_address: "주소: 서울시 종로구 전통공예로 123"
+            contact_address: "주소: 서울시 종로구 전통공예로 123",
+            making_title: "제작 과정",
+            making_subtitle: "전통 한지공예의 섬세한 제작 과정을 만나보세요",
+            making_step1: "1단계: 재료 준비",
+            making_step1_desc: "천연 닥나무 섬유를 선별하고 준비합니다",
+            making_step2: "2단계: 한지 제작",
+            making_step2_desc: "전통 기법으로 한지를 직접 제작합니다",
+            making_step3: "3단계: 디자인 설계",
+            making_step3_desc: "작품의 형태와 패턴을 디자인합니다",
+            making_step4: "4단계: 절단과 조형",
+            making_step4_desc: "정교한 손길로 한지를 자르고 모양을 만듭니다",
+            making_step5: "5단계: 조립과 접합",
+            making_step5_desc: "각 부분을 정밀하게 조립하고 접합합니다",
+            making_step6: "6단계: 세부 장식",
+            making_step6_desc: "전통 문양과 장식을 세심하게 추가합니다",
+            making_step7: "7단계: 마무리 작업",
+            making_step7_desc: "작품을 완성하고 마무리 처리를 합니다",
+            making_step8: "8단계: 완성품 검수",
+            making_step8_desc: "품질을 확인하고 최종 완성합니다"
         },
         en: {
             brand: "Hanji Craft",
             nav_collection: "Collection",
             nav_gallery: "Gallery",
             nav_about: "Brand Story",
+            nav_making: "Making Process",
             nav_contact: "Contact",
             hero_title: "Hanji Craft",
             hero_subtitle: "Korean Traditional Paper Art",
@@ -130,13 +150,32 @@ document.addEventListener('DOMContentLoaded', function() {
             contact_title: "Contact",
             contact_phone: "Phone: 02-123-4567",
             contact_email: "Email: info@hanjicraft.com",
-            contact_address: "Address: 123 Traditional Craft St, Jongno-gu, Seoul"
+            contact_address: "Address: 123 Traditional Craft St, Jongno-gu, Seoul",
+            making_title: "Making Process",
+            making_subtitle: "Discover the delicate traditional hanji craft-making process",
+            making_step1: "Step 1: Material Preparation",
+            making_step1_desc: "Select and prepare natural mulberry fibers",
+            making_step2: "Step 2: Hanji Creation",
+            making_step2_desc: "Create hanji using traditional techniques",
+            making_step3: "Step 3: Design Planning",
+            making_step3_desc: "Design the shape and patterns of the artwork",
+            making_step4: "Step 4: Cutting & Shaping",
+            making_step4_desc: "Cut and shape hanji with precise craftsmanship",
+            making_step5: "Step 5: Assembly & Joining",
+            making_step5_desc: "Precisely assemble and join each component",
+            making_step6: "Step 6: Detail Decoration",
+            making_step6_desc: "Carefully add traditional patterns and decorations",
+            making_step7: "Step 7: Finishing Work",
+            making_step7_desc: "Complete the artwork with final touches",
+            making_step8: "Step 8: Quality Inspection",
+            making_step8_desc: "Inspect quality and finalize the product"
         },
         fr: {
             brand: "Artisanat Hanji",
             nav_collection: "Collection",
             nav_gallery: "Galerie",
             nav_about: "Histoire de la Marque",
+            nav_making: "Processus de Fabrication",
             nav_contact: "Contact",
             hero_title: "Artisanat Hanji",
             hero_subtitle: "Art Traditionnel Coréen du Papier",
@@ -167,7 +206,25 @@ document.addEventListener('DOMContentLoaded', function() {
             contact_title: "Contact",
             contact_phone: "Téléphone: 02-123-4567",
             contact_email: "Email: info@hanjicraft.com",
-            contact_address: "Adresse: 123 Rue de l'Artisanat Traditionnel, Jongno-gu, Séoul"
+            contact_address: "Adresse: 123 Rue de l'Artisanat Traditionnel, Jongno-gu, Séoul",
+            making_title: "Processus de Fabrication",
+            making_subtitle: "Découvrez le délicat processus de fabrication de l'artisanat hanji traditionnel",
+            making_step1: "Étape 1: Préparation des Matériaux",
+            making_step1_desc: "Sélectionner et préparer les fibres naturelles de mûrier",
+            making_step2: "Étape 2: Création du Hanji",
+            making_step2_desc: "Créer le hanji selon les techniques traditionnelles",
+            making_step3: "Étape 3: Conception du Design",
+            making_step3_desc: "Concevoir la forme et les motifs de l'œuvre",
+            making_step4: "Étape 4: Découpage et Façonnage",
+            making_step4_desc: "Découper et façonner le hanji avec un savoir-faire précis",
+            making_step5: "Étape 5: Assemblage et Jointure",
+            making_step5_desc: "Assembler et joindre précisément chaque composant",
+            making_step6: "Étape 6: Décoration Détaillée",
+            making_step6_desc: "Ajouter soigneusement des motifs et décorations traditionnels",
+            making_step7: "Étape 7: Finitions",
+            making_step7_desc: "Compléter l'œuvre avec les touches finales",
+            making_step8: "Étape 8: Contrôle Qualité",
+            making_step8_desc: "Inspecter la qualité et finaliser le produit"
         }
     };
 
@@ -296,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Modal elements found successfully');
 
         // 클릭 가능한 이미지들 선택 (히어로 이미지 제외)
-        const clickableImages = document.querySelectorAll('.product-img, .split-img, .gallery-img');
+        const clickableImages = document.querySelectorAll('.product-img, .split-img, .gallery-img, .making-img');
         console.log('Clickable images found:', clickableImages.length);
 
         // 이미지 클릭 이벤트
@@ -413,7 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 아직 로드되지 않은 이미지들을 백그라운드에서 미리 로드
             const imagesToPreload = [
                 './img/04.webp',
-                './img/05.webp',
+                './img/03.webp',
                 './img/06.webp',
                 './img/07.webp',
                 './img/08.webp'

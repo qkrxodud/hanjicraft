@@ -10,7 +10,7 @@ const imagesToCache = [
     './img/02.webp',
     './img/03.webp',
     './img/04.webp',
-    './img/05.webp',
+    './img/03.webp',
     './img/06.webp',
     './img/07.webp',
     './img/08.webp'
