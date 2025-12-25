@@ -58,11 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
             nav_contact: "연락처",
             hero_title: "한지공예",
             hero_subtitle: "한국 전통 종이 예술",
-            product1_title: "한지 장식등",
-            product1_subtitle: "여섯빛깔 따스한 등불",
-            product1_description: "갈색부터 남빛까지, 여섯 가지 색깔의 한지 장식등으로 만든 특별한 작품입니다. 각각의 등불은 정교한 바둑판 무늬를 통해 따스한 빛을 내어 공간에 온기를 더해줍니다.",
-            product2_title: "한지 매듭장식",
-            product2_description: "삼각 한지와 전통 매듭이 어우러진 아름다운 장식품입니다. 은은한 빛깔의 한지가 공중에 떠 있는 듯한 우아함을 연출하며, 바람에 흔들리는 모습이 마치 살아 숨쉬는 예술품 같습니다.",
+            product1_title: "우담바라꽃",
+            product1_subtitle: "3천 년에 한 번 핀다는 전설 속의 성스러운 꽃",
+            product1_description: "수공예적 질감과 은은한 색감, 찻잔을 돋보이게 하는 간결하고 우아한 형태가 특징입니다.",
+            product2_title: "모시풍경",
+            product2_description: "모시로 엮은 복주머니 형태의 풍경으로, 복을 바람에 가져 오라는 의미를 담았습니다. <br>1. 창가에 걸어두면 자연광에 우아하게 투과되는 모시의 질감이 한국적 단아함과 순수함을 뜻합니다.<br>" +
+                "2. 시끄러운 일상 속 쉼표를 찍어주듯, 한국의 고즈넉한 정서와 '멈추지 않는 그리움'의 미를 담습니다.<br>" +
+                "3. 한 땀 한 땀 정성으로 접은 모시 조각들은, 사랑하는 이에게 복을 빌어주던 복주머니를 닮았습니다.<br>" +
+                "4. 창가에 걸어두면 은은하게 울리는 맑은 종소리가 공간을 정화하고, 마음속 평온을 선사할 것입니다." +
+                "\n",
             product3_title: "한지 등불 모음",
             product3_subtitle: "조화로운 빛의 어울림",
             product3_description: "여섯 개의 한지 등불이 하나의 작품을 이루는 조명 세트입니다. 저마다 다른 빛깔과 무늬가 어우러지며, 나무 받침이 더욱 품격 있는 분위기를 만들어냅니다.",
@@ -80,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
             product8_description: "무지개빛 한지 삼각들이 자유롭게 배치된 현대적 예술 작품입니다. 전통 한지가 지닌 자연스러운 결과 선명한 빛깔이 어우러져, 보는 각도마다 다른 느낌을 주는 생동감 넘치는 작품입니다.",
             gallery_title: "전시관",
             gallery_subtitle: "한지공예의 다양한 작품들을 한눈에 감상하세요",
-            about_title: "우리의 전통",
             about_description: "일상 오브제로 한국 전통을 세계에 전하는 공예 스튜디오\n" +
                 "                (한지·모시·옻칠)\n" +
                 "                대학에서 산업디자인을 전공하고 디자인 분야에 종사하던 사람이 우연히 전통공예, 특히 한지공예의 매력에 빠져 20년간 활동해 왔습니다.\n" +
@@ -282,6 +285,84 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // 이미지 모달 기능
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalClose = document.querySelector('.image-modal-close');
+
+    // 요소가 존재하는지 확인
+    if (imageModal && modalImage && modalClose) {
+        console.log('Modal elements found successfully');
+
+        // 클릭 가능한 이미지들 선택 (히어로 이미지 제외)
+        const clickableImages = document.querySelectorAll('.product-img, .split-img, .gallery-img');
+        console.log('Clickable images found:', clickableImages.length);
+
+        // 이미지 클릭 이벤트
+        clickableImages.forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.preventDefault(); // 기본 동작 방지
+                e.stopPropagation(); // 이벤트 전파 방지
+
+                console.log('Image clicked:', this.src);
+
+                try {
+                    imageModal.style.display = 'block';
+                    modalImage.src = this.src;
+                    modalImage.alt = this.alt;
+
+                    console.log('Modal displayed');
+
+                    // 즉시 표시하고 페이드인은 제거 (문제 해결을 위해)
+                    modalImage.style.opacity = '1';
+
+                    // 배경 스크롤 방지는 제거 (문제가 될 수 있음)
+                    // document.body.style.overflow = 'hidden';
+                } catch (error) {
+                    console.error('Modal open error:', error);
+                }
+            });
+        });
+        // 모달 닫기 이벤트
+        function closeModal() {
+            try {
+                imageModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // 스크롤 복원
+                modalImage.src = ''; // 메모리 정리
+                modalImage.style.opacity = '1'; // 초기화
+                console.log('Modal closed');
+            } catch (error) {
+                console.error('Modal close error:', error);
+            }
+        }
+
+        // 닫기 버튼 클릭
+        modalClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
+        });
+
+        // 모달 배경 클릭 시 닫기
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeModal();
+            }
+        });
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && imageModal.style.display === 'block') {
+                e.preventDefault();
+                closeModal();
+            }
+        });
+    } else {
+        console.error('Modal elements not found');
+    }
 
     // Progressive Image Loading Enhancement
     // 이미지가 뷰포트에 들어올 때 우선순위 높이기
