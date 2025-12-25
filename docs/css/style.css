@@ -476,6 +476,30 @@ body {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* 영구적으로 로드된 이미지는 절대 변하지 않음 */
+[data-permanently-loaded="true"] {
+    opacity: 1 !important;
+    transform: translateY(0) translateZ(0) !important;
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
+    filter: none !important;
+    backface-visibility: visible !important;
+    transform-style: flat !important;
+    contain: none !important;
+    content-visibility: visible !important;
+}
+
+/* 로드된 이미지의 모든 상태 변화 차단 */
+[data-permanently-loaded="true"]:hover,
+[data-permanently-loaded="true"]:focus,
+[data-permanently-loaded="true"]:active {
+    opacity: 1 !important;
+    transform: translateY(0) translateZ(0) !important;
+    transition: none !important;
+    animation: none !important;
+}
+
 /* 갤러리 아이템 호버 완전 제거 - 로드 후 깜박임 방지 */
 .gallery-item.image-loaded {
     transform: translateY(0) translateZ(0) !important;

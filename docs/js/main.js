@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 로드된 이미지를 추적하는 Set
         const loadedImages = new Set();
 
-        // 이미지 lazy loading을 위한 Intersection Observer
+        // 이미지 lazy loading을 위한 Intersection Observer - 한 번만 실행되도록 설정
         const imageObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -232,8 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const elementId = element.dataset.imageId;
 
                     // 이미 로드된 이미지는 완전히 건너뛰고 관찰 중단
-                    if (loadedImages.has(elementId) || element.classList.contains('image-loaded')) {
+                    if (loadedImages.has(elementId) ||
+                        element.classList.contains('image-loaded') ||
+                        element.hasAttribute('data-permanently-loaded')) {
                         imageObserver.unobserve(element);
+                        console.log(`Skipping already loaded image: ${elementId}`);
                         return;
                     }
 
@@ -269,22 +272,27 @@ document.addEventListener('DOMContentLoaded', function() {
                             element.classList.add('image-loaded');
 
                             // 최종 스타일 완전 고정 - 더 이상 변경되지 않도록 강제
-                            element.style.opacity = '1';
-                            element.style.transform = 'translateY(0) translateZ(0)';
-                            element.style.transition = 'none';
-                            element.style.animation = 'none';
-                            element.style.willChange = 'auto'; // GPU 레이어 최적화 중단
-                            element.style.filter = 'none'; // 모든 필터 제거
+                            element.style.setProperty('opacity', '1', 'important');
+                            element.style.setProperty('transform', 'translateY(0) translateZ(0)', 'important');
+                            element.style.setProperty('transition', 'none', 'important');
+                            element.style.setProperty('animation', 'none', 'important');
+                            element.style.setProperty('will-change', 'auto', 'important');
+                            element.style.setProperty('filter', 'none', 'important');
 
-                            // 추가 정적 속성 설정
-                            element.style.backfaceVisibility = 'visible';
-                            element.style.transformStyle = 'flat';
+                            // 추가 정적 속성 설정 - 강제로 !important 적용
+                            element.style.setProperty('backface-visibility', 'visible', 'important');
+                            element.style.setProperty('transform-style', 'flat', 'important');
+                            element.style.setProperty('contain', 'none', 'important');
+                            element.style.setProperty('content-visibility', 'visible', 'important');
 
                             // 로드 완료 추적
                             loadedImages.add(elementId);
 
-                            // 즉시 관찰 중단
+                            // 즉시 관찰 중단 - 영구적으로
                             imageObserver.unobserve(element);
+
+                            // 요소에 완료 플래그 추가
+                            element.setAttribute('data-permanently-loaded', 'true');
 
                             console.log(`Image permanently loaded in ${Date.now() - loadStartTime}ms: ${imageSrc}`);
                         };
@@ -375,8 +383,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     };
                     heroImg.src = heroImageSrc;
                 } else {
-                    // 다른 이미지들은 lazy loading
-                    imageObserver.observe(element);
+                    // 다른 이미지들은 lazy loading - 이미 로드되지 않은 경우만
+                    if (!element.classList.contains('image-loaded') &&
+                        !element.hasAttribute('data-permanently-loaded') &&
+                        !loadedImages.has(imageId)) {
+                        imageObserver.observe(element);
+                        console.log(`Observing image: ${imageId}`);
+                    } else {
+                        console.log(`Already loaded, skipping observation: ${imageId}`);
+                    }
                 }
             }
         });
