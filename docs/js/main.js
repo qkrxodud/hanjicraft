@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
             product8_description: "무지개빛 한지 삼각들이 자유롭게 배치된 현대적 예술 작품입니다. 전통 한지가 지닌 자연스러운 결과 선명한 빛깔이 어우러져, 보는 각도마다 다른 느낌을 주는 생동감 넘치는 작품입니다.",
             gallery_title: "전시관",
             gallery_subtitle: "한지공예의 다양한 작품들을 한눈에 감상하세요",
+            about_title: "우리의 전통",
+            about_description: "한지공예는 한국 전통 문화의 정수를 담은 예술입니다. 천년의 세월을 이어온 전통 기법을 현대적 감각으로 재해석하여, 시간을 초월한 아름다움을 선사합니다.\n\n자연에서 얻은 재료로 만드는 친환경적이고 지속 가능한 공예품으로, 현대인의 라이프스타일에 조화롭게 어우러지는 특별한 가치를 제공합니다.",
             contact_title: "연락처",
             contact_phone: "전화: 02-123-4567",
             contact_email: "이메일: info@hanjicraft.com",
@@ -115,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
             product8_description: "Contemporary art piece featuring rainbow-colored hanji triangles arranged freely. The natural texture and vivid colors of traditional hanji create harmony, offering different impressions from various viewing angles in this dynamic artwork.",
             gallery_title: "Gallery",
             gallery_subtitle: "Appreciate various hanji craft works at a glance",
+            about_title: "Our Heritage",
+            about_description: "Hanji craft is an art form that embodies the essence of Korean traditional culture. By reinterpreting thousand-year-old traditional techniques with modern sensibilities, it presents timeless beauty that transcends time.\n\nAs eco-friendly and sustainable crafts made from natural materials, they provide special value that harmoniously blends with the lifestyle of modern people.",
             contact_title: "Contact",
             contact_phone: "Phone: 02-123-4567",
             contact_email: "Email: info@hanjicraft.com",
@@ -137,7 +141,15 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('[data-translate]').forEach(element => {
             const key = element.getAttribute('data-translate');
             if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
+                // HTML에서 개행 문자 처리
+                const translatedText = translations[lang][key].replace(/\n\n/g, '<br><br>');
+
+                // HTML이 포함된 경우 innerHTML 사용, 아니면 textContent 사용
+                if (translatedText.includes('<br>')) {
+                    element.innerHTML = translatedText;
+                } else {
+                    element.textContent = translatedText;
+                }
             }
         });
 
