@@ -132,11 +132,71 @@ document.addEventListener('DOMContentLoaded', function() {
         languageSelector.value = currentLanguage;
         languageSelector.addEventListener('change', function(e) {
             changeLanguage(e.target.value);
+
+            // 언어 변경 후 모바일 메뉴 닫기
+            setTimeout(function() {
+                if (typeof closeNavbarMenu === 'function') {
+                    closeNavbarMenu();
+                }
+            }, 100);
         });
     }
 
     // 초기 언어 설정 적용
     changeLanguage(currentLanguage);
+
+    // 햄버거 메뉴 자동 닫기 기능
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navbarToggler = document.querySelector('.navbar-toggler');
+
+    // 메뉴 닫기 헬퍼 함수
+    function closeNavbarMenu() {
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            // Bootstrap이 로드된 경우 Bootstrap 방식 사용
+            if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                    toggle: false
+                });
+                bsCollapse.hide();
+            }
+            // Bootstrap이 없는 경우 직접 클래스 제거
+            else {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.classList.add('collapsed');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+            }
+        }
+    }
+
+    // 스크롤 시 메뉴 닫기
+    window.addEventListener('scroll', closeNavbarMenu);
+
+    // 메뉴 외부 클릭 시 닫기
+    document.addEventListener('click', function(event) {
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            // 클릭한 요소가 네비게이션 내부가 아닌 경우
+            const navbar = document.querySelector('.navbar');
+            if (!navbar.contains(event.target)) {
+                closeNavbarMenu();
+            }
+        }
+    });
+
+    // 네비게이션 링크 클릭 시 메뉴 닫기
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            // 약간의 지연을 두어 부드러운 스크롤 후 메뉴 닫기
+            setTimeout(closeNavbarMenu, 100);
+        });
+    });
+
+    // ESC 키로 메뉴 닫기
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeNavbarMenu();
+        }
+    });
     // WebP 지원 확인
     function supportsWebP() {
         return new Promise(resolve => {
