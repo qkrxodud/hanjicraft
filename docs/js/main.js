@@ -421,6 +421,25 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Modal elements not found');
     }
 
+    // 부드러운 스크롤과 네비게이션 개선
+    let lastScrollY = window.scrollY;
+    const navbarEl = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+
+        // 스크롤 방향에 따라 네비게이션 스타일 조정
+        if (currentScrollY > 100) {
+            navbarEl.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbarEl.style.boxShadow = '0 2px 25px rgba(0, 0, 0, 0.15)';
+        } else {
+            navbarEl.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbarEl.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+        }
+
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+
     // Progressive Image Loading Enhancement
     // 이미지가 뷰포트에 들어올 때 우선순위 높이기
     if ('IntersectionObserver' in window) {
