@@ -30,6 +30,24 @@ window.addEventListener('unhandledrejection', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     // 안전한 실행을 위한 try-catch wrapper
     try {
+
+    // Service Worker 등록 (이미지 캐싱)
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js')
+            .then(registration => {
+                console.log('[SW] Registration successful:', registration);
+
+                // Service Worker가 활성화되면 백그라운드 캐싱 시작
+                if (registration.active) {
+                    registration.active.postMessage({
+                        type: 'CACHE_REMAINING_IMAGES'
+                    });
+                }
+            })
+            .catch(error => {
+                console.log('[SW] Registration failed:', error);
+            });
+    }
     // 다국어 번역 데이터
     const translations = {
         ko: {
@@ -209,6 +227,76 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+    });
+
+    // Progressive Image Loading Enhancement
+    // 이미지가 뷰포트에 들어올 때 우선순위 높이기
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+
+                    // 페이드인 애니메이션
+                    img.style.transition = 'opacity 0.3s ease';
+                    img.style.opacity = '0';
+
+                    // 이미지 로드 완료 시 페이드인
+                    const handleLoad = () => {
+                        img.style.opacity = '1';
+                        img.removeEventListener('load', handleLoad);
+                    };
+
+                    // 이미 로드된 이미지 처리
+                    if (img.complete) {
+                        img.style.opacity = '1';
+                    } else {
+                        img.addEventListener('load', handleLoad);
+                    }
+
+                    // 관찰 중단
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px' // 50px 미리 로딩 시작
+        });
+
+        // 모든 이미지에 옵서버 적용
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // 이미지 프리로딩 - 유저 상호작용 후 백그라운드에서 실행
+    let preloadTriggered = false;
+    const triggerPreload = () => {
+        if (preloadTriggered) return;
+        preloadTriggered = true;
+
+        setTimeout(() => {
+            // 아직 로드되지 않은 이미지들을 백그라운드에서 미리 로드
+            const imagesToPreload = [
+                './img/04.webp',
+                './img/05.webp',
+                './img/06.webp',
+                './img/07.webp',
+                './img/08.webp'
+            ];
+
+            imagesToPreload.forEach((src, index) => {
+                setTimeout(() => {
+                    const img = new Image();
+                    img.src = src;
+                    console.log('Preloading image:', src);
+                }, index * 200); // 200ms 간격으로 로딩
+            });
+        }, 1000); // 1초 후 시작
+    };
+
+    // 유저 상호작용 시 프리로딩 시작
+    ['scroll', 'click', 'mousemove', 'keydown'].forEach(event => {
+        document.addEventListener(event, triggerPreload, { once: true });
     });
 
     // 네비게이션 스크롤 효과
