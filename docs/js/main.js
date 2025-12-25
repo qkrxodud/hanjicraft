@@ -384,6 +384,36 @@ document.addEventListener('DOMContentLoaded', function() {
         // 이미지 프리로딩 (중요한 첫 번째 이미지만)
         const criticalImage = new Image();
         criticalImage.src = isWebPSupported ? './img/01.webp' : './img/01.jpeg';
+
+        // 대용량 이미지에 대한 추가 최적화
+        const largeImageElements = document.querySelectorAll('.product-image-05, .product-image-06, .product-image-07, .product-image-08');
+        largeImageElements.forEach(element => {
+            // 대용량 이미지들은 뷰포트에 더 가까워질 때까지 로딩 지연
+            if (imageObserver && element) {
+                imageObserver.unobserve(element);
+
+                // 더 제한적인 옵저버로 재관찰
+                const largeImageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const el = entry.target;
+                            const imageId = el.dataset.imageId;
+
+                            if (!loadedImages.has(imageId) && !el.classList.contains('image-loaded')) {
+                                // 원래 이미지 로더 로직 실행
+                                imageObserver.observe(el);
+                            }
+                            largeImageObserver.unobserve(el);
+                        }
+                    });
+                }, {
+                    threshold: 0.05, // 더 늦게 로딩 시작
+                    rootMargin: '100px 0px' // 더 좁은 마진
+                });
+
+                largeImageObserver.observe(element);
+            }
+        });
     });
 
     // 네비게이션 스크롤 효과
