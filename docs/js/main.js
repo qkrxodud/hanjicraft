@@ -2,6 +2,45 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Restore scroll position if returning from artwork detail
+    function restoreScrollPosition() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromDetail = urlParams.get('fromDetail');
+
+        if (fromDetail || window.location.hash === '#gallery') {
+            const savedPosition = sessionStorage.getItem('scrollPosition');
+            const clickedArtworkId = sessionStorage.getItem('clickedArtworkId');
+
+            if (savedPosition) {
+                // Small delay to ensure page is fully loaded
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: parseInt(savedPosition),
+                        behavior: 'smooth'
+                    });
+                }, 100);
+
+                // Clear the stored position after use
+                sessionStorage.removeItem('scrollPosition');
+                sessionStorage.removeItem('clickedArtworkId');
+            } else if (window.location.hash === '#gallery') {
+                // If no saved position but #gallery hash, scroll to gallery
+                setTimeout(() => {
+                    const gallerySection = document.querySelector('#gallery');
+                    if (gallerySection) {
+                        gallerySection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+            }
+        }
+    }
+
+    // Call restore function
+    restoreScrollPosition();
+
     // Language switcher functionality
     const languageToggle = document.getElementById('language-toggle');
     const languageDropdown = document.getElementById('language-dropdown');
@@ -103,13 +142,27 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Masterpiece item click handlers
+    // Save scroll position for all artwork detail links
+    function saveScrollPosition() {
+        sessionStorage.setItem('scrollPosition', window.pageYOffset.toString());
+    }
+
+    // Masterpiece item click handlers with position saving
     document.querySelectorAll('.masterpiece-item').forEach(item => {
         item.addEventListener('click', function() {
             const artworkId = this.getAttribute('data-artwork-id');
             if (artworkId) {
+                saveScrollPosition();
+                sessionStorage.setItem('clickedArtworkId', artworkId);
                 window.location.href = `./artwork-detail.html?id=${artworkId}`;
             }
+        });
+    });
+
+    // Add position saving to all artwork detail links
+    document.querySelectorAll('a[href*="artwork-detail.html"]').forEach(link => {
+        link.addEventListener('click', function() {
+            saveScrollPosition();
         });
     });
 

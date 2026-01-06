@@ -124,36 +124,36 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             image: './img/gallery/01.webp'
         },
-        gallery02: {
-            ko: {
-                title: '한지 꽃 장식',
-                period: '현대, 21세기',
-                artist: '김미영 작가',
-                medium: '한지, 천연 염료',
-                dimensions: '다양한 크기',
-                description: '전통 한지를 현대적으로 재해석한 꽃 장식 작품입니다. 한지 특유의 질감을 살려 만든 꽃들은 영원히 시들지 않는 아름다움을 선사합니다.',
-                story: '이 작품은 전통 한지 제작 기법과 현대적 조형 감각이 만나 탄생했습니다. 작가는 한지를 여러 겹 겹쳐 입체적인 꽃잎을 표현했으며, 천연 염료를 사용해 자연스러운 색감을 구현했습니다. 각각의 꽃은 수작업으로 제작되어 하나하나가 독특한 개성을 지니고 있습니다.'
-            },
-            en: {
-                title: 'Hanji Flower Decoration',
-                period: 'Contemporary, 21st Century',
-                artist: 'Artist Kim Mi-young',
-                medium: 'Hanji Paper, Natural Dyes',
-                dimensions: 'Various sizes',
-                description: 'Flower decoration artwork that reinterprets traditional hanji in a contemporary way. Flowers made utilizing the unique texture of hanji present eternal beauty that never withers.',
-                story: 'This work was born from the meeting of traditional hanji production techniques and contemporary formative sensibility. The artist expressed three-dimensional petals by layering multiple sheets of hanji and achieved natural colors using natural dyes. Each flower is handcrafted, making each one uniquely individual.'
-            },
-            fr: {
-                title: 'Décoration Florale en Hanji',
-                period: 'Contemporain, 21e Siècle',
-                artist: 'Artiste Kim Mi-young',
-                medium: 'Papier Hanji, Teintures Naturelles',
-                dimensions: 'Tailles variées',
-                description: 'Œuvre de décoration florale qui réinterprète le hanji traditionnel de manière contemporaine. Les fleurs faites en utilisant la texture unique du hanji présentent une beauté éternelle qui ne se fane jamais.',
-                story: 'Cette œuvre est née de la rencontre entre les techniques traditionnelles de production du hanji et la sensibilité formative contemporaine. L\'artiste a exprimé des pétales tridimensionnels en superposant plusieurs feuilles de hanji et a obtenu des couleurs naturelles en utilisant des teintures naturelles. Chaque fleur est fabriquée à la main, rendant chacune uniquement individuelle.'
-            },
-            image: './img/gallery/02.webp'
-        },
+        // gallery02: {
+        //     ko: {
+        //         title: '한지 꽃 장식',
+        //         period: '현대, 21세기',
+        //         artist: '김미영 작가',
+        //         medium: '한지, 천연 염료',
+        //         dimensions: '다양한 크기',
+        //         description: '전통 한지를 현대적으로 재해석한 꽃 장식 작품입니다. 한지 특유의 질감을 살려 만든 꽃들은 영원히 시들지 않는 아름다움을 선사합니다.',
+        //         story: '이 작품은 전통 한지 제작 기법과 현대적 조형 감각이 만나 탄생했습니다. 작가는 한지를 여러 겹 겹쳐 입체적인 꽃잎을 표현했으며, 천연 염료를 사용해 자연스러운 색감을 구현했습니다. 각각의 꽃은 수작업으로 제작되어 하나하나가 독특한 개성을 지니고 있습니다.'
+        //     },
+        //     en: {
+        //         title: 'Hanji Flower Decoration',
+        //         period: 'Contemporary, 21st Century',
+        //         artist: 'Artist Kim Mi-young',
+        //         medium: 'Hanji Paper, Natural Dyes',
+        //         dimensions: 'Various sizes',
+        //         description: 'Flower decoration artwork that reinterprets traditional hanji in a contemporary way. Flowers made utilizing the unique texture of hanji present eternal beauty that never withers.',
+        //         story: 'This work was born from the meeting of traditional hanji production techniques and contemporary formative sensibility. The artist expressed three-dimensional petals by layering multiple sheets of hanji and achieved natural colors using natural dyes. Each flower is handcrafted, making each one uniquely individual.'
+        //     },
+        //     fr: {
+        //         title: 'Décoration Florale en Hanji',
+        //         period: 'Contemporain, 21e Siècle',
+        //         artist: 'Artiste Kim Mi-young',
+        //         medium: 'Papier Hanji, Teintures Naturelles',
+        //         dimensions: 'Tailles variées',
+        //         description: 'Œuvre de décoration florale qui réinterprète le hanji traditionnel de manière contemporaine. Les fleurs faites en utilisant la texture unique du hanji présentent une beauté éternelle qui ne se fane jamais.',
+        //         story: 'Cette œuvre est née de la rencontre entre les techniques traditionnelles de production du hanji et la sensibilité formative contemporaine. L\'artiste a exprimé des pétales tridimensionnels en superposant plusieurs feuilles de hanji et a obtenu des couleurs naturelles en utilisant des teintures naturelles. Chaque fleur est fabriquée à la main, rendant chacune uniquement individuelle.'
+        //     },
+        //     image: './img/gallery/02.webp'
+        // },
         gallery03: {
             ko: {
                 title: '한지 조각품 컬렉션',
@@ -184,96 +184,96 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             image: './img/gallery/03.webp'
         },
-        gallery06: {
-            ko: {
-                title: '한지 등불 컬렉션',
-                period: '현대, 21세기',
-                artist: '이서연 작가',
-                medium: '한지, LED 조명, 대나무',
-                dimensions: '40cm × 40cm × 60cm',
-                description: '전통 한지와 현대 LED 기술을 결합한 등불 작품입니다. 한지의 투광성을 활용해 따뜻하고 부드러운 조명 효과를 연출합니다.',
-                story: '작가는 조선시대 궁중에서 사용되던 전통 등불의 형태에서 영감을 받아 현대적 해석을 더했습니다. 한지를 여러 겹 겹쳐 빛의 확산을 조절하고, 대나무 프레임으로 안정성을 높였습니다.'
-            },
-            en: {
-                title: 'Hanji Lantern Collection',
-                period: 'Contemporary, 21st Century',
-                artist: 'Artist Lee Seo-yeon',
-                medium: 'Hanji Paper, LED Lighting, Bamboo',
-                dimensions: '40cm × 40cm × 60cm',
-                description: 'Lantern artwork combining traditional hanji with modern LED technology. Utilizes the light-transmitting properties of hanji to create warm and soft lighting effects.',
-                story: 'The artist drew inspiration from traditional lanterns used in the Joseon Dynasty royal court and added a contemporary interpretation. Multiple layers of hanji control light diffusion, while a bamboo frame enhances stability.'
-            },
-            fr: {
-                title: 'Collection de Lanternes en Hanji',
-                period: 'Contemporain, 21e Siècle',
-                artist: 'Artiste Lee Seo-yeon',
-                medium: 'Papier Hanji, Éclairage LED, Bambou',
-                dimensions: '40cm × 40cm × 60cm',
-                description: 'Œuvre de lanterne combinant le hanji traditionnel avec la technologie LED moderne. Utilise les propriétés de transmission lumineuse du hanji pour créer des effets d\'éclairage chauds et doux.',
-                story: 'L\'artiste s\'est inspirée des lanternes traditionnelles utilisées dans la cour royale de la dynastie Joseon et a ajouté une interprétation contemporaine. Plusieurs couches de hanji contrôlent la diffusion de la lumière, tandis qu\'un cadre en bambou améliore la stabilité.'
-            },
-            image: './img/gallery/06.webp'
-        },
-        gallery07: {
-            ko: {
-                title: '한지 부채 예술품',
-                period: '조선 중기, 18세기',
-                artist: '김덕수 장인',
-                medium: '한지, 대나무, 천연 안료',
-                dimensions: '35cm × 25cm',
-                description: '조선 중기 선비들이 사용하던 접이식 부채입니다. 한지에 그려진 산수화는 당시 문인화의 특징을 잘 보여줍니다.',
-                story: '이 부채는 18세기 조선의 문인 문화를 대표하는 작품입니다. 부채살은 대나무로 제작되었고, 한지 부채면에는 먹과 천연 안료로 산수화가 그려져 있습니다. 부채를 접고 펼 때마다 그림이 변화하는 재미를 느낄 수 있습니다.'
-            },
-            en: {
-                title: 'Hanji Fan Artwork',
-                period: 'Mid-Joseon, 18th Century',
-                artist: 'Artisan Kim Deok-su',
-                medium: 'Hanji Paper, Bamboo, Natural Pigments',
-                dimensions: '35cm × 25cm',
-                description: 'A folding fan used by scholars during the mid-Joseon period. The landscape painting on hanji demonstrates the characteristics of literati painting of that era.',
-                story: 'This fan represents the literati culture of 18th-century Joseon. The fan ribs are made of bamboo, and landscape paintings are drawn with ink and natural pigments on the hanji fan surface. You can enjoy how the picture changes each time the fan is folded and unfolded.'
-            },
-            fr: {
-                title: 'Œuvre d\'Art Éventail en Hanji',
-                period: 'Milieu Joseon, 18e Siècle',
-                artist: 'Artisan Kim Deok-su',
-                medium: 'Papier Hanji, Bambou, Pigments Naturels',
-                dimensions: '35cm × 25cm',
-                description: 'Un éventail pliant utilisé par les lettrés pendant la période du milieu Joseon. La peinture de paysage sur hanji démontre les caractéristiques de la peinture de lettré de cette époque.',
-                story: 'Cet éventail représente la culture des lettrés du 18e siècle Joseon. Les baleines de l\'éventail sont en bambou, et des peintures de paysage sont dessinées à l\'encre et aux pigments naturels sur la surface de l\'éventail en hanji. Vous pouvez apprécier comment l\'image change chaque fois que l\'éventail est plié et déplié.'
-            },
-            image: './img/gallery/07.webp'
-        },
-        gallery08: {
-            ko: {
-                title: '현대 한지 설치미술',
-                period: '현대, 21세기',
-                artist: '박민호 작가',
-                medium: '한지, 스테인리스 스틸, 조명',
-                dimensions: '300cm × 200cm × 150cm',
-                description: '대형 한지 설치 작품으로 공간 전체를 아우르는 몰입감 있는 경험을 제공합니다. 한지와 현대 재료의 조화가 인상적입니다.',
-                story: '이 설치 작품은 한지의 전통적 가치와 현대 미술의 실험 정신이 만난 결과물입니다. 작가는 수백 장의 한지를 공중에 매달아 바람에 의해 움직이는 동적인 작품을 완성했습니다.'
-            },
-            en: {
-                title: 'Contemporary Hanji Installation Art',
-                period: 'Contemporary, 21st Century',
-                artist: 'Artist Park Min-ho',
-                medium: 'Hanji Paper, Stainless Steel, Lighting',
-                dimensions: '300cm × 200cm × 150cm',
-                description: 'A large-scale hanji installation work providing an immersive experience that encompasses the entire space. The harmony between hanji and contemporary materials is impressive.',
-                story: 'This installation is the result of meeting traditional values of hanji with the experimental spirit of contemporary art. The artist suspended hundreds of sheets of hanji in the air to create a dynamic work that moves with the wind.'
-            },
-            fr: {
-                title: 'Art d\'Installation Contemporain en Hanji',
-                period: 'Contemporain, 21e Siècle',
-                artist: 'Artiste Park Min-ho',
-                medium: 'Papier Hanji, Acier Inoxydable, Éclairage',
-                dimensions: '300cm × 200cm × 150cm',
-                description: 'Une œuvre d\'installation en hanji à grande échelle offrant une expérience immersive qui englobe tout l\'espace. L\'harmonie entre le hanji et les matériaux contemporains est impressionnante.',
-                story: 'Cette installation est le résultat de la rencontre des valeurs traditionnelles du hanji avec l\'esprit expérimental de l\'art contemporain. L\'artiste a suspendu des centaines de feuilles de hanji dans l\'air pour créer une œuvre dynamique qui bouge avec le vent.'
-            },
-            image: './img/gallery/08.webp'
-        },
+        // gallery06: {
+        //     ko: {
+        //         title: '한지 등불 컬렉션',
+        //         period: '현대, 21세기',
+        //         artist: '이서연 작가',
+        //         medium: '한지, LED 조명, 대나무',
+        //         dimensions: '40cm × 40cm × 60cm',
+        //         description: '전통 한지와 현대 LED 기술을 결합한 등불 작품입니다. 한지의 투광성을 활용해 따뜻하고 부드러운 조명 효과를 연출합니다.',
+        //         story: '작가는 조선시대 궁중에서 사용되던 전통 등불의 형태에서 영감을 받아 현대적 해석을 더했습니다. 한지를 여러 겹 겹쳐 빛의 확산을 조절하고, 대나무 프레임으로 안정성을 높였습니다.'
+        //     },
+        //     en: {
+        //         title: 'Hanji Lantern Collection',
+        //         period: 'Contemporary, 21st Century',
+        //         artist: 'Artist Lee Seo-yeon',
+        //         medium: 'Hanji Paper, LED Lighting, Bamboo',
+        //         dimensions: '40cm × 40cm × 60cm',
+        //         description: 'Lantern artwork combining traditional hanji with modern LED technology. Utilizes the light-transmitting properties of hanji to create warm and soft lighting effects.',
+        //         story: 'The artist drew inspiration from traditional lanterns used in the Joseon Dynasty royal court and added a contemporary interpretation. Multiple layers of hanji control light diffusion, while a bamboo frame enhances stability.'
+        //     },
+        //     fr: {
+        //         title: 'Collection de Lanternes en Hanji',
+        //         period: 'Contemporain, 21e Siècle',
+        //         artist: 'Artiste Lee Seo-yeon',
+        //         medium: 'Papier Hanji, Éclairage LED, Bambou',
+        //         dimensions: '40cm × 40cm × 60cm',
+        //         description: 'Œuvre de lanterne combinant le hanji traditionnel avec la technologie LED moderne. Utilise les propriétés de transmission lumineuse du hanji pour créer des effets d\'éclairage chauds et doux.',
+        //         story: 'L\'artiste s\'est inspirée des lanternes traditionnelles utilisées dans la cour royale de la dynastie Joseon et a ajouté une interprétation contemporaine. Plusieurs couches de hanji contrôlent la diffusion de la lumière, tandis qu\'un cadre en bambou améliore la stabilité.'
+        //     },
+        //     image: './img/gallery/06.webp'
+        // },
+        // gallery07: {
+        //     ko: {
+        //         title: '한지 부채 예술품',
+        //         period: '조선 중기, 18세기',
+        //         artist: '김덕수 장인',
+        //         medium: '한지, 대나무, 천연 안료',
+        //         dimensions: '35cm × 25cm',
+        //         description: '조선 중기 선비들이 사용하던 접이식 부채입니다. 한지에 그려진 산수화는 당시 문인화의 특징을 잘 보여줍니다.',
+        //         story: '이 부채는 18세기 조선의 문인 문화를 대표하는 작품입니다. 부채살은 대나무로 제작되었고, 한지 부채면에는 먹과 천연 안료로 산수화가 그려져 있습니다. 부채를 접고 펼 때마다 그림이 변화하는 재미를 느낄 수 있습니다.'
+        //     },
+        //     en: {
+        //         title: 'Hanji Fan Artwork',
+        //         period: 'Mid-Joseon, 18th Century',
+        //         artist: 'Artisan Kim Deok-su',
+        //         medium: 'Hanji Paper, Bamboo, Natural Pigments',
+        //         dimensions: '35cm × 25cm',
+        //         description: 'A folding fan used by scholars during the mid-Joseon period. The landscape painting on hanji demonstrates the characteristics of literati painting of that era.',
+        //         story: 'This fan represents the literati culture of 18th-century Joseon. The fan ribs are made of bamboo, and landscape paintings are drawn with ink and natural pigments on the hanji fan surface. You can enjoy how the picture changes each time the fan is folded and unfolded.'
+        //     },
+        //     fr: {
+        //         title: 'Œuvre d\'Art Éventail en Hanji',
+        //         period: 'Milieu Joseon, 18e Siècle',
+        //         artist: 'Artisan Kim Deok-su',
+        //         medium: 'Papier Hanji, Bambou, Pigments Naturels',
+        //         dimensions: '35cm × 25cm',
+        //         description: 'Un éventail pliant utilisé par les lettrés pendant la période du milieu Joseon. La peinture de paysage sur hanji démontre les caractéristiques de la peinture de lettré de cette époque.',
+        //         story: 'Cet éventail représente la culture des lettrés du 18e siècle Joseon. Les baleines de l\'éventail sont en bambou, et des peintures de paysage sont dessinées à l\'encre et aux pigments naturels sur la surface de l\'éventail en hanji. Vous pouvez apprécier comment l\'image change chaque fois que l\'éventail est plié et déplié.'
+        //     },
+        //     image: './img/gallery/07.webp'
+        // },
+        // gallery08: {
+        //     ko: {
+        //         title: '현대 한지 설치미술',
+        //         period: '현대, 21세기',
+        //         artist: '박민호 작가',
+        //         medium: '한지, 스테인리스 스틸, 조명',
+        //         dimensions: '300cm × 200cm × 150cm',
+        //         description: '대형 한지 설치 작품으로 공간 전체를 아우르는 몰입감 있는 경험을 제공합니다. 한지와 현대 재료의 조화가 인상적입니다.',
+        //         story: '이 설치 작품은 한지의 전통적 가치와 현대 미술의 실험 정신이 만난 결과물입니다. 작가는 수백 장의 한지를 공중에 매달아 바람에 의해 움직이는 동적인 작품을 완성했습니다.'
+        //     },
+        //     en: {
+        //         title: 'Contemporary Hanji Installation Art',
+        //         period: 'Contemporary, 21st Century',
+        //         artist: 'Artist Park Min-ho',
+        //         medium: 'Hanji Paper, Stainless Steel, Lighting',
+        //         dimensions: '300cm × 200cm × 150cm',
+        //         description: 'A large-scale hanji installation work providing an immersive experience that encompasses the entire space. The harmony between hanji and contemporary materials is impressive.',
+        //         story: 'This installation is the result of meeting traditional values of hanji with the experimental spirit of contemporary art. The artist suspended hundreds of sheets of hanji in the air to create a dynamic work that moves with the wind.'
+        //     },
+        //     fr: {
+        //         title: 'Art d\'Installation Contemporain en Hanji',
+        //         period: 'Contemporain, 21e Siècle',
+        //         artist: 'Artiste Park Min-ho',
+        //         medium: 'Papier Hanji, Acier Inoxydable, Éclairage',
+        //         dimensions: '300cm × 200cm × 150cm',
+        //         description: 'Une œuvre d\'installation en hanji à grande échelle offrant une expérience immersive qui englobe tout l\'espace. L\'harmonie entre le hanji et les matériaux contemporains est impressionnante.',
+        //         story: 'Cette installation est le résultat de la rencontre des valeurs traditionnelles du hanji avec l\'esprit expérimental de l\'art contemporain. L\'artiste a suspendu des centaines de feuilles de hanji dans l\'air pour créer une œuvre dynamique qui bouge avec le vent.'
+        //     },
+        //     image: './img/gallery/08.webp'
+        // },
         gallery09: {
             ko: {
                 title: '한지 수묵화 작품',
@@ -513,7 +513,98 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
             },
             image: './img/gallery/16.webp'
+        },
+        circle: {
+            ko: {
+                title: '한지 북아트',
+                period: '현대, 21세기',
+                artist: '이한결 작가',
+                medium: '한지, 실, 천연 접착제',
+                dimensions: '25cm × 18cm × 3cm',
+                description: '전통 제책 기법과 현대 북아트가 결합된 작품입니다. 각 페이지가 한지로 만들어져 독특한 촉감과 시각적 경험을 제공합니다.',
+                story: '작가는 조선시대 책 제작 방법을 연구하여 현대적으로 재해석했습니다. 한지의 자연스러운 주름과 질감이 각 페이지마다 다른 표정을 만들어냅니다.'
+            },
+            en: {
+                title: 'Hanji Book Art',
+                period: 'Contemporary, 21st Century',
+                artist: 'Artist Lee Han-kyul',
+                medium: 'Hanji Paper, Thread, Natural Adhesive',
+                dimensions: '25cm × 18cm × 3cm',
+                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
+                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+            },
+            fr: {
+                title: 'Art du Livre Hanji',
+                period: 'Contemporain, 21e Siècle',
+                artist: 'Artiste Lee Han-kyul',
+                medium: 'Papier Hanji, Fil, Adhésif Naturel',
+                dimensions: '25cm × 18cm × 3cm',
+                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
+                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+            },
+            image: './img/gallery/circle.webp'
+        },
+        multi: {
+            ko: {
+                title: '한지 북아트',
+                period: '현대, 21세기',
+                artist: '이한결 작가',
+                medium: '한지, 실, 천연 접착제',
+                dimensions: '25cm × 18cm × 3cm',
+                description: '전통 제책 기법과 현대 북아트가 결합된 작품입니다. 각 페이지가 한지로 만들어져 독특한 촉감과 시각적 경험을 제공합니다.',
+                story: '작가는 조선시대 책 제작 방법을 연구하여 현대적으로 재해석했습니다. 한지의 자연스러운 주름과 질감이 각 페이지마다 다른 표정을 만들어냅니다.'
+            },
+            en: {
+                title: 'Hanji Book Art',
+                period: 'Contemporary, 21st Century',
+                artist: 'Artist Lee Han-kyul',
+                medium: 'Hanji Paper, Thread, Natural Adhesive',
+                dimensions: '25cm × 18cm × 3cm',
+                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
+                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+            },
+            fr: {
+                title: 'Art du Livre Hanji',
+                period: 'Contemporain, 21e Siècle',
+                artist: 'Artiste Lee Han-kyul',
+                medium: 'Papier Hanji, Fil, Adhésif Naturel',
+                dimensions: '25cm × 18cm × 3cm',
+                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
+                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+            },
+            image: './img/gallery/multi.webp'
+        },
+        three_circle: {
+            ko: {
+                title: '한지 북아트',
+                period: '현대, 21세기',
+                artist: '이한결 작가',
+                medium: '한지, 실, 천연 접착제',
+                dimensions: '25cm × 18cm × 3cm',
+                description: '전통 제책 기법과 현대 북아트가 결합된 작품입니다. 각 페이지가 한지로 만들어져 독특한 촉감과 시각적 경험을 제공합니다.',
+                story: '작가는 조선시대 책 제작 방법을 연구하여 현대적으로 재해석했습니다. 한지의 자연스러운 주름과 질감이 각 페이지마다 다른 표정을 만들어냅니다.'
+            },
+            en: {
+                title: 'Hanji Book Art',
+                period: 'Contemporary, 21st Century',
+                artist: 'Artist Lee Han-kyul',
+                medium: 'Hanji Paper, Thread, Natural Adhesive',
+                dimensions: '25cm × 18cm × 3cm',
+                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
+                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+            },
+            fr: {
+                title: 'Art du Livre Hanji',
+                period: 'Contemporain, 21e Siècle',
+                artist: 'Artiste Lee Han-kyul',
+                medium: 'Papier Hanji, Fil, Adhésif Naturel',
+                dimensions: '25cm × 18cm × 3cm',
+                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
+                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+            },
+            image: './img/gallery/3_circle.webp'
         }
+
     };
 
     // Get artwork ID from URL parameters

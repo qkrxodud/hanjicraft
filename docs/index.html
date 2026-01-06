@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍현정한지공예 연구소 | Hanji Craft Museum</title>
+    <title>홍현정한지공예 연구소 | Hong hyun-jeong hanji craft studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/i18n.js"></script>
@@ -14,26 +14,26 @@
         <div class="nav-container">
             <div class="logo">
                 <h1 data-i18n="logo.title">홍현정한지공예 연구소</h1>
-                <p data-i18n="logo.subtitle">Hanji Craft Museum</p>
+                <p data-i18n="logo.subtitle">Hong hyun-jeong hanji craft studio</p>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-i18n="nav.visit">Visit</a>
+                    <a href="#hero" class="nav-link" data-i18n="nav.home">홈</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-i18n="nav.collections">Collections</a>
+                    <a href="#brand" class="nav-link" data-i18n="nav.brand">브랜드소개</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-i18n="nav.exhibitions">Exhibitions</a>
+                    <a href="#highlights" class="nav-link" data-i18n="nav.exhibitions">메종 오브제 출품작</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-i18n="nav.learning">Learning</a>
+                    <a href="#collections" class="nav-link" data-i18n="nav.collections">제작 과정</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#brand" class="nav-link" data-i18n="nav.brand">Brand</a>
+                    <a href="#gallery" class="nav-link" data-i18n="nav.gallery">갤러리</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-i18n="nav.about">About</a>
+                    <a href="#about" class="nav-link" data-i18n="nav.about">한지 지승 공예</a>
                 </li>
             </ul>
             <div class="nav-actions">
@@ -45,13 +45,12 @@
                         <button class="lang-option" data-lang="fr">Français</button>
                     </div>
                 </div>
-                <button class="search-btn">🔍</button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="hero" class="hero">
         <div class="hero-container">
             <div class="hero-slider">
                 <div class="slide active">
@@ -120,7 +119,7 @@
     </section>
 
     <!-- Highlights Section -->
-    <section class="highlights">
+    <section id="highlights" class="highlights">
         <div class="container">
             <h2 class="section-title" data-i18n="highlights.title">Highlights</h2>
             <div class="highlights-grid">
@@ -130,7 +129,7 @@
                         <span class="card-category" data-i18n="highlights.exhibition.category">Exhibition</span>
                         <h3 data-i18n="highlights.exhibition.title">Traditional Meets Contemporary</h3>
                         <p data-i18n="highlights.exhibition.description">Experience the evolution of Korean papermaking from ancient techniques to modern innovations</p>
-                        <a href="#" class="card-link" data-i18n="highlights.exhibition.link">Learn More</a>
+                        <a href="./artwork-detail.html?id=gallery01" class="card-link" data-i18n="highlights.exhibition.link">Learn More</a>
                     </div>
                 </div>
                 <div class="highlight-card">
@@ -139,16 +138,16 @@
                         <span class="card-category" data-i18n="highlights.collection.category">Collection</span>
                         <h3 data-i18n="highlights.collection.title">Masterpieces of Hanji</h3>
                         <p data-i18n="highlights.collection.description">Explore our permanent collection of historical Korean paper artifacts</p>
-                        <a href="./artwork-detail.html?id=takja" class="card-link" data-i18n="highlights.collection.link">View Artwork</a>
+                        <a href="./artwork-detail.html?id=lamp" class="card-link" data-i18n="highlights.collection.link">View Artwork</a>
                     </div>
                 </div>
                 <div class="highlight-card">
-                    <img src="./img/gallery/03.webp" alt="Workshop" loading="lazy">
+                    <img src="./img/circle.webp" alt="Workshop" loading="lazy">
                     <div class="card-content">
                         <span class="card-category" data-i18n="highlights.workshop.category">Workshop</span>
                         <h3 data-i18n="highlights.workshop.title">Hands-On Experience</h3>
                         <p data-i18n="highlights.workshop.description">Join our artisans for authentic papermaking workshops</p>
-                        <a href="#" class="card-link" data-i18n="highlights.workshop.link">Learn About Workshops</a>
+                        <a href="./artwork-detail.html?id=circle" class="card-link" data-i18n="highlights.workshop.link">Learn About Workshops</a>
                     </div>
                 </div>
             </div>
@@ -156,7 +155,7 @@
     </section>
 
     <!-- Delve into the Collection -->
-    <section class="collection-delve">
+    <section id="collections" class="collection-delve">
         <div class="container">
             <h2 class="section-title" data-i18n="collection.title">Delve into the Collection</h2>
             <div class="collection-grid">
@@ -221,11 +220,11 @@
     </section>
 
     <!-- Masterpieces Gallery -->
-    <section class="masterpieces">
+    <section id="gallery" class="masterpieces">
         <div class="container">
             <h2 class="section-title" data-i18n="masterpieces.title">Masterpieces</h2>
             <div class="masterpieces-grid">
-                <div class="masterpiece-item featured" data-artwork-id="lamp" style="cursor: pointer;">
+                <div class="masterpiece-item featured" data-artwork-id="gallery09" style="cursor: pointer;">
                     <img src="./img/09.webp" alt="Contemporary Lighting" loading="lazy">
                     <div class="masterpiece-info">
                         <h3 data-i18n="masterpieces.lamp.title">Contemporary Lighting</h3>
@@ -233,60 +232,60 @@
                         <span class="artwork-details" data-i18n="masterpieces.lamp.period">Artist Unknown, 21st Century</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery01" style="cursor: pointer;">
+                <div class="masterpiece-item" data-artwork-id="takja" style="cursor: pointer;">
                     <img src="./img/gallery/takja.webp" alt="Traditional Folding Screen" loading="lazy">
                     <div class="masterpiece-info">
                         <h3 data-i18n="masterpieces.vessels.title">Traditional Vessels</h3>
                         <span class="artwork-details" data-i18n="masterpieces.vessels.period">Joseon Dynasty</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery02" style="cursor: pointer;">
+                <div class="masterpiece-item" data-artwork-id="process" style="cursor: pointer;">
                     <img src="./img/gallery/about.webp" alt="Hanji Flower Decoration" loading="lazy">
                     <div class="masterpiece-info">
                         <h3 data-i18n="masterpieces.daily.title">Daily Objects</h3>
                         <span class="artwork-details" data-i18n="masterpieces.daily.period">19th Century</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery03" style="cursor: pointer;">
+                <div class="masterpiece-item" data-artwork-id="gallery13" style="cursor: pointer;">
                     <img src="./img/gallery/13.webp" alt="Hanji Sculpture Collection" loading="lazy">
                     <div class="masterpiece-info">
                         <h3 data-i18n="masterpieces.art.title">Fine Art</h3>
                         <span class="artwork-details" data-i18n="masterpieces.art.period">Contemporary</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery06" style="cursor: pointer;">
+                <div class="masterpiece-item" data-artwork-id="gallery11" style="cursor: pointer;">
                     <img src="./img/gallery/11.webp" alt="Hanji Lantern Collection" loading="lazy">
                     <div class="masterpiece-info">
                         <h3 data-i18n="masterpieces.architecture.title">Architecture</h3>
                         <span class="artwork-details" data-i18n="masterpieces.architecture.period">Traditional & Modern</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery07" style="cursor: pointer;">
+                <div class="masterpiece-item" data-artwork-id="gallery12" style="cursor: pointer;">
                     <img src="./img/gallery/12.webp" alt="Hanji Fan Artwork" loading="lazy">
                     <div class="masterpiece-info">
                         <h3 data-i18n="masterpieces.drawer.title">Traditional Vessels</h3>
                         <span class="artwork-details" data-i18n="masterpieces.drawer.period">Joseon Dynasty</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery08" style="cursor: pointer;">
-                    <img src="./img/gallery/08.webp" alt="Contemporary Hanji Installation Art" loading="lazy">
+                <div class="masterpiece-item" data-artwork-id="multi" style="cursor: pointer;">
+                    <img src="./img/gallery/multi.webp" alt="Contemporary Hanji Installation Art" loading="lazy">
                     <div class="masterpiece-info">
-                        <h3 data-i18n="masterpieces.art.title">Fine Art</h3>
-                        <span class="artwork-details" data-i18n="masterpieces.art.period">Contemporary</span>
+                        <h3 data-i18n="masterpieces.multi.title">Fine Art</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.multi.period">Contemporary</span>
                     </div>
                 </div>
-                <div class="masterpiece-item" data-artwork-id="gallery09" style="cursor: pointer;">
-                    <img src="./img/gallery/09.webp" alt="Hanji Ink Painting" loading="lazy">
+                <div class="masterpiece-item" data-artwork-id="three_circle" style="cursor: pointer;">
+                    <img src="./img/gallery/3_circle.webp" alt="Hanji Ink Painting" loading="lazy">
                     <div class="masterpiece-info">
-                        <h3 data-i18n="masterpieces.daily.title">Daily Objects</h3>
-                        <span class="artwork-details" data-i18n="masterpieces.daily.period">19th Century</span>
+                        <h3 data-i18n="masterpieces.jiseung.title">Daily Objects</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.jiseung.period">19th Century</span>
                     </div>
                 </div>
                 <div class="masterpiece-item" data-artwork-id="gallery10" style="cursor: pointer;">
                     <img src="./img/gallery/10.webp" alt="Hanji Miniature Furniture" loading="lazy">
                     <div class="masterpiece-info">
-                        <h3 data-i18n="masterpieces.art.title">Fine Art</h3>
-                        <span class="artwork-details" data-i18n="masterpieces.art.period">Contemporary</span>
+                        <h3 data-i18n="masterpieces.empress.title">Fine Art</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.empress.period">Contemporary</span>
                     </div>
                 </div>
             </div>
@@ -297,12 +296,12 @@
     </section>
 
     <!-- Featured Artworks -->
-    <section class="featured-artworks">
+    <section id="about" class="featured-artworks">
         <div class="container">
             <h2 class="section-title" data-i18n="featured.title">Featured Artworks</h2>
             <div class="featured-grid">
                 <div class="artwork-card">
-                    <img src="./img/02.webp" alt="Traditional Hanji Lamp" loading="lazy">
+                    <img src="./img/gallery/light_circle.webp" alt="Traditional Hanji Lamp" loading="lazy">
                     <div class="artwork-info">
                         <h3 data-i18n="featured.lamp.title">Traditional Hanji Lamp</h3>
                         <p class="artwork-period" data-i18n="featured.lamp.period">Contemporary, 21st Century</p>
@@ -311,7 +310,7 @@
                     </div>
                 </div>
                 <div class="artwork-card">
-                    <img src="./img/takja.webp" alt="Traditional Takja" loading="lazy">
+                    <img src="./img/gallery/blue_circle.webp" alt="Traditional Takja" loading="lazy">
                     <div class="artwork-info">
                         <h3 data-i18n="featured.armor.title">Traditional Takja (Paper Armor)</h3>
                         <p class="artwork-period" data-i18n="featured.armor.period">Joseon Dynasty, 17th Century</p>
@@ -353,7 +352,7 @@
                 <div class="footer-social">
                     <h4>소셜 미디어</h4>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/hhj_hanj1craft?igsh=dGxtM3NpM29ubHQ3" data-i18n="footer.social.instagram">인스타그램</a>
+                        <a href="https://www.instagram.com/hhj_hanj1craft" data-i18n="footer.social.instagram">인스타그램</a>
                     </div>
                 </div>
             </div>

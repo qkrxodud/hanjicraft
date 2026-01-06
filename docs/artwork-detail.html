@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>작품 상세 | 한지공예관</title>
+    <title>작품 상세 | 홍현정한지공예 연구소</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/artwork-detail.css">
@@ -14,26 +14,11 @@
     <nav class="top-nav">
         <div class="nav-container">
             <div class="logo">
-                <h1 data-i18n="logo.title">한지공예관</h1>
-                <p data-i18n="logo.subtitle">Hanji Craft Museum</p>
+                <a href="./index.html" style="text-decoration: none; color: inherit;">
+                    <h1 data-i18n="logo.title">홍현정한지공예 연구소</h1>
+                    <p data-i18n="logo.subtitle">Hong hyun-jeong hanji craft studio</p>
+                </a>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="./index.html#visit" class="nav-link" data-i18n="nav.visit">Visit</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index.html#collection" class="nav-link" data-i18n="nav.collections">Collections</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index.html#highlights" class="nav-link" data-i18n="nav.exhibitions">Exhibitions</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index.html#about" class="nav-link" data-i18n="nav.learning">Learning</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./index.html#footer" class="nav-link" data-i18n="nav.about">About</a>
-                </li>
-            </ul>
             <div class="nav-actions">
                 <div class="language-switcher">
                     <button class="lang-btn" id="language-toggle">KO</button>
@@ -43,7 +28,6 @@
                         <button class="lang-option" data-lang="fr">Français</button>
                     </div>
                 </div>
-                <button class="search-btn">🔍</button>
             </div>
         </div>
     </nav>
@@ -52,7 +36,7 @@
     <section class="artwork-detail">
         <div class="container">
             <div class="detail-header">
-                <a href="./index.html" class="back-link" data-i18n="related.backLink">← Back to Collection</a>
+                <a href="./index.html?fromDetail=true#gallery" class="back-link" data-i18n="related.backLink">← Back to Collection</a>
             </div>
 
             <div class="detail-content" id="artwork-content">
@@ -79,13 +63,13 @@
                                 <p>Late Joseon, 19th Century</p>
                             </div>
                         </div>
-                        <div class="related-item" data-artwork-id="gallery02" style="cursor: pointer;">
-                            <img src="./img/gallery/02.webp" alt="Hanji Flower Decoration" loading="lazy">
-                            <div class="related-info">
-                                <h3>Hanji Flower Decoration</h3>
-                                <p>Contemporary, 21st Century</p>
-                            </div>
-                        </div>
+<!--                        <div class="related-item" data-artwork-id="gallery02" style="cursor: pointer;">-->
+<!--                            <img src="./img/gallery/02.webp" alt="Hanji Flower Decoration" loading="lazy">-->
+<!--                            <div class="related-info">-->
+<!--                                <h3>Hanji Flower Decoration</h3>-->
+<!--                                <p>Contemporary, 21st Century</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="related-item" data-artwork-id="gallery03" style="cursor: pointer;">
                             <img src="./img/gallery/03.webp" alt="Hanji Sculpture Collection" loading="lazy">
                             <div class="related-info">
@@ -93,27 +77,27 @@
                                 <p>Contemporary, 21st Century</p>
                             </div>
                         </div>
-                        <div class="related-item" data-artwork-id="gallery06" style="cursor: pointer;">
-                            <img src="./img/gallery/06.webp" alt="Hanji Lantern Collection" loading="lazy">
-                            <div class="related-info">
-                                <h3>Hanji Lantern Collection</h3>
-                                <p>Contemporary, 21st Century</p>
-                            </div>
-                        </div>
-                        <div class="related-item" data-artwork-id="gallery07" style="cursor: pointer;">
-                            <img src="./img/gallery/07.webp" alt="Hanji Fan Artwork" loading="lazy">
-                            <div class="related-info">
-                                <h3>Hanji Fan Artwork</h3>
-                                <p>Mid-Joseon, 18th Century</p>
-                            </div>
-                        </div>
-                        <div class="related-item" data-artwork-id="gallery08" style="cursor: pointer;">
-                            <img src="./img/gallery/08.webp" alt="Contemporary Hanji Installation Art" loading="lazy">
-                            <div class="related-info">
-                                <h3>Contemporary Installation Art</h3>
-                                <p>Contemporary, 21st Century</p>
-                            </div>
-                        </div>
+<!--                        <div class="related-item" data-artwork-id="gallery06" style="cursor: pointer;">-->
+<!--                            <img src="./img/gallery/06.webp" alt="Hanji Lantern Collection" loading="lazy">-->
+<!--                            <div class="related-info">-->
+<!--                                <h3>Hanji Lantern Collection</h3>-->
+<!--                                <p>Contemporary, 21st Century</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="related-item" data-artwork-id="gallery07" style="cursor: pointer;">-->
+<!--                            <img src="./img/gallery/07.webp" alt="Hanji Fan Artwork" loading="lazy">-->
+<!--                            <div class="related-info">-->
+<!--                                <h3>Hanji Fan Artwork</h3>-->
+<!--                                <p>Mid-Joseon, 18th Century</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="related-item" data-artwork-id="gallery08" style="cursor: pointer;">-->
+<!--                            <img src="./img/gallery/08.webp" alt="Contemporary Hanji Installation Art" loading="lazy">-->
+<!--                            <div class="related-info">-->
+<!--                                <h3>Contemporary Installation Art</h3>-->
+<!--                                <p>Contemporary, 21st Century</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="related-item" data-artwork-id="gallery09" style="cursor: pointer;">
                             <img src="./img/gallery/09.webp" alt="Hanji Ink Painting" loading="lazy">
                             <div class="related-info">
@@ -192,32 +176,22 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer detail-footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
+            <div class="detail-footer-content">
+                <div class="footer-main">
                     <h3 data-i18n="logo.title">홍현정한지공예 연구소</h3>
-                    <p><span data-i18n="footer.contact.address">부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편변호:48419)</span><br>
-                    <span data-i18n="footer.contact.email">이메일: hongcraftstudio@gmail.com</span></p>
-                </div>
-                <div class="footer-links">
-                    <h4 data-i18n="footer.links.title">바로가기</h4>
-                    <ul>
-                        <li><a href="./artwork-detail.html?id=lamp" data-i18n="footer.links.lamp">한지 조명</a></li>
-                        <li><a href="./artwork-detail.html?id=takja" data-i18n="footer.links.armor">종이 갑옷</a></li>
-                        <li><a href="./artwork-detail.html?id=process" data-i18n="footer.links.process">제작 과정</a></li>
-                        <li><a href="#" data-i18n="footer.links.intro">한지 소개</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4 data-i18n="footer.social.title">소셜 미디어</h4>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/hhj_hanj1craft?igsh=dGxtM3NpM29ubHQ3" data-i18n="footer.social.instagram">인스타그램</a>
+                    <div class="footer-contact">
+                        <span data-i18n="footer.contact.email">이메일: hongcraftstudio@gmail.com</span>
+                        <a href="https://www.instagram.com/hhj_hanj1craft" data-i18n="footer.social.instagram">인스타그램</a>
                     </div>
+                </div>
+                <div class="footer-nav">
+                    <a href="./index.html?fromDetail=true#gallery" class="footer-back-btn">← 갤러리로 돌아가기</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footer.copyright">&copy; 2024 한지공예관. 모든 권리 보유.</p>
+                <p data-i18n="footer.copyright">&copy; 2024 홍현정한지공예 연구소. 모든 권리 보유.</p>
             </div>
         </div>
     </footer>

@@ -8,12 +8,12 @@ const translations = {
             subtitle: "Hong hyun-jeong hanji craft studio"
         },
         nav: {
-            visit: "관람하기",
-            collections: "컬렉션",
-            exhibitions: "전시",
-            learning: "체험",
-            brand: "브랜드",
-            about: "소개"
+            home: "홈",
+            brand: "브랜드소개",
+            exhibitions: "메종 오브제 출품작",
+            collections: "제작 과정",
+            gallery: "갤러리",
+            about: "한지 지승 공예"
         },
 
         // Hero Section
@@ -82,40 +82,39 @@ const translations = {
         // Collection Section
         collection: {
             title: "제작 과정",
-            tools: {
-                title: "전통 도구",
-                description: "한지 제작에 사용된 고대 도구들을 발견하세요"
-            },
-            materials: {
-                title: "닥나무 껍질",
-                description: "한지만의 독특한 특성을 만드는 주요 재료"
+            modern: {
+                title: "티코스터, 무드등 제작",
+                description: "천연풀로 모시와 한지를 단단하게 결합합니다."
             },
             techniques: {
-                title: "장인 기법",
-                description: "세대를 거쳐 전해진 고대 방법들"
-            },
-            preparation: {
-                title: "재료 준비",
-                description: "닥나무 껍질을 벗기고 정제하는 첫 번째 단계"
-            },
-            soaking: {
-                title: "침지 과정",
-                description: "재료를 부드럽게 만들기 위한 물에 담그는 과정"
-            },
-            beating: {
-                title: "섬유 분해",
-                description: "나무 방망이로 섬유질을 잘게 분해하는 작업"
+                title: "티코스터 제작",
+                description: "원형으로 잘라서 모시와 한지를 붙입니다."
             },
             forming: {
-                title: "종이 성형",
-                description: "발을 사용하여 한지를 한 장씩 뜨는 핵심 기법"
+                title: "모시풍경 제작",
+                description: "모시조각으로 모양을 만듭니다."
             },
-            modern: {
-                title: "모시 풍경",
-                description: "현대 예술에서 새로운 삶을 찾은 전통 한지"
-            }
+            materials: {
+                title: "모시풍경 제작",
+                description: "바느질한 모시모형에 종과 매듭을 잇습니다."
+            },
+            tools: {
+                title: "모시한지무드등 제작",
+                description: "모시와 한지가 결합된 것을 길게자릅니다."
+            },
+            beating: {
+                title: "모시한지무드등 제작",
+                description: "잘라진 모시+한지로 모양을 만듭니다."
+            },
+            preparation: {
+                title: "모시한지무드등 제작",
+                description: "LED전구를 고정합니다."
+            },
+            soaking: {
+                title: "모시한지무드등 제작",
+                description: "무드등을 완성합니다."
+            },
         },
-
         // Masterpieces Section
         masterpieces: {
             title: "갤러리",
@@ -144,12 +143,24 @@ const translations = {
                 title: "장무상망(Eternal Remembrance)",
                 period: "오래도록 서로 잊지말자는 약속을 담은 오브제"
             },
+            multi : {
+                title: "화양연화(華樣年華)",
+                period: "조선왕실의 예단"
+            },
+            jiseung : {
+                title: "지승(紙繩)키링",
+                period: "한지를 꼬아 만든 지승키링"
+            },
+            empress : {
+                title: "황후의 시간(The Empress's Time)",
+                period: "한지 좌식 화장대"
+            },
             link: "제작 과정 보기"
         },
 
         // Featured Artworks Section
         featured: {
-            title: "대표 작품",
+            title: "한지 지승 공예",
             lamp: {
                 title: "전통 한지 조명",
                 period: "현대, 21세기",
@@ -223,12 +234,12 @@ const translations = {
             subtitle: "한지공예관"
         },
         nav: {
-            visit: "Visit",
-            collections: "Collections",
-            exhibitions: "Exhibitions",
-            learning: "Learning",
-            brand: "Brand",
-            about: "About"
+            home: "Home",
+            brand: "Brand Story",
+            exhibitions: "Maison & Objet Exhibition",
+            collections: "Craft Process",
+            gallery: "Gallery",
+            about: "Hanji Jiseung Craft"
         },
 
         // Hero Section
@@ -437,12 +448,12 @@ const translations = {
             subtitle: "한지공예관"
         },
         nav: {
-            visit: "Visiter",
-            collections: "Collections",
-            exhibitions: "Expositions",
-            learning: "Apprentissage",
-            brand: "Marque",
-            about: "À propos"
+            home: "Accueil",
+            brand: "Histoire de la Marque",
+            exhibitions: "Exposition Maison & Objet",
+            collections: "Processus Artisanal",
+            gallery: "Galerie",
+            about: "Artisanat Hanji Jiseung"
         },
 
         // Hero Section
