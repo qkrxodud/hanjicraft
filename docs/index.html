@@ -3,361 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한지공예</title>
-    <meta name="description" content="Korean Traditional Hanji Craft Introduction Project">
-
-    <!-- 보안 및 호환성 메타 태그 -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; font-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://cdn.jsdelivr.net; worker-src 'self';">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="robots" content="index, follow">
-
-    <!-- Preload critical resources - 중요한 이미지들 미리 로딩 -->
-    <link rel="preload" as="image" href="./img/01.webp">
-    <link rel="preload" as="image" href="./img/02.webp">
-    <link rel="preload" as="image" href="./img/03.webp">
-    <link rel="dns-prefetch" href="./img/">
-
-    <!-- WebP support detection script (inline for immediate execution) -->
-    <script>
-        // WebP 지원 확인 및 HTML 클래스 추가
-        function checkWebPSupport() {
-            const webp = new Image();
-            webp.onload = webp.onerror = function () {
-                document.documentElement.classList.add(webp.height === 2 ? 'webp' : 'no-webp');
-            };
-            webp.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-        }
-        checkWebPSupport();
-    </script>
-
-    <!-- Optimize page loading -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#f7f1e8">
-
-    <!-- 부트스트랩 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 부트스트랩 아이콘 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="./css/style.css" rel="stylesheet">
+    <title>홍현정한지공예 연구소 | Hanji Craft Museum</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/i18n.js"></script>
 </head>
-
 <body>
-    <!-- 미니멀 네비게이션 -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#" data-translate="brand">Hanji Craft</a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about" data-translate="nav_about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#collection" data-translate="nav_collection">Collection</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gallery" data-translate="nav_gallery">Gallery</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#making" data-translate="nav_making">Making Process</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact" data-translate="nav_contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="language-selector-container">
-                            <select id="languageSelector" aria-label="Language selector">
-                                <option value="ko">한국어</option>
-                                <option value="en">English</option>
-                                <option value="fr">Français</option>
-                            </select>
-                        </div>
-                    </li>
-                </ul>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <h1 data-i18n="logo.title">홍현정한지공예 연구소</h1>
+                <p data-i18n="logo.subtitle">Hanji Craft Museum</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="nav.visit">Visit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="nav.collections">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="nav.exhibitions">Exhibitions</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="nav.learning">Learning</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#brand" class="nav-link" data-i18n="nav.brand">Brand</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-i18n="nav.about">About</a>
+                </li>
+            </ul>
+            <div class="nav-actions">
+                <div class="language-switcher">
+                    <button class="lang-btn" id="language-toggle">KO</button>
+                    <div class="lang-dropdown" id="language-dropdown">
+                        <button class="lang-option" data-lang="ko">한국어</button>
+                        <button class="lang-option" data-lang="en">English</button>
+                        <button class="lang-option" data-lang="fr">Français</button>
+                    </div>
+                </div>
+                <button class="search-btn">🔍</button>
             </div>
         </div>
     </nav>
 
-    <!-- 히어로 섹션 -->
-    <section id="home" class="hero-section">
-        <img src="./img/01.webp" alt="한지 공예 작품" class="hero-image" loading="eager">
-        <div class="hero-content">
-            <h1 class="hero-title" data-translate="hero_title">Hanji Craft</h1>
-            <p class="hero-subtitle" data-translate="hero_subtitle">Korean Traditional Paper Art</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="split-section">
-        <div class="split-content" style="background: var(--beige-warm);">
-            <h2 class="section-title" data-translate="about_title">브랜드 소개</h2>
-            <p class="section-description" data-translate="about_description">
-                일상 오브제로 한국 전통을 세계에 전하는 공예 스튜디오
-                (한지·모시·옻칠)
-                대학에서 산업디자인을 전공하고 디자인 분야에 종사하던 사람이 우연히 전통공예, 특히 한지공예의 매력에 빠져 20년간 활동해 왔습니다.
-                '세계 속의 한국'을 모토로 최근 홍현정한지공예연구소를 설립하고, 한지와 섬유를 주 재료로 사용하여 전통공예의 색감과 결을 현대적 트렌드에 맞춘 디자인으로 승화시키고 있습니다.
-                주로 젊은 세대와 외국인에게 친근한 소품 위주로 작업하며, 북미, 남미, 포르투갈 등 다양한 국가에 작품을 판매하며해외 진출을 시작했습니다.
-                나아가 K컬처에 발맞춰 한지와 모시를 이용한 풍경 제작에 주력하며, 최종 비전인 '세계 속의 한국 문화'를 널리 알리는 데 힘쓰고 있습니다.
-            </p>
-        </div>
-        <div class="split-image">
-            <img src="./img/about.webp" alt="한지 공예 작품" class="split-img" loading="lazy">
-        </div>
-    </section>
-
-    <!-- 제품 컬렉션 -->
-    <section id="collection">
-        <!-- 제품 1: 한지 조명 -->
-        <div class="product-section">
-            <div class="product-image-full">
-                <img src="./img/takja.webp" alt="한지 장식등" class="product-img" loading="lazy">
-                <div class="product-overlay">
-                    <h2 class="product-title" data-translate="product1_title">Hanji Lamp</h2>
-                    <p class="product-subtitle" data-translate="product1_subtitle">천년의 빛을 품은 전통 조명</p>
-                    <p class="product-description" data-translate="product1_description">
-                        천연 닥나무 섬유로 제작된 한지가 만들어내는 부드럽고 따뜻한 광색.
-                        전통 제지 기법과 현대적 조명 설계가 만나 탄생한 혁신적 조명 솔루션입니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 제품 2: 한지 꽃 (Split Layout) -->
-        <div class="split-section">
-            <div class="split-content">
-                <h2 class="section-title" data-translate="product2_title">Hanji Flower</h2>
-                <p class="section-description" data-translate="product2_description">
-                    시간이 흘러도 변치 않는 아름다움. 숙련된 장인이 100% 한지로 정교하게 제작한
-                    예술 작품으로, 자연의 생명력을 영구히 간직합니다. 전통 한지 공예의 섬세함과
-                    현대적 미감이 조화롭게 어우러진 독특한 작품입니다.
-                </p>
-            </div>
-            <div class="split-image">
-                <img src="./img/02.webp" alt="한지 매듭장식" class="split-img" loading="lazy">
-            </div>
-        </div>
-
-        <!-- 제품 3: 한지 함 -->
-        <div class="product-section">
-            <div class="product-image-full">
-                <img src="./img/09.webp" alt="한지 등불 모음" class="product-img" loading="lazy">
-                <div class="product-overlay">
-                    <h2 class="product-title" data-translate="product3_title">Hanji Storage</h2>
-                    <p class="product-subtitle" data-translate="product3_subtitle">전통 기법의 현대적 해석</p>
-                    <p class="product-description" data-translate="product3_description">
-                        1,000년 전통의 한지 제작 기법으로 탄생한 최고급 보관함.
-                        습도 조절 기능과 방충 효과를 갖춘 천연 보존 시스템입니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 제품 4: 한지 액자 (Split Layout Reverse) -->
-        <div class="split-section">
-            <div class="split-image">
-                <img src="./img/04.webp" alt="한지 풍등" class="split-img" loading="lazy">
-            </div>
-            <div class="split-content">
-                <h2 class="section-title" data-translate="product4_title">Hanji Frame</h2>
-                <p class="section-description" data-translate="product4_description">
-                    천년 역사의 전통 문양과 현대적 미감이 어우러진 프리미엄 액자.
-                    한지 특유의 자연스러운 질감이 작품의 가치를 한층 더 높여줍니다.
-                    예술과 전통이 만나 완성된 격조 높은 인테리어 솔루션입니다.
-                </p>
-            </div>
-        </div>
-
-        <!-- 제품 5: 한지 인형 -->
-        <div class="product-section">
-            <div class="product-image-full">
-                <img src="./img/05.webp" alt="한지 매듭 장식" class="product-img" loading="lazy">
-                <div class="product-overlay">
-                    <h2 class="product-title" data-translate="product5_title">Hanji Doll</h2>
-                    <p class="product-subtitle" data-translate="product5_subtitle">한국의 정신을 담은 예술품</p>
-                    <p class="product-description" data-translate="product5_description">
-                        조선 시대 궁중 복식을 완벽히 재현한 프리미엄 한지 인형.
-                        전통 의상의 세부 디테일까지 정교하게 표현하여 한국 문화의 우아함을 선사합니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 제품 6: 한지 조각품 (Split Layout) -->
-        <div class="split-section">
-            <div class="split-content" style="background: var(--beige-warm);">
-                <h2 class="section-title" data-translate="product6_title">Hanji Sculpture</h2>
-                <p class="section-description" data-translate="product6_description">
-                    한지의 무한한 가능성을 보여주는 현대적 조각 작품.
-                    전통 재료가 현대 예술과 만나 창조하는 새로운 형태의 아름다움입니다.
-                    공간에 자연스러운 따뜻함과 깊이를 더하는 인테리어 오브제로 완벽합니다.
-                </p>
-            </div>
-            <div class="split-image">
-                <img src="./img/06.webp" alt="오색 한지 조각" class="split-img" loading="lazy">
-            </div>
-        </div>
-
-        <!-- 제품 7: 한지 장신구 -->
-        <div class="product-section">
-            <div class="product-image-full">
-                <img src="./img/07.webp" alt="한지 삼각 장식" class="product-img" loading="lazy">
-                <div class="product-overlay">
-                    <h2 class="product-title" data-translate="product7_title">Hanji Jewelry</h2>
-                    <p class="product-subtitle" data-translate="product7_subtitle">일상에 스며드는 전통의 아름다움</p>
-                    <p class="product-description" data-translate="product7_description">
-                        한지로 만든 섬세하고 우아한 장신구 컬렉션.
-                        가벼우면서도 견고하며, 자연스러운 질감이 돋보이는 독특한 액세서리입니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 제품 8: 한지 예술품 (Split Layout Reverse) -->
-        <div class="split-section">
-            <div class="split-image">
-                <img src="./img/08.webp" alt="한지 삼각 예술품" class="split-img" loading="lazy">
-            </div>
-            <div class="split-content" style="background: var(--cream-secondary);">
-                <h2 class="section-title" data-translate="product8_title">Hanji Art</h2>
-                <p class="section-description" data-translate="product8_description">
-                    한지 공예의 정점을 보여주는 마스터피스 컬렉션.
-                    수십 년간 축적된 장인의 기법과 예술적 감성이 조화롭게 어우러진
-                    한국 전통 문화의 진수를 담은 특별한 작품입니다.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Grid Section -->
-    <section id="gallery" style="padding: 100px 0; background: var(--gray-light);">
-        <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-12">
-                    <h2 class="section-title" style="margin-bottom: 20px;" data-translate="gallery_title">Gallery</h2>
-                    <p class="section-description" style="max-width: 600px; margin: 0 auto;" data-translate="gallery_subtitle">
-                        한지공예의 다양한 작품들을 한눈에 감상하세요
-                    </p>
-                </div>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="./img/gallery/01.webp" alt="한지 장식등" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/02.webp" alt="한지 매듭장식" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/03.webp" alt="오색 한지 조각" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/07.webp" alt="한지 삼각 장식" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/08.webp" alt="한지 삼각 예술품" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/09.webp" alt="한지 풍등" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/10.webp" alt="한지 등불 모음" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/11.webp" alt="한지 공예품" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/12.webp" alt="한지 전통 작품" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/13.webp" alt="한지 예술작품" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/14.webp" alt="한지 조명작품" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/15.webp" alt="한지 장식조명" class="gallery-img" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="./img/gallery/16.webp" alt="한지 전통공예" class="gallery-img" loading="lazy">
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Making Process Section -->
-    <section id="making" style="padding: 100px 0; background: var(--cream-primary);">
-        <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col-12">
-                    <h2 class="section-title" style="margin-bottom: 20px;" data-translate="making_title">Making Process</h2>
-                    <p class="section-description" style="max-width: 600px; margin: 0 auto;" data-translate="making_subtitle">
-                        전통 한지공예의 섬세한 제작 과정을 만나보세요
-                    </p>
-                </div>
-            </div>
-            <div class="making-grid">
-                <div class="making-item">
-                    <img src="./img/makeing/01.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/02.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/03.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/04.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/05.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/06.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/07.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-                <div class="making-item">
-                    <img src="./img/makeing/08.webp" alt="한지공예 제작과정" class="making-img" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="contact-title" data-translate="contact_title">Contact</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="contact-info">
-                        <p data-translate="contact_phone">전화: 02-123-4567</p>
-                        <p data-translate="contact_email">이메일: info@hanjicraft.com</p>
-                        <p data-translate="contact_address">주소: 서울시 종로구 전통공예로 123</p>
-                        <br>
-                        <p style="color: var(--text-muted); font-size: 12px;">
-                            © 2024 한지공예. All rights reserved.
-                        </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-slider">
+                <div class="slide active">
+                    <img src="./img/01.webp" alt="Hanji Craft Exhibition" loading="lazy">
+                    <div class="slide-content">
+                        <h2 data-i18n="hero.title">Korean Paper Artistry</h2>
+                        <p data-i18n="hero.description">Discover the timeless beauty and cultural heritage of traditional Korean papermaking</p>
+                        <a href="./artwork-detail.html?id=lamp" class="hero-btn" data-i18n="hero.button">View Artworks</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 이미지 모달 -->
-    <div id="imageModal" class="image-modal">
-        <div class="image-modal-content">
-            <span class="image-modal-close">&times;</span>
-            <img id="modalImage" class="modal-image" src="" alt="">
+    <!-- Brand Section -->
+    <section id="brand" class="brand-section">
+        <div class="container">
+            <div class="brand-header">
+                <h2 class="section-title" data-i18n="brand.title">브랜드 소개</h2>
+                <p class="brand-subtitle" data-i18n="brand.subtitle">전통과 현대를 잇는 한지의 새로운 여정</p>
+            </div>
+
+            <div class="brand-content">
+                <div class="brand-mission">
+                    <div class="brand-card">
+                        <h3 data-i18n="brand.mission.title">우리의 미션</h3>
+                        <p data-i18n="brand.mission.description">천년의 전통 한지 기법을 현대적 감각으로 재해석하여 일상 속에서 누릴 수 있는 아름다운 오브제를 만듭니다.</p>
+                    </div>
+
+                    <div class="brand-card">
+                        <h3 data-i18n="brand.vision.title">브랜드 비전</h3>
+                        <p data-i18n="brand.vision.description">한국의 정체성이 담긴 전통 공예를 세계무대에 알리며, 지속가능한 소재와 장인정신을 바탕으로 한 라이프스타일 브랜드를 지향합니다.</p>
+                    </div>
+                </div>
+
+                <div class="brand-values">
+                    <h3 class="values-title" data-i18n="brand.values.title">핵심 가치</h3>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">🏺</div>
+                            <h4 data-i18n="brand.values.tradition.title">전통 계승</h4>
+                            <p data-i18n="brand.values.tradition.description">1,000년 이상 이어온 한지 제작 기법을 그대로 보존하고 전승합니다.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">💡</div>
+                            <h4 data-i18n="brand.values.innovation.title">현대적 혁신</h4>
+                            <p data-i18n="brand.values.innovation.description">전통 기법에 현대적 디자인과 기술을 접목하여 새로운 가치를 창조합니다.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">🌱</div>
+                            <h4 data-i18n="brand.values.sustainability.title">지속가능성</h4>
+                            <p data-i18n="brand.values.sustainability.description">친환경 천연 소재만을 사용하여 지구환경을 생각하는 제품을 만듭니다.</p>
+                        </div>
+
+                        <div class="value-card">
+                            <div class="value-icon">🎨</div>
+                            <h4 data-i18n="brand.values.craftsmanship.title">장인정신</h4>
+                            <p data-i18n="brand.values.craftsmanship.description">숙련된 장인들의 정성과 시간이 깃든 수작업으로 완성되는 작품입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="container">
+            <h2 class="section-title" data-i18n="highlights.title">Highlights</h2>
+            <div class="highlights-grid">
+                <div class="highlight-card featured">
+                    <img src="./img/gallery/01.webp" alt="Featured Exhibition" loading="lazy">
+                    <div class="card-content">
+                        <span class="card-category" data-i18n="highlights.exhibition.category">Exhibition</span>
+                        <h3 data-i18n="highlights.exhibition.title">Traditional Meets Contemporary</h3>
+                        <p data-i18n="highlights.exhibition.description">Experience the evolution of Korean papermaking from ancient techniques to modern innovations</p>
+                        <a href="#" class="card-link" data-i18n="highlights.exhibition.link">Learn More</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="./img/gallery/02.webp" alt="Collection Highlight" loading="lazy">
+                    <div class="card-content">
+                        <span class="card-category" data-i18n="highlights.collection.category">Collection</span>
+                        <h3 data-i18n="highlights.collection.title">Masterpieces of Hanji</h3>
+                        <p data-i18n="highlights.collection.description">Explore our permanent collection of historical Korean paper artifacts</p>
+                        <a href="./artwork-detail.html?id=takja" class="card-link" data-i18n="highlights.collection.link">View Artwork</a>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img src="./img/gallery/03.webp" alt="Workshop" loading="lazy">
+                    <div class="card-content">
+                        <span class="card-category" data-i18n="highlights.workshop.category">Workshop</span>
+                        <h3 data-i18n="highlights.workshop.title">Hands-On Experience</h3>
+                        <p data-i18n="highlights.workshop.description">Join our artisans for authentic papermaking workshops</p>
+                        <a href="#" class="card-link" data-i18n="highlights.workshop.link">Learn About Workshops</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delve into the Collection -->
+    <section class="collection-delve">
+        <div class="container">
+            <h2 class="section-title" data-i18n="collection.title">Delve into the Collection</h2>
+            <div class="collection-grid">
+                <div class="collection-item">
+                    <img src="img/makeing/08.webp" alt="Contemporary Uses" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.modern.title">Contemporary Uses</h3>
+                        <p data-i18n="collection.modern.description">How traditional hanji finds new life in modern art</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/03.webp" alt="Master Techniques" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.techniques.title">Master Techniques</h3>
+                        <p data-i18n="collection.techniques.description">Ancient methods passed down through generations</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/07.webp" alt="Paper Forming" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.forming.title">Paper Forming</h3>
+                        <p data-i18n="collection.forming.description">The core technique of forming hanji sheets using a bamboo screen</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/02.webp" alt="Mulberry Bark" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.materials.title">Mulberry Bark</h3>
+                        <p data-i18n="collection.materials.description">The primary material that gives hanji its distinctive qualities</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/01.webp" alt="Traditional Tools" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.tools.title">Traditional Tools</h3>
+                        <p data-i18n="collection.tools.description">Discover the ancient implements used by Korean papermakers</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/06.webp" alt="Fiber Breakdown" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.beating.title">Fiber Breakdown</h3>
+                        <p data-i18n="collection.beating.description">Breaking down fibers with wooden mallets</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/04.webp" alt="Material Preparation" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.preparation.title">Material Preparation</h3>
+                        <p data-i18n="collection.preparation.description">The first step of peeling and refining mulberry bark</p>
+                    </div>
+                </div>
+                <div class="collection-item">
+                    <img src="./img/makeing/05.webp" alt="Soaking Process" loading="lazy">
+                    <div class="item-content">
+                        <h3 data-i18n="collection.soaking.title">Soaking Process</h3>
+                        <p data-i18n="collection.soaking.description">The process of soaking materials in water to soften them</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Masterpieces Gallery -->
+    <section class="masterpieces">
+        <div class="container">
+            <h2 class="section-title" data-i18n="masterpieces.title">Masterpieces</h2>
+            <div class="masterpieces-grid">
+                <div class="masterpiece-item featured" data-artwork-id="lamp" style="cursor: pointer;">
+                    <img src="./img/09.webp" alt="Contemporary Lighting" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.lamp.title">Contemporary Lighting</h3>
+                        <p data-i18n="masterpieces.lamp.description">Traditional hanji transformed into modern luminaires</p>
+                        <span class="artwork-details" data-i18n="masterpieces.lamp.period">Artist Unknown, 21st Century</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery01" style="cursor: pointer;">
+                    <img src="./img/gallery/takja.webp" alt="Traditional Folding Screen" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.vessels.title">Traditional Vessels</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.vessels.period">Joseon Dynasty</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery02" style="cursor: pointer;">
+                    <img src="./img/gallery/about.webp" alt="Hanji Flower Decoration" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.daily.title">Daily Objects</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.daily.period">19th Century</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery03" style="cursor: pointer;">
+                    <img src="./img/gallery/13.webp" alt="Hanji Sculpture Collection" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.art.title">Fine Art</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.art.period">Contemporary</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery06" style="cursor: pointer;">
+                    <img src="./img/gallery/11.webp" alt="Hanji Lantern Collection" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.architecture.title">Architecture</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.architecture.period">Traditional & Modern</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery07" style="cursor: pointer;">
+                    <img src="./img/gallery/12.webp" alt="Hanji Fan Artwork" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.drawer.title">Traditional Vessels</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.drawer.period">Joseon Dynasty</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery08" style="cursor: pointer;">
+                    <img src="./img/gallery/08.webp" alt="Contemporary Hanji Installation Art" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.art.title">Fine Art</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.art.period">Contemporary</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery09" style="cursor: pointer;">
+                    <img src="./img/gallery/09.webp" alt="Hanji Ink Painting" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.daily.title">Daily Objects</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.daily.period">19th Century</span>
+                    </div>
+                </div>
+                <div class="masterpiece-item" data-artwork-id="gallery10" style="cursor: pointer;">
+                    <img src="./img/gallery/10.webp" alt="Hanji Miniature Furniture" loading="lazy">
+                    <div class="masterpiece-info">
+                        <h3 data-i18n="masterpieces.art.title">Fine Art</h3>
+                        <span class="artwork-details" data-i18n="masterpieces.art.period">Contemporary</span>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-navigation">
+                <a href="./artwork-detail.html?id=process" class="gallery-link" data-i18n="masterpieces.link">View Craft Process</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Artworks -->
+    <section class="featured-artworks">
+        <div class="container">
+            <h2 class="section-title" data-i18n="featured.title">Featured Artworks</h2>
+            <div class="featured-grid">
+                <div class="artwork-card">
+                    <img src="./img/02.webp" alt="Traditional Hanji Lamp" loading="lazy">
+                    <div class="artwork-info">
+                        <h3 data-i18n="featured.lamp.title">Traditional Hanji Lamp</h3>
+                        <p class="artwork-period" data-i18n="featured.lamp.period">Contemporary, 21st Century</p>
+                        <p class="artwork-description" data-i18n="featured.lamp.description">A contemporary interpretation of traditional Korean lighting using handmade hanji paper.</p>
+                        <a href="./artwork-detail.html?id=lamp" class="artwork-link" data-i18n="featured.lamp.link">View Details</a>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="./img/takja.webp" alt="Traditional Takja" loading="lazy">
+                    <div class="artwork-info">
+                        <h3 data-i18n="featured.armor.title">Traditional Takja (Paper Armor)</h3>
+                        <p class="artwork-period" data-i18n="featured.armor.period">Joseon Dynasty, 17th Century</p>
+                        <p class="artwork-description" data-i18n="featured.armor.description">Ceremonial armor made entirely from layered hanji paper, demonstrating the material's strength.</p>
+                        <a href="./artwork-detail.html?id=takja" class="artwork-link" data-i18n="featured.armor.link">View Details</a>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="./img/about.webp" alt="Hanji Making Process" loading="lazy">
+                    <div class="artwork-info">
+                        <h3 data-i18n="featured.craftsman.title">Master Craftsman at Work</h3>
+                        <p class="artwork-period" data-i18n="featured.craftsman.period">Living Heritage</p>
+                        <p class="artwork-description" data-i18n="featured.craftsman.description">Witness the ancient art of hanji papermaking preserved by master artisans.</p>
+                        <a href="./artwork-detail.html?id=process" class="artwork-link" data-i18n="featured.craftsman.link">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 data-i18n="logo.title">한지공예관</h3>
+                    <p><span data-i18n="footer.contact.address">서울시 종로구 한지길 123</span><br>
+                    <span data-i18n="footer.contact.email">이메일: info@hanjimuseum.kr</span></p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer.links.title">바로가기</h4>
+                    <ul>
+                        <li><a href="./artwork-detail.html?id=lamp" data-i18n="footer.links.lamp">한지 조명</a></li>
+                        <li><a href="./artwork-detail.html?id=takja" data-i18n="footer.links.armor">종이 갑옷</a></li>
+                        <li><a href="./artwork-detail.html?id=process" data-i18n="footer.links.process">제작 과정</a></li>
+                        <li><a href="#" data-i18n="footer.links.intro">한지 소개</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>소셜 미디어</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hhj_hanj1craft?igsh=dGxtM3NpM29ubHQ3" data-i18n="footer.social.instagram">인스타그램</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2024 한지공예관. 모든 권리 보유.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bottom Navigation -->
+    <div class="bottom-nav">
+        <a href="./artwork-detail.html?id=lamp" class="bottom-nav-btn primary" data-i18n="bottomNav.lamp">Traditional Lamp</a>
+        <a href="./artwork-detail.html?id=takja" class="bottom-nav-btn" data-i18n="bottomNav.armor">Paper Armor</a>
     </div>
 
-    <!-- 부트스트랩 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JavaScript -->
     <script src="./js/main.js"></script>
 </body>
 </html>
