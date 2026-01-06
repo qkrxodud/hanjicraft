@@ -468,8 +468,8 @@ const translations = {
             backLink: "← Back to Collection",
             artworks: {
                 gallery01: {
-                    title: "Traditional Folding Screen",
-                    period: "Late Joseon, 19th Century"
+                    title: "Hanji Ramie Mood Lamp",
+                    period: "Contemporary, 21st Century"
                 },
                 gallery03: {
                     title: "Hanji Sculpture Collection",
@@ -508,7 +508,7 @@ const translations = {
                     period: "Contemporary, 21st Century"
                 },
                 lamp: {
-                    title: "Traditional Hanji Lamp",
+                    title: "Wind's Edge - Ramie Landscape",
                     period: "Contemporary, 21st Century"
                 },
                 takja: {
@@ -721,8 +721,8 @@ const translations = {
             backLink: "← Retour à la Collection",
             artworks: {
                 gallery01: {
-                    title: "Paravent Traditionnel",
-                    period: "Fin de Joseon, 19e Siècle"
+                    title: "Lampe d'Ambiance Hanji-Ramie",
+                    period: "Contemporain, 21e Siècle"
                 },
                 gallery03: {
                     title: "Collection de Sculptures Hanji",
@@ -761,7 +761,7 @@ const translations = {
                     period: "Contemporain, 21e Siècle"
                 },
                 lamp: {
-                    title: "Lampe Hanji Traditionnelle",
+                    title: "Bord du Vent - Paysage de Ramie",
                     period: "Contemporain, 21e Siècle"
                 },
                 takja: {

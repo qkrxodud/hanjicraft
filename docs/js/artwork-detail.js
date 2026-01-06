@@ -12,14 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
             },
             en: {
-                title: 'Traditional Hanji Lamp',
-                description: 'This contemporary lamp represents a perfect fusion of traditional Korean papermaking techniques with modern design sensibilities. The hanji paper used in this piece was crafted using methods that have remained unchanged for over 1,000 years.',
-                story: 'The creation of this lamp involved a meticulous 6-month process. The hanji paper was made from mulberry bark harvested in late winter when the fibers are strongest. Each sheet was hand-formed using traditional techniques, then carefully assembled to create the lamp\'s distinctive geometric pattern. The warm, diffused light that emanates through the hanji creates an atmosphere of tranquility and contemplation, embodying the Korean aesthetic principle of understated elegance.'
+                title: 'Wind\'s Edge - Ramie Landscape',
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
+                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
+                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
             },
             fr: {
-                title: 'Lampe Hanji Traditionnelle',
-                description: 'Cette lampe contemporaine représente une fusion parfaite des techniques traditionnelles de fabrication de papier coréen avec les sensibilités du design moderne. Le papier hanji utilisé dans cette pièce a été fabriqué en utilisant des méthodes inchangées depuis plus de 1 000 ans.',
-                story: 'La création de cette lampe a impliqué un processus méticuleux de 6 mois. Le papier hanji a été fait à partir d\'\u00e9corce de mûrier récoltée en fin d\'hiver quand les fibres sont les plus fortes. Chaque feuille a été formée à la main en utilisant des techniques traditionnelles, puis soigneusement assemblée pour créer le motif géométrique distinctif de la lampe. La lumière chaude et diffuse qui émane à travers le hanji crée une atmosphère de tranquillité et de contemplation, incarnant le principe esthétique coréen d\'\u00e9légance sobre.'
+                title: 'Bord du Vent - Paysage de Ramie',
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
+                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
+                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
             },
             image: './img/02.webp'
         },
@@ -67,14 +69,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     '모시와 한지를 배접하고 죽공예기법으로 엮어 편안한 무드의 빛이 나오도록 표현했습니다. 그리고 보다 내구성을 높인 무드등입니다. '
             },
             en: {
-                title: 'Traditional Hanji Folding Screen',
-                description: 'A hanji folding screen used in the royal court during the late Joseon period. This screen features delicate flower and bird motifs painted with the finest hanji paper and natural pigments of the time.',
-                story: 'This screen is believed to have been used for ceremonial purposes in the late Joseon royal court. The meticulously painted seasonal flowers and auspicious birds on each panel symbolize the prosperity and peace of the royal family. The paintings, created with natural pigments on the soft texture unique to hanji, still maintain vivid colors after more than 300 years, demonstrating the excellent preservation qualities of hanji.'
+                title: 'Hanji Ramie Mood Lamp',
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black)\nA subtle lighting object made from traditional materials combining hanji and ramie\n Colors are made based on traditional Korean five-element colors.',
+                story: 'An object made from traditional materials combining hanji and ramie.\n' +
+                    'We expressed comfortable mood lighting by backing ramie and hanji and weaving them with bamboo crafting techniques. And it is a more durable mood lamp.'
             },
             fr: {
-                title: 'Paravent Traditionnel en Hanji',
-                description: 'Un paravent en hanji utilisé dans la cour royale pendant la fin de la période Joseon. Ce paravent présente des motifs délicats de fleurs et d\'oiseaux peints avec le papier hanji le plus fin et les pigments naturels de l\'époque.',
-                story: 'Ce paravent aurait été utilisé à des fins cérémonielles dans la cour royale de la fin de Joseon. Les fleurs saisonnières et les oiseaux de bon augure méticuleusement peints sur chaque panneau symbolisent la prospérité et la paix de la famille royale. Les peintures, créées avec des pigments naturels sur la texture douce unique au hanji, conservent encore des couleurs vives après plus de 300 ans, démontrant les excellentes qualités de conservation du hanji.'
+                title: 'Lampe d\'Ambiance Hanji-Ramie',
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir)\nUn objet d\'éclairage subtil fait de matériaux traditionnels combinant hanji et ramie\n Les couleurs sont basées sur les cinq couleurs traditionnelles coréennes.',
+                story: 'Un objet fait de matériaux traditionnels combinant hanji et ramie.\n' +
+                    'Nous avons exprimé un éclairage d\'ambiance confortable en doublant le ramie et le hanji et en les tissant avec des techniques d\'artisanat de bambou. Et c\'est une lampe d\'ambiance plus durable.'
             },
             image: './img/gallery/01.webp'
         },
@@ -323,14 +327,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Finish: 내구성과 항균력이 뛰어난 천연 옻칠(Ottchil) 마감'
             },
             en: {
-                title: 'Hanji Book Art',
-                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
-                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+                title: 'Hanji Ramie Tea Coaster',
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black)\n' +
+                    'Tea coaster combining hanji and ramie with subtle mood',
+                story: '[Key Points]\n' +
+                    'Material: Delicate backing craft with the texture of hanji and ramie alive\n' +
+                    'Color: Subtle mood colors based on traditional Korean five-element colors (Obangsaek)\n' +
+                    'Finish: Natural lacquer (Ottchil) finish with excellent durability and antibacterial properties'
             },
             fr: {
-                title: 'Art du Livre Hanji',
-                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
-                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+                title: 'Sous-verre Thé Hanji-Ramie',
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir)\n' +
+                    'Sous-verre à thé combinant hanji et ramie avec une ambiance subtile',
+                story: '[Points Clés]\n' +
+                    'Matériau: Artisanat de doublage délicat avec la texture du hanji et du ramie vivante\n' +
+                    'Couleur: Couleurs d\'ambiance subtiles basées sur les cinq couleurs traditionnelles coréennes (Obangsaek)\n' +
+                    'Finition: Finition laque naturelle (Ottchil) avec d\'excellentes propriétés de durabilité et antibactériennes'
             },
             image: './img/gallery/circle.webp'
         },
