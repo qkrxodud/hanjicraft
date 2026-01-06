@@ -283,39 +283,38 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "Korean Paper Artistry",
-            description: "Discover the timeless beauty and cultural heritage of traditional Korean papermaking",
+            title: "Hanji: A Thousand Years of Wisdom",
+            description: "Discover the beauty and cultural heritage of traditional hanji crafting techniques",
             button: "View Artworks"
         },
 
         // Highlights Section
         highlights: {
-            title: "Highlights",
+            title: "Maison & Objet Exhibition",
             exhibition: {
-                category: "Exhibition",
-                title: "Traditional Meets Contemporary",
-                description: "Experience the evolution of Korean papermaking from ancient techniques to modern innovations",
-                date: "Through March 31, 2025",
-                link: "Learn More"
+                category: "2026 Maison & Objet",
+                title: "Hanji Ramie Mood Lamp",
+                description: "Subtle lighting object made from traditional materials combining hanji and ramie",
+                link: "View Details"
             },
             collection: {
-                category: "Collection",
-                title: "Masterpieces of Hanji",
-                description: "Explore our permanent collection of historical Korean paper artifacts",
-                link: "View Artwork"
+                category: "2026 Maison & Objet",
+                title: "Ramie Landscape",
+                description: "Clear bell sounds at the end of ramie's elegant silhouette",
+                link: "View Details"
             },
             workshop: {
-                category: "Workshop",
-                title: "Hands-On Experience",
-                description: "Join our artisans for authentic papermaking workshops",
-                link: "Learn About Workshops"
+                category: "2026 Maison & Objet",
+                title: "Hanji Ramie Tea Coaster",
+                description: "Tea coaster combining hanji and ramie with subtle mood added to traditional five-element colors",
+                link: "View Details"
             }
         },
 
         // Brand Section
         brand: {
             title: "Brand Story",
-            subtitle: "Bridging Tradition and Modernity Through Hanji",
+            subtitle: "Korean Beauty That Permeates Daily Life\nCaptivated by the texture of hanji for 20 years. Hong Hyun-jeong Hanji Craft Studio creates everyday objects using traditional Korean materials: hanji, ramie, and lacquer.\nCombining the perspective of a design major with long-cultivated craft skills, we redraw traditional colors with modern sensibilities. Through accessories that anyone would want to keep close, we dream of Korean culture reaching people's daily lives across borders.\nCurrently showcasing works in various countries including North America, South America, and Europe, advancing into global markets. Through the beautiful landscapes created by hanji and ramie, we will convey the value of Korean culture more deeply and widely.",
             mission: {
                 title: "Our Mission",
                 description: "We reinterpret thousand-year-old traditional hanji techniques with contemporary sensibility to create beautiful objects for everyday life."
@@ -347,87 +346,103 @@ const translations = {
 
         // Collection Section
         collection: {
-            title: "Delve into the Collection",
-            tools: {
-                title: "Traditional Tools",
-                description: "Discover the ancient implements used by Korean papermakers"
-            },
-            materials: {
-                title: "Mulberry Bark",
-                description: "The primary material that gives hanji its distinctive qualities"
+            title: "Craft Process",
+            modern: {
+                title: "Tea Coaster, Mood Lamp Production",
+                description: "Firmly combining ramie and hanji with natural glue."
             },
             techniques: {
-                title: "Master Techniques",
-                description: "Ancient methods passed down through generations"
-            },
-            preparation: {
-                title: "Material Preparation",
-                description: "The first step of peeling and refining mulberry bark"
-            },
-            soaking: {
-                title: "Soaking Process",
-                description: "The process of soaking materials in water to soften them"
-            },
-            beating: {
-                title: "Fiber Breakdown",
-                description: "Breaking down fibers with wooden mallets"
+                title: "Tea Coaster Production",
+                description: "Cut into circles and attach ramie and hanji."
             },
             forming: {
-                title: "Paper Forming",
-                description: "The core technique of forming hanji sheets using a bamboo screen"
+                title: "Ramie Landscape Production",
+                description: "Creating shapes with ramie pieces."
             },
-            modern: {
-                title: "Contemporary Uses",
-                description: "How traditional hanji finds new life in modern art"
+            materials: {
+                title: "Ramie Landscape Production",
+                description: "Connecting bells and knots to sewn ramie forms."
+            },
+            tools: {
+                title: "Ramie Hanji Mood Lamp Production",
+                description: "Cut the combined ramie and hanji into long pieces."
+            },
+            beating: {
+                title: "Ramie Hanji Mood Lamp Production",
+                description: "Create shapes with cut ramie + hanji."
+            },
+            preparation: {
+                title: "Ramie Hanji Mood Lamp Production",
+                description: "Fix the LED bulb."
+            },
+            soaking: {
+                title: "Ramie Hanji Mood Lamp Production",
+                description: "Complete the mood lamp."
             }
         },
 
         // Masterpieces Section
         masterpieces: {
-            title: "Masterpieces",
+            title: "Gallery",
             lamp: {
-                title: "Contemporary Lighting",
-                description: "Traditional hanji transformed into modern luminaires",
-                period: "Artist Unknown, 21st Century"
+                title: "Embroidery Box with Harmony of Five Colors and Peonies",
+                description: "Motif of traditional Korean five colors and peony flowers symbolizing abundance",
+                period: "Korean sentiment that treasures even a small thread (embroidery box)"
             },
             vessels: {
-                title: "Traditional Vessels",
-                period: "Joseon Dynasty"
+                title: "Tea Table (Meditation/Waiting for Udumbara)",
+                period: "Motif of udumbara flower that blooms once in 3,000 years"
             },
             daily: {
-                title: "Daily Objects",
-                period: "19th Century"
+                title: "Gyeongsang-do Thimble Pattern Tableware",
+                period: "Hanji and ramie with lacquer finish"
             },
             art: {
-                title: "Fine Art",
-                period: "Contemporary"
+                title: "Jewelry Box that Holds the Heart",
+                period: "Traditional Korean accessory box with peony pattern"
             },
             architecture: {
-                title: "Architecture",
-                period: "Traditional & Modern"
+                title: "Mood Lamp (Wish: Light of Prayer)",
+                period: "Wishes represented by peony patterns and neat sculptures"
+            },
+            drawer: {
+                title: "Eternal Remembrance",
+                period: "Object containing the promise not to forget each other for a long time"
+            },
+            multi: {
+                title: "Flower-like Years (華樣年華)",
+                period: "Wedding gifts of the Joseon Royal Court"
+            },
+            jiseung: {
+                title: "Jiseung (Paper Rope) Keyring",
+                period: "Jiseung keyring made by twisting hanji"
+            },
+            empress: {
+                title: "The Empress's Time",
+                period: "Hanji floor-sitting dressing table"
             },
             link: "View Craft Process"
         },
 
         // Featured Artworks Section
         featured: {
-            title: "Featured Artworks",
+            title: "Hanji Jiseung Craft",
             lamp: {
-                title: "Traditional Hanji Lamp",
+                title: "Traditional Hanji Lighting",
                 period: "Contemporary, 21st Century",
-                description: "A contemporary interpretation of traditional Korean lighting using handmade hanji paper.",
+                description: "New interpretation of contemporary lighting using handmade hanji",
                 link: "View Details"
             },
             armor: {
-                title: "Traditional Takja (Paper Armor)",
+                title: "Traditional Table (Paper Armor)",
                 period: "Joseon Dynasty, 17th Century",
-                description: "Ceremonial armor made entirely from layered hanji paper, demonstrating the material's strength.",
+                description: "Ceremonial armor made from layered hanji, showing the strength of the material",
                 link: "View Details"
             },
             craftsman: {
-                title: "Master Craftsman at Work",
+                title: "Craftsman's Work",
                 period: "Living Heritage",
-                description: "Witness the ancient art of hanji papermaking preserved by master artisans.",
+                description: "Witness the ancient hanji making techniques preserved by master craftsmen",
                 link: "View Details"
             }
         },
@@ -453,7 +468,7 @@ const translations = {
                 facebook: "Facebook",
                 youtube: "YouTube"
             },
-            copyright: "© 2024 Hanji Craft Museum. All rights reserved."
+            copyright: "© 2024 Hong hyun-jeong hanji craft studio. All rights reserved."
         },
 
         // Bottom Navigation
@@ -536,39 +551,38 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "Art du Papier Coréen",
-            description: "Découvrez la beauté intemporelle et l'héritage culturel de la fabrication traditionnelle du papier coréen",
+            title: "Hanji : Mille Ans de Sagesse",
+            description: "Découvrez la beauté et l'héritage culturel des techniques traditionnelles de l'artisanat hanji",
             button: "Voir les Œuvres"
         },
 
         // Highlights Section
         highlights: {
-            title: "Points Forts",
+            title: "Exposition Maison & Objet",
             exhibition: {
-                category: "Exposition",
-                title: "Tradition et Contemporain",
-                description: "Découvrez l'évolution de la fabrication du papier coréen des techniques anciennes aux innovations modernes",
-                date: "Jusqu'au 31 mars 2025",
-                link: "En Savoir Plus"
+                category: "2026 Maison & Objet",
+                title: "Lampe d'Ambiance Hanji-Ramie",
+                description: "Objet d'éclairage subtil fait de matériaux traditionnels combinant hanji et ramie",
+                link: "Voir Détails"
             },
             collection: {
-                category: "Collection",
-                title: "Chefs-d'œuvre du Hanji",
-                description: "Explorez notre collection permanente d'artefacts historiques en papier coréen",
-                link: "Voir l'Œuvre"
+                category: "2026 Maison & Objet",
+                title: "Paysage de Ramie",
+                description: "Sons de cloches clairs à la fin de la silhouette élégante du ramie",
+                link: "Voir Détails"
             },
             workshop: {
-                category: "Atelier",
-                title: "Expérience Pratique",
-                description: "Rejoignez nos artisans pour des ateliers authentiques de fabrication de papier",
-                link: "En Savoir Plus sur les Ateliers"
+                category: "2026 Maison & Objet",
+                title: "Sous-verre Thé Hanji-Ramie",
+                description: "Sous-verre combinant hanji et ramie avec ambiance subtile ajoutée aux couleurs traditionnelles à cinq éléments",
+                link: "Voir Détails"
             }
         },
 
         // Brand Section
         brand: {
             title: "Histoire de la Marque",
-            subtitle: "Unir Tradition et Modernité à Travers le Hanji",
+            subtitle: "Beauté Coréenne qui Imprègne la Vie Quotidienne\nFasciné par la texture du hanji depuis 20 ans. Hong Hyun-jeong Hanji Craft Studio crée des objets du quotidien en utilisant des matériaux traditionnels coréens : hanji, ramie et laque.\nCombinant la perspective d'un diplômé en design avec des compétences artisanales cultivées depuis longtemps, nous redessinons les couleurs traditionnelles avec des sensibilités modernes. À travers des accessoires que tout le monde voudrait garder près de soi, nous rêvons que la culture coréenne atteigne la vie quotidienne des gens au-delà des frontières.\nActuellement en présentant des œuvres dans divers pays dont l'Amérique du Nord, l'Amérique du Sud et l'Europe, nous progressons vers les marchés mondiaux. À travers les beaux paysages créés par le hanji et le ramie, nous transmettrons la valeur de la culture coréenne de manière plus profonde et plus large.",
             mission: {
                 title: "Notre Mission",
                 description: "Nous réinterprétons les techniques traditionnelles du hanji vieilles de mille ans avec une sensibilité contemporaine pour créer de beaux objets du quotidien."
@@ -589,98 +603,114 @@ const translations = {
                 },
                 sustainability: {
                     title: "Durabilité",
-                    description: "Nous créons des produits respectueux de l'environnement en utilisant uniquement des matériaux naturels écologiques."
+                    description: "Nous utilisons des matériaux traditionnels naturels comme le hanji, le ramie et la laque."
                 },
                 craftsmanship: {
                     title: "Savoir-faire Artisanal",
-                    description: "Chaque pièce est réalisée à la main avec le dévouement et le temps d'artisans qualifiés."
+                    description: "Nous ajoutons la perspective d'un diplômé en design et les compétences artisanales cultivées pendant longtemps."
                 }
             }
         },
 
         // Collection Section
         collection: {
-            title: "Explorer la Collection",
-            tools: {
-                title: "Outils Traditionnels",
-                description: "Découvrez les instruments anciens utilisés par les fabricants de papier coréens"
-            },
-            materials: {
-                title: "Écorce de Mûrier",
-                description: "Le matériau principal qui donne au hanji ses qualités distinctives"
+            title: "Processus Artisanal",
+            modern: {
+                title: "Production de Sous-verres à Thé, Lampe d'Ambiance",
+                description: "Combiner fermement le ramie et le hanji avec de la colle naturelle."
             },
             techniques: {
-                title: "Techniques de Maître",
-                description: "Méthodes anciennes transmises à travers les générations"
-            },
-            preparation: {
-                title: "Préparation des Matériaux",
-                description: "La première étape d'épluchage et de raffinage de l'écorce de mûrier"
-            },
-            soaking: {
-                title: "Processus de Trempage",
-                description: "Le processus de trempage des matériaux dans l'eau pour les ramollir"
-            },
-            beating: {
-                title: "Décomposition des Fibres",
-                description: "Décomposition des fibres avec des maillets en bois"
+                title: "Production de Sous-verres à Thé",
+                description: "Couper en cercles et attacher le ramie et le hanji."
             },
             forming: {
-                title: "Formation du Papier",
-                description: "La technique principale de formation des feuilles de hanji à l'aide d'un écran de bambou"
+                title: "Production de Paysage de Ramie",
+                description: "Créer des formes avec des pièces de ramie."
             },
-            modern: {
-                title: "Usages Contemporains",
-                description: "Comment le hanji traditionnel trouve une nouvelle vie dans l'art moderne"
+            materials: {
+                title: "Production de Paysage de Ramie",
+                description: "Connecter les cloches et les nœuds aux formes de ramie cousues."
+            },
+            tools: {
+                title: "Production de Lampe d'Ambiance Ramie-Hanji",
+                description: "Couper le ramie et le hanji combinés en longs morceaux."
+            },
+            beating: {
+                title: "Production de Lampe d'Ambiance Ramie-Hanji",
+                description: "Créer des formes avec le ramie + hanji coupé."
+            },
+            preparation: {
+                title: "Production de Lampe d'Ambiance Ramie-Hanji",
+                description: "Fixer l'ampoule LED."
+            },
+            soaking: {
+                title: "Production de Lampe d'Ambiance Ramie-Hanji",
+                description: "Compléter la lampe d'ambiance."
             }
         },
 
         // Masterpieces Section
         masterpieces: {
-            title: "Chefs-d'œuvre",
+            title: "Galerie",
             lamp: {
-                title: "Éclairage Contemporain",
-                description: "Hanji traditionnel transformé en luminaires modernes",
-                period: "Artiste Inconnu, 21e Siècle"
+                title: "Boîte à Broderie avec Harmonie des Cinq Couleurs et Pivoines",
+                description: "Motif des cinq couleurs traditionnelles coréennes et fleurs de pivoine symbolisant l'abondance",
+                period: "Sentiment coréen qui chérit même un petit fil (boîte à broderie)"
             },
             vessels: {
-                title: "Récipients Traditionnels",
-                period: "Dynastie Joseon"
+                title: "Table à Thé (Méditation/En Attendant l'Udumbara)",
+                period: "Motif de la fleur d'udumbara qui fleurit une fois en 3 000 ans"
             },
             daily: {
-                title: "Objets Quotidiens",
-                period: "19e Siècle"
+                title: "Vaisselle à Motif de Dé Gyeongsang-do",
+                period: "Hanji et ramie avec finition laque"
             },
             art: {
-                title: "Beaux-Arts",
-                period: "Contemporain"
+                title: "Boîte à Bijoux qui Porte le Cœur",
+                period: "Boîte à accessoires traditionnelle coréenne avec motif de pivoine"
             },
             architecture: {
-                title: "Architecture",
-                period: "Traditionnel et Moderne"
+                title: "Lampe d'Ambiance (Souhait : Lumière de Prière)",
+                period: "Souhaits représentés par les motifs de pivoine et sculptures soignées"
+            },
+            drawer: {
+                title: "Souvenir Éternel",
+                period: "Objet contenant la promesse de ne pas s'oublier longtemps"
+            },
+            multi: {
+                title: "Années Fleuries (華樣年華)",
+                period: "Cadeaux de mariage de la Cour Royale Joseon"
+            },
+            jiseung: {
+                title: "Porte-clés Jiseung (Corde de Papier)",
+                period: "Porte-clés jiseung fait en tordant le hanji"
+            },
+            empress: {
+                title: "Le Temps de l'Impératrice",
+                period: "Coiffeuse hanji assise au sol"
             },
             link: "Voir le Processus Artisanal"
         },
 
         // Featured Artworks Section
         featured: {
-            title: "Œuvres Principales",
+            title: "Artisanat Hanji Jiseung",
             lamp: {
-                title: "Lampe Hanji Traditionnelle",
+                title: "Éclairage Hanji Traditionnel",
                 period: "Contemporain, 21e Siècle",
-                description: "Une interprétation contemporaine de l'éclairage traditionnel coréen utilisant du papier hanji fait main.",
+                description: "Nouvelle interprétation de l'éclairage contemporain utilisant du hanji fait main",
                 link: "Voir les Détails"
             },
             armor: {
-                title: "Takja Traditionnel (Armure en Papier)",
+                title: "Table Traditionnelle (Armure en Papier)",
                 period: "Dynastie Joseon, 17e Siècle",
-                description: "Armure cérémonielle entièrement faite de papier hanji stratifié, démontrant la résistance du matériau.",
+                description: "Armure cérémonielle faite de hanji stratifié, montrant la force du matériau",
                 link: "Voir les Détails"
             },
             craftsman: {
-                title: "Maître Artisan au Travail",
+                title: "Travail d'Artisan",
                 period: "Patrimoine Vivant",
-                description: "Assistez à l'art ancien de la fabrication du papier hanji préservé par les maîtres artisans.",
+                description: "Témoin des techniques anciennes de fabrication du hanji préservées par les maîtres artisans",
                 link: "Voir les Détails"
             }
         },
