@@ -199,7 +199,7 @@ const translations = {
                 title: "소셜 미디어",
                 instagram: "인스타그램",
             },
-            copyright: "© 2024 한지공예관. 모든 권리 보유."
+            copyright: "© 2026 홍현정한지공예. 모든 권리 보유."
         },
 
         // Bottom Navigation
@@ -212,17 +212,55 @@ const translations = {
         related: {
             title: "관련 작품",
             backLink: "← 컬렉션으로 돌아가기",
-            scroll1: {
-                title: "전통 두루마리",
-                period: "조선왕조"
-            },
-            modern: {
-                title: "현대 한지 예술",
-                period: "현대"
-            },
-            craft: {
-                title: "종이 공예품",
-                period: "전통"
+            artworks: {
+                gallery01: {
+                    title: "전통 병풍",
+                    period: "조선 후기, 19세기"
+                },
+                gallery03: {
+                    title: "한지 조형 컬렉션",
+                    period: "현대, 21세기"
+                },
+                gallery09: {
+                    title: "한지 수묵화",
+                    period: "조선 후기, 19세기"
+                },
+                gallery10: {
+                    title: "한지 미니어처 가구",
+                    period: "현대, 21세기"
+                },
+                gallery11: {
+                    title: "한지 벽화 프로젝트",
+                    period: "현대, 21세기"
+                },
+                gallery12: {
+                    title: "한지 보석함",
+                    period: "조선 후기, 19세기"
+                },
+                gallery13: {
+                    title: "현대 한지 패션",
+                    period: "현대, 21세기"
+                },
+                gallery14: {
+                    title: "한지 모빌",
+                    period: "현대, 21세기"
+                },
+                gallery15: {
+                    title: "한지 서예",
+                    period: "현대, 21세기"
+                },
+                gallery16: {
+                    title: "한지 책 예술",
+                    period: "현대, 21세기"
+                },
+                lamp: {
+                    title: "전통 한지 무드등",
+                    period: "현대, 21세기"
+                },
+                takja: {
+                    title: "전통 탁자",
+                    period: "조선왕조, 17세기"
+                }
             }
         }
     },
@@ -230,8 +268,8 @@ const translations = {
     en: {
         // Navigation
         logo: {
-            title: "Hanji Craft Museum",
-            subtitle: "한지공예관"
+            title: "Hong hyun-jeong hanji craft studio",
+            subtitle: "홍현정한지공예 연구소"
         },
         nav: {
             home: "Home",
@@ -426,17 +464,55 @@ const translations = {
         related: {
             title: "Related Artworks",
             backLink: "← Back to Collection",
-            scroll1: {
-                title: "Traditional Scrolls",
-                period: "Joseon Dynasty"
-            },
-            modern: {
-                title: "Modern Hanji Art",
-                period: "Contemporary"
-            },
-            craft: {
-                title: "Paper Crafts",
-                period: "Traditional"
+            artworks: {
+                gallery01: {
+                    title: "Traditional Folding Screen",
+                    period: "Late Joseon, 19th Century"
+                },
+                gallery03: {
+                    title: "Hanji Sculpture Collection",
+                    period: "Contemporary, 21st Century"
+                },
+                gallery09: {
+                    title: "Hanji Ink Painting",
+                    period: "Late Joseon, 19th Century"
+                },
+                gallery10: {
+                    title: "Hanji Miniature Furniture",
+                    period: "Contemporary, 21st Century"
+                },
+                gallery11: {
+                    title: "Hanji Mural Project",
+                    period: "Contemporary, 21st Century"
+                },
+                gallery12: {
+                    title: "Hanji Jewelry Box",
+                    period: "Late Joseon, 19th Century"
+                },
+                gallery13: {
+                    title: "Contemporary Hanji Fashion",
+                    period: "Contemporary, 21st Century"
+                },
+                gallery14: {
+                    title: "Hanji Mobile",
+                    period: "Contemporary, 21st Century"
+                },
+                gallery15: {
+                    title: "Hanji Calligraphy",
+                    period: "Contemporary, 21st Century"
+                },
+                gallery16: {
+                    title: "Hanji Book Art",
+                    period: "Contemporary, 21st Century"
+                },
+                lamp: {
+                    title: "Traditional Hanji Lamp",
+                    period: "Contemporary, 21st Century"
+                },
+                takja: {
+                    title: "Traditional Paper Armor",
+                    period: "Joseon Dynasty, 17th Century"
+                }
             }
         }
     },
@@ -444,8 +520,8 @@ const translations = {
     fr: {
         // Navigation
         logo: {
-            title: "Musée d'Artisanat Hanji",
-            subtitle: "한지공예관"
+            title: "Hong hyun-jeong hanji craft studio",
+            subtitle: "홍현정한지공예 연구소"
         },
         nav: {
             home: "Accueil",
@@ -640,17 +716,55 @@ const translations = {
         related: {
             title: "Œuvres Connexes",
             backLink: "← Retour à la Collection",
-            scroll1: {
-                title: "Rouleaux Traditionnels",
-                period: "Dynastie Joseon"
-            },
-            modern: {
-                title: "Art Hanji Moderne",
-                period: "Contemporain"
-            },
-            craft: {
-                title: "Artisanat en Papier",
-                period: "Traditionnel"
+            artworks: {
+                gallery01: {
+                    title: "Paravent Traditionnel",
+                    period: "Fin de Joseon, 19e Siècle"
+                },
+                gallery03: {
+                    title: "Collection de Sculptures Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                gallery09: {
+                    title: "Peinture à l'Encre Hanji",
+                    period: "Fin de Joseon, 19e Siècle"
+                },
+                gallery10: {
+                    title: "Mobilier Miniature Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                gallery11: {
+                    title: "Projet de Fresque Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                gallery12: {
+                    title: "Boîte à Bijoux Hanji",
+                    period: "Fin de Joseon, 19e Siècle"
+                },
+                gallery13: {
+                    title: "Mode Contemporaine Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                gallery14: {
+                    title: "Mobile Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                gallery15: {
+                    title: "Calligraphie Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                gallery16: {
+                    title: "Art du Livre Hanji",
+                    period: "Contemporain, 21e Siècle"
+                },
+                lamp: {
+                    title: "Lampe Hanji Traditionnelle",
+                    period: "Contemporain, 21e Siècle"
+                },
+                takja: {
+                    title: "Armure en Papier Traditionnelle",
+                    period: "Dynastie Joseon, 17e Siècle"
+                }
             }
         }
     }

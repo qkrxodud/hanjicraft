@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
 
         // Update page title
-        const museumName = window.i18n ? window.i18n.t('logo.title') : '한지공예관';
+        const museumName = window.i18n ? window.i18n.t('logo.title') : '홍현정한지공예 연구소';
         document.title = `${artworkContent.title} | ${museumName}`;
 
         // Add fade-in animation
@@ -686,7 +686,62 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Handle related artwork clicks
+    // Render related artworks with i18n support
+    function renderRelatedArtworks() {
+        const relatedItemsWrapper = document.getElementById('relatedItemsWrapper');
+        if (!relatedItemsWrapper || !window.i18n) return;
+
+        const currentLang = window.i18n.getCurrentLanguage();
+        const translations = window.i18n.translations[currentLang];
+
+        if (!translations || !translations.related || !translations.related.artworks) return;
+
+        const artworks = translations.related.artworks;
+
+        // Clear existing items
+        relatedItemsWrapper.innerHTML = '';
+
+        // Create new items from translations
+        Object.keys(artworks).forEach(artworkId => {
+            const artwork = artworks[artworkId];
+            const relatedItem = document.createElement('div');
+            relatedItem.className = 'related-item';
+            relatedItem.setAttribute('data-artwork-id', artworkId);
+            relatedItem.style.cursor = 'pointer';
+
+            // Get image path from existing mapping
+            const imagePaths = {
+                gallery01: './img/gallery/01.webp',
+                gallery03: './img/gallery/03.webp',
+                gallery09: './img/gallery/09.webp',
+                gallery10: './img/gallery/10.webp',
+                gallery11: './img/gallery/11.webp',
+                gallery12: './img/gallery/12.webp',
+                gallery13: './img/gallery/13.webp',
+                gallery14: './img/gallery/14.webp',
+                gallery15: './img/gallery/15.webp',
+                gallery16: './img/gallery/16.webp',
+                lamp: './img/02.webp',
+                takja: './img/takja.webp'
+            };
+
+            relatedItem.innerHTML = `
+                <img src="${imagePaths[artworkId] || './img/placeholder.webp'}" alt="${artwork.title}" loading="lazy">
+                <div class="related-info">
+                    <h3>${artwork.title}</h3>
+                    <p>${artwork.period}</p>
+                </div>
+            `;
+
+            relatedItem.addEventListener('click', () => {
+                window.location.href = `./artwork-detail.html?id=${artworkId}`;
+            });
+
+            relatedItemsWrapper.appendChild(relatedItem);
+        });
+    }
+
+    // Handle related artwork clicks (legacy support)
     function setupRelatedArtworks() {
         const relatedItems = document.querySelectorAll('.related-item');
 
@@ -943,6 +998,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Listen for language changes
         window.addEventListener('languageChanged', function() {
             loadArtworkDetails(); // Reload artwork details in new language
+            renderRelatedArtworks(); // Re-render related artworks in new language
+            setupCarousel(); // Re-setup carousel with new items
         });
     }
 
@@ -1002,6 +1059,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize page
     loadArtworkDetails();
+    renderRelatedArtworks();
     setupRelatedArtworks();
     setupCarousel();
     setupSmoothScroll();
