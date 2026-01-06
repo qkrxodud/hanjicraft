@@ -185,7 +185,8 @@ const translations = {
         footer: {
             contact: {
                 phone: "전화: -",
-                email: "이메일: hongcraftstudio@gmail.com",
+                email: "이메일:",
+                emailAddress: "hongcraftstudio@gmail.com",
                 address: "부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편변호:48419)"
             },
             links: {
@@ -435,7 +436,8 @@ const translations = {
         footer: {
             contact: {
                 phone: "Phone: 02-1234-5678",
-                email: "Email: info@hanjimuseum.kr",
+                email: "Email:",
+                emailAddress: "hongcraftstudio@gmail.com",
                 address: "123 Hanji-gil, Jongno-gu, Seoul"
             },
             links: {
@@ -687,7 +689,8 @@ const translations = {
         footer: {
             contact: {
                 phone: "Téléphone: 02-1234-5678",
-                email: "Email: info@hanjimuseum.kr",
+                email: "Email:",
+                emailAddress: "hongcraftstudio@gmail.com",
                 address: "123 Hanji-gil, Jongno-gu, Séoul"
             },
             links: {

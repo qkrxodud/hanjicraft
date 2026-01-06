@@ -970,6 +970,16 @@ html[lang="fr"] h1, html[lang="fr"] h2, html[lang="fr"] h3, html[lang="fr"] h4, 
     line-height: 1.8;
 }
 
+.footer-info a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+    color: #ddd;
+}
+
 .footer-links h4, .footer-social h4 {
     color: white;
     margin-bottom: 1rem;
