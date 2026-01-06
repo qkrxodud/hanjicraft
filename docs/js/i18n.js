@@ -187,7 +187,7 @@ const translations = {
                 phone: "전화: -",
                 email: "이메일:",
                 emailAddress: "hongcraftstudio@gmail.com",
-                address: "부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편변호:48419)"
+                address: "부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편번호:48419)"
             },
             links: {
                 title: "바로가기",
@@ -200,7 +200,7 @@ const translations = {
                 title: "소셜 미디어",
                 instagram: "인스타그램",
             },
-            copyright: "© 2026 홍현정한지공예. 모든 권리 보유."
+            copyright: "© 2024 홍현정한지공예 연구소. 모든 권리 보유."
         },
 
         // Bottom Navigation
@@ -335,11 +335,11 @@ const translations = {
                 },
                 sustainability: {
                     title: "Sustainability",
-                    description: "We create products that care for the Earth's environment by using only eco-friendly natural materials."
+                    description: "We use traditional natural materials from nature such as hanji, ramie, and lacquer."
                 },
                 craftsmanship: {
                     title: "Craftsmanship",
-                    description: "Each piece is completed through handwork imbued with the dedication and time of skilled artisans."
+                    description: "We combine the perspective of a design major with craft skills cultivated over a long time."
                 }
             }
         },
@@ -450,10 +450,10 @@ const translations = {
         // Footer
         footer: {
             contact: {
-                phone: "Phone: 02-1234-5678",
+                phone: "Phone: -",
                 email: "Email:",
                 emailAddress: "hongcraftstudio@gmail.com",
-                address: "123 Hanji-gil, Jongno-gu, Seoul"
+                address: "17-5 Suyeong-ro 39beon-gil, Nam-gu, Busan, Inside Banyajeongsa Temple (Postal Code: 48419)"
             },
             links: {
                 title: "Quick Links",
@@ -464,9 +464,7 @@ const translations = {
             },
             social: {
                 title: "Social Media",
-                instagram: "Instagram",
-                facebook: "Facebook",
-                youtube: "YouTube"
+                instagram: "Instagram"
             },
             copyright: "© 2024 Hong hyun-jeong hanji craft studio. All rights reserved."
         },
@@ -718,10 +716,10 @@ const translations = {
         // Footer
         footer: {
             contact: {
-                phone: "Téléphone: 02-1234-5678",
+                phone: "Téléphone: -",
                 email: "Email:",
                 emailAddress: "hongcraftstudio@gmail.com",
-                address: "123 Hanji-gil, Jongno-gu, Séoul"
+                address: "17-5 Suyeong-ro 39beon-gil, Nam-gu, Busan, À l'intérieur du temple Banyajeongsa (Code postal: 48419)"
             },
             links: {
                 title: "Liens Rapides",
@@ -732,11 +730,9 @@ const translations = {
             },
             social: {
                 title: "Réseaux Sociaux",
-                instagram: "Instagram",
-                facebook: "Facebook",
-                youtube: "YouTube"
+                instagram: "Instagram"
             },
-            copyright: "© 2024 Musée d'Artisanat Hanji. Tous droits réservés."
+            copyright: "© 2024 Hong hyun-jeong hanji craft studio. Tous droits réservés."
         },
 
         // Bottom Navigation
