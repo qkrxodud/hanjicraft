@@ -215,8 +215,8 @@ const translations = {
             backLink: "← 컬렉션으로 돌아가기",
             artworks: {
                 gallery01: {
-                    title: "전통 병풍",
-                    period: "조선 후기, 19세기"
+                    title: "한지 모시 무드등",
+                    period: "현대, 21세기"
                 },
                 gallery03: {
                     title: "한지 조형 컬렉션",
@@ -269,8 +269,8 @@ const translations = {
     en: {
         // Navigation
         logo: {
-            title: "Hong hyun-jeong hanji craft studio",
-            subtitle: "홍현정한지공예 연구소"
+            title: "홍현정한지공예 연구소",
+            subtitle: "Hong hyun-jeong hanji craft studio"
         },
         nav: {
             home: "Home",
@@ -535,8 +535,8 @@ const translations = {
     fr: {
         // Navigation
         logo: {
-            title: "Hong hyun-jeong hanji craft studio",
-            subtitle: "홍현정한지공예 연구소"
+            title: "홍현정한지공예 연구소",
+            subtitle: "Hong hyun-jeong hanji craft studio"
         },
         nav: {
             home: "Accueil",
