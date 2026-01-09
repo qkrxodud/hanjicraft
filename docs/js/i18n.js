@@ -18,7 +18,7 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "홍현정 한지공예 연구소",
+            title: "홍현정 한지공예 연구",
             description: "그 강인함과 아름다움을 품고 전통 공예의 맥을 이어 현대문화로 계승합니다.",
             button: "작품 보기"
         },
