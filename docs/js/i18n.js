@@ -18,7 +18,7 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "천년의 숨결 한지",
+            title: "홍현정 한지공예 연구소",
             description: "그 강인함과 아름다움을 품고 전통 공예의 맥을 이어 현대문화로 계승합니다.",
             button: "작품 보기"
         },
@@ -169,14 +169,14 @@ const translations = {
             },
             armor: {
                 title: "지승(紙繩)제기함",
-                period: "조선시대, 17세기",
-                description: "층층이 쌓인 한지로 만든 의례용 갑옷, 재료의 강도를 보여줌",
+                period: "불교의식용 다기",
+                description: "전통 한지 지승줄을 정성스럽게 감아 형태를 만들고, 그 위에 천연 옻칠로 마감하여 견고함과 깊은 색감을 더한 불교 의식용 다기입니다. (청수나 차를 부처님께 올리는 용도)\n",
                 link: "자세히 보기"
             },
             craftsman: {
                 title: "지승(紙繩)풍경",
                 period: "천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 풍경",
-                description: "대가 장인들이 보존하는 고대 한지 제작 기법을 목격하세요",
+                description: "전통 지승 공예로 엮은 구슬 위에 단청의 화려하고 단아한 색채를 입힌 동자승을 얹어 만든 풍경입니다. 맑은 소리와 함께 마음의 평안을 전하는 불교적 예술미를 담고 있습니다.",
                 link: "자세히 보기"
             }
         },
@@ -205,8 +205,16 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
-            lamp: "한지 조명",
             armor: "종이 갑옷"
+        },
+
+        // Floating Action Button
+        fab: {
+            lighting: "한지조명",
+            traditionalLamp: "전통 한지등",
+            modernLamp: "모던 한지등",
+            floorLamp: "한지 스탠드",
+            pendantLamp: "한지 펜던트"
         },
 
         // Related Artworks
@@ -467,8 +475,16 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
-            lamp: "Traditional Lamp",
             armor: "Paper Armor"
+        },
+
+        // Floating Action Button
+        fab: {
+            lighting: "Hanji Lighting",
+            traditionalLamp: "Traditional Lamp",
+            modernLamp: "Modern Lamp",
+            floorLamp: "Floor Lamp",
+            pendantLamp: "Pendant Lamp"
         },
 
         // Related Artworks
@@ -733,8 +749,16 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
-            lamp: "Lampe Traditionnelle",
             armor: "Armure en Papier"
+        },
+
+        // Floating Action Button
+        fab: {
+            lighting: "Éclairage Hanji",
+            traditionalLamp: "Lampe Traditionnelle",
+            modernLamp: "Lampe Moderne",
+            floorLamp: "Lampadaire",
+            pendantLamp: "Suspension"
         },
 
         // Related Artworks
