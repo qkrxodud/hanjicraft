@@ -289,9 +289,6 @@
                     </div>
                 </div>
             </div>
-            <div class="gallery-navigation">
-                <a href="./artwork-detail.html?id=process" class="gallery-link" data-i18n="masterpieces.link">View Craft Process</a>
-            </div>
         </div>
     </section>
 
@@ -353,9 +350,29 @@
         </div>
     </footer>
 
-    <!-- Sticky Bottom Navigation -->
+    <!-- Bottom Navigation -->
     <div class="bottom-nav">
-        <a href="./artwork-detail.html?id=lamp" class="bottom-nav-btn primary" data-i18n="bottomNav.lamp">Traditional Lamp</a>
+        <div class="bottom-nav-primary-menu" id="primary-menu">
+            <!-- Main Primary Button -->
+            <button class="bottom-nav-btn primary" id="primary-menu-btn" data-i18n="bottomNav.lamp">Traditional Lamp</button>
+
+            <!-- Floating Menu Items -->
+            <div class="primary-submenu" id="primary-submenu">
+                <a href="./artwork-detail.html?id=lamp" class="primary-menu-item" data-delay="0">
+                    <span data-i18n="fab.lamp">Traditional Lamp</span>
+                </a>
+                <a href="./artwork-detail.html?id=gallery09" class="primary-menu-item" data-delay="1">
+                    <span data-i18n="fab.lighting">Contemporary Lighting</span>
+                </a>
+                <a href="./artwork-detail.html?id=process" class="primary-menu-item" data-delay="2">
+                    <span data-i18n="fab.process">Craft Process</span>
+                </a>
+                <a href="#gallery" class="primary-menu-item" data-delay="3">
+                    <span data-i18n="nav.gallery">Gallery</span>
+                </a>
+            </div>
+        </div>
+
         <a href="./artwork-detail.html?id=takja" class="bottom-nav-btn" data-i18n="bottomNav.armor">Paper Armor</a>
     </div>
 

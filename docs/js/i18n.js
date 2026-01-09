@@ -209,6 +209,15 @@ const translations = {
             armor: "종이 갑옷"
         },
 
+        // Floating Action Button
+        fab: {
+            explore: "둘러보기",
+            lamp: "전통 한지 조명",
+            armor: "종이 갑옷",
+            lighting: "현대 조명",
+            process: "제작 과정"
+        },
+
         // Related Artworks
         related: {
             title: "관련 작품",
@@ -469,6 +478,15 @@ const translations = {
         bottomNav: {
             lamp: "Traditional Lamp",
             armor: "Paper Armor"
+        },
+
+        // Floating Action Button
+        fab: {
+            explore: "Explore",
+            lamp: "Traditional Hanji Lamp",
+            armor: "Paper Armor",
+            lighting: "Contemporary Lighting",
+            process: "Craft Process"
         },
 
         // Related Artworks
@@ -735,6 +753,15 @@ const translations = {
         bottomNav: {
             lamp: "Lampe Traditionnelle",
             armor: "Armure en Papier"
+        },
+
+        // Floating Action Button
+        fab: {
+            explore: "Explorer",
+            lamp: "Lampe Hanji Traditionnelle",
+            armor: "Armure en Papier",
+            lighting: "Éclairage Contemporain",
+            process: "Processus Artisanal"
         },
 
         // Related Artworks

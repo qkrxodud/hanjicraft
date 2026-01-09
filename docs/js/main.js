@@ -181,16 +181,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Primary Menu functionality
+    const primaryMenu = document.getElementById('primary-menu');
+    const primaryMenuBtn = document.getElementById('primary-menu-btn');
+    let primaryMenuIsOpen = false;
+
+    if (primaryMenuBtn) {
+        primaryMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            primaryMenuIsOpen = !primaryMenuIsOpen;
+
+            if (primaryMenuIsOpen) {
+                primaryMenu.classList.add('active');
+                primaryMenuBtn.classList.add('active');
+            } else {
+                primaryMenu.classList.remove('active');
+                primaryMenuBtn.classList.remove('active');
+            }
+        });
+
+        // Close primary menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (primaryMenuIsOpen && !primaryMenu.contains(e.target)) {
+                primaryMenuIsOpen = false;
+                primaryMenu.classList.remove('active');
+                primaryMenuBtn.classList.remove('active');
+            }
+        });
+
+        // Close primary menu when pressing escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && primaryMenuIsOpen) {
+                primaryMenuIsOpen = false;
+                primaryMenu.classList.remove('active');
+                primaryMenuBtn.classList.remove('active');
+            }
+        });
+    }
+
     // Bottom navigation scroll behavior
     const bottomNav = document.querySelector('.bottom-nav');
     if (bottomNav) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > window.innerHeight) {
+            if (window.scrollY > window.innerHeight * 0.3) {
                 bottomNav.style.opacity = '1';
                 bottomNav.style.visibility = 'visible';
             } else {
-                bottomNav.style.opacity = '0';
-                bottomNav.style.visibility = 'hidden';
+                bottomNav.style.opacity = '0.8';
+                bottomNav.style.visibility = 'visible';
             }
         });
     }

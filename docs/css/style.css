@@ -1042,17 +1042,29 @@ html[lang="fr"] h1, html[lang="fr"] h2, html[lang="fr"] h3, html[lang="fr"] h4, 
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+}
+
+.bottom-nav-primary-menu {
+    position: relative;
 }
 
 .bottom-nav-btn.primary {
     background-color: #1a1a1a;
     color: white;
     border: 2px solid #1a1a1a;
+    position: relative;
 }
 
 .bottom-nav-btn.primary:hover {
     background-color: #333;
     transform: translateY(-2px);
+}
+
+.bottom-nav-btn.primary.active {
+    background-color: #dc3545;
+    border-color: #dc3545;
 }
 
 .bottom-nav-btn:not(.primary) {
@@ -1064,6 +1076,55 @@ html[lang="fr"] h1, html[lang="fr"] h2, html[lang="fr"] h3, html[lang="fr"] h4, 
 .bottom-nav-btn:not(.primary):hover {
     background-color: #f0f0f0;
     transform: translateY(-2px);
+}
+
+/* Primary Menu Floating Items */
+.primary-submenu {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+}
+
+.primary-menu-item {
+    padding: 10px 16px;
+    background: white;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border: 2px solid #f0f0f0;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    white-space: nowrap;
+}
+
+.bottom-nav-primary-menu.active .primary-menu-item {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.primary-menu-item[data-delay="0"] { transition-delay: 0.1s; }
+.primary-menu-item[data-delay="1"] { transition-delay: 0.15s; }
+.primary-menu-item[data-delay="2"] { transition-delay: 0.2s; }
+.primary-menu-item[data-delay="3"] { transition-delay: 0.25s; }
+
+.primary-menu-item:hover {
+    background-color: #1a1a1a;
+    color: white;
+    border-color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.25);
 }
 
 /* Responsive Design */
@@ -1127,14 +1188,24 @@ html[lang="fr"] h1, html[lang="fr"] h2, html[lang="fr"] h3, html[lang="fr"] h4, 
     }
 
     .bottom-nav {
-        bottom: 10px;
-        right: 10px;
+        bottom: 15px;
+        right: 15px;
         flex-direction: column;
     }
 
     .bottom-nav-btn {
         padding: 10px 16px;
         font-size: 0.85rem;
+    }
+
+    .primary-submenu {
+        bottom: 50px;
+        min-width: 160px;
+    }
+
+    .primary-menu-item {
+        padding: 8px 14px;
+        font-size: 0.8rem;
     }
 }
 
