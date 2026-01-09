@@ -27,9 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         takja: {
             ko: {
-                title: '전통 탁자 (종이 갑옷)',
-                description: '이 놀라운 의식용 갑옷은 한지의 놀라운 강도와 다양성을 보여줍니다. 전적으로 손으로 만든 한국 종이 층으로 만들어진 이 탁자는 중요한 의식에서 궁중 관리들이 착용했습니다.',
-                story: '이 갑옷의 제작에는 뛰어난 기술과 인내가 필요했습니다. 수백 장의 한지가 쌀 전분으로 만든 천연 접착제를 사용해 층층이 쌓이고 접합되었습니다. 종이는 감즙으로 처리되어 내구성과 방수성을 높였습니다. 완전히 종이로 만들어졌음에도 불구하고, 이 갑옷은 놀랍도록 가벼우면서도 상당한 보호 기능을 제공했습니다. 표면에 보이는 복잡한 패턴은 보호와 행운을 상징하는 전통적인 한국 문양을 나타냅니다.'
+                title: '찻상(명상/우담바라를 기다리며)',
+                description: '명상 - 우담바라를 기다리며',
+                story: '오방색의 생동하는 기운이 대지의 조화를 부르고,\n' +
+                    '그 갈망의 끝에 우담바라의 고결한 깨달음이 피어납니다.\n' +
+                    '천 년의 한지와 옻칠로 빚은 이 찻상은\n' +
+                    '일상의 차 한 잔을 고요한 명상의 여정으로 안내합니다.'
             },
             en: {
                 title: 'Traditional Takja (Paper Armor)',
@@ -45,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         process: {
             ko: {
-                title: '일하는 장인 대가',
-                description: '이 사진은 지정된 무형문화재인 박순자 대가가 한지 제지의 전통 기법을 시연하는 모습을 담고 있습니다. 그녀의 지식은 30세대에 걸쳐 끊이지 않고 전해진 전승의 고리를 나타냅니다.',
-                story: '박 대가는 12세에 할머니로부터 한지 만들기 기법을 배웠습니다. 50년 이상 동안 그녀는 이 고대 기예를 보존하고 전수하는 데 평생을 바쳤습니다. 여기서 보여지는 과정은 \"종이소지\"라는 섬세한 기법을 포함합니다 - \"발\"이라고 불리는 대나무 스크린을 사용해 손으로 각 종이 한 장씩을 만드는 기법입니다. 모든 움직임은 수십 년간의 연습을 통해 정제되어 정확합니다. 물 온도, 펄프의 두께, 심지어 공기의 습도까지 - 모든 것이 박 대가가 직관적으로 이해하고 조정하는 요소들입니다. 그녀의 작업은 이 천 년 된 전통이 현대 세계에서도 계속 번영할 수 있도록 보장합니다.'
+                title: '경상도골무문 테이블웨어',
+                description: '한지와 모시를 결합한 테이블 웨어',
+                story: '천년의 한지와 결이 고운 모시를 겹치고 옻칠로 마감하여, 자연의 단단한 생명력을 담았습니다. 옻칠의 깊은 광택과 모시의 섬세한 질감이 어우러진 이 작품은 시간이 흐를수록 견고함과 격조를 더하며 한국적 미학의 정수를 보여줍니다.'
             },
             en: {
                 title: 'Master Craftsman at Work',
@@ -60,6 +63,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: 'Maître Park a appris l\'art de la fabrication du hanji de sa grand-mère à l\'âge de 12 ans. Pendant plus de 50 ans, elle a consacré sa vie à préserver et transmettre cet artisanat ancien. Le processus montré ici implique l\'art délicat du \"jongisoji\" - la technique de former chaque feuille de papier à la main en utilisant un écran de bambou appelé \"bal\". Chaque mouvement est précis, affiné par des décennies de pratique. La température de l\'eau, l\'épaisseur de la pulpe, même l\'humidité de l\'air - tous des facteurs que Maître Park comprend intuitivement et ajuste. Son travail assure que cette tradition millénaire continue de prospérer dans le monde moderne.'
             },
             image: './img/about.webp'
+        },
+        neak_circle: {
+            ko: {
+                title: '지승(紙繩)목걸이',
+                description: '천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 목걸이',
+                story: '모시의 우아한 실루엣과 청아한 종소리는 공간을 차분하게 감싸며 마음에 쉼을 선사할것입니다.\n' +
+                    '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
+            },
+            en: {
+                title: 'Wind\'s Edge - Ramie Landscape',
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
+                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
+                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
+            },
+            fr: {
+                title: 'Bord du Vent - Paysage de Ramie',
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
+                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
+                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
+            },
+            image: './img/gallery/light_circle.webp'
+        },
+        circle_ham: {
+            ko: {
+                title: '지승(紙繩)제기함',
+                description: '층층이 쌓인 한지로 만든 의례용 갑옷, 재료의 강도를 보여줌',
+                story: '모시의 우아한 실루엣과 청아한 종소리는 공간을 차분하게 감싸며 마음에 쉼을 선사할것입니다.\n' +
+                    '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
+            },
+            en: {
+                title: 'Wind\'s Edge - Ramie Landscape',
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
+                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
+                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
+            },
+            fr: {
+                title: 'Bord du Vent - Paysage de Ramie',
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
+                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
+                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
+            },
+            image: './img/gallery/blue_circle.webp'
+        },
+        circle_pum: {
+            ko: {
+                title: '지승(紙繩)풍경',
+                description: '천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 풍경',
+                story: '모시의 우아한 실루엣과 청아한 종소리는 공간을 차분하게 감싸며 마음에 쉼을 선사할것입니다.\n' +
+                    '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
+            },
+            en: {
+                title: 'Wind\'s Edge - Ramie Landscape',
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
+                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
+                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
+            },
+            fr: {
+                title: 'Bord du Vent - Paysage de Ramie',
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
+                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
+                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
+            },
+            image: './img/two_circle.webp'
         },
         gallery01: {
             ko: {
@@ -174,9 +240,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // },
         gallery09: {
             ko: {
-                title: '한지 수묵화 작품',
-                description: '조선 후기 실학자 정약용이 그린 것으로 추정되는 수묵화입니다. 한지 위에 먹으로 그린 대나무 그림이 인상적입니다.',
-                story: '이 작품은 조선 후기 문인들의 정신세계를 엿볼 수 있는 귀중한 자료입니다. 대나무는 절개와 지조를 상징하며, 간결하면서도 힘있는 붓터치로 작가의 철학이 잘 드러나 있습니다.'
+                title: '오방색과 모란의 조화를 담은 자수함',
+                description: '오방색과 모란의 조화: 오방색 자수함',
+                story: '한국 전통의 오방색 패턴과 풍요를 상징하는 모란꽃을 모티브로 공간에 우아함과 복을 불러오는 의미를 담았습니다\n' +
+                    '"작은 실타래 하나도 소중히 간직하는 한국의 정서를 느낄수 있는 작품입니다'
             },
             en: {
                 title: 'Hanji Ink Painting',
@@ -192,9 +259,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         gallery10: {
             ko: {
-                title: '한지 미니어처 가구',
-                description: '전통 한옥 가구를 한지로 정교하게 재현한 미니어처 작품입니다. 작은 크기지만 디테일이 놀라울 정도로 섬세합니다.',
-                story: '이 미니어처는 조선시대 양반가의 가구를 1/10 크기로 축소 제작한 것입니다. 한지의 질감과 색감을 활용해 실제 나무와 구별하기 어려울 정도로 정교하게 만들어졌습니다.'
+                title: '황후의 시간(The Empress\'s Time)',
+                description: '왕후의 아침을 여는 고결한 목련의 빛',
+                story: '가야의 김수로왕이 허황옥 왕후를 맞이할 때 탔던 \'목련 배\' 설화에서 영감을 얻은 한지공예 궤경대(좌식 화장대)입니다. 고귀한 목련 문양을 통해 시공간을 초월한 환대와 기다림의 미학을 담았습니다. 전통 한지의 단아한 질감과 현대적 실용성을 결합하여 일상 속 가장 우아한 시간을 선사합니다.\n'
             },
             en: {
                 title: 'Hanji Miniature Furniture',
@@ -210,9 +277,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         gallery11: {
             ko: {
-                title: '한지 벽화 프로젝트',
-                description: '마을 주민들이 함께 제작한 대형 한지 벽화입니다. 전통 한지 기법과 현대 공공미술이 만난 특별한 사례입니다.',
-                story: '이 벽화는 마을의 역사와 주민들의 꿈을 담은 공동 작품입니다. 3개월간 마을 주민 50여 명이 참여해 한지로 마을의 사계절을 표현했습니다. 완성 후에는 마을의 랜드마크가 되어 많은 사람들이 찾는 명소가 되었습니다.'
+                title: '무드등(염원:기원의 빛)',
+                description: '오방색을 활용한 전통한지 무드등',
+                story: '화려한 모란 문양과 정갈한 조각들이 어우러져, 공간을 밝히는 따뜻한 빛 속에 간절한 안녕과 복을 바라는 마음을 담았습니다.'
             },
             en: {
                 title: 'Hanji Mural Project',
@@ -228,9 +295,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         gallery12: {
             ko: {
-                title: '한지 보석함',
-                description: '궁중에서 사용된 한지 보석함으로 옻칠과 자개 장식이 아름다운 작품입니다. 한지의 강도와 미적 가치를 모두 보여줍니다.',
-                story: '이 보석함은 조선 후기 궁중 여성들이 사용하던 것으로, 한지를 여러 겹 겹쳐 만든 후 옻칠로 마감했습니다. 뚜껑에는 자개로 꽃무늬를 새겨 넣어 화려함을 더했습니다.'
+                title: '장무상망',
+                description: '오래도록 서로 잊지말자는 약속을 담은 오브제',
+                story: '부산의 상징(부산시화 :동백꽃)을 모티브로 제작한 부산문화 상품입니다 오랫동안 서로 잊지 말자는 약속을 담은 지역 특산 오브제입니다.',
             },
             en: {
                 title: 'Hanji Jewelry Box',
@@ -246,9 +313,10 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         gallery13: {
             ko: {
-                title: '현대 한지 패션',
-                description: '한지를 의류 소재로 활용한 혁신적인 패션 작품입니다. 전통 재료의 새로운 가능성을 탐구한 실험적 작품입니다.',
-                story: '디자이너는 한지의 통기성과 항균성에 주목하여 현대 의상에 적용했습니다. 특수 처리된 한지는 옷감처럼 부드러우면서도 독특한 질감을 제공합니다.'
+                title: '마음을 담는 보석함',
+                description: '한국전통 패물함(혼구용품)',
+                story: '한국 전통 패물함의 고전적인 형태를 현대적인 비례와 색감으로 새롭게 풀어낸 작품입니다.\n' +
+                    '오방색에서 착안한 현대적 채도의 색감과 모란문양으로 화려함과 절제미를 동시에 담았습니다.\n'
             },
             en: {
                 title: 'Contemporary Hanji Fashion',
@@ -300,9 +368,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         gallery16: {
             ko: {
-                title: '한지 북아트',
-                description: '전통 제책 기법과 현대 북아트가 결합된 작품입니다. 각 페이지가 한지로 만들어져 독특한 촉감과 시각적 경험을 제공합니다.',
-                story: '작가는 조선시대 책 제작 방법을 연구하여 현대적으로 재해석했습니다. 한지의 자연스러운 주름과 질감이 각 페이지마다 다른 표정을 만들어냅니다.'
+                title: '화양연화(華樣年華)',
+                description: '생의 가장 찬란한 순간, 왕실의 예(禮)로 피어나다',
+                story: '조선 왕실의 품격 있는 예단 문화를 현대적으로 재해석했습니다. 부귀를 상징하는 모란과 오방색의 미학을 담아, 소중한 인연에게 전하는 가장 고귀한 축복과 진심을 종이 공예의 정수로 빚어냈습니다.'
             },
             en: {
                 title: 'Hanji Book Art',
@@ -348,9 +416,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         multi: {
             ko: {
-                title: '한지 북아트',
-                description: '전통 제책 기법과 현대 북아트가 결합된 작품입니다. 각 페이지가 한지로 만들어져 독특한 촉감과 시각적 경험을 제공합니다.',
-                story: '작가는 조선시대 책 제작 방법을 연구하여 현대적으로 재해석했습니다. 한지의 자연스러운 주름과 질감이 각 페이지마다 다른 표정을 만들어냅니다.'
+                title: '화양연화(華樣年華)',
+                description: '생의 가장 찬란한 순간, 왕실의 예(禮)로 피어나다',
+                story: '조선 왕실의 품격 있는 예단 문화를 현대적으로 재해석했습니다. 부귀를 상징하는 모란과 오방색의 미학을 담아, 소중한 인연에게 전하는 가장 고귀한 축복과 진심을 종이 공예의 정수로 빚어냈습니다.'
             },
             en: {
                 title: 'Hanji Book Art',
@@ -366,9 +434,9 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         three_circle: {
             ko: {
-                title: '한지 북아트',
-                description: '전통 제책 기법과 현대 북아트가 결합된 작품입니다. 각 페이지가 한지로 만들어져 독특한 촉감과 시각적 경험을 제공합니다.',
-                story: '작가는 조선시대 책 제작 방법을 연구하여 현대적으로 재해석했습니다. 한지의 자연스러운 주름과 질감이 각 페이지마다 다른 표정을 만들어냅니다.'
+                title: '지승(紙繩)키링',
+                description: '천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 키링\n',
+                story: '전통 한지를 한 땀 한 땀 꼬아 엮은 지승 공예의 정수를 담았습니다. 한국의 오방색을 현대적 감각으로 재해석한 이 키링은 가볍지만 견고하며, 손끝에서 느껴지는 따뜻한 질감과 자연의 미학을 전합니다.'
             },
             en: {
                 title: 'Hanji Book Art',

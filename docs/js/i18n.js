@@ -18,8 +18,8 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "천년의 지혜가 담긴 한지",
-            description: "전통 한지 제작 기법의 아름다움과 문화유산을 발견해보세요",
+            title: "천년의 숨결 한지",
+            description: "그 강인함과 아름다움을 품고 전통 공예의 맥을 이어 현대문화로 계승합니다.",
             button: "작품 보기"
         },
 
@@ -61,8 +61,8 @@ const translations = {
             values: {
                 title: "핵심 가치",
                 tradition: {
-                    title: "전통 계승",
-                    description: "1,000년 이상 이어온 한지 제작 기법을 그대로 보존하고 전승합니다."
+                    title: "전통 오방색 활용",
+                    description: "동·서·남·북과 중앙을 상징하는 오방색을 활용해 한지에 전통적 의미와 미감을 담아냅니다."
                 },
                 innovation: {
                     title: "현대적 혁신",
@@ -162,20 +162,20 @@ const translations = {
         featured: {
             title: "한지 지승 공예",
             lamp: {
-                title: "전통 한지 조명",
-                period: "현대, 21세기",
-                description: "수제 한지를 사용한 현대 조명의 새로운 해석",
+                title: "지승(紙繩)목걸이",
+                period: "천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 목걸이",
+                description: "전통 한지 지승 공예에 오방색을 현대적으로 담은, 가볍고 견고한 목걸이입니다.",
                 link: "자세히 보기"
             },
             armor: {
-                title: "전통 탁자 (종이 갑옷)",
+                title: "지승(紙繩)제기함",
                 period: "조선시대, 17세기",
                 description: "층층이 쌓인 한지로 만든 의례용 갑옷, 재료의 강도를 보여줌",
                 link: "자세히 보기"
             },
             craftsman: {
-                title: "장인의 작업",
-                period: "살아있는 유산",
+                title: "지승(紙繩)풍경",
+                period: "천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 풍경",
                 description: "대가 장인들이 보존하는 고대 한지 제작 기법을 목격하세요",
                 link: "자세히 보기"
             }
@@ -216,51 +216,47 @@ const translations = {
             artworks: {
                 gallery01: {
                     title: "한지 모시 무드등",
-                    period: "현대, 21세기"
-                },
-                gallery03: {
-                    title: "한지 조형 컬렉션",
-                    period: "현대, 21세기"
+                    period: "색상은 전통 오방색을 베이스로 제작됩니다.(청, 적, 황, 백, 흑)\n한지와 모시를 엮어 만든 전통소재 기반의 은은한 조명 오브제\n 색상은 한국전통오방색을 베이스로 제작합니다."
                 },
                 gallery09: {
-                    title: "한지 수묵화",
-                    period: "조선 후기, 19세기"
+                    title: "오방색과 모란의 조화를 담은 자수함",
+                    period: "오방색과 모란의 조화: 오방색 자수함"
                 },
                 gallery10: {
-                    title: "한지 미니어처 가구",
-                    period: "현대, 21세기"
+                    title: "황후의 시간(The Empress\'s Time)",
+                    period: "왕후의 아침을 여는 고결한 목련의 빛"
                 },
                 gallery11: {
-                    title: "한지 벽화 프로젝트",
-                    period: "현대, 21세기"
+                    title: "무드등(염원:기원의 빛)",
+                    period: "오방색을 활용한 전통한지 무드등"
                 },
                 gallery12: {
-                    title: "한지 보석함",
-                    period: "조선 후기, 19세기"
+                    title: "장무상망",
+                    period: "오래도록 서로 잊지말자는 약속을 담은 오브제"
                 },
                 gallery13: {
-                    title: "현대 한지 패션",
-                    period: "현대, 21세기"
+                    title: "마음을 담는 보석함",
+                    period: "한국전통 패물함(혼구용품)"
                 },
                 gallery14: {
                     title: "한지 모빌",
-                    period: "현대, 21세기"
+                    period: "한지로 만든 모빌 작품으로 바람에 의해 움직이며 그림자 놀이를 만들어냅니다. 공간에 생동감을 불어넣는 키네틱 아트입니다."
                 },
                 gallery15: {
-                    title: "한지 서예",
-                    period: "현대, 21세기"
+                    title: "한지 캘리그래피",
+                    period: "현대 서예와 전통 한지가 만난 캘리그래피 작품입니다. 한글의 아름다움을 한지 위에서 재해석했습니다."
                 },
                 gallery16: {
-                    title: "한지 책 예술",
-                    period: "현대, 21세기"
+                    title: "화양연화(華樣年華)",
+                    period: "생의 가장 찬란한 순간, 왕실의 예(禮)로 피어나다"
                 },
                 lamp: {
-                    title: "전통 한지 무드등",
-                    period: "현대, 21세기"
+                    title: "바람의결 - 모시풍경",
+                    period: "색상은 전통 오방색을 베이스로 제작됩니다.(청, 적, 황, 백, 흑) \n 모시의 우아한 실루엣 끝에서 울리는 청아한 종소리.\n 오브제 갯수를 1개 또는 3개 등으로 조정할수 있습니다."
                 },
                 takja: {
-                    title: "전통 탁자",
-                    period: "조선왕조, 17세기"
+                    title: "찻상(명상/우담바라를 기다리며)",
+                    period: "명상 - 우담바라를 기다리며"
                 }
             }
         }
