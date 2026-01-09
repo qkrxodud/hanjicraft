@@ -205,16 +205,8 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
+            lamp: "한지 조명",
             armor: "종이 갑옷"
-        },
-
-        // Floating Action Button
-        fab: {
-            lighting: "한지조명",
-            traditionalLamp: "전통 한지등",
-            modernLamp: "모던 한지등",
-            floorLamp: "한지 스탠드",
-            pendantLamp: "한지 펜던트"
         },
 
         // Related Artworks
@@ -475,16 +467,8 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
+            lamp: "Traditional Lamp",
             armor: "Paper Armor"
-        },
-
-        // Floating Action Button
-        fab: {
-            lighting: "Hanji Lighting",
-            traditionalLamp: "Traditional Lamp",
-            modernLamp: "Modern Lamp",
-            floorLamp: "Floor Lamp",
-            pendantLamp: "Pendant Lamp"
         },
 
         // Related Artworks
@@ -749,16 +733,8 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
+            lamp: "Lampe Traditionnelle",
             armor: "Armure en Papier"
-        },
-
-        // Floating Action Button
-        fab: {
-            lighting: "Éclairage Hanji",
-            traditionalLamp: "Lampe Traditionnelle",
-            modernLamp: "Lampe Moderne",
-            floorLamp: "Lampadaire",
-            pendantLamp: "Suspension"
         },
 
         // Related Artworks
