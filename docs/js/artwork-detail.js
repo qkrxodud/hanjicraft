@@ -35,14 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     '일상의 차 한 잔을 고요한 명상의 여정으로 안내합니다.'
             },
             en: {
-                title: 'Traditional Takja (Paper Armor)',
-                description: 'This remarkable piece of ceremonial armor demonstrates the incredible strength and versatility of hanji paper. Made entirely from layers of handmade Korean paper, this takja was worn by court officials during important ceremonies.',
-                story: 'The construction of this armor required exceptional skill and patience. Hundreds of sheets of hanji were layered and bonded using natural adhesives made from rice starch. The paper was treated with persimmon juice to increase its durability and water resistance. Despite being made entirely of paper, this armor provided significant protection while remaining remarkably lightweight. The intricate patterns visible on the surface represent traditional Korean motifs symbolizing protection and good fortune.'
+                title: 'Tea Table (Meditation/Waiting for Udumbara)',
+                description: 'Meditation - Waiting for Udumbara',
+                story: 'The vivid energy of the five colors calls for the harmony of the earth,\n' +
+                    'and at the end of that longing, the noble enlightenment of udumbara blooms.\n' +
+                    'This tea table crafted with thousand-year-old hanji and lacquer\n' +
+                    'guides everyday tea time into a quiet meditation journey.'
             },
             fr: {
-                title: 'Takja Traditionnel (Armure en Papier)',
-                description: 'Cette remarquable pièce d\'armure cérémonielle démontre la force incroyable et la polyvalence du papier hanji. Entièrement fabriquée à partir de couches de papier coréen fait main, cette takja était portée par les fonctionnaires de cour lors d\'importantes cérémonies.',
-                story: 'La construction de cette armure nécessitait une compétence exceptionnelle et de la patience. Des centaines de feuilles de hanji ont été stratifiées et liées en utilisant des adhésifs naturels faits d\'amidon de riz. Le papier était traité avec du jus de kaki pour augmenter sa durabilité et sa résistance à l\'eau. Bien qu\'entièrement faite de papier, cette armure offrait une protection significative tout en restant remarquablement légère. Les motifs complexes visibles sur la surface représentent des motifs coréens traditionnels symbolisant la protection et la bonne fortune.'
+                title: 'Table à Thé (Méditation/En Attendant l\'Udumbara)',
+                description: 'Méditation - En attendant l\'Udumbara',
+                story: 'L\'énergie vivante des cinq couleurs appelle l\'harmonie de la terre,\n' +
+                    'et à la fin de cette aspiration, l\'illumination noble de l\'udumbara fleurit.\n' +
+                    'Cette table à thé façonnée avec du hanji millénaire et de la laque\n' +
+                    'guide le thé quotidien vers un voyage de méditation silencieux.'
             },
             image: './img/takja.webp'
         },
@@ -53,14 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '천년의 한지와 결이 고운 모시를 겹치고 옻칠로 마감하여, 자연의 단단한 생명력을 담았습니다. 옻칠의 깊은 광택과 모시의 섬세한 질감이 어우러진 이 작품은 시간이 흐를수록 견고함과 격조를 더하며 한국적 미학의 정수를 보여줍니다.'
             },
             en: {
-                title: 'Master Craftsman at Work',
-                description: 'This photograph captures Master Park Soon-ja, a designated Intangible Cultural Property, demonstrating the traditional art of hanji papermaking. Her knowledge represents an unbroken chain of transmission spanning over 30 generations.',
-                story: 'Master Park learned the art of hanji making from her grandmother at the age of 12. For over 50 years, she has dedicated her life to preserving and transmitting this ancient craft. The process shown here involves the delicate art of "jongisoji" - the technique of forming each sheet of paper by hand using a bamboo screen called "bal". Every movement is precise, refined through decades of practice. The water temperature, the thickness of the pulp, even the humidity of the air - all factors that Master Park intuitively understands and adjusts for. Her work ensures that this thousand-year-old tradition continues to thrive in the modern world.'
+                title: 'Gyeongsang-do Thimble Pattern Tableware',
+                description: 'Tableware combining hanji and ramie',
+                story: 'By layering thousand-year-old hanji with fine-textured ramie and finishing with lacquer, it contains nature\'s solid vitality. This work, where the deep gloss of lacquer and the delicate texture of ramie harmonize, gains solidity and elegance over time, showing the essence of Korean aesthetics.'
             },
             fr: {
-                title: 'Maître Artisan au Travail',
-                description: 'Cette photographie capture Maître Park Soon-ja, un Bien Culturel Immatériel désigné, démontrant l\'art traditionnel de la fabrication du papier hanji. Ses connaissances représentent une chaîne ininterrompue de transmission s\'étendant sur plus de 30 générations.',
-                story: 'Maître Park a appris l\'art de la fabrication du hanji de sa grand-mère à l\'âge de 12 ans. Pendant plus de 50 ans, elle a consacré sa vie à préserver et transmettre cet artisanat ancien. Le processus montré ici implique l\'art délicat du \"jongisoji\" - la technique de former chaque feuille de papier à la main en utilisant un écran de bambou appelé \"bal\". Chaque mouvement est précis, affiné par des décennies de pratique. La température de l\'eau, l\'épaisseur de la pulpe, même l\'humidité de l\'air - tous des facteurs que Maître Park comprend intuitivement et ajuste. Son travail assure que cette tradition millénaire continue de prospérer dans le monde moderne.'
+                title: 'Vaisselle à Motif de Dé Gyeongsang-do',
+                description: 'Vaisselle combinant hanji et ramie',
+                story: 'En superposant le hanji millénaire avec le ramie à texture fine et en finissant avec de la laque, cela contient la vitalité solide de la nature. Cette œuvre, où l\'éclat profond de la laque et la texture délicate du ramie s\'harmonisent, gagne en solidité et en élégance au fil du temps, montrant l\'essence de l\'esthétique coréenne.'
             },
             image: './img/about.webp'
         },
@@ -68,41 +74,35 @@ document.addEventListener('DOMContentLoaded', function() {
             ko: {
                 title: '지승(紙繩)목걸이',
                 description: '천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 목걸이',
-                story: '모시의 우아한 실루엣과 청아한 종소리는 공간을 차분하게 감싸며 마음에 쉼을 선사할것입니다.\n' +
-                    '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
+                story: '전통 한지 지승 공예에 오방색을 현대적으로 담은, 가볍고 견고한 목걸이입니다. 한지를 한 땀 한 땀 꼬아 만든 지승의 따뜻한 질감과 자연스러운 색감이 착용자에게 편안함과 우아함을 선사합니다.'
             },
             en: {
-                title: 'Wind\'s Edge - Ramie Landscape',
-                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
-                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
-                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
+                title: 'Jiseung (Paper Rope) Necklace',
+                description: 'A jiseung (paper rope) necklace made by twisting thousand-year-old paper, hanji',
+                story: 'A light yet sturdy necklace that modernly incorporates the five traditional colors into traditional hanji jiseung craft. The warm texture and natural colors of jiseung made by twisting hanji stitch by stitch provide comfort and elegance to the wearer.'
             },
             fr: {
-                title: 'Bord du Vent - Paysage de Ramie',
-                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
-                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
-                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
+                title: 'Collier Jiseung (Corde en Papier)',
+                description: 'Un collier jiseung (corde en papier) fait en tordant du papier millénaire, hanji',
+                story: 'Un collier léger mais robuste qui incorpore de manière moderne les cinq couleurs traditionnelles dans l\'artisanat jiseung hanji traditionnel. La texture chaude et les couleurs naturelles du jiseung fait en tordant le hanji point par point procurent confort et élégance à celui qui le porte.'
             },
             image: './img/gallery/light_circle.webp'
         },
         circle_ham: {
             ko: {
                 title: '지승(紙繩)제기함',
-                description: '층층이 쌓인 한지로 만든 의례용 갑옷, 재료의 강도를 보여줌',
-                story: '모시의 우아한 실루엣과 청아한 종소리는 공간을 차분하게 감싸며 마음에 쉼을 선사할것입니다.\n' +
-                    '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
+                description: '불교의식용 다기',
+                story: '전통 한지 지승줄을 정성스럽게 감아 형태를 만들고, 그 위에 천연 옻칠로 마감하여 견고함과 깊은 색감을 더한 불교 의식용 다기입니다. 청수나 차를 부처님께 올리는 용도로 사용되며, 지승 공예의 정교함과 종교적 숭고함이 하나로 어우러진 작품입니다.'
             },
             en: {
-                title: 'Wind\'s Edge - Ramie Landscape',
-                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
-                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
-                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
+                title: 'Jiseung (Paper Rope) Ritual Tea Set',
+                description: 'Buddhist ceremonial tea set',
+                story: 'This is a Buddhist ceremonial tea set made by carefully wrapping traditional hanji jiseung ropes into shape and finishing with natural lacquer for added durability and deep color. Used for offering clear water or tea to Buddha, it is a work where the precision of jiseung craft and religious sublimity harmonize as one.'
             },
             fr: {
-                title: 'Bord du Vent - Paysage de Ramie',
-                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
-                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
-                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
+                title: 'Service à Thé Rituel Jiseung (Corde en Papier)',
+                description: 'Service à thé cérémoniel bouddhiste',
+                story: 'Il s\'agit d\'un service à thé cérémoniel bouddhiste fait en enroulant soigneusement des cordes jiseung hanji traditionnelles pour former la shape et en finissant avec de la laque naturelle pour ajouter durabilité et couleur profonde. Utilisé pour offrir de l\'eau claire ou du thé à Bouddha, c\'est une œuvre où la précision de l\'artisanat jiseung et la sublimité religieuse s\'harmonisent comme un.'
             },
             image: './img/gallery/blue_circle.webp'
         },
@@ -110,20 +110,17 @@ document.addEventListener('DOMContentLoaded', function() {
             ko: {
                 title: '지승(紙繩)풍경',
                 description: '천 년의 종이, 한지를 꼬아 만든 지승(紙繩) 풍경',
-                story: '모시의 우아한 실루엣과 청아한 종소리는 공간을 차분하게 감싸며 마음에 쉼을 선사할것입니다.\n' +
-                    '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
+                story: '전통 지승 공예로 엮은 구슬 위에 단청의 화려하고 단아한 색채를 입힌 동자승을 얹어 만든 풍경입니다. 맑은 소리와 함께 마음의 평안을 전하는 불교적 예술미를 담고 있으며, 바람에 흔들릴 때마다 은은한 종소리가 공간에 고요함을 선사합니다.'
             },
             en: {
-                title: 'Wind\'s Edge - Ramie Landscape',
-                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
-                story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
-                    'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'
+                title: 'Jiseung (Paper Rope) Wind Chime',
+                description: 'A jiseung (paper rope) wind chime made by twisting thousand-year-old paper, hanji',
+                story: 'A wind chime made by placing a young monk painted with the gorgeous and elegant colors of dancheong on beads woven with traditional jiseung craft. It contains Buddhist artistic beauty that brings peace of mind with clear sounds, and whenever it sways in the wind, gentle bell sounds bring tranquility to the space.'
             },
             fr: {
-                title: 'Bord du Vent - Paysage de Ramie',
-                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir). \n La silhouette élégante du ramie et le son clair des cloches à la fin.\n Le nombre d\'objets peut être ajusté à 1 ou 3 pièces.',
-                story: 'La silhouette élégante du ramie et le son clair des cloches envelopperont doucement l\'espace et apporteront la paix à l\'esprit.\n' +
-                    'L\'esthétique coréenne enracinée dans la tradition s\'exprime de manière moderne, apportant tranquillité et bonne fortune aux espaces quotidiens.'
+                title: 'Carillon à Vent Jiseung (Corde en Papier)',
+                description: 'Un carillon à vent jiseung (corde en papier) fait en tordant du papier millénaire, hanji',
+                story: 'Un carillon à vent fait en plaçant un jeune moine peint avec les couleurs magnifiques et élégantes du dancheong sur des perles tissées avec l\'artisanat jiseung traditionnel. Il contient la beauté artistique bouddhiste qui apporte la paix de l\'esprit avec des sons clairs, et chaque fois qu\'il se balance dans le vent, des sons de cloche doux apportent la tranquillité à l\'espace.'
             },
             image: './img/two_circle.webp'
         },
@@ -246,14 +243,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     '"작은 실타래 하나도 소중히 간직하는 한국의 정서를 느낄수 있는 작품입니다'
             },
             en: {
-                title: 'Hanji Ink Painting',
-                description: 'An ink painting presumed to be drawn by Jeong Yak-yong, a practical learning scholar of late Joseon. The bamboo painting drawn with ink on hanji is impressive.',
-                story: 'This work is valuable material for glimpsing the spiritual world of late Joseon literati. Bamboo symbolizes integrity and fidelity, and the artist\'s philosophy is well revealed through concise yet powerful brushstrokes.'
+                title: 'Embroidery Box with Harmony of Five Colors and Peonies',
+                description: 'Harmony of five colors and peonies: Five-color embroidery box',
+                story: 'This work contains the meaning of bringing elegance and blessings to space with traditional Korean five-color patterns and peony flowers symbolizing abundance as motifs.\n' +
+                    'It is a work where you can feel the Korean sentiment of treasuring even a small skein of thread.'
             },
             fr: {
-                title: 'Peinture à l\'Encre sur Hanji',
-                description: 'Une peinture à l\'encre présumée dessinée par Jeong Yak-yong, un érudit de l\'apprentissage pratique de la fin de Joseon. La peinture de bambou dessinée à l\'encre sur hanji est impressionnante.',
-                story: 'Cette œuvre est un matériau précieux pour entrevoir le monde spirituel des lettrés de la fin de Joseon. Le bambou symbolise l\'intégrité et la fidélité, et la philosophie de l\'artiste est bien révélée par des coups de pinceau concis mais puissants.'
+                title: 'Boîte à Broderie avec Harmonie des Cinq Couleurs et Pivoines',
+                description: 'Harmonie des cinq couleurs et pivoines : Boîte à broderie aux cinq couleurs',
+                story: 'Cette œuvre contient le sens d\'apporter élégance et bénédictions à l\'espace avec des motifs de motifs traditionnels coréens aux cinq couleurs et des fleurs de pivoine symbolisant l\'abondance.\n' +
+                    'C\'est une œuvre où vous pouvez ressentir le sentiment coréen de chérir même un petit écheveau de fil.'
             },
             image: './img/gallery/09.webp'
         },
@@ -264,14 +263,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '가야의 김수로왕이 허황옥 왕후를 맞이할 때 탔던 \'목련 배\' 설화에서 영감을 얻은 한지공예 궤경대(좌식 화장대)입니다. 고귀한 목련 문양을 통해 시공간을 초월한 환대와 기다림의 미학을 담았습니다. 전통 한지의 단아한 질감과 현대적 실용성을 결합하여 일상 속 가장 우아한 시간을 선사합니다.\n'
             },
             en: {
-                title: 'Hanji Miniature Furniture',
-                description: 'Miniature work that meticulously recreates traditional hanok furniture with hanji. Despite its small size, the details are surprisingly delicate.',
-                story: 'This miniature is a 1/10 scale reproduction of furniture from Joseon Dynasty aristocratic families. Using the texture and color of hanji, it was crafted so precisely that it\'s difficult to distinguish from real wood.'
+                title: 'The Empress\'s Time',
+                description: 'The noble light of magnolia that opens the empress\'s morning',
+                story: 'This is a hanji craft mirror stand (floor-sitting dressing table) inspired by the legend of the \'magnolia ship\' that King Suro of Gaya rode when welcoming Queen Heo Hwang-ok. Through the noble magnolia pattern, it contains the aesthetics of hospitality and waiting that transcends time and space. By combining the elegant texture of traditional hanji with modern practicality, it presents the most graceful time in daily life.'
             },
             fr: {
-                title: 'Mobilier Miniature en Hanji',
-                description: 'Œuvre miniature qui recrée méticuleusement le mobilier hanok traditionnel avec du hanji. Malgré sa petite taille, les détails sont étonnamment délicats.',
-                story: 'Cette miniature est une reproduction à l\'échelle 1/10 du mobilier des familles aristocratiques de la dynastie Joseon. Utilisant la texture et la couleur du hanji, elle a été conçue si précisément qu\'il est difficile de la distinguer du vrai bois.'
+                title: 'Le Temps de l\'Impératrice',
+                description: 'La lumière noble du magnolia qui ouvre le matin de l\'impératrice',
+                story: 'Il s\'agit d\'un support de miroir artisanal hanji (table de maquillage assise au sol) inspiré de la légende du \'navire magnolia\' que le roi Suro de Gaya montait en accueillant la reine Heo Hwang-ok. À travers le motif noble du magnolia, il contient l\'esthétique de l\'hospitalité et de l\'attente qui transcende le temps et l\'espace. En combinant la texture élégante du hanji traditionnel avec la praticité moderne, il présente le moment le plus gracieux de la vie quotidienne.'
             },
             image: './img/gallery/10.webp'
         },
@@ -282,14 +281,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '화려한 모란 문양과 정갈한 조각들이 어우러져, 공간을 밝히는 따뜻한 빛 속에 간절한 안녕과 복을 바라는 마음을 담았습니다.'
             },
             en: {
-                title: 'Hanji Mural Project',
-                description: 'A large hanji mural created jointly by village residents. A special case where traditional hanji techniques meet contemporary public art.',
-                story: 'This mural is a collaborative work containing the village\'s history and residents\' dreams. Over 50 village residents participated for 3 months to express the village\'s four seasons with hanji. After completion, it became a village landmark and a popular destination for many visitors.'
+                title: 'Mood Lamp (Wish: Light of Prayer)',
+                description: 'Traditional hanji mood lamp utilizing the five colors',
+                story: 'Gorgeous peony patterns and neat sculptures harmonize together, containing the heart of earnest wishes for peace and blessings within the warm light that illuminates the space.'
             },
             fr: {
-                title: 'Projet de Fresque en Hanji',
-                description: 'Une grande fresque en hanji créée conjointement par les résidents du village. Un cas spécial où les techniques traditionnelles du hanji rencontrent l\'art public contemporain.',
-                story: 'Cette fresque est une œuvre collaborative contenant l\'histoire du village et les rêves des résidents. Plus de 50 résidents du village ont participé pendant 3 mois pour exprimer les quatre saisons du village avec du hanji. Après achèvement, elle est devenue un point de repère du village et une destination populaire pour de nombreux visiteurs.'
+                title: 'Lampe d\'Ambiance (Souhait: Lumière de Prière)',
+                description: 'Lampe d\'ambiance hanji traditionnelle utilisant les cinq couleurs',
+                story: 'De magnifiques motifs de pivoines et des sculptures soignées s\'harmonisent ensemble, contenant le cœur de souhaits sincères de paix et de bénédictions dans la lumière chaude qui illumine l\'espace.'
             },
             image: './img/gallery/11.webp'
         },
@@ -300,14 +299,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '부산의 상징(부산시화 :동백꽃)을 모티브로 제작한 부산문화 상품입니다 오랫동안 서로 잊지 말자는 약속을 담은 지역 특산 오브제입니다.',
             },
             en: {
-                title: 'Hanji Jewelry Box',
-                description: 'A hanji jewelry box used in the royal court, beautifully decorated with lacquer and mother-of-pearl. Shows both the strength and aesthetic value of hanji.',
-                story: 'This jewelry box was used by royal court women in late Joseon, made by layering multiple sheets of hanji and finished with lacquer. The lid is decorated with mother-of-pearl flower patterns for added splendor.'
+                title: 'Eternal Remembrance',
+                description: 'An object containing the promise not to forget each other for a long time',
+                story: 'This is a Busan cultural product made with the motif of Busan\'s symbol (Busan city flower: camellia flower). It is a regional specialty object containing the promise not to forget each other for a long time.'
             },
             fr: {
-                title: 'Boîte à Bijoux en Hanji',
-                description: 'Une boîte à bijoux en hanji utilisée dans la cour royale, magnifiquement décorée de laque et de nacre. Montre à la fois la force et la valeur esthétique du hanji.',
-                story: 'Cette boîte à bijoux était utilisée par les femmes de la cour royale à la fin de Joseon, fabriquée en superposant plusieurs feuilles de hanji et finie avec de la laque. Le couvercle est décoré de motifs floraux en nacre pour plus de splendeur.'
+                title: 'Souvenir Éternel',
+                description: 'Un objet contenant la promesse de ne pas s\'oublier longtemps',
+                story: 'Il s\'agit d\'un produit culturel de Busan fabriqué avec le motif du symbole de Busan (fleur de la ville de Busan : fleur de camélia). C\'est un objet de spécialité régionale contenant la promesse de ne pas s\'oublier longtemps.'
             },
             image: './img/gallery/12.webp'
         },
@@ -319,14 +318,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     '오방색에서 착안한 현대적 채도의 색감과 모란문양으로 화려함과 절제미를 동시에 담았습니다.\n'
             },
             en: {
-                title: 'Contemporary Hanji Fashion',
-                description: 'Innovative fashion work utilizing hanji as clothing material. An experimental work exploring new possibilities of traditional materials.',
-                story: 'The designer focused on the breathability and antibacterial properties of hanji to apply it to contemporary clothing. Specially treated hanji provides a unique texture while being as soft as fabric.'
+                title: 'Jewelry Box that Holds the Heart',
+                description: 'Traditional Korean accessory box (wedding items)',
+                story: 'This is a work that newly interprets the classical form of traditional Korean jewelry boxes with modern proportions and colors.\n' +
+                    'It contains both splendor and restraint with modern saturation colors inspired by the five traditional colors and peony patterns.'
             },
             fr: {
-                title: 'Mode Contemporaine en Hanji',
-                description: 'Œuvre de mode innovante utilisant le hanji comme matériau vestimentaire. Une œuvre expérimentale explorant de nouvelles possibilités des matériaux traditionnels.',
-                story: 'La designer s\'est concentrée sur la respirabilité et les propriétés antibactériennes du hanji pour l\'appliquer aux vêtements contemporains. Le hanji spécialement traité offre une texture unique tout en étant aussi doux que le tissu.'
+                title: 'Boîte à Bijoux qui Porte le Cœur',
+                description: 'Boîte à accessoires traditionnelle coréenne (articles de mariage)',
+                story: 'Il s\'agit d\'une œuvre qui réinterprète nouvellement la forme classique des boîtes à bijoux coréennes traditionnelles avec des proportions et des couleurs modernes.\n' +
+                    'Elle contient à la fois splendeur et retenue avec des couleurs de saturation moderne inspirées des cinq couleurs traditionnelles et des motifs de pivoine.'
             },
             image: './img/gallery/13.webp'
         },
@@ -373,14 +374,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '조선 왕실의 품격 있는 예단 문화를 현대적으로 재해석했습니다. 부귀를 상징하는 모란과 오방색의 미학을 담아, 소중한 인연에게 전하는 가장 고귀한 축복과 진심을 종이 공예의 정수로 빚어냈습니다.'
             },
             en: {
-                title: 'Hanji Book Art',
-                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
-                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+                title: 'Flower-like Years (華樣年華)',
+                description: 'Life\'s most brilliant moment, blooming with royal ceremony',
+                story: 'It modernly reinterpreted the elegant wedding gift culture of the Joseon royal court. With the aesthetics of peonies symbolizing wealth and the five traditional colors, it crafted the most noble blessings and sincerity conveyed to precious relationships through the essence of paper craft.'
             },
             fr: {
-                title: 'Art du Livre Hanji',
-                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
-                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+                title: 'Années Fleuries (華樣年華)',
+                description: 'Le moment le plus brillant de la vie, s\'épanouissant avec la cérémonie royale',
+                story: 'Il a réinterprété de manière moderne la culture élégante des cadeaux de mariage de la cour royale Joseon. Avec l\'esthétique des pivoines symbolisant la richesse et les cinq couleurs traditionnelles, il a façonné les bénédictions et la sincérité les plus nobles transmises aux relations précieuses à travers l\'essence de l\'artisanat du papier.'
             },
             image: './img/gallery/16.webp'
         },
@@ -421,14 +422,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '조선 왕실의 품격 있는 예단 문화를 현대적으로 재해석했습니다. 부귀를 상징하는 모란과 오방색의 미학을 담아, 소중한 인연에게 전하는 가장 고귀한 축복과 진심을 종이 공예의 정수로 빚어냈습니다.'
             },
             en: {
-                title: 'Hanji Book Art',
-                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
-                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+                title: 'Flower-like Years (華樣年華)',
+                description: 'Life\'s most brilliant moment, blooming with royal ceremony',
+                story: 'It modernly reinterpreted the elegant wedding gift culture of the Joseon royal court. With the aesthetics of peonies symbolizing wealth and the five traditional colors, it crafted the most noble blessings and sincerity conveyed to precious relationships through the essence of paper craft.'
             },
             fr: {
-                title: 'Art du Livre Hanji',
-                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
-                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+                title: 'Années Fleuries (華樣年華)',
+                description: 'Le moment le plus brillant de la vie, s\'épanouissant avec la cérémonie royale',
+                story: 'Il a réinterprété de manière moderne la culture élégante des cadeaux de mariage de la cour royale Joseon. Avec l\'esthétique des pivoines symbolisant la richesse et les cinq couleurs traditionnelles, il a façonné les bénédictions et la sincérité les plus nobles transmises aux relations précieuses à travers l\'essence de l\'artisanat du papier.'
             },
             image: './img/gallery/multi.webp'
         },
@@ -439,14 +440,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 story: '전통 한지를 한 땀 한 땀 꼬아 엮은 지승 공예의 정수를 담았습니다. 한국의 오방색을 현대적 감각으로 재해석한 이 키링은 가볍지만 견고하며, 손끝에서 느껴지는 따뜻한 질감과 자연의 미학을 전합니다.'
             },
             en: {
-                title: 'Hanji Book Art',
-                description: 'Work combining traditional bookbinding techniques with contemporary book art. Each page made of hanji provides unique tactile and visual experiences.',
-                story: 'The artist studied Joseon Dynasty book production methods and reinterpreted them in a contemporary way. The natural wrinkles and texture of hanji create different expressions on each page.'
+                title: 'Jiseung (Paper Rope) Keyring',
+                description: 'A jiseung (paper rope) keyring made by twisting thousand-year-old paper, hanji',
+                story: 'It contains the essence of jiseung craft woven by twisting traditional hanji stitch by stitch. This keyring, which reinterprets Korea\'s five traditional colors with modern sensibility, is light yet sturdy, conveying the warm texture felt at the fingertips and the aesthetics of nature.'
             },
             fr: {
-                title: 'Art du Livre Hanji',
-                description: 'Œuvre combinant les techniques traditionnelles de reliure avec l\'art contemporain du livre. Chaque page faite de hanji offre des expériences tactiles et visuelles uniques.',
-                story: 'L\'artiste a étudié les méthodes de production de livres de la dynastie Joseon et les a réinterprétées de manière contemporaine. Les rides naturelles et la texture du hanji créent différentes expressions sur chaque page.'
+                title: 'Porte-clés Jiseung (Corde en Papier)',
+                description: 'Un porte-clés jiseung (corde en papier) fait en tordant du papier millénaire, hanji',
+                story: 'Il contient l\'essence de l\'artisanat jiseung tissé en tordant le hanji traditionnel point par point. Ce porte-clés, qui réinterprète les cinq couleurs traditionnelles de la Corée avec une sensibilité moderne, est léger mais robuste, transmettant la texture chaude ressentie au bout des doigts et l\'esthétique de la nature.'
             },
             image: './img/gallery/3_circle.webp'
         }
@@ -484,7 +485,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>${artworkContent.description}</p>
                 </div>
                 <div class="artwork-story">
-                    <h3>${getStoryTitle(currentLang)}</h3>
+                    <h3>${window.i18n ? window.i18n.t('artworkDetail.storyTitle') : '작품 이야기'}</h3>
                     <p>${artworkContent.story}</p>
                 </div>
             </div>
@@ -504,12 +505,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Show not found message
     function showNotFound() {
+        const currentLang = window.i18n ? window.i18n.getCurrentLanguage() : 'ko';
+        const notFoundTitle = window.i18n ? window.i18n.t('artworkDetail.notFound.title') : '작품을 찾을 수 없습니다';
+        const notFoundDescription = window.i18n ? window.i18n.t('artworkDetail.notFound.description') : '요청하신 작품을 찾을 수 없습니다.';
+        const notFoundBackLink = window.i18n ? window.i18n.t('artworkDetail.notFound.backLink') : '← 메인 페이지로 돌아가기';
+
         const contentContainer = document.getElementById('artwork-content');
         contentContainer.innerHTML = `
             <div class="detail-loading">
-                <h2>Artwork Not Found</h2>
-                <p>Sorry, the requested artwork could not be found.</p>
-                <a href="./index.html" class="back-link">← Return to Main Page</a>
+                <h2>${notFoundTitle}</h2>
+                <p>${notFoundDescription}</p>
+                <a href="./index.html" class="back-link">${notFoundBackLink}</a>
             </div>
         `;
     }
@@ -798,14 +804,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return labels[lang] ? labels[lang][key] : labels.ko[key];
     }
 
-    function getStoryTitle(lang) {
-        const titles = {
-            ko: '작품 이야기',
-            en: 'The Story Behind the Artwork',
-            fr: 'L\'Histoire Derrière l\'\u0152uvre'
-        };
-        return titles[lang] || titles.ko;
-    }
 
     // Initialize i18n and language switcher for detail page
     if (window.i18n) {

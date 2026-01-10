@@ -18,7 +18,7 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "홍현정 한지공예 연구",
+            title: "홍현정 한지공예 연구소",
             description: "그 강인함과 아름다움을 품고 전통 공예의 맥을 이어 현대문화로 계승합니다.",
             button: "작품 보기"
         },
@@ -211,11 +211,22 @@ const translations = {
 
         // Floating Action Button
         fab: {
-            explore: "둘러보기",
-            lamp: "전통 한지 조명",
+            menu: "구매링크",
+            explore: "쇼피",
+            lamp: "노태그샵글로벌 (개별구매가능)",
             armor: "종이 갑옷",
-            lighting: "현대 조명",
-            process: "제작 과정"
+            lighting: "핀코이 ",
+            process: "메종오브제 몰"
+        },
+
+        // Artwork Detail
+        artworkDetail: {
+            storyTitle: "작품 이야기",
+            notFound: {
+                title: "작품을 찾을 수 없습니다",
+                description: "요청하신 작품을 찾을 수 없습니다.",
+                backLink: "← 메인 페이지로 돌아가기"
+            }
         },
 
         // Related Artworks
@@ -274,8 +285,8 @@ const translations = {
     en: {
         // Navigation
         logo: {
-            title: "홍현정한지공예 연구소",
-            subtitle: "Hong hyun-jeong hanji craft studio"
+            title: "Hong Hyun-jeong Hanji Craft Studio",
+            subtitle: "Traditional Korean Paper Artistry"
         },
         nav: {
             home: "Home",
@@ -433,21 +444,21 @@ const translations = {
         featured: {
             title: "Hanji Jiseung Craft",
             lamp: {
-                title: "Traditional Hanji Lighting",
-                period: "Contemporary, 21st Century",
-                description: "New interpretation of contemporary lighting using handmade hanji",
+                title: "Jiseung (Paper Rope) Necklace",
+                period: "Thousand-year paper, jiseung (paper rope) necklace made by twisting hanji",
+                description: "A lightweight and sturdy necklace that incorporates traditional five-element colors into traditional hanji jiseung craft with a modern touch.",
                 link: "View Details"
             },
             armor: {
-                title: "Traditional Table (Paper Armor)",
-                period: "Joseon Dynasty, 17th Century",
-                description: "Ceremonial armor made from layered hanji, showing the strength of the material",
+                title: "Jiseung (Paper Rope) Ritual Vessel Box",
+                period: "Buddhist ceremonial tea set",
+                description: "Buddhist ceremonial tea set made by carefully winding traditional hanji jiseung rope to create the form and finishing with natural lacquer for durability and deep color. (Used for offering pure water or tea to Buddha)",
                 link: "View Details"
             },
             craftsman: {
-                title: "Craftsman's Work",
-                period: "Living Heritage",
-                description: "Witness the ancient hanji making techniques preserved by master craftsmen",
+                title: "Jiseung (Paper Rope) Wind Chime",
+                period: "Thousand-year paper, jiseung (paper rope) wind chime made by twisting hanji",
+                description: "A wind chime made by placing a novice monk painted with the colorful and elegant colors of dancheong on beads woven with traditional jiseung craft. It contains Buddhist artistic beauty that conveys peace of mind along with clear sounds.",
                 link: "View Details"
             }
         },
@@ -482,11 +493,22 @@ const translations = {
 
         // Floating Action Button
         fab: {
-            explore: "Explore",
-            lamp: "Traditional Hanji Lamp",
+            menu: "Purchase Links",
+            explore: "Shopee",
+            lamp: "Notag Shop Global (Individual Purchase Available)",
             armor: "Paper Armor",
-            lighting: "Contemporary Lighting",
-            process: "Craft Process"
+            lighting: "Pinkoi",
+            process: "Maison & Objet Mall"
+        },
+
+        // Artwork Detail
+        artworkDetail: {
+            storyTitle: "The Story Behind the Artwork",
+            notFound: {
+                title: "Artwork Not Found",
+                description: "Sorry, the requested artwork could not be found.",
+                backLink: "← Return to Main Page"
+            }
         },
 
         // Related Artworks
@@ -496,43 +518,39 @@ const translations = {
             artworks: {
                 gallery01: {
                     title: "Hanji Ramie Mood Lamp",
-                    period: "Contemporary, 21st Century"
-                },
-                gallery03: {
-                    title: "Hanji Sculpture Collection",
-                    period: "Contemporary, 21st Century"
+                    period: "Colors are made based on traditional five-element colors (blue, red, yellow, white, black)\nSubtle lighting object made from traditional materials combining hanji and ramie\nColors are made based on traditional Korean five-element colors."
                 },
                 gallery09: {
-                    title: "Hanji Ink Painting",
-                    period: "Late Joseon, 19th Century"
+                    title: "Embroidery Box with Harmony of Five Colors and Peonies",
+                    period: "Five Colors and Peony Harmony: Five Colors Embroidery Box"
                 },
                 gallery10: {
-                    title: "Hanji Miniature Furniture",
-                    period: "Contemporary, 21st Century"
+                    title: "The Empress's Time",
+                    period: "Noble magnolia light opening the queen's morning"
                 },
                 gallery11: {
-                    title: "Hanji Mural Project",
-                    period: "Contemporary, 21st Century"
+                    title: "Mood Lamp (Wish: Light of Prayer)",
+                    period: "Traditional hanji mood lamp using five colors"
                 },
                 gallery12: {
-                    title: "Hanji Jewelry Box",
-                    period: "Late Joseon, 19th Century"
+                    title: "Eternal Remembrance",
+                    period: "Object containing the promise not to forget each other for a long time"
                 },
                 gallery13: {
-                    title: "Contemporary Hanji Fashion",
-                    period: "Contemporary, 21st Century"
+                    title: "Jewelry Box that Holds the Heart",
+                    period: "Traditional Korean accessory box (wedding items)"
                 },
                 gallery14: {
                     title: "Hanji Mobile",
-                    period: "Contemporary, 21st Century"
+                    period: "Mobile artwork made of hanji that moves with the wind and creates shadow play. Kinetic art that brings vitality to the space."
                 },
                 gallery15: {
                     title: "Hanji Calligraphy",
-                    period: "Contemporary, 21st Century"
+                    period: "Calligraphy work where modern calligraphy meets traditional hanji. Reinterpreting the beauty of Hangeul on hanji."
                 },
                 gallery16: {
-                    title: "Hanji Book Art",
-                    period: "Contemporary, 21st Century"
+                    title: "Flower-like Years (華樣年華)",
+                    period: "The most brilliant moment of life, blooming through royal etiquette"
                 },
                 lamp: {
                     title: "Wind's Edge - Ramie Landscape",
@@ -549,16 +567,16 @@ const translations = {
     fr: {
         // Navigation
         logo: {
-            title: "홍현정한지공예 연구소",
-            subtitle: "Hong hyun-jeong hanji craft studio"
+            title: "Atelier Hanji Hong Hyun-jeong",
+            subtitle: "Artisanat Papier Traditionnel Coréen"
         },
         nav: {
             home: "Accueil",
-            brand: "Histoire de la Marque",
-            exhibitions: "Exposition Maison & Objet",
-            collections: "Processus Artisanal",
+            brand: "Marque",
+            exhibitions: "Maison & Objet",
+            collections: "Processus",
             gallery: "Galerie",
-            about: "Artisanat Hanji Jiseung"
+            about: "Artisanat Hanji"
         },
 
         // Hero Section
@@ -708,21 +726,21 @@ const translations = {
         featured: {
             title: "Artisanat Hanji Jiseung",
             lamp: {
-                title: "Éclairage Hanji Traditionnel",
-                period: "Contemporain, 21e Siècle",
-                description: "Nouvelle interprétation de l'éclairage contemporain utilisant du hanji fait main",
+                title: "Collier Jiseung (Corde de Papier)",
+                period: "Papier millénaire, collier jiseung (corde de papier) fait en tordant le hanji",
+                description: "Un collier léger et solide qui incorpore les couleurs traditionnelles à cinq éléments dans l'artisanat traditionnel hanji jiseung avec une touche moderne.",
                 link: "Voir les Détails"
             },
             armor: {
-                title: "Table Traditionnelle (Armure en Papier)",
-                period: "Dynastie Joseon, 17e Siècle",
-                description: "Armure cérémonielle faite de hanji stratifié, montrant la force du matériau",
+                title: "Boîte à Vases Rituels Jiseung (Corde de Papier)",
+                period: "Service à thé cérémoniel bouddhiste",
+                description: "Service à thé cérémoniel bouddhiste fait en enroulant soigneusement la corde jiseung hanji traditionnelle pour créer la forme et en finissant avec de la laque naturelle pour la durabilité et la couleur profonde. (Utilisé pour offrir de l'eau pure ou du thé au Bouddha)",
                 link: "Voir les Détails"
             },
             craftsman: {
-                title: "Travail d'Artisan",
-                period: "Patrimoine Vivant",
-                description: "Témoin des techniques anciennes de fabrication du hanji préservées par les maîtres artisans",
+                title: "Carillon Éolien Jiseung (Corde de Papier)",
+                period: "Papier millénaire, carillon éolien jiseung (corde de papier) fait en tordant le hanji",
+                description: "Un carillon éolien fait en plaçant un moine novice peint avec les couleurs colorées et élégantes du dancheong sur des perles tissées avec l'artisanat jiseung traditionnel. Il contient la beauté artistique bouddhiste qui transmet la paix de l'esprit avec des sons clairs.",
                 link: "Voir les Détails"
             }
         },
@@ -757,11 +775,22 @@ const translations = {
 
         // Floating Action Button
         fab: {
-            explore: "Explorer",
-            lamp: "Lampe Hanji Traditionnelle",
+            menu: "Liens d'Achat",
+            explore: "Shopee",
+            lamp: "Notag Shop Global (Achat Individuel Possible)",
             armor: "Armure en Papier",
-            lighting: "Éclairage Contemporain",
-            process: "Processus Artisanal"
+            lighting: "Pinkoi",
+            process: "Centre Commercial Maison & Objet"
+        },
+
+        // Artwork Detail
+        artworkDetail: {
+            storyTitle: "L'Histoire Derrière l'Œuvre",
+            notFound: {
+                title: "Œuvre Non Trouvée",
+                description: "Désolé, l'œuvre demandée n'a pas pu être trouvée.",
+                backLink: "← Retour à la Page Principale"
+            }
         },
 
         // Related Artworks
@@ -771,43 +800,39 @@ const translations = {
             artworks: {
                 gallery01: {
                     title: "Lampe d'Ambiance Hanji-Ramie",
-                    period: "Contemporain, 21e Siècle"
-                },
-                gallery03: {
-                    title: "Collection de Sculptures Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    period: "Les couleurs sont faites sur la base des couleurs traditionnelles à cinq éléments (bleu, rouge, jaune, blanc, noir)\nObjet d'éclairage subtil fait de matériaux traditionnels combinant hanji et ramie\nLes couleurs sont faites sur la base des couleurs traditionnelles coréennes à cinq éléments."
                 },
                 gallery09: {
-                    title: "Peinture à l'Encre Hanji",
-                    period: "Fin de Joseon, 19e Siècle"
+                    title: "Boîte à Broderie avec Harmonie des Cinq Couleurs et Pivoines",
+                    period: "Harmonie des cinq couleurs et pivoines : Boîte broderie cinq couleurs"
                 },
                 gallery10: {
-                    title: "Mobilier Miniature Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    title: "Le Temps de l'Impératrice",
+                    period: "Lumière noble de magnolia ouvrant le matin de la reine"
                 },
                 gallery11: {
-                    title: "Projet de Fresque Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    title: "Lampe d'Ambiance (Souhait : Lumière de Prière)",
+                    period: "Lampe d'ambiance hanji traditionnelle utilisant cinq couleurs"
                 },
                 gallery12: {
-                    title: "Boîte à Bijoux Hanji",
-                    period: "Fin de Joseon, 19e Siècle"
+                    title: "Souvenir Éternel",
+                    period: "Objet contenant la promesse de ne pas s'oublier longtemps"
                 },
                 gallery13: {
-                    title: "Mode Contemporaine Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    title: "Boîte à Bijoux qui Porte le Cœur",
+                    period: "Boîte accessoires traditionnelle coréenne (articles de mariage)"
                 },
                 gallery14: {
                     title: "Mobile Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    period: "Œuvre mobile en hanji qui bouge avec le vent et crée un jeu d'ombres. Art cinétique qui apporte vitalité à l'espace."
                 },
                 gallery15: {
                     title: "Calligraphie Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    period: "Œuvre calligraphique où la calligraphie moderne rencontre le hanji traditionnel. Réinterprétation de la beauté du Hangeul sur hanji."
                 },
                 gallery16: {
-                    title: "Art du Livre Hanji",
-                    period: "Contemporain, 21e Siècle"
+                    title: "Années Fleuries (華樣年華)",
+                    period: "Le moment le plus brillant de la vie, fleurissant par l'étiquette royale"
                 },
                 lamp: {
                     title: "Bord du Vent - Paysage de Ramie",

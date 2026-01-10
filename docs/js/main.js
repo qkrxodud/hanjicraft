@@ -187,7 +187,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let primaryMenuIsOpen = false;
 
     if (primaryMenuBtn) {
+        // Add click event for menu toggle functionality
         primaryMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            primaryMenuIsOpen = !primaryMenuIsOpen;
+
+            if (primaryMenuIsOpen) {
+                primaryMenu.classList.add('active');
+                primaryMenuBtn.classList.add('active');
+            } else {
+                primaryMenu.classList.remove('active');
+                primaryMenuBtn.classList.remove('active');
+            }
+        });
+
+        // Add right-click event for menu functionality (alternative)
+        primaryMenuBtn.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             e.stopPropagation();
 
