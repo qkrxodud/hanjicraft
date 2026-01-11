@@ -822,7 +822,7 @@ html[lang="en"] .logo p {
 .masterpieces-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 250px);
+    grid-template-rows: repeat(3, 280px);
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
@@ -888,10 +888,10 @@ html[lang="en"] .logo p {
     font-size: 0.85rem;
     color: #666;
     line-height: 1.3;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 
@@ -899,6 +899,9 @@ html[lang="en"] .logo p {
     font-size: 0.75rem;
     color: #999;
     font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .gallery-navigation {
@@ -1276,7 +1279,7 @@ html[lang="en"] .logo p {
 
     .masterpieces-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(5, 200px);
+        grid-template-rows: repeat(5, 220px);
         gap: 1rem;
     }
 
@@ -1351,7 +1354,7 @@ html[lang="en"] .logo p {
 
     .masterpieces-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 250px);
+        grid-template-rows: repeat(6, 280px);
     }
 
     .masterpiece-item.featured {

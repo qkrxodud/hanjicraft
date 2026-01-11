@@ -299,8 +299,8 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "Hanji: A Thousand Years of Wisdom",
-            description: "Discover the beauty and cultural heritage of traditional hanji crafting techniques",
+            title: "Hong Hyun-jeong Hanji Craft Studio",
+            description: "Embracing strength and beauty, inheriting the tradition of traditional crafts and passing them on to modern culture.",
             button: "View Artworks"
         },
 
@@ -581,8 +581,8 @@ const translations = {
 
         // Hero Section
         hero: {
-            title: "Hanji : Mille Ans de Sagesse",
-            description: "Découvrez la beauté et l'héritage culturel des techniques traditionnelles de l'artisanat hanji",
+            title: "Atelier d'Artisanat Hanji Hong Hyun-jeong",
+            description: "Embrassant force et beauté, héritant de la tradition de l'artisanat traditionnel et la transmettant à la culture moderne.",
             button: "Voir les Œuvres"
         },
 
