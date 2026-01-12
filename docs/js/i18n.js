@@ -205,8 +205,7 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
-            lamp: "한지 조명",
-            armor: "종이 갑옷"
+            lamp: "한지 조명"
         },
 
         // Floating Action Button
@@ -487,8 +486,7 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
-            lamp: "Traditional Lamp",
-            armor: "Paper Armor"
+            lamp: "Traditional Lamp"
         },
 
         // Floating Action Button
@@ -769,8 +767,7 @@ const translations = {
 
         // Bottom Navigation
         bottomNav: {
-            lamp: "Lampe Traditionnelle",
-            armor: "Armure en Papier"
+            lamp: "Lampe Traditionnelle"
         },
 
         // Floating Action Button
