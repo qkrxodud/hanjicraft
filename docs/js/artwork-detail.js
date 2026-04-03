@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 description: 'La lumière noble du magnolia qui ouvre le matin de l\'impératrice',
                 story: 'Il s\'agit d\'un support de miroir artisanal hanji (table de maquillage assise au sol) inspiré de la légende du \'navire magnolia\' que le roi Suro de Gaya montait en accueillant la reine Heo Hwang-ok. À travers le motif noble du magnolia, il contient l\'esthétique de l\'hospitalité et de l\'attente qui transcende le temps et l\'espace. En combinant la texture élégante du hanji traditionnel avec la praticité moderne, il présente le moment le plus gracieux de la vie quotidienne.'
             },
-            image: './img/gallery/10.webp'
+            images: ['./img/gallery/10.webp', './img/10-1.webp', './img/10-2.webp']
         },
         gallery11: {
             ko: {
@@ -475,10 +475,45 @@ document.addEventListener('DOMContentLoaded', function() {
         const artworkContent = artwork[currentLang] || artwork.ko;
 
         const contentContainer = document.getElementById('artwork-content');
+
+        // 이미지 처리: images 배열이 있으면 사용하고, 없으면 기존 image 속성 사용
+        const imageUrls = artwork.images || [artwork.image];
+
+        let imageGalleryHtml = '';
+        if (imageUrls.length === 1) {
+            // 단일 이미지
+            imageGalleryHtml = `
+                <div class="detail-image single">
+                    <img src="${imageUrls[0]}" alt="${artworkContent.title}" loading="lazy">
+                </div>
+            `;
+        } else {
+            // 다중 이미지 - 갤러리 형태
+            imageGalleryHtml = `
+                <div class="detail-image-gallery">
+                    <div class="main-image">
+                        <img id="mainImage" src="${imageUrls[0]}" alt="${artworkContent.title}" loading="lazy">
+                        <div class="image-nav">
+                            <button class="image-nav-btn prev" id="prevImage">‹</button>
+                            <button class="image-nav-btn next" id="nextImage">›</button>
+                        </div>
+                    </div>
+                    <div class="image-thumbnails">
+                        ${imageUrls.map((url, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
+                                <img src="${url}" alt="${artworkContent.title} ${index + 1}" loading="lazy">
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="image-counter">
+                        <span id="currentImageIndex">1</span> / ${imageUrls.length}
+                    </div>
+                </div>
+            `;
+        }
+
         contentContainer.innerHTML = `
-            <div class="detail-image">
-                <img src="${artwork.image}" alt="${artworkContent.title}" loading="lazy">
-            </div>
+            ${imageGalleryHtml}
             <div class="detail-info">
                 <h1>${artworkContent.title}</h1>
                 <div class="artwork-description">
@@ -491,6 +526,11 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
 
+        // 다중 이미지 갤러리 기능 설정
+        if (imageUrls.length > 1) {
+            setupImageGallery(imageUrls, artworkContent.title);
+        }
+
         // Update page title
         const museumName = window.i18n ? window.i18n.t('logo.title') : '홍현정한지공예 연구소';
         document.title = `${artworkContent.title} | ${museumName}`;
@@ -501,6 +541,74 @@ document.addEventListener('DOMContentLoaded', function() {
             contentContainer.style.opacity = '1';
             contentContainer.style.transition = 'opacity 0.5s ease';
         }, 100);
+    }
+
+    // Setup image gallery functionality
+    function setupImageGallery(imageUrls, title) {
+        const mainImage = document.getElementById('mainImage');
+        const prevBtn = document.getElementById('prevImage');
+        const nextBtn = document.getElementById('nextImage');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const currentIndexSpan = document.getElementById('currentImageIndex');
+
+        let currentIndex = 0;
+
+        function updateMainImage(index) {
+            currentIndex = index;
+            mainImage.src = imageUrls[index];
+            mainImage.alt = `${title} ${index + 1}`;
+            currentIndexSpan.textContent = index + 1;
+
+            // 썸네일 활성화 상태 업데이트
+            thumbnails.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        function goToPrevious() {
+            const newIndex = currentIndex === 0 ? imageUrls.length - 1 : currentIndex - 1;
+            updateMainImage(newIndex);
+        }
+
+        function goToNext() {
+            const newIndex = currentIndex === imageUrls.length - 1 ? 0 : currentIndex + 1;
+            updateMainImage(newIndex);
+        }
+
+        // 이전/다음 버튼 이벤트
+        if (prevBtn) {
+            prevBtn.addEventListener('click', goToPrevious);
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', goToNext);
+        }
+
+        // 썸네일 클릭 이벤트
+        thumbnails.forEach((thumbnail, index) => {
+            thumbnail.addEventListener('click', () => {
+                updateMainImage(index);
+            });
+        });
+
+        // 키보드 네비게이션
+        document.addEventListener('keydown', (e) => {
+            if (e.target.closest('.detail-image-gallery')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    goToPrevious();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    goToNext();
+                }
+            }
+        });
+
+        // 메인 이미지 클릭으로 다음 이미지로 이동
+        if (mainImage) {
+            mainImage.addEventListener('click', goToNext);
+            mainImage.style.cursor = 'pointer';
+        }
     }
 
     // Show not found message
