@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     '전통에서 출발한 한국의 미학을 현대적으로 풀어내어, 일상 속 공간에 평온과 행운을 불러옵니다.'
             },
             en: {
-                title: 'Wind\'s Edge - Ramie Landscape',
+                title: 'Wind\'s Edge - Ramie Wind Bell',
                 description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black). \n The elegant silhouette of ramie and the clear sound of bells at the end.\n The number of objects can be adjusted to 1 or 3 pieces.',
                 story: 'The elegant silhouette of ramie and the clear sound of bells will gently envelop the space and bring peace to the mind.\n' +
                     'Korean aesthetics rooted in tradition are expressed in a modern way, bringing tranquility and good fortune to everyday spaces.'

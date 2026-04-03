@@ -314,7 +314,7 @@ const translations = {
             },
             collection: {
                 category: "2026 Maison & Objet",
-                title: "Ramie Landscape",
+                title: "Ramie Wind Bell",
                 description: "Clear bell sounds at the end of ramie's elegant silhouette",
                 link: "View Details"
             },
@@ -329,7 +329,7 @@ const translations = {
         // Brand Section
         brand: {
             title: "Brand Story",
-            subtitle: "Korean Beauty That Permeates Daily Life\nCaptivated by the texture of hanji for 20 years. Hong Hyun-jeong Hanji Craft Studio creates everyday objects using traditional Korean materials: hanji, ramie, and lacquer.\nCombining the perspective of a design major with long-cultivated craft skills, we redraw traditional colors with modern sensibilities. Through accessories that anyone would want to keep close, we dream of Korean culture reaching people's daily lives across borders.\nCurrently showcasing works in various countries including North America, South America, and Europe, advancing into global markets. Through the beautiful landscapes created by hanji and ramie, we will convey the value of Korean culture more deeply and widely.",
+            subtitle: "Korean Beauty That Permeates Daily Life\nCaptivated by the texture of hanji for 20 years. Hong Hyun-jeong Hanji Craft Studio creates everyday objects using traditional Korean materials: hanji, ramie, and lacquer.\nCombining the perspective of a design major with long-cultivated craft skills, we redraw traditional colors with modern sensibilities. Through accessories that anyone would want to keep close, we dream of Korean culture reaching people's daily lives across borders.\nCurrently showcasing works in various countries including North America, South America, and Europe, advancing into global markets. Through the beautiful Wind Bells created by hanji and ramie, we will convey the value of Korean culture more deeply and widely.",
             mission: {
                 title: "Our Mission",
                 description: "We reinterpret thousand-year-old traditional hanji techniques with contemporary sensibility to create beautiful objects for everyday life."
@@ -371,11 +371,11 @@ const translations = {
                 description: "Cut into circles and attach ramie and hanji."
             },
             forming: {
-                title: "Ramie Landscape Production",
+                title: "Ramie Wind Bell Production",
                 description: "Creating shapes with ramie pieces."
             },
             materials: {
-                title: "Ramie Landscape Production",
+                title: "Ramie Wind Bell Production",
                 description: "Connecting bells and knots to sewn ramie forms."
             },
             tools: {
@@ -551,7 +551,7 @@ const translations = {
                     period: "The most brilliant moment of life, blooming through royal etiquette"
                 },
                 lamp: {
-                    title: "Wind's Edge - Ramie Landscape",
+                    title: "Wind's Edge - Ramie Wind Bell",
                     period: "Contemporary, 21st Century"
                 },
                 takja: {
