@@ -594,6 +594,11 @@
     .artwork-story {
         padding: 2rem;
     }
+    .artwork-story::before {
+        font-size: 4rem;
+        top: 1rem;
+        right: 1.5rem;
+    }
 
     .related-grid {
         grid-template-columns: 1fr;
@@ -653,6 +658,9 @@
         padding-top: 70px;
         padding-bottom: 0;
     }
+    .detail-info {
+        padding: 2rem 1.5rem;
+    }
     .detail-info h1 {
         font-size: 1.8rem;
     }
@@ -680,6 +688,28 @@
     }
     .section-title {
         font-size: 2rem;
+    }
+    .artwork-story {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+    .artwork-story::before {
+        font-size: 2.5rem;
+        top: 0.8rem;
+        right: 1rem;
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+    .carousel-btn.prev { left: 4px; }
+    .carousel-btn.next { right: 4px; }
+    .lightbox-close {
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
     }
 
     .detail-footer {

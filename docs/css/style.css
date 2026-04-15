@@ -1775,6 +1775,22 @@ html[lang="en"] .logo p {
     .logo p {
         font-size: 0.5rem;
     }
+
+    .philosophy-strip {
+        padding: 4rem 0;
+    }
+    .philosophy-strip::before {
+        font-size: 6rem;
+    }
+    .philosophy-strip blockquote {
+        font-size: 1.15rem;
+        line-height: 2;
+        padding: 0 1.5rem;
+    }
+    .philosophy-label {
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+    }
 }
 
 /* French responsive adjustments */
