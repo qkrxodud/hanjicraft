@@ -2,6 +2,97 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // ===== 페이지 입장 애니메이션 =====
+    requestAnimationFrame(() => {
+        document.body.classList.add('page-loaded');
+    });
+
+    // ===== 스크롤 진행 바 =====
+    const scrollProgress = document.getElementById('scrollProgress');
+    if (scrollProgress) {
+        window.addEventListener('scroll', function() {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / docHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        }, { passive: true });
+    }
+
+    // ===== 커스텀 커서 =====
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    if (cursorDot && cursorRing) {
+        let ringX = 0, ringY = 0;
+        let dotX = 0, dotY = 0;
+
+        document.addEventListener('mousemove', function(e) {
+            dotX = e.clientX;
+            dotY = e.clientY;
+            cursorDot.style.left = dotX + 'px';
+            cursorDot.style.top = dotY + 'px';
+        });
+
+        // 링은 부드럽게 따라가기
+        function animateRing() {
+            ringX += (dotX - ringX) * 0.12;
+            ringY += (dotY - ringY) * 0.12;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        // 클릭 가능 요소에 호버 시 링 확대
+        document.querySelectorAll('a, button, .masterpiece-item, .artwork-card, .highlight-card, .collection-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
+        });
+    }
+
+    // ===== 히어로 숫자 카운트업 애니메이션 =====
+    function animateCount(el, target, duration) {
+        let start = 0;
+        const step = target / (duration / 16);
+        const timer = setInterval(() => {
+            start += step;
+            if (start >= target) {
+                start = target;
+                clearInterval(timer);
+            }
+            el.textContent = Math.floor(start).toLocaleString();
+        }, 16);
+    }
+
+    const statsObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                const numbers = entry.target.querySelectorAll('[data-count]');
+                numbers.forEach(function(num) {
+                    animateCount(num, parseInt(num.getAttribute('data-count')), 1800);
+                });
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) statsObserver.observe(heroStats);
+
+    // ===== 히어로 패럴랙스 =====
+    const heroSection = document.querySelector('.hero');
+    const heroImg = document.querySelector('.slide img');
+    if (heroImg && heroSection) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.scrollY;
+            if (scrolled < window.innerHeight * 1.2) {
+                heroImg.style.transform = 'translateY(' + (scrolled * 0.3) + 'px) scale(1.05)';
+            }
+        }, { passive: true });
+        // 초기 scale 적용
+        heroImg.style.transform = 'translateY(0px) scale(1.05)';
+    }
+
+
+
     // Restore scroll position if returning from artwork detail
     function restoreScrollPosition() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -111,35 +202,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add background when scrolled
         if (scrollTop > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            navbar.style.background = 'rgba(245, 240, 232, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(28,28,28,0.07)';
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.background = 'rgba(245, 240, 232, 0.97)';
             navbar.style.boxShadow = 'none';
+        }
+
+        // Logo shrink effect on scroll
+        if (scrollTop > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
         }
 
         lastScrollTop = scrollTop;
     });
 
-    // Intersection Observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
+    // Scroll reveal animation (IntersectionObserver)
+    const revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.highlight-card, .collection-item, .masterpiece-item');
-    animatedElements.forEach(el => {
-        observer.observe(el);
+    // Cards and grid items get staggered reveal
+    document.querySelectorAll('.brand-card, .value-card, .highlight-card, .collection-item, .masterpiece-item').forEach(function(el) {
+        el.classList.add('reveal', 'reveal-stagger');
+        revealObserver.observe(el);
+    });
+
+    // Editorial rows — image and text slide in
+    document.querySelectorAll('.editorial-image, .editorial-text').forEach(function(el) {
+        el.classList.add('editorial-reveal');
+        revealObserver.observe(el);
+    });
+
+    // Philosophy strip
+    const philosophyQuote = document.querySelector('.philosophy-strip blockquote');
+    if (philosophyQuote) {
+        philosophyQuote.classList.add('reveal');
+        revealObserver.observe(philosophyQuote);
+    }
+
+    // Section titles and subtitles get simple reveal
+    document.querySelectorAll('.section-title, .brand-subtitle, .inquiry-lead, .values-title').forEach(function(el) {
+        el.classList.add('reveal');
+        revealObserver.observe(el);
     });
 
     // Save scroll position for all artwork detail links
@@ -249,6 +361,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 bottomNav.style.opacity = '0.8';
                 bottomNav.style.visibility = 'visible';
             }
+        });
+    }
+
+    // Horizontal drag scroll for collection grid
+    const collectionGrid = document.querySelector('.collection-grid');
+    if (collectionGrid) {
+        let isDown = false;
+        let startX;
+        let scrollLeftPos;
+
+        collectionGrid.addEventListener('mousedown', function(e) {
+            isDown = true;
+            startX = e.pageX - collectionGrid.offsetLeft;
+            scrollLeftPos = collectionGrid.scrollLeft;
+        });
+        collectionGrid.addEventListener('mouseleave', function() { isDown = false; });
+        collectionGrid.addEventListener('mouseup', function() { isDown = false; });
+        collectionGrid.addEventListener('mousemove', function(e) {
+            if (!isDown) return;
+            e.preventDefault();
+            var x = e.pageX - collectionGrid.offsetLeft;
+            var walk = (x - startX) * 1.5;
+            collectionGrid.scrollLeft = scrollLeftPos - walk;
         });
     }
 

@@ -535,12 +535,62 @@ document.addEventListener('DOMContentLoaded', function() {
         const museumName = window.i18n ? window.i18n.t('logo.title') : '홍현정한지공예 연구소';
         document.title = `${artworkContent.title} | ${museumName}`;
 
-        // Add fade-in animation
-        contentContainer.style.opacity = '0';
+        // 콘텐츠 로드 후 스크롤 리빌 애니메이션 설정
         setTimeout(() => {
-            contentContainer.style.opacity = '1';
-            contentContainer.style.transition = 'opacity 0.5s ease';
-        }, 100);
+            setupDetailAnimations();
+        }, 60);
+    }
+
+    // ===== 상세 페이지 스크롤 리빌 애니메이션 =====
+    function setupDetailAnimations() {
+        // IntersectionObserver 설정
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        // 이미지 영역 — 즉시 나타내기 (스티키라 처음부터 보임)
+        const imgArea = document.querySelector('.detail-image, .detail-image-gallery');
+        if (imgArea) {
+            imgArea.classList.add('img-visible');
+        }
+
+        // 텍스트 info 영역
+        const infoArea = document.querySelector('.detail-info');
+        if (infoArea) {
+            observer.observe(infoArea);
+        }
+
+        // h1 타이틀 래퍼
+        const h1 = document.querySelector('.detail-info h1');
+        if (h1 && h1.parentElement) {
+            h1.parentElement.classList.add('title-reveal');
+            observer.observe(h1.parentElement);
+        }
+
+        // meta 항목들
+        document.querySelectorAll('.meta-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // description, story
+        document.querySelectorAll('.artwork-description, .artwork-story').forEach(el => {
+            el.classList.add('detail-reveal');
+            observer.observe(el);
+        });
+
+        // related artworks title
+        const relatedTitle = document.querySelector('.related-artworks .section-title');
+        if (relatedTitle) observer.observe(relatedTitle);
+
+        // related items
+        document.querySelectorAll('.related-item').forEach(el => {
+            observer.observe(el);
+        });
     }
 
     // Setup image gallery functionality
@@ -985,6 +1035,23 @@ document.addEventListener('DOMContentLoaded', function() {
     setupRelatedArtworks();
     setupCarousel();
     setupSmoothScroll();
+
+    // 관련 작품 렌더링 완료 후 스크롤 리빌 적용
+    setTimeout(() => {
+        const relatedTitle = document.querySelector('.related-artworks .section-title');
+        if (relatedTitle) {
+            const obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            obs.observe(relatedTitle);
+            document.querySelectorAll('.related-item').forEach(el => obs.observe(el));
+        }
+    }, 200);
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', function() {

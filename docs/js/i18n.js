@@ -19,8 +19,18 @@ const translations = {
         // Hero Section
         hero: {
             title: "홍현정 한지공예 연구소",
-            description: "그 강인함과 아름다움을 품고 전통 공예의 맥을 이어 현대문화로 계승합니다.",
-            button: "작품 보기"
+            description: "천 년의 결을 품은 한지, 그 강인함과 아름다움으로 빚어낸 오브제들이 당신의 공간에 스며듭니다.",
+            button: "컬렉션 보기",
+            stat: {
+                years: "년 전통",
+                artworks: "점 이상의 작품",
+                exhibitions: "회 국제 전시",
+                countries: "포르투갈·프랑스·남미·북미"
+            }
+        },
+
+        philosophy: {
+            quote: "천년의 시간이 한 장의 종이에 깃들고,\n장인의 손끝에서 새로운 아름다움이 피어납니다."
         },
 
         // Highlights Section
@@ -49,7 +59,7 @@ const translations = {
         // Brand Section
         brand: {
             title: "브랜드 소개",
-            subtitle: "일상에 스며드는 한국의 미\n한지의 결에 매료되어 걸어온 20년. 홍현정한지공예연구소는 우리 전통의 재료인 한지, 모시, 옻칠을 사용하여 일상 속 오브제를 만듭니다.\n디자인 전공자로서의 시각과 오랜 시간 다져온 공예 기술을 더해, 전통의 색감을 현대적인 감각으로 다시 그려냅니다. 누구나 친근하게 곁에 두고 싶은 소품을 통해, 우리 문화가 국경을 넘어 전 세계인의 일상에 닿기를 꿈꿉니다.\n현재 북미와 남미, 유럽 등 다양한 국가에 작품을 선보이며 글로벌 시장으로 나아가고 있습니다. 한지와 모시가 만들어내는 아름다운 풍경을 통해 한국 문화의 가치를 더 깊고 넓게 전하겠습니다.",
+            subtitle: "한지의 결에 매료되어 걸어온 20년.\n홍현정한지공예연구소는 한지·모시·옻칠이라는 천년의 소재로 일상을 품격 있게 만드는 오브제를 빚습니다.\n디자인 전공자의 심미안과 장인의 손끝으로 재해석된 전통의 색채는 파리 메종 오브제를 비롯해 북미·유럽의 프리미엄 시장에서 한국 공예의 가치를 알리고 있습니다.",
             mission: {
                 title: "우리의 미션",
                 description: "천년의 전통 한지 기법을 현대적 감각으로 재해석하여 일상 속에서 누릴 수 있는 아름다운 오브제를 만듭니다."
@@ -203,6 +213,16 @@ const translations = {
             copyright: "© 2024 홍현정한지공예 연구소. 모든 권리 보유."
         },
 
+        // Inquiry Section
+        inquiry: {
+            title: "컬렉션 입점 문의",
+            description: "홍현정한지공예 연구소의 작품은 엄선된 프리미엄 채널을 통해 소개됩니다.\n백화점 바이어 및 갤러리 관계자분의 입점·전시 문의를 환영합니다.",
+            button: {
+                contact: "이메일로 문의하기",
+                instagram: "인스타그램 보기"
+            }
+        },
+
         // Bottom Navigation
         bottomNav: {
             lamp: "한지 조명"
@@ -210,11 +230,11 @@ const translations = {
 
         // Floating Action Button
         fab: {
-            menu: "구매링크",
+            menu: "구매하기",
             explore: "쇼피",
-            lamp: "노태그샵글로벌 (개별구매가능)",
+            lamp: "노태그샵 글로벌",
             armor: "종이 갑옷",
-            lighting: "핀코이 ",
+            lighting: "핀코이",
             process: "메종오브제 몰"
         },
 
@@ -299,8 +319,18 @@ const translations = {
         // Hero Section
         hero: {
             title: "Hong Hyun-jeong Hanji Craft Studio",
-            description: "Embracing strength and beauty, inheriting the tradition of traditional crafts and passing them on to modern culture.",
-            button: "View Artworks"
+            description: "Where a thousand years of Korean paper heritage meets contemporary design — objects of quiet luxury crafted for discerning spaces.",
+            button: "Explore Collection",
+            stat: {
+                years: "Years of Tradition",
+                artworks: "Artworks Created",
+                exhibitions: "International Shows",
+                countries: "PT · FR · Americas"
+            }
+        },
+
+        philosophy: {
+            quote: "A thousand years dwell within a single sheet of paper,\nand from the artisan's hands, new beauty blossoms."
         },
 
         // Highlights Section
@@ -484,6 +514,16 @@ const translations = {
             copyright: "© 2024 Hong hyun-jeong hanji craft studio. All rights reserved."
         },
 
+        // Inquiry Section
+        inquiry: {
+            title: "Collection Inquiry",
+            description: "The works of Hong Hyun-jeong Hanji Craft Studio are presented through carefully selected premium channels.\nWe welcome inquiries from department store buyers and gallery representatives.",
+            button: {
+                contact: "Contact via Email",
+                instagram: "View Instagram"
+            }
+        },
+
         // Bottom Navigation
         bottomNav: {
             lamp: "Traditional Lamp"
@@ -491,9 +531,9 @@ const translations = {
 
         // Floating Action Button
         fab: {
-            menu: "Purchase Links",
+            menu: "Shop",
             explore: "Shopee",
-            lamp: "Notag Shop Global (Individual Purchase Available)",
+            lamp: "Notag Shop Global",
             armor: "Paper Armor",
             lighting: "Pinkoi",
             process: "Maison & Objet Mall"
@@ -580,8 +620,18 @@ const translations = {
         // Hero Section
         hero: {
             title: "Atelier d'Artisanat Hanji Hong Hyun-jeong",
-            description: "Embrassant force et beauté, héritant de la tradition de l'artisanat traditionnel et la transmettant à la culture moderne.",
-            button: "Voir les Œuvres"
+            description: "Là où mille ans de papier coréen rencontrent le design contemporain — des objets d'un luxe subtil, conçus pour des espaces d'exception.",
+            button: "Explorer la Collection",
+            stat: {
+                years: "Ans de Tradition",
+                artworks: "Œuvres Créées",
+                exhibitions: "Expositions Int'l",
+                countries: "PT · FR · Amériques"
+            }
+        },
+
+        philosophy: {
+            quote: "Mille ans résident dans une feuille de papier,\net des mains de l'artisan naît une nouvelle beauté."
         },
 
         // Highlights Section
@@ -765,6 +815,16 @@ const translations = {
             copyright: "© 2024 Hong hyun-jeong hanji craft studio. Tous droits réservés."
         },
 
+        // Inquiry Section
+        inquiry: {
+            title: "Demande de Collection",
+            description: "Les œuvres de l'Atelier Hanji Hong Hyun-jeong sont présentées via des canaux premium soigneusement sélectionnés.\nNous accueillons les demandes d'acheteurs de grands magasins et de représentants de galeries.",
+            button: {
+                contact: "Contacter par Email",
+                instagram: "Voir Instagram"
+            }
+        },
+
         // Bottom Navigation
         bottomNav: {
             lamp: "Lampe Traditionnelle"
@@ -772,12 +832,12 @@ const translations = {
 
         // Floating Action Button
         fab: {
-            menu: "Liens d'Achat",
+            menu: "Boutique",
             explore: "Shopee",
-            lamp: "Notag Shop Global (Achat Individuel Possible)",
+            lamp: "Notag Shop Global",
             armor: "Armure en Papier",
             lighting: "Pinkoi",
-            process: "Centre Commercial Maison & Objet"
+            process: "Maison & Objet Mall"
         },
 
         // Artwork Detail

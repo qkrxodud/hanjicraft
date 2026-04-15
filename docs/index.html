@@ -4,37 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홍현정한지공예 연구소 | Hong hyun-jeong hanji craft studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/i18n.js"></script>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
     <!-- Top Navigation -->
     <nav class="top-nav">
         <div class="nav-container">
+            <ul class="nav-menu nav-left">
+                <li class="nav-item"><a href="#hero" class="nav-link" data-i18n="nav.home">홈</a></li>
+                <li class="nav-item"><a href="#brand" class="nav-link" data-i18n="nav.brand">브랜드소개</a></li>
+                <li class="nav-item"><a href="#highlights" class="nav-link" data-i18n="nav.exhibitions">메종 오브제</a></li>
+            </ul>
             <div class="logo">
                 <h1 data-i18n="logo.title">홍현정한지공예 연구소</h1>
                 <p data-i18n="logo.subtitle">Hong hyun-jeong hanji craft studio</p>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#hero" class="nav-link" data-i18n="nav.home">홈</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#brand" class="nav-link" data-i18n="nav.brand">브랜드소개</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#highlights" class="nav-link" data-i18n="nav.exhibitions">메종 오브제 출품작</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#collections" class="nav-link" data-i18n="nav.collections">제작 과정</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#gallery" class="nav-link" data-i18n="nav.gallery">갤러리</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link" data-i18n="nav.about">한지 지승 공예</a>
-                </li>
+            <ul class="nav-menu nav-right">
+                <li class="nav-item"><a href="#collections" class="nav-link" data-i18n="nav.collections">제작 과정</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link" data-i18n="nav.gallery">갤러리</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link" data-i18n="nav.about">한지 지승 공예</a></li>
             </ul>
             <div class="nav-actions">
                 <div class="language-switcher">
@@ -63,13 +60,57 @@
                 </div>
             </div>
         </div>
+        <!-- Hero Stat Strip -->
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-number" data-count="1000">0</span>
+                <span class="hero-stat-label" data-i18n="hero.stat.years">년 전통</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number" data-count="100">0</span>
+                <span class="hero-stat-label" data-i18n="hero.stat.artworks">점 이상의 작품</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number" data-count="10">0</span>
+                <span class="hero-stat-label" data-i18n="hero.stat.exhibitions">회 국제 전시</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-number" data-count="4">0</span>
+                <span class="hero-stat-label" data-i18n="hero.stat.countries">개국 수출</span>
+            </div>
+        </div>
     </section>
+
+    <!-- Marquee Strip -->
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <span>한지공예</span><span class="gold">·</span>
+            <span>HANJI CRAFT</span><span class="gold">·</span>
+            <span>홍현정한지공예연구소</span><span class="gold">·</span>
+            <span>TRADITION</span><span class="gold">·</span>
+            <span>CRAFTSMANSHIP</span><span class="gold">·</span>
+            <span>천년의 기술</span><span class="gold">·</span>
+            <span>MAISON OBJET</span><span class="gold">·</span>
+            <span>KOREAN HERITAGE</span><span class="gold">·</span>
+            <span>한지공예</span><span class="gold">·</span>
+            <span>HANJI CRAFT</span><span class="gold">·</span>
+            <span>홍현정한지공예연구소</span><span class="gold">·</span>
+            <span>TRADITION</span><span class="gold">·</span>
+            <span>CRAFTSMANSHIP</span><span class="gold">·</span>
+            <span>천년의 기술</span><span class="gold">·</span>
+            <span>MAISON OBJET</span><span class="gold">·</span>
+            <span>KOREAN HERITAGE</span><span class="gold">·</span>
+        </div>
+    </div>
 
     <!-- Brand Section -->
     <section id="brand" class="brand-section">
         <div class="container">
             <div class="brand-header">
-                <h2 class="section-title" data-i18n="brand.title">브랜드 소개</h2>
+                <h2 class="section-title" data-i18n="brand.title">
+                    <span class="section-label">BRAND</span>
+                    브랜드 소개
+                </h2>
                 <p class="brand-subtitle" data-i18n="brand.subtitle">전통과 현대를 잇는 한지의 새로운 여정</p>
             </div>
 
@@ -90,25 +131,25 @@
                     <h3 class="values-title" data-i18n="brand.values.title">핵심 가치</h3>
                     <div class="values-grid">
                         <div class="value-card">
-                            <div class="value-icon">🏺</div>
+                            <div class="value-icon">傳</div>
                             <h4 data-i18n="brand.values.tradition.title">전통 계승</h4>
                             <p data-i18n="brand.values.tradition.description">1,000년 이상 이어온 한지 제작 기법을 그대로 보존하고 전승합니다.</p>
                         </div>
 
                         <div class="value-card">
-                            <div class="value-icon">💡</div>
+                            <div class="value-icon">革</div>
                             <h4 data-i18n="brand.values.innovation.title">현대적 혁신</h4>
                             <p data-i18n="brand.values.innovation.description">전통 기법에 현대적 디자인과 기술을 접목하여 새로운 가치를 창조합니다.</p>
                         </div>
 
                         <div class="value-card">
-                            <div class="value-icon">🌱</div>
+                            <div class="value-icon">自</div>
                             <h4 data-i18n="brand.values.sustainability.title">지속가능성</h4>
                             <p data-i18n="brand.values.sustainability.description">친환경 천연 소재만을 사용하여 지구환경을 생각하는 제품을 만듭니다.</p>
                         </div>
 
                         <div class="value-card">
-                            <div class="value-icon">🎨</div>
+                            <div class="value-icon">匠</div>
                             <h4 data-i18n="brand.values.craftsmanship.title">장인정신</h4>
                             <p data-i18n="brand.values.craftsmanship.description">숙련된 장인들의 정성과 시간이 깃든 수작업으로 완성되는 작품입니다.</p>
                         </div>
@@ -121,7 +162,10 @@
     <!-- Highlights Section -->
     <section id="highlights" class="highlights">
         <div class="container">
-            <h2 class="section-title" data-i18n="highlights.title">Highlights</h2>
+            <h2 class="section-title" data-i18n="highlights.title">
+                <span class="section-label">EXHIBITION</span>
+                Highlights
+            </h2>
             <div class="highlights-grid">
                 <div class="highlight-card featured">
                     <img src="./img/gallery/01.webp" alt="Featured Exhibition" loading="lazy">
@@ -157,7 +201,10 @@
     <!-- Delve into the Collection -->
     <section id="collections" class="collection-delve">
         <div class="container">
-            <h2 class="section-title" data-i18n="collection.title">Delve into the Collection</h2>
+            <h2 class="section-title" data-i18n="collection.title">
+                <span class="section-label">COLLECTION</span>
+                Delve into the Collection
+            </h2>
             <div class="collection-grid">
                 <div class="collection-item">
                     <img src="img/makeing/08.webp" alt="Contemporary Uses" loading="lazy">
@@ -222,8 +269,12 @@
     <!-- Masterpieces Gallery -->
     <section id="gallery" class="masterpieces">
         <div class="container">
-            <h2 class="section-title" data-i18n="masterpieces.title">Masterpieces</h2>
-            <div class="masterpieces-grid">
+            <h2 class="section-title" data-i18n="masterpieces.title">
+                <span class="section-label">GALLERY</span>
+                Masterpieces
+            </h2>
+        </div>
+        <div class="masterpieces-grid">
                 <div class="masterpiece-item featured" data-artwork-id="gallery09" style="cursor: pointer;">
                     <img src="./img/09.webp" alt="Contemporary Lighting" loading="lazy">
                     <div class="masterpiece-info">
@@ -288,57 +339,96 @@
                         <span class="artwork-details" data-i18n="masterpieces.empress.period">Contemporary</span>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
+
+    <!-- Philosophy Statement -->
+    <div class="philosophy-strip">
+        <div class="philosophy-inner">
+            <span class="philosophy-label">紙</span>
+            <blockquote data-i18n="philosophy.quote">천년의 시간이 한 장의 종이에 깃들고,
+장인의 손끝에서 새로운 아름다움이 피어납니다.</blockquote>
+        </div>
+    </div>
 
     <!-- Featured Artworks -->
     <section id="about" class="featured-artworks">
         <div class="container">
-            <h2 class="section-title" data-i18n="featured.title">Featured Artworks</h2>
-            <div class="featured-grid">
-                <div class="artwork-card">
+            <h2 class="section-title" data-i18n="featured.title">
+                <span class="section-label">ARTWORKS</span>
+                Featured Artworks
+            </h2>
+        </div>
+        <div class="editorial-rows">
+            <div class="editorial-row">
+                <div class="editorial-image">
                     <img src="./img/gallery/light_circle.webp" alt="Traditional Hanji Lamp" loading="lazy">
-                    <div class="artwork-info">
-                        <h3 data-i18n="featured.lamp.title">Traditional Hanji Lamp</h3>
-                        <p class="artwork-period" data-i18n="featured.lamp.period">Contemporary, 21st Century</p>
-                        <p class="artwork-description" data-i18n="featured.lamp.description">A contemporary interpretation of traditional Korean lighting using handmade hanji paper.</p>
-                        <a href="./artwork-detail.html?id=neak_circle" class="artwork-link" data-i18n="featured.lamp.link">View Details</a>
-                    </div>
                 </div>
-                <div class="artwork-card">
+                <div class="editorial-text">
+                    <span class="editorial-index">01</span>
+                    <h3 data-i18n="featured.lamp.title">Traditional Hanji Lamp</h3>
+                    <p class="artwork-period" data-i18n="featured.lamp.period">Contemporary, 21st Century</p>
+                    <p class="artwork-description" data-i18n="featured.lamp.description">A contemporary interpretation of traditional Korean lighting using handmade hanji paper.</p>
+                    <a href="./artwork-detail.html?id=neak_circle" class="artwork-link" data-i18n="featured.lamp.link">View Details</a>
+                </div>
+            </div>
+            <div class="editorial-row editorial-row--reverse">
+                <div class="editorial-image">
                     <img src="./img/gallery/blue_circle.webp" alt="Traditional Takja" loading="lazy">
-                    <div class="artwork-info">
-                        <h3 data-i18n="featured.armor.title">Traditional Takja (Paper Armor)</h3>
-                        <p class="artwork-period" data-i18n="featured.armor.period">Joseon Dynasty, 17th Century</p>
-                        <p class="artwork-description" data-i18n="featured.armor.description">Ceremonial armor made entirely from layered hanji paper, demonstrating the material's strength.</p>
-                        <a href="./artwork-detail.html?id=circle_ham" class="artwork-link" data-i18n="featured.armor.link">View Details</a>
-                    </div>
                 </div>
-                <div class="artwork-card">
+                <div class="editorial-text">
+                    <span class="editorial-index">02</span>
+                    <h3 data-i18n="featured.armor.title">Traditional Takja</h3>
+                    <p class="artwork-period" data-i18n="featured.armor.period">Joseon Dynasty, 17th Century</p>
+                    <p class="artwork-description" data-i18n="featured.armor.description">Ceremonial armor made entirely from layered hanji paper, demonstrating the material's strength.</p>
+                    <a href="./artwork-detail.html?id=circle_ham" class="artwork-link" data-i18n="featured.armor.link">View Details</a>
+                </div>
+            </div>
+            <div class="editorial-row">
+                <div class="editorial-image">
                     <img src="./img/two_circle.webp" alt="Hanji Making Process" loading="lazy">
-                    <div class="artwork-info">
-                        <h3 data-i18n="featured.craftsman.title">Master Craftsman at Work</h3>
-                        <p class="artwork-period" data-i18n="featured.craftsman.period">Living Heritage</p>
-                        <p class="artwork-description" data-i18n="featured.craftsman.description">Witness the ancient art of hanji papermaking preserved by master artisans.</p>
-                        <a href="./artwork-detail.html?id=circle_pum" class="artwork-link" data-i18n="featured.craftsman.link">View Details</a>
-                    </div>
                 </div>
+                <div class="editorial-text">
+                    <span class="editorial-index">03</span>
+                    <h3 data-i18n="featured.craftsman.title">Master Craftsman at Work</h3>
+                    <p class="artwork-period" data-i18n="featured.craftsman.period">Living Heritage</p>
+                    <p class="artwork-description" data-i18n="featured.craftsman.description">Witness the ancient art of hanji papermaking preserved by master artisans.</p>
+                    <a href="./artwork-detail.html?id=circle_pum" class="artwork-link" data-i18n="featured.craftsman.link">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquiry / Partnership Section -->
+    <section id="inquiry" class="inquiry-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="inquiry.title">
+                <span class="section-label">PARTNERSHIP</span>
+                컬렉션 입점 문의
+            </h2>
+            <p class="inquiry-lead" data-i18n="inquiry.description">홍현정한지공예 연구소의 작품은 엄선된 프리미엄 채널을 통해 소개됩니다. 백화점 바이어 및 갤러리 관계자분의 입점·전시 문의를 환영합니다.</p>
+            <div class="inquiry-cta-group">
+                <a href="mailto:hongcraftstudio@gmail.com" class="inquiry-btn primary" data-i18n="inquiry.button.contact">이메일로 문의하기</a>
+                <a href="https://www.instagram.com/hhj_hanj1craft" target="_blank" rel="noopener" class="inquiry-btn secondary" data-i18n="inquiry.button.instagram">인스타그램 보기</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <h3 data-i18n="logo.title">홍현정한지공예 연구소</h3>
+                <p data-i18n="logo.subtitle">Hong hyun-jeong hanji craft studio</p>
+            </div>
+        </div>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3 data-i18n="logo.title">홍현정한지공예 연구소</h3>
-                    <p><span data-i18n="footer.contact.address">부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편번호:48419)</span><br>
-                    <span data-i18n="footer.contact.email">이메일:</span> <a href="mailto:hongcraftstudio@gmail.com" data-i18n="footer.contact.emailAddress">hongcraftstudio@gmail.com</a></p>
+                    <p><span data-i18n="footer.contact.address">부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편번호:48419)</span></p>
+                    <p><span data-i18n="footer.contact.email">이메일:</span> <a href="mailto:hongcraftstudio@gmail.com" data-i18n="footer.contact.emailAddress">hongcraftstudio@gmail.com</a></p>
                 </div>
                 <div class="footer-social">
-                    <h4 data-i18n="footer.social.title">소셜 미디어</h4>
                     <div class="social-links">
                         <a href="https://www.instagram.com/hhj_hanj1craft" data-i18n="footer.social.instagram">인스타그램</a>
                     </div>

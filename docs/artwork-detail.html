@@ -4,15 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작품 상세 | 홍현정한지공예 연구소</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/artwork-detail.css">
     <script src="./js/i18n.js"></script>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Lightbox Overlay -->
+    <div class="lightbox-overlay" id="lightboxOverlay">
+        <button class="lightbox-close" id="lightboxClose">&#x2715;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
     <!-- Top Navigation -->
     <nav class="top-nav">
         <div class="nav-container">
+            <div class="nav-left-action">
+                <a href="./index.html?fromDetail=true#gallery" class="back-nav-link">← Collection</a>
+            </div>
             <div class="logo">
                 <a href="./index.html" style="text-decoration: none; color: inherit;">
                     <h1 data-i18n="logo.title">홍현정한지공예 연구소</h1>
@@ -194,5 +209,60 @@
 
     <script src="./js/main.js"></script>
     <script src="./js/artwork-detail.js"></script>
+    <script>
+    // ===== 스크롤 진행 바 =====
+    (function() {
+        var bar = document.getElementById('scrollProgress');
+        if (!bar) return;
+        window.addEventListener('scroll', function() {
+            var docH = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (window.scrollY / docH * 100) + '%';
+        }, { passive: true });
+    })();
+
+    // ===== 라이트박스 =====
+    (function() {
+        var overlay = document.getElementById('lightboxOverlay');
+        var lightboxImg = document.getElementById('lightboxImg');
+        var caption = document.getElementById('lightboxCaption');
+        var closeBtn = document.getElementById('lightboxClose');
+        if (!overlay) return;
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || '';
+            caption.textContent = alt || '';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(function() { lightboxImg.src = ''; }, 350);
+        }
+
+        // 메인 이미지 클릭으로 라이트박스 열기
+        document.addEventListener('click', function(e) {
+            var img = e.target.closest('.main-image img, .detail-image img');
+            if (img) {
+                openLightbox(img.src, img.alt);
+            }
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    })();
+
+    // ===== 페이지 입장 =====
+    document.body.classList.add('page-loaded');
+    </script>
 </body>
 </html>
