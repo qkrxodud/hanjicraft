@@ -7,6 +7,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
     letter-spacing: 0.5px;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 
@@ -1567,6 +1569,7 @@ html[lang="en"] .logo p {
     .slide-content h2 {
         font-size: 2.5rem;
         letter-spacing: 2px;
+        white-space: normal;
     }
 
     .slide-content p {
@@ -1658,7 +1661,8 @@ html[lang="en"] .logo p {
 
     .slide-content h2 {
         font-size: 2.2rem;
-        letter-spacing: 2px;
+        letter-spacing: 1px;
+        white-space: normal;
     }
 
     .section-title {
@@ -2122,22 +2126,26 @@ body.page-loaded {
     opacity: 1;
     transform: translateY(0);
 }
-.editorial-image.editorial-reveal {
-    transform: translateX(20px);
-}
-.editorial-text.editorial-reveal {
-    transform: translateX(-20px);
-    transition-delay: 0.15s;
-}
-.editorial-row--reverse .editorial-image.editorial-reveal {
-    transform: translateX(-20px);
-}
-.editorial-row--reverse .editorial-text.editorial-reveal {
-    transform: translateX(20px);
-}
-.editorial-image.editorial-reveal.visible,
-.editorial-text.editorial-reveal.visible {
-    transform: translateX(0);
+
+/* 데스크탑에서만 좌우 슬라이드인 — 모바일에서는 translateX 제거 */
+@media (min-width: 769px) {
+    .editorial-image.editorial-reveal {
+        transform: translateX(20px);
+    }
+    .editorial-text.editorial-reveal {
+        transform: translateX(-20px);
+        transition-delay: 0.15s;
+    }
+    .editorial-row--reverse .editorial-image.editorial-reveal {
+        transform: translateX(-20px);
+    }
+    .editorial-row--reverse .editorial-text.editorial-reveal {
+        transform: translateX(20px);
+    }
+    .editorial-image.editorial-reveal.visible,
+    .editorial-text.editorial-reveal.visible {
+        transform: translateX(0);
+    }
 }
 
 /* ===== Counter animation ===== */
