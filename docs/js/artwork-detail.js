@@ -479,6 +479,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 이미지 처리: images 배열이 있으면 사용하고, 없으면 기존 image 속성 사용
         const imageUrls = artwork.images || [artwork.image];
 
+        const padNum = (n) => String(n).padStart(2, '0');
+
         let imageGalleryHtml = '';
         if (imageUrls.length === 1) {
             // 단일 이미지
@@ -488,7 +490,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         } else {
-            // 다중 이미지 - 갤러리 형태
+            // 다중 이미지 - 갤러리 형태 (카운터를 main-image 안으로 이동)
             imageGalleryHtml = `
                 <div class="detail-image-gallery">
                     <div class="main-image">
@@ -496,6 +498,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="image-nav">
                             <button class="image-nav-btn prev" id="prevImage">‹</button>
                             <button class="image-nav-btn next" id="nextImage">›</button>
+                        </div>
+                        <div class="image-counter">
+                            <span id="currentImageIndex">${padNum(1)}</span><span class="counter-sep"> / </span>${padNum(imageUrls.length)}
                         </div>
                     </div>
                     <div class="image-thumbnails">
@@ -505,22 +510,24 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         `).join('')}
                     </div>
-                    <div class="image-counter">
-                        <span id="currentImageIndex">1</span> / ${imageUrls.length}
-                    </div>
                 </div>
             `;
         }
 
+        const studioLabel = window.i18n ? window.i18n.t('logo.title') : '홍현정한지공예 연구소';
+        const storyTitle = window.i18n ? window.i18n.t('artworkDetail.storyTitle') : '작품 이야기';
+
         contentContainer.innerHTML = `
             ${imageGalleryHtml}
             <div class="detail-info">
+                <span class="detail-studio-label">${studioLabel}</span>
                 <h1>${artworkContent.title}</h1>
+                <div class="detail-title-line"></div>
                 <div class="artwork-description">
                     <p>${artworkContent.description}</p>
                 </div>
                 <div class="artwork-story">
-                    <h3>${window.i18n ? window.i18n.t('artworkDetail.storyTitle') : '작품 이야기'}</h3>
+                    <h3>${storyTitle}</h3>
                     <p>${artworkContent.story}</p>
                 </div>
             </div>
@@ -607,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentIndex = index;
             mainImage.src = imageUrls[index];
             mainImage.alt = `${title} ${index + 1}`;
-            currentIndexSpan.textContent = index + 1;
+            currentIndexSpan.textContent = String(index + 1).padStart(2, '0');
 
             // 썸네일 활성화 상태 업데이트
             thumbnails.forEach((thumb, i) => {
@@ -755,9 +762,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const itemsWrapper = document.getElementById('relatedItemsWrapper');
         const items = document.querySelectorAll('.related-item');
 
-        if (!prevBtn || !nextBtn || !itemsWrapper || items.length === 0) {
-            return;
-        }
+        if (!itemsWrapper || items.length === 0) return;
+
+        // 모바일: CSS overflow-x scroll 방식으로 전환 (버튼/자동스크롤 불필요)
+        if (window.innerWidth <= 768) return;
+
+        if (!prevBtn || !nextBtn) return;
 
         let currentTranslateX = 0;
         let isUserInteracting = false;
@@ -975,59 +985,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Language switcher functionality for detail page
-    const languageToggle = document.getElementById('language-toggle');
-    const languageDropdown = document.getElementById('language-dropdown');
-    const langOptions = document.querySelectorAll('.lang-option');
-
-    if (languageToggle && languageDropdown) {
-        // Update language button text
-        function updateLanguageButton() {
-            if (!window.i18n) return;
-
-            const currentLang = window.i18n.getCurrentLanguage();
-            const langMap = {
-                'ko': 'KO',
-                'en': 'EN',
-                'fr': 'FR'
-            };
-
-            languageToggle.textContent = langMap[currentLang] || 'KO';
-
-            langOptions.forEach(option => {
-                const optionLang = option.getAttribute('data-lang');
-                option.classList.toggle('active', optionLang === currentLang);
-            });
-        }
-
-        updateLanguageButton();
-
-        // Toggle dropdown
-        languageToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            languageDropdown.classList.toggle('show');
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function() {
-            languageDropdown.classList.remove('show');
-        });
-
-        // Language option selection
-        langOptions.forEach(option => {
-            option.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const selectedLang = this.getAttribute('data-lang');
-
-                if (window.i18n) {
-                    window.i18n.setLanguage(selectedLang);
-                    updateLanguageButton();
-                }
-
-                languageDropdown.classList.remove('show');
-            });
-        });
-    }
+    // 언어 전환 UI 처리는 main.js에서 담당 — 여기서는 languageChanged 시 콘텐츠만 재렌더링
 
     // Initialize page
     loadArtworkDetails();

@@ -1633,6 +1633,123 @@ html[lang="en"] .logo p {
         padding: 8px 14px;
         font-size: 0.8rem;
     }
+
+    /* 히어로: 모바일에서 100svh */
+    .hero-container {
+        height: 100vh;
+        height: 100svh;
+        min-height: 520px;
+    }
+    /* 히어로 스탯: 모바일 2x2 그리드 */
+    .hero-stats {
+        flex-wrap: wrap;
+    }
+    .hero-stat {
+        flex: 0 0 50%;
+        padding: 1.2rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid rgba(28,28,28,0.08);
+    }
+    .hero-stat:nth-child(odd) {
+        border-right: 1px solid rgba(28,28,28,0.08);
+    }
+    .hero-stat:nth-child(3),
+    .hero-stat:nth-child(4) {
+        border-bottom: none;
+    }
+    .hero-stat-number {
+        font-size: 2rem;
+    }
+
+    /* 섹션 패딩 모바일 최적화 */
+    .highlights {
+        padding: 5rem 0;
+    }
+    .collection-delve {
+        padding: 5rem 0;
+    }
+    .featured-artworks {
+        padding-top: 5rem;
+    }
+    .brand-section {
+        padding: 5rem 0;
+    }
+
+    /* 카드 콘텐츠 패딩 축소 */
+    .card-content {
+        padding: 1.8rem;
+    }
+
+    /* 섹션 타이틀 하단 여백 축소 */
+    .section-title {
+        margin-bottom: 3.5rem;
+    }
+
+    /* 푸터 로고 */
+    .footer-logo h3 {
+        white-space: normal;
+        word-break: keep-all;
+    }
+    .footer-top {
+        padding: 3rem 0 2.5rem;
+    }
+
+    /* 터치 디바이스: masterpiece 설명 항상 표시 */
+    .masterpiece-info p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 갤러리 섹션 */
+    .masterpieces {
+        padding: 5rem 0;
+    }
+    .masterpieces .masterpieces-grid {
+        margin-top: 2.5rem;
+    }
+
+    /* 컬렉션 아이템 콘텐츠 패딩 */
+    .item-content {
+        padding: 1.6rem;
+    }
+
+    /* 히어로 버튼 — 모바일에서 더 넓게 */
+    .hero-btn {
+        padding: 14px 36px;
+        width: auto;
+        min-width: 180px;
+        text-align: center;
+    }
+
+    /* 히어로 본문 — max-width 해제 */
+    .slide-content p {
+        max-width: 100%;
+    }
+
+    /* 입점 문의 섹션 */
+    .inquiry-section .section-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+    .inquiry-lead {
+        font-size: 0.88rem;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* 푸터 콘텐츠 패딩 */
+    .footer-content {
+        padding: 2rem 0 1.5rem;
+    }
+    .footer-info p {
+        font-size: 0.7rem;
+    }
+
+    /* 마키 스트립 폰트 축소 */
+    .marquee-track span {
+        padding: 0 1.8rem;
+        font-size: 0.6rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1673,7 +1790,7 @@ html[lang="en"] .logo p {
 
     .masterpieces-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 280px);
+        grid-template-rows: repeat(6, 260px);
     }
 
     .masterpiece-item.featured {
@@ -1683,6 +1800,141 @@ html[lang="en"] .logo p {
 
     .visit-main h2 {
         font-size: 2rem;
+    }
+
+    /* 섹션 패딩 480px 추가 축소 */
+    .highlights {
+        padding: 3.5rem 0;
+    }
+    .collection-delve {
+        padding: 3.5rem 0;
+    }
+    .featured-artworks {
+        padding-top: 3.5rem;
+    }
+    .brand-section {
+        padding: 3.5rem 0;
+    }
+    .inquiry-section {
+        padding: 3.5rem 0;
+    }
+
+    /* 섹션 타이틀 추가 최적화 */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    /* 카드 패딩 */
+    .card-content {
+        padding: 1.4rem;
+    }
+    .highlight-card img {
+        height: 200px;
+    }
+    .highlight-card.featured img {
+        height: 240px;
+    }
+
+    /* 핵심 가치 2x2 그리드 */
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    .value-card {
+        padding: 1.5rem 1rem;
+    }
+
+    /* 히어로 스탯 480px */
+    .hero-stat-number {
+        font-size: 1.8rem;
+    }
+    .hero-stat-label {
+        font-size: 0.55rem;
+        letter-spacing: 1.5px;
+    }
+
+    /* FAB 버튼 */
+    .bottom-nav {
+        bottom: 12px;
+        right: 12px;
+    }
+    .bottom-nav-btn.primary {
+        padding: 11px 16px;
+        font-size: 0.7rem;
+        min-height: 44px;
+    }
+
+    /* 갤러리 섹션 */
+    .masterpieces {
+        padding: 3rem 0;
+    }
+    /* 암묵적 행 높이 보장 (9개 아이템, 6개만 명시적) */
+    .masterpieces-grid {
+        grid-auto-rows: 260px;
+    }
+
+    /* 컬렉션 아이템 */
+    .item-content {
+        padding: 1.2rem;
+    }
+    .item-content h3 {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    /* 히어로 버튼 */
+    .hero-btn {
+        padding: 13px 28px;
+        font-size: 0.65rem;
+        letter-spacing: 3px;
+        min-width: 160px;
+    }
+
+    /* 마키 스트립 */
+    .marquee-track span {
+        padding: 0 1.2rem;
+        font-size: 0.58rem;
+        letter-spacing: 2px;
+    }
+
+    /* 입점 문의 */
+    .inquiry-section .section-title {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+    }
+    .inquiry-lead {
+        font-size: 0.82rem;
+        line-height: 1.8;
+        padding: 0;
+    }
+
+    /* 푸터 */
+    .footer-top {
+        padding: 2rem 0 1.5rem;
+    }
+    .footer-content {
+        padding: 1.5rem 0 1rem;
+        gap: 1rem;
+    }
+    .footer-bottom {
+        padding: 1rem 0;
+        font-size: 0.62rem;
+    }
+    .footer-logo h3 {
+        font-size: 1.1rem;
+    }
+    .footer-logo p {
+        font-size: 0.58rem;
+    }
+
+    /* editorial 이미지 높이 */
+    .editorial-image {
+        min-height: 56vw;
+    }
+    .editorial-text {
+        padding: 2.5rem 1.5rem;
     }
 }
 
@@ -1769,11 +2021,15 @@ html[lang="en"] .logo p {
 
 @media (max-width: 480px) {
     .logo h1 {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        white-space: normal;
+        word-break: keep-all;
+        letter-spacing: 1.5px;
     }
 
     .logo p {
         font-size: 0.5rem;
+        letter-spacing: 2px;
     }
 
     .philosophy-strip {
@@ -1855,35 +2111,6 @@ html[lang="en"] .logo p {
     }
 }
 
-/* ============================================
-   ANIMATIONS & DYNAMIC INTERACTIONS
-   ============================================ */
-
-/* Hero text load animation */
-.slide-content h2,
-.slide-content p,
-.slide-content .hero-btn {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.slide.active .slide-content h2 {
-    animation: heroFadeUp 1s ease 0.3s forwards;
-}
-.slide.active .slide-content p {
-    animation: heroFadeUp 1s ease 0.6s forwards;
-}
-.slide.active .slide-content .hero-btn {
-    animation: heroFadeUp 1s ease 0.9s forwards;
-}
-
-@keyframes heroFadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Scroll reveal base states */
 .reveal {
     opacity: 0;
@@ -1927,19 +2154,6 @@ html[lang="en"] .logo p {
     max-height: 20px;
 }
 
-/* masterpiece overlay — gradient 방식으로 변경됨 */
-
-/* Highlight card image zoom */
-.highlight-card {
-    overflow: hidden;
-}
-.highlight-card img {
-    transition: transform 0.6s ease;
-}
-.highlight-card:hover img {
-    transform: scale(1.06);
-}
-
 /* Collection — horizontal scroll track */
 .collection-grid {
     display: flex !important;
@@ -1961,6 +2175,28 @@ html[lang="en"] .logo p {
 .collection-item {
     flex: 0 0 260px !important;
     scroll-snap-align: start;
+}
+
+@media (max-width: 768px) {
+    .collection-grid {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 1rem;
+    }
+    .collection-item {
+        flex: 0 0 220px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .collection-grid {
+        padding-left: 15px;
+        padding-right: 15px;
+        gap: 0.8rem;
+    }
+    .collection-item {
+        flex: 0 0 190px !important;
+    }
 }
 
 /* Collection scroll hint fade edges */
@@ -2030,17 +2266,11 @@ body.page-loaded {
     to   { transform: translateX(-50%); }
 }
 
-/* ===== Hero stat strip (numbers at bottom of hero) ===== */
+/* ===== Hero stat strip ===== */
 .hero-stats {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: flex;
-    background: rgba(245,240,232,0.93);
-    backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(28,28,28,0.08);
-    z-index: 3;
+    background: #F5F0E8;
+    border-bottom: 1px solid rgba(28,28,28,0.08);
 }
 .hero-stat {
     flex: 1;
@@ -2075,21 +2305,6 @@ body.page-loaded {
     height: 1px;
     background: #B8975A;
     margin: 2rem 0;
-}
-
-/* ===== Gallery masonry-style grid ===== */
-.masterpieces-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 300px;
-    gap: 4px;
-}
-.masterpiece-item.featured {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-.masterpiece-item.featured-tall {
-    grid-row: span 2;
 }
 
 /* ===== Cursor follower dot (luxury touch) ===== */
@@ -2243,21 +2458,45 @@ body.page-loaded {
 
 /* ===== Masterpieces — full-bleed 풀블리드 ===== */
 .masterpieces .masterpieces-grid {
-    /* 섹션 내 컨테이너 밖으로 이동: 너비 전체 사용 */
     margin-top: 5rem;
+}
+@media (max-width: 768px) {
+    .masterpieces .masterpieces-grid {
+        margin-top: 3rem;
+    }
+}
+@media (max-width: 480px) {
+    .masterpieces .masterpieces-grid {
+        margin-top: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
-    .hero-stats {
-        display: none;
-    }
-    .masterpieces-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 220px;
-    }
-    .masterpiece-item.featured {
-        grid-column: span 2;
-        grid-row: span 1;
-    }
+    /* 데스크탑 전용 커서 숨김 */
     .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ===== 터치 디바이스: 갤러리 설명 항상 표시 ===== */
+@media (pointer: coarse) {
+    .masterpiece-info p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* hover 효과 제거 — 터치에선 필요 없음 */
+    .highlight-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .collection-item:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .value-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .masterpiece-item:hover .masterpiece-info p {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
