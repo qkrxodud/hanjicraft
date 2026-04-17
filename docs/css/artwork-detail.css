@@ -434,10 +434,11 @@
     border: none;
     overflow: hidden;
     cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .related-item:hover {
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
 }
 .related-item img {
     width: 100%;
@@ -449,7 +450,7 @@
     transform: scale(1.04);
 }
 .related-info {
-    padding: 1.2rem 0;
+    padding: 1.2rem 1.4rem 1.6rem;
     border-top: 1px solid rgba(28,28,28,0.08);
 }
 .related-info h3 {
@@ -458,8 +459,8 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #1C1C1C;
-    margin-bottom: 0.4rem;
-    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
 }
 .related-info p {
     font-size: 0.7rem;
@@ -489,9 +490,13 @@
     justify-content: center;
 }
 .carousel-btn:hover {
-    background: #333;
+    background: #B8975A;
     box-shadow: none;
     transform: translateY(-50%);
+}
+.carousel-btn:active {
+    background: #9a7d48;
+    transform: translateY(-50%) scale(0.94);
 }
 .carousel-btn.prev { left: -22px; }
 .carousel-btn.next { right: -22px; }
@@ -832,12 +837,21 @@
 
     /* ----- 정보 영역 ----- */
     .detail-info {
-        padding: 2rem 1.25rem 2.5rem;
+        padding: 2rem 1.25rem 0;
+    }
+    .detail-studio-label {
+        font-size: 0.52rem;
+        letter-spacing: 2.5px;
+        margin-bottom: 0.9rem;
     }
     .detail-info h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         letter-spacing: 0.5px;
-        margin-bottom: 1.2rem;
+        line-height: 1.25;
+    }
+    .detail-title-line {
+        width: 30px;
+        margin: 1.4rem 0 1.8rem;
     }
     .artwork-meta {
         gap: 0.6rem;
@@ -848,28 +862,35 @@
         gap: 0.6rem;
     }
     .meta-label {
-        width: 64px;
-        font-size: 0.55rem;
+        width: 60px;
+        font-size: 0.52rem;
     }
     .meta-value {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
     }
     .artwork-description {
         font-size: 0.85rem;
-        line-height: 1.85;
+        line-height: 1.95;
     }
+    /* 480px 풀블리드 */
     .artwork-story {
-        padding: 2rem 1.5rem;
-        margin-top: 2rem;
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        padding: 2.5rem 1.25rem 3rem;
+        margin-top: 2.5rem;
+    }
+    .artwork-story::after {
+        left: 1.25rem;
+        right: 1.25rem;
     }
     .artwork-story::before {
-        font-size: 3rem;
-        top: 0.8rem;
-        right: 1rem;
+        font-size: 8rem;
+        bottom: -1rem;
+        right: -0.5rem;
     }
     .artwork-story p {
         font-size: 0.85rem;
-        line-height: 2;
+        line-height: 2.1;
     }
 
     /* ----- 관련 작품 카드 더 넓게 ----- */

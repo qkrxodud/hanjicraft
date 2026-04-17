@@ -472,8 +472,8 @@ html[lang="en"] .logo p {
 
 .brand-card:hover {
     background: #EDE7DC;
-    transform: none;
-    box-shadow: none;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
 }
 
 .brand-card h3 {
@@ -724,6 +724,11 @@ html[lang="en"] .logo p {
     background: white;
     color: #000;
     border-color: white;
+    transform: translateY(-2px);
+}
+.hero-btn:active {
+    transform: translateY(0);
+    background: rgba(255,255,255,0.88);
 }
 
 
@@ -1260,6 +1265,10 @@ html[lang="en"] .logo p {
     border-color: rgba(255, 255, 255, 0.85);
     transform: translateY(-2px);
 }
+.inquiry-btn.primary:active {
+    transform: translateY(0);
+    background-color: rgba(255, 255, 255, 0.7);
+}
 
 .inquiry-btn.secondary {
     background-color: transparent;
@@ -1271,6 +1280,10 @@ html[lang="en"] .logo p {
     border-color: #ffffff;
     color: #ffffff;
     transform: translateY(-2px);
+}
+.inquiry-btn.secondary:active {
+    transform: translateY(0);
+    border-color: rgba(255,255,255,0.6);
 }
 
 @media (max-width: 768px) {
@@ -1567,8 +1580,8 @@ html[lang="en"] .logo p {
     }
 
     .slide-content h2 {
-        font-size: 2.5rem;
-        letter-spacing: 2px;
+        font-size: 2.2rem;
+        letter-spacing: 1.5px;
         white-space: normal;
     }
 
@@ -1646,9 +1659,11 @@ html[lang="en"] .logo p {
     }
     .hero-stat {
         flex: 0 0 50%;
-        padding: 1.2rem 1rem;
+        min-width: 0;        /* flex 아이템이 50%를 초과하지 않도록 */
+        padding: 1.2rem 0.75rem;
         border-right: none;
         border-bottom: 1px solid rgba(28,28,28,0.08);
+        overflow: hidden;
     }
     .hero-stat:nth-child(odd) {
         border-right: 1px solid rgba(28,28,28,0.08);
@@ -1659,6 +1674,13 @@ html[lang="en"] .logo p {
     }
     .hero-stat-number {
         font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    .hero-stat-label {
+        letter-spacing: 1.5px;
+        word-break: break-word;     /* 공백 없는 긴 문자열 강제 줄바꿈 */
+        overflow-wrap: anywhere;
+        white-space: normal;
     }
 
     /* 섹션 패딩 모바일 최적화 */
@@ -1683,6 +1705,11 @@ html[lang="en"] .logo p {
     /* 섹션 타이틀 하단 여백 축소 */
     .section-title {
         margin-bottom: 3.5rem;
+    }
+
+    /* 브랜드 서브타이틀 — 영문 장문 줄바꿈 방지 */
+    .brand-subtitle {
+        font-size: 0.8rem;
     }
 
     /* 푸터 로고 */
@@ -1762,12 +1789,12 @@ html[lang="en"] .logo p {
     }
 
     .logo h1 {
-        font-size: 1.2rem;
+        font-size: 0.88rem;
         line-height: 1.2;
     }
 
     .logo p {
-        font-size: 0.7rem;
+        font-size: 0.48rem;
         line-height: 1.2;
         margin-top: -1px;
     }
@@ -1777,15 +1804,9 @@ html[lang="en"] .logo p {
     }
 
     .slide-content h2 {
-        font-size: 2.2rem;
+        font-size: 1.9rem;
         letter-spacing: 1px;
         white-space: normal;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-        letter-spacing: 2px;
-        margin-bottom: 3rem;
     }
 
     .masterpieces-grid {
@@ -1821,9 +1842,10 @@ html[lang="en"] .logo p {
 
     /* 섹션 타이틀 추가 최적화 */
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         margin-bottom: 2.5rem;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
+        word-break: keep-all;
     }
 
     /* 카드 패딩 */
@@ -1847,12 +1869,16 @@ html[lang="en"] .logo p {
     }
 
     /* 히어로 스탯 480px */
+    .hero-stat {
+        padding: 1rem 0.6rem;
+    }
     .hero-stat-number {
         font-size: 1.8rem;
+        letter-spacing: 0.5px;
     }
     .hero-stat-label {
-        font-size: 0.55rem;
-        letter-spacing: 1.5px;
+        font-size: 0.52rem;
+        letter-spacing: 1px;
     }
 
     /* FAB 버튼 */
@@ -1907,7 +1933,18 @@ html[lang="en"] .logo p {
     .inquiry-lead {
         font-size: 0.82rem;
         line-height: 1.8;
-        padding: 0;
+        padding: 0 0.75rem;
+    }
+
+    /* editorial 텍스트 h3 — 480px에서 letter-spacing 과다 줄바꿈 방지 */
+    .editorial-text h3 {
+        font-size: 1.25rem;
+        letter-spacing: 1.5px;
+    }
+
+    /* 브랜드 서브타이틀 — 영문 장문 */
+    .brand-subtitle {
+        font-size: 0.72rem;
     }
 
     /* 푸터 */
@@ -2111,36 +2148,6 @@ html[lang="en"] .logo p {
     }
 }
 
-/* Scroll reveal base states */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Section title — slide from left */
-.section-title.reveal {
-    transform: translateX(-30px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
-}
-.section-title.visible {
-    transform: translateX(0);
-}
-
-/* Staggered delays for grid children */
-.reveal-stagger:nth-child(1) { transition-delay: 0s; }
-.reveal-stagger:nth-child(2) { transition-delay: 0.1s; }
-.reveal-stagger:nth-child(3) { transition-delay: 0.2s; }
-.reveal-stagger:nth-child(4) { transition-delay: 0.3s; }
-.reveal-stagger:nth-child(5) { transition-delay: 0.4s; }
-.reveal-stagger:nth-child(6) { transition-delay: 0.5s; }
-.reveal-stagger:nth-child(7) { transition-delay: 0.6s; }
-.reveal-stagger:nth-child(8) { transition-delay: 0.7s; }
-
 /* Nav shrink on scroll */
 .top-nav.scrolled .logo p {
     opacity: 0;
@@ -2294,7 +2301,7 @@ body.page-loaded {
     font-size: 0.6rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(28,28,28,0.45);
+    color: rgba(28,28,28,0.58);
     margin-top: 4px;
     display: block;
 }
@@ -2333,7 +2340,7 @@ body.page-loaded {
 .cursor-ring.hovering {
     width: 52px;
     height: 52px;
-    border-color: rgba(184,151,90,0.5);
+    border-color: #B8975A;
 }
 
 @media (hover: none) {

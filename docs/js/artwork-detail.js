@@ -388,30 +388,18 @@ document.addEventListener('DOMContentLoaded', function() {
         circle: {
             ko: {
                 title: '한지 모시 티코스터',
-                description: '색상은 전통 오방색을 베이스로 제작됩니다.(청, 적, 황, 백, 흑)\n' +
-                    '은은한 무드를 더한 한지와 모시를 결합한 티코스터',
-                story: '[Key Points]\n' +
-                    'Material: 한지와 모시의 질감이 살아있는 섬세한 배접 공예\n' +
-                    'Color: 한국 전통 오방색(Obangsaek)을 기반으로 한 은은한 무드의 색감\n' +
-                    'Finish: 내구성과 항균력이 뛰어난 천연 옻칠(Ottchil) 마감'
+                description: '색상은 전통 오방색을 베이스로 제작됩니다.(청, 적, 황, 백, 흑)\n은은한 무드를 더한 한지와 모시를 결합한 티코스터',
+                story: '한지와 모시의 섬세한 질감을 살린 배접 공예로 완성한 티코스터입니다.\n한국 전통 오방색을 기반으로 한 은은하고 깊은 색감이 일상의 다도를 품격 있게 만들어 줍니다.\n천연 옻칠 마감으로 내구성과 항균력을 더해, 세월이 흐를수록 깊어지는 아름다움을 간직합니다.'
             },
             en: {
                 title: 'Hanji Ramie Tea Coaster',
-                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black)\n' +
-                    'Tea coaster combining hanji and ramie with subtle mood',
-                story: '[Key Points]\n' +
-                    'Material: Delicate backing craft with the texture of hanji and ramie alive\n' +
-                    'Color: Subtle mood colors based on traditional Korean five-element colors (Obangsaek)\n' +
-                    'Finish: Natural lacquer (Ottchil) finish with excellent durability and antibacterial properties'
+                description: 'Colors are made based on traditional Korean five-element colors (blue, red, yellow, white, black)\nTea coaster combining hanji and ramie with subtle mood',
+                story: 'A tea coaster completed through delicate backing craft that brings out the subtle texture of hanji and ramie.\nThe deep, understated colors rooted in Korea\'s traditional five-element palette elevate the everyday ritual of tea.\nFinished with natural lacquer for lasting durability and antibacterial qualities — beauty that deepens with time.'
             },
             fr: {
                 title: 'Sous-verre Thé Hanji-Ramie',
-                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir)\n' +
-                    'Sous-verre à thé combinant hanji et ramie avec une ambiance subtile',
-                story: '[Points Clés]\n' +
-                    'Matériau: Artisanat de doublage délicat avec la texture du hanji et du ramie vivante\n' +
-                    'Couleur: Couleurs d\'ambiance subtiles basées sur les cinq couleurs traditionnelles coréennes (Obangsaek)\n' +
-                    'Finition: Finition laque naturelle (Ottchil) avec d\'excellentes propriétés de durabilité et antibactériennes'
+                description: 'Les couleurs sont créées sur la base des cinq couleurs traditionnelles coréennes (bleu, rouge, jaune, blanc, noir)\nSous-verre à thé combinant hanji et ramie avec une ambiance subtile',
+                story: 'Un sous-verre à thé réalisé par un artisanat de doublage délicat qui révèle la texture subtile du hanji et du ramie.\nLes teintes profondes et discrètes ancrées dans la palette traditionnelle coréenne des cinq éléments élèvent le rituel quotidien du thé.\nFini avec de la laque naturelle pour une durabilité durable et des propriétés antibactériennes — une beauté qui s\'approfondit avec le temps.'
             },
             image: './img/gallery/circle.webp'
         },
@@ -581,6 +569,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // meta 항목들
         document.querySelectorAll('.meta-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 컬렉션 라벨 + 구분선
+        document.querySelectorAll('.detail-studio-label, .detail-title-line').forEach(el => {
+            el.classList.add('detail-reveal');
             observer.observe(el);
         });
 

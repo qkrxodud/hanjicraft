@@ -30,6 +30,7 @@ const translations = {
         },
 
         philosophy: {
+            label: "紙",
             quote: "천년의 시간이 한 장의 종이에 깃들고,\n장인의 손끝에서 새로운 아름다움이 피어납니다."
         },
 
@@ -330,6 +331,7 @@ const translations = {
         },
 
         philosophy: {
+            label: "PAPER",
             quote: "A thousand years dwell within a single sheet of paper,\nand from the artisan's hands, new beauty blossoms."
         },
 
@@ -631,6 +633,7 @@ const translations = {
         },
 
         philosophy: {
+            label: "PAPIER",
             quote: "Mille ans résident dans une feuille de papier,\net des mains de l'artisan naît une nouvelle beauté."
         },
 
