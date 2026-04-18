@@ -177,10 +177,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // sticky nav 높이(60px) + 여유 16px 오프셋 보정
+                const navHeight = document.querySelector('.top-nav')?.offsetHeight || 60;
+                const targetY = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+                window.scrollTo({ top: targetY, behavior: 'smooth' });
             }
         });
     });
@@ -217,6 +217,76 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         lastScrollTop = scrollTop;
+    });
+
+    // ===== 히어로 스크롤 힌트 — 스크롤 시 페이드아웃 =====
+    const scrollHint = document.querySelector('.hero-scroll-hint');
+    if (scrollHint) {
+        window.addEventListener('scroll', () => {
+            const opacity = Math.max(0, 1 - window.scrollY / 200);
+            scrollHint.style.opacity = opacity;
+        }, { passive: true });
+    }
+
+    // ===== Bottom nav 스크롤 감지 숨김 =====
+    const bottomNav = document.querySelector('.bottom-nav');
+    if (bottomNav) {
+        let lastBottomScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const st = window.scrollY;
+            // 서브메뉴 열려있을 때는 숨기지 않음
+            if (bottomNav.querySelector('.bottom-nav-primary-menu.active')) {
+                lastBottomScrollTop = st;
+                return;
+            }
+            if (st > lastBottomScrollTop && st > 200) {
+                bottomNav.classList.add('nav-hidden');
+            } else {
+                bottomNav.classList.remove('nav-hidden');
+            }
+            lastBottomScrollTop = st;
+        }, { passive: true });
+    }
+
+    // ===== 활성 섹션 nav 하이라이트 =====
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pageSections = document.querySelectorAll('section[id]');
+    if (pageSections.length > 0 && navLinks.length > 0) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        link.classList.toggle('nav-active', href === `#${id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.25, rootMargin: '-60px 0px -40% 0px' });
+        pageSections.forEach(s => sectionObserver.observe(s));
+    }
+
+    // ===== 스크롤 투 탑 버튼 =====
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
+        }, { passive: true });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ===== 이미지 지연 로딩 fade-in + 에러 처리 =====
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+        if (img.complete && img.naturalWidth > 0) {
+            img.classList.add('img-loaded');
+        } else {
+            img.addEventListener('load', () => img.classList.add('img-loaded'));
+            img.addEventListener('error', () => {
+                img.style.visibility = 'hidden'; // 깨진 이미지 아이콘 숨김
+            });
+        }
     });
 
     // Scroll reveal animation (IntersectionObserver)
@@ -261,12 +331,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Masterpiece item click handlers with position saving
     document.querySelectorAll('.masterpiece-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const artworkId = this.getAttribute('data-artwork-id');
+        function navigateToArtwork() {
+            const artworkId = item.getAttribute('data-artwork-id');
             if (artworkId) {
                 saveScrollPosition();
                 sessionStorage.setItem('clickedArtworkId', artworkId);
-                window.location.href = `./artwork-detail.html?id=${artworkId}`;
+                document.body.classList.remove('page-loaded');
+                setTimeout(() => {
+                    window.location.href = `./artwork-detail.html?id=${artworkId}`;
+                }, 400);
+            }
+        }
+        item.addEventListener('click', navigateToArtwork);
+        // 키보드 접근성 — Enter/Space 클릭과 동일하게 동작
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navigateToArtwork();
             }
         });
     });
@@ -315,22 +396,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Add right-click event for menu functionality (alternative)
-        primaryMenuBtn.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            primaryMenuIsOpen = !primaryMenuIsOpen;
-
-            if (primaryMenuIsOpen) {
-                primaryMenu.classList.add('active');
-                primaryMenuBtn.classList.add('active');
-            } else {
-                primaryMenu.classList.remove('active');
-                primaryMenuBtn.classList.remove('active');
-            }
-        });
-
         // Close primary menu when clicking outside
         document.addEventListener('click', function(e) {
             if (primaryMenuIsOpen && !primaryMenu.contains(e.target)) {
@@ -350,19 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Bottom navigation scroll behavior
-    const bottomNav = document.querySelector('.bottom-nav');
-    if (bottomNav) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > window.innerHeight * 0.3) {
-                bottomNav.style.opacity = '1';
-                bottomNav.style.visibility = 'visible';
-            } else {
-                bottomNav.style.opacity = '0.8';
-                bottomNav.style.visibility = 'visible';
-            }
-        });
-    }
+    // Bottom navigation scroll behavior — 위 '스크롤 감지 숨김' 블록에서 통합 처리
 
     // Horizontal drag scroll for collection grid
     const collectionGrid = document.querySelector('.collection-grid');
@@ -408,18 +461,33 @@ document.addEventListener('DOMContentLoaded', function() {
             languageDropdown.classList.remove('show');
         });
 
-        // Language option selection
+        // Language option selection — fade-out → 번역 적용 → fade-in
         langOptions.forEach(option => {
             option.addEventListener('click', function(e) {
                 e.stopPropagation();
                 const selectedLang = this.getAttribute('data-lang');
+                languageDropdown.classList.remove('show');
 
-                if (window.i18n) {
+                if (!window.i18n || selectedLang === window.i18n.getCurrentLanguage()) return;
+
+                // 콘텐츠 페이드 아웃
+                const i18nEls = document.querySelectorAll('[data-i18n]');
+                i18nEls.forEach(el => {
+                    el.style.transition = 'opacity 0.18s ease';
+                    el.style.opacity = '0';
+                });
+
+                setTimeout(() => {
                     window.i18n.setLanguage(selectedLang);
                     updateLanguageButton();
-                }
-
-                languageDropdown.classList.remove('show');
+                    // 페이드 인
+                    i18nEls.forEach(el => {
+                        el.style.opacity = '1';
+                    });
+                    setTimeout(() => {
+                        i18nEls.forEach(el => { el.style.transition = ''; el.style.opacity = ''; });
+                    }, 200);
+                }, 180);
             });
         });
     }
@@ -438,23 +506,105 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Hero slider functionality (if multiple slides are added)
+    // Hero slider functionality
     const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.hero-indicator');
     let currentSlide = 0;
+    let slideInterval = null;
 
     function showSlide(index) {
+        // 현재 슬라이드 비활성화
         slides.forEach(slide => slide.classList.remove('active'));
-        if (slides[index]) {
-            slides[index].classList.add('active');
+
+        // 새 슬라이드 활성화 + 애니메이션 리셋
+        const nextSlide = slides[index];
+        if (nextSlide) {
+            // slide-content 내 애니메이션 요소들 리셋 (forwards 고착 해제)
+            const animEls = nextSlide.querySelectorAll('h2, p, .hero-btn');
+            animEls.forEach(el => {
+                el.style.animation = 'none';
+                el.offsetHeight; // reflow 강제
+                el.style.animation = '';
+            });
+            nextSlide.classList.add('active');
         }
+
+        // 인디케이터 업데이트
+        indicators.forEach((ind, i) => {
+            ind.classList.toggle('active', i === index);
+        });
     }
 
-    // Auto-rotate slides (if more than one slide exists)
+    // 인디케이터 클릭으로 슬라이드 이동
+    indicators.forEach((ind, i) => {
+        ind.addEventListener('click', function() {
+            currentSlide = i;
+            showSlide(currentSlide);
+            // 클릭 시 인터벌 리셋
+            if (slideInterval) clearInterval(slideInterval);
+            if (slides.length > 1) {
+                slideInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }, 6000);
+            }
+        });
+    });
+
+    // 자동 로테이션 (슬라이드 1개 초과 시)
     if (slides.length > 1) {
-        setInterval(() => {
+        slideInterval = setInterval(() => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
-        }, 5000);
+        }, 6000);
+    }
+
+    // ===== 히어로 슬라이더 키보드 화살표 =====
+    if (slides.length > 1) {
+        document.addEventListener('keydown', (e) => {
+            if (!document.querySelector('.hero:hover') && document.activeElement.closest('.hero') === null) return;
+            if (e.key === 'ArrowRight') {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }, 6000);
+            } else if (e.key === 'ArrowLeft') {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+                if (slideInterval) clearInterval(slideInterval);
+                slideInterval = setInterval(() => {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    showSlide(currentSlide);
+                }, 6000);
+            }
+        });
+    }
+
+    // ===== 히어로 슬라이더 터치/스와이프 =====
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider && slides.length > 1) {
+        let heroTouchStartX = 0;
+        heroSlider.addEventListener('touchstart', (e) => {
+            heroTouchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        heroSlider.addEventListener('touchend', (e) => {
+            const diffX = heroTouchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diffX) < 50) return; // 최소 스와이프 거리 50px
+            if (diffX > 0) {
+                currentSlide = (currentSlide + 1) % slides.length;
+            } else {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            }
+            showSlide(currentSlide);
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }, 6000);
+        }, { passive: true });
     }
 
     // Lazy loading for images
@@ -474,6 +624,20 @@ document.addEventListener('DOMContentLoaded', function() {
             imageObserver.observe(img);
         });
     }
+
+    // ===== 페이지 전환 fade-out =====
+    document.querySelectorAll('a[href*="artwork-detail.html"], a[href*="index.html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            // 외부 링크, 앵커 링크, target=_blank 제외
+            if (!href || href.startsWith('#') || href.startsWith('http') || this.target === '_blank') return;
+            e.preventDefault();
+            document.body.classList.remove('page-loaded');
+            setTimeout(() => {
+                window.location.href = href;
+            }, 400);
+        });
+    });
 
     // Preload critical images
     const criticalImages = [

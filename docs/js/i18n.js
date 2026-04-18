@@ -21,6 +21,14 @@ const translations = {
             title: "홍현정 한지공예 연구소",
             description: "천 년의 결을 품은 한지, 그 강인함과 아름다움으로 빚어낸 오브제들이 당신의 공간에 스며듭니다.",
             button: "컬렉션 보기",
+            slide2: {
+                title: "천년의 기술, 현대의 미학",
+                description: "닥나무 껍질에서 시작된 한 장의 종이가 장인의 손에서 빛나는 예술 작품으로 완성됩니다."
+            },
+            slide3: {
+                title: "자연에서 온 아름다움",
+                description: "한지 고유의 결과 빛깔, 그 안에 깃든 한국의 정신을 세계와 나눕니다."
+            },
             stat: {
                 years: "년 전통",
                 artworks: "점 이상의 작품",
@@ -258,6 +266,10 @@ const translations = {
                     title: "한지 모시 무드등",
                     period: "색상은 전통 오방색을 베이스로 제작됩니다.(청, 적, 황, 백, 흑)\n한지와 모시를 엮어 만든 전통소재 기반의 은은한 조명 오브제\n 색상은 한국전통오방색을 베이스로 제작합니다."
                 },
+                gallery03: {
+                    title: "한지 조각품 컬렉션",
+                    period: "한지의 가능성을 탐구한 현대 조각 작품"
+                },
                 gallery09: {
                     title: "오방색과 모란의 조화를 담은 자수함",
                     period: "오방색과 모란의 조화: 오방색 자수함"
@@ -322,6 +334,14 @@ const translations = {
             title: "Hong Hyun-jeong Hanji Craft Studio",
             description: "Where a thousand years of Korean paper heritage meets contemporary design — objects of quiet luxury crafted for discerning spaces.",
             button: "Explore Collection",
+            slide2: {
+                title: "A Thousand Years of Craft",
+                description: "From mulberry bark to luminous form — each piece carries the weight of centuries and the touch of a master's hand."
+            },
+            slide3: {
+                title: "Beauty Born of Nature",
+                description: "The quiet strength and translucence of hanji — Korea's most treasured material — shared with the world."
+            },
             stat: {
                 years: "Years of Tradition",
                 artworks: "Artworks Created",
@@ -560,6 +580,10 @@ const translations = {
                     title: "Hanji Ramie Mood Lamp",
                     period: "Colors are made based on traditional five-element colors (blue, red, yellow, white, black)\nSubtle lighting object made from traditional materials combining hanji and ramie\nColors are made based on traditional Korean five-element colors."
                 },
+                gallery03: {
+                    title: "Hanji Sculpture Collection",
+                    period: "Contemporary sculpture exploring the possibilities of hanji"
+                },
                 gallery09: {
                     title: "Embroidery Box with Harmony of Five Colors and Peonies",
                     period: "Five Colors and Peony Harmony: Five Colors Embroidery Box"
@@ -624,6 +648,14 @@ const translations = {
             title: "Atelier d'Artisanat Hanji Hong Hyun-jeong",
             description: "Là où mille ans de papier coréen rencontrent le design contemporain — des objets d'un luxe subtil, conçus pour des espaces d'exception.",
             button: "Explorer la Collection",
+            slide2: {
+                title: "Mille Ans de Savoir-Faire",
+                description: "De l'écorce de mûrier à la forme lumineuse — chaque pièce porte le poids des siècles et la main du maître artisan."
+            },
+            slide3: {
+                title: "La Beauté Née de la Nature",
+                description: "La force tranquille et la translucidité du hanji — le matériau le plus précieux de Corée — partagés avec le monde."
+            },
             stat: {
                 years: "Ans de Tradition",
                 artworks: "Œuvres Créées",
@@ -861,6 +893,10 @@ const translations = {
                 gallery01: {
                     title: "Lampe d'Ambiance Hanji-Ramie",
                     period: "Les couleurs sont faites sur la base des couleurs traditionnelles à cinq éléments (bleu, rouge, jaune, blanc, noir)\nObjet d'éclairage subtil fait de matériaux traditionnels combinant hanji et ramie\nLes couleurs sont faites sur la base des couleurs traditionnelles coréennes à cinq éléments."
+                },
+                gallery03: {
+                    title: "Collection de Sculptures en Hanji",
+                    period: "Sculpture contemporaine explorant les possibilités du hanji"
                 },
                 gallery09: {
                     title: "Boîte à Broderie avec Harmonie des Cinq Couleurs et Pivoines",

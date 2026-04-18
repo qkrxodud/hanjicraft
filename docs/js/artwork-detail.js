@@ -727,7 +727,10 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
 
             relatedItem.addEventListener('click', () => {
-                window.location.href = `./artwork-detail.html?id=${artworkId}`;
+                document.body.classList.remove('page-loaded');
+                setTimeout(() => {
+                    window.location.href = `./artwork-detail.html?id=${artworkId}`;
+                }, 400);
             });
 
             relatedItemsWrapper.appendChild(relatedItem);
@@ -741,8 +744,19 @@ document.addEventListener('DOMContentLoaded', function() {
         relatedItems.forEach(item => {
             const artworkId = item.getAttribute('data-artwork-id');
             if (artworkId) {
-                item.addEventListener('click', () => {
-                    window.location.href = `./artwork-detail.html?id=${artworkId}`;
+                function navigateToArtwork() {
+                    document.body.classList.remove('page-loaded');
+                    setTimeout(() => {
+                        window.location.href = `./artwork-detail.html?id=${artworkId}`;
+                    }, 400);
+                }
+                item.addEventListener('click', navigateToArtwork);
+                // 키보드 접근성 — Enter/Space 클릭과 동일하게 동작
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        navigateToArtwork();
+                    }
                 });
                 item.style.cursor = 'pointer';
             }
@@ -988,6 +1002,17 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCarousel();
     setupSmoothScroll();
 
+    // ===== 동적 생성 이미지 fade-in 처리 =====
+    function applyImgFadeIn() {
+        document.querySelectorAll('.related-item img[loading="lazy"], .thumbnail img[loading="lazy"]').forEach(img => {
+            if (img.complete && img.naturalWidth > 0) {
+                img.classList.add('img-loaded');
+            } else {
+                img.addEventListener('load', () => img.classList.add('img-loaded'));
+            }
+        });
+    }
+
     // 관련 작품 렌더링 완료 후 스크롤 리빌 적용
     setTimeout(() => {
         const relatedTitle = document.querySelector('.related-artworks .section-title');
@@ -1003,6 +1028,7 @@ document.addEventListener('DOMContentLoaded', function() {
             obs.observe(relatedTitle);
             document.querySelectorAll('.related-item').forEach(el => obs.observe(el));
         }
+        applyImgFadeIn();
     }, 200);
 
     // Handle browser back/forward buttons

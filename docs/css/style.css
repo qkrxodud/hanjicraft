@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+/* ===== 키보드 포커스 링 — 럭셔리 골드 ===== */
+:focus-visible {
+    outline: 1.5px solid #B8975A;
+    outline-offset: 3px;
+}
+
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -463,7 +469,7 @@ html[lang="en"] .logo p {
     padding: 4rem;
     border-radius: 0;
     border: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .brand-card:first-child {
@@ -657,6 +663,65 @@ html[lang="en"] .logo p {
 
 .slide.active {
     opacity: 1;
+}
+
+/* ===== Hero 슬라이드 인디케이터 ===== */
+/* ===== 히어로 스크롤 힌트 ===== */
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+}
+.scroll-hint-line {
+    display: block;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.7));
+    animation: scrollHintDrop 1.8s ease-in-out infinite;
+}
+@keyframes scrollHintDrop {
+    0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+    40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+@media (max-width: 768px) {
+    .hero-scroll-hint { display: none; }
+}
+
+.hero-indicators {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.6rem;
+    z-index: 10;
+}
+
+.hero-indicator {
+    width: 28px;
+    height: 2px;
+    background: rgba(255,255,255,0.35);
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background 0.4s ease, width 0.4s ease;
+    padding: 0;
+}
+
+.hero-indicator.active {
+    background: #B8975A;
+    width: 44px;
+}
+
+@media (max-width: 768px) {
+    .hero-indicators {
+        bottom: 5.5rem;
+    }
 }
 
 .slide img {
@@ -950,6 +1015,24 @@ html[lang="en"] .logo p {
 .masterpiece-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+/* 골드 언더라인 — hover 시 좌에서 우로 슬라이드 */
+.masterpiece-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #B8975A;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 5;
+}
+.masterpiece-item:hover::after {
+    transform: scaleX(1);
 }
 
 .masterpiece-item img {
@@ -1391,6 +1474,12 @@ html[lang="en"] .logo p {
     display: flex;
     gap: 1rem;
     z-index: 1000;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+}
+.bottom-nav.nav-hidden {
+    transform: translateY(80px);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .bottom-nav-btn {
@@ -2245,6 +2334,11 @@ body.page-loaded {
 }
 
 /* ===== Marquee strip ===== */
+/* 마키 호버 시 일시정지 — 접근성 */
+.marquee-strip:hover .marquee-track {
+    animation-play-state: paused;
+}
+
 .marquee-strip {
     width: 100%;
     overflow: hidden;
@@ -2505,5 +2599,92 @@ body.page-loaded {
     .masterpiece-item:hover .masterpiece-info p {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* ===== 활성 nav 링크 하이라이트 ===== */
+.nav-link.nav-active {
+    color: #B8975A;
+}
+.nav-link.nav-active::after {
+    transform: scaleX(1);
+}
+
+/* ===== 이미지 지연 로딩 fade-in ===== */
+/* artwork-detail 메인 이미지(.detail-image)는 별도 애니메이션으로 처리되므로 제외 */
+.masterpiece-item img[loading="lazy"],
+.highlight-card img[loading="lazy"],
+.collection-item img[loading="lazy"],
+.editorial-image img[loading="lazy"],
+.related-item img[loading="lazy"],
+.thumbnail img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.55s ease;
+}
+.masterpiece-item img.img-loaded,
+.highlight-card img.img-loaded,
+.collection-item img.img-loaded,
+.editorial-image img.img-loaded,
+.related-item img.img-loaded,
+.thumbnail img.img-loaded {
+    opacity: 1;
+}
+
+/* ===== 스크롤 투 탑 버튼 ===== */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+    background: #1C1C1C;
+    color: #F5F0E8;
+    border: none;
+    border-radius: 0;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease;
+}
+.scroll-top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.scroll-top-btn:hover {
+    background: #B8975A;
+}
+.scroll-top-btn:active {
+    background: #9a7d48;
+    transform: scale(0.94);
+}
+@media (max-width: 768px) {
+    .scroll-top-btn {
+        bottom: 7rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== prefers-reduced-motion 접근성 ===== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .marquee-track {
+        animation: none;
+    }
+    html {
+        scroll-behavior: auto;
     }
 }

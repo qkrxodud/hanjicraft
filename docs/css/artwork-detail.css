@@ -80,7 +80,7 @@
     top: 60px;
     height: calc(100vh - 60px);
     overflow: hidden;
-    background: #E4DDD3;
+    background: #EDE7DC;
 }
 
 .detail-image img,
@@ -90,7 +90,7 @@
     object-fit: cover;
     border-radius: 0;
     box-shadow: none;
-    cursor: pointer;
+    cursor: zoom-in;
     transition: transform 0.3s ease;
 }
 
@@ -117,7 +117,7 @@
     width: 64px;
     flex-shrink: 0;
     overflow-y: auto;
-    background: #E4DDD3;
+    background: #EDE7DC;
     padding: 4px;
     scrollbar-width: none;
     flex-wrap: nowrap;
@@ -1050,17 +1050,35 @@
 .related-item {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease, opacity 0.3s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .related-item.visible {
     opacity: 1;
     transform: translateY(0);
+    /* 리빌 완료 후 hover 애니메이션(transform + box-shadow) 복원 */
+    transition: opacity 0.6s ease, transform 0.35s ease, box-shadow 0.35s ease;
 }
 .related-item:nth-child(1) { transition-delay: 0s; }
 .related-item:nth-child(2) { transition-delay: 0.06s; }
 .related-item:nth-child(3) { transition-delay: 0.12s; }
 .related-item:nth-child(4) { transition-delay: 0.18s; }
 .related-item:nth-child(n+5) { transition-delay: 0.24s; }
+
+/* ===== prefers-reduced-motion — 애니메이션 비활성화 ===== */
+@media (prefers-reduced-motion: reduce) {
+    .detail-reveal,
+    .title-reveal h1,
+    .meta-item,
+    .detail-image,
+    .detail-image-gallery,
+    .detail-info,
+    .related-item,
+    .related-artworks .section-title {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
 
 /* ===== Scroll Progress Bar (detail page) ===== */
 .scroll-progress {
@@ -1091,6 +1109,7 @@
 .lightbox-overlay.active {
     opacity: 1;
     pointer-events: all;
+    cursor: zoom-out;
 }
 .lightbox-content {
     max-width: 88vw;
