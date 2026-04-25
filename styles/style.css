@@ -414,9 +414,9 @@ html[lang="fr"] .logo p {
 
 /* English language specific adjustments */
 html[lang="en"] .nav-link {
-    font-size: 0.78rem;
-    padding: 8px 11px;
-    letter-spacing: 0.4px;
+    font-size: 0.75rem;
+    padding: 8px 10px;
+    letter-spacing: 0.3px;
 }
 
 html[lang="en"] .logo {
@@ -424,13 +424,13 @@ html[lang="en"] .logo {
 }
 
 html[lang="en"] .logo h1 {
-    font-size: 1.35rem;
-    letter-spacing: 0.25px;
+    font-size: 1.3rem;
+    letter-spacing: 0.2px;
 }
 
 html[lang="en"] .logo p {
-    font-size: 0.72rem;
-    letter-spacing: 0.4px;
+    font-size: 0.7rem;
+    letter-spacing: 0.3px;
 }
 
 
@@ -2218,27 +2218,27 @@ html[lang="en"] .logo p {
 /* English responsive adjustments */
 @media (max-width: 1200px) {
     html[lang="en"] .nav-link {
-        font-size: 0.73rem;
-        padding: 7px 9px;
+        font-size: 0.7rem;
+        padding: 6px 8px;
     }
 
     html[lang="en"] .logo h1 {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
     }
 
     html[lang="en"] .logo p {
-        font-size: 0.63rem;
+        font-size: 0.6rem;
     }
 }
 
 @media (max-width: 1024px) {
     html[lang="en"] .nav-link {
-        font-size: 0.63rem;
-        padding: 6px 6px;
+        font-size: 0.6rem;
+        padding: 5px 5px;
     }
 
     html[lang="en"] .logo h1 {
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
 
     html[lang="en"] .logo p {
