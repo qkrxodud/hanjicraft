@@ -1878,24 +1878,30 @@ html[lang="en"] .logo p {
         height: 100svh;
         min-height: 520px;
     }
-    /* 히어로 스탯: 모바일 2x2 그리드 */
+    /* 히어로 스탯: 모바일 가로 스크롤 스트립 */
     .hero-stats {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        /* 오른쪽 끝에 다음 카드 살짝 노출 — 스와이프 유도 */
+        scroll-snap-type: x mandatory;
+        scroll-padding-left: 0;
     }
+    .hero-stats::-webkit-scrollbar { display: none; }
     .hero-stat {
-        flex: 0 0 50%;
-        min-width: 0;
-        padding: 1.2rem 0.75rem;
-        border-right: none;
-        border-bottom: 1px solid var(--gold-dim);
-        overflow: hidden;
-    }
-    .hero-stat:nth-child(odd) {
+        flex: 0 0 44vw;
+        min-width: 140px;
+        padding: 1.8rem 1rem;
         border-right: 1px solid var(--gold-dim);
-    }
-    .hero-stat:nth-child(3),
-    .hero-stat:nth-child(4) {
         border-bottom: none;
+        scroll-snap-align: start;
+        overflow: visible;
+    }
+    .hero-stat:last-child {
+        /* 마지막 카드 오른쪽에 여백 — 스크롤 끝 표시 */
+        padding-right: 1.5rem;
+        min-width: 160px;
     }
     .hero-stat-number {
         font-size: 2rem;
@@ -1903,9 +1909,9 @@ html[lang="en"] .logo p {
     }
     .hero-stat-label {
         letter-spacing: 1.5px;
-        word-break: break-word;
-        overflow-wrap: anywhere;
         white-space: normal;
+        word-break: keep-all;
+        line-height: 1.55;
     }
 
     /* 섹션 패딩 모바일 최적화 */
@@ -2099,15 +2105,17 @@ html[lang="en"] .logo p {
 
     /* 히어로 스탯 480px */
     .hero-stat {
-        padding: 1rem 0.6rem;
+        flex: 0 0 52vw;
+        min-width: 150px;
+        padding: 1.5rem 1rem;
     }
     .hero-stat-number {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
         letter-spacing: 0.5px;
     }
     .hero-stat-label {
-        font-size: 0.52rem;
-        letter-spacing: 1px;
+        font-size: 0.53rem;
+        letter-spacing: 1.2px;
     }
 
     /* FAB 버튼 */

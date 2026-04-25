@@ -177,6 +177,8 @@ export const translations = {
     },
     artworkDetail: {
       storyTitle: '작품 이야기',
+      prevWork: '이전 작품',
+      nextWork: '다음 작품',
       notFound: {
         title: '작품을 찾을 수 없습니다',
         description: '요청하신 작품을 찾을 수 없습니다.',
@@ -371,6 +373,8 @@ export const translations = {
     },
     artworkDetail: {
       storyTitle: 'The Story Behind the Artwork',
+      prevWork: 'Previous Work',
+      nextWork: 'Next Work',
       notFound: {
         title: 'Artwork Not Found',
         description: 'Sorry, the requested artwork could not be found.',
@@ -565,6 +569,8 @@ export const translations = {
     },
     artworkDetail: {
       storyTitle: "L'Histoire Derrière l'Œuvre",
+      prevWork: 'Œuvre Précédente',
+      nextWork: 'Œuvre Suivante',
       notFound: {
         title: 'Œuvre Non Trouvée',
         description: "Désolé, l'œuvre demandée n'a pas pu être trouvée.",
