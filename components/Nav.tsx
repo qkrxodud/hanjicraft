@@ -36,42 +36,44 @@ export default function Nav() {
           <p>{t('logo.subtitle')}</p>
         </div>
 
-        <ul className="nav-menu nav-right">
-          <li className="nav-item">
-            <a href="#collections" className="nav-link">{t('nav.collections')}</a>
-          </li>
-          <li className="nav-item">
-            <a href="#gallery" className="nav-link">{t('nav.gallery')}</a>
-          </li>
-          <li className="nav-item">
-            <a href="#about" className="nav-link">{t('nav.about')}</a>
-          </li>
-        </ul>
+        <div className="nav-right-section">
+          <ul className="nav-menu nav-right">
+            <li className="nav-item">
+              <a href="#collections" className="nav-link">{t('nav.collections')}</a>
+            </li>
+            <li className="nav-item">
+              <a href="#gallery" className="nav-link">{t('nav.gallery')}</a>
+            </li>
+            <li className="nav-item">
+              <a href="#about" className="nav-link">{t('nav.about')}</a>
+            </li>
+          </ul>
 
-        <div className="nav-actions">
-          <div className="language-switcher">
-            <button
-              className="lang-btn"
-              onClick={(e) => {
-                e.stopPropagation()
-                setDropdownOpen((o) => !o)
-              }}
-            >
-              {langLabels[lang]}
-            </button>
-            <div className={`lang-dropdown${dropdownOpen ? ' show' : ''}`}>
-              {(['ko', 'en', 'fr'] as Lang[]).map((l) => (
-                <button
-                  key={l}
-                  className={`lang-option${lang === l ? ' active' : ''}`}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    handleLangSelect(l)
-                  }}
-                >
-                  {l === 'ko' ? '한국어' : l === 'en' ? 'English' : 'Français'}
-                </button>
-              ))}
+          <div className="nav-actions">
+            <div className="language-switcher">
+              <button
+                className="lang-btn"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setDropdownOpen((o) => !o)
+                }}
+              >
+                {langLabels[lang]}
+              </button>
+              <div className={`lang-dropdown${dropdownOpen ? ' show' : ''}`}>
+                {(['ko', 'en', 'fr'] as Lang[]).map((l) => (
+                  <button
+                    key={l}
+                    className={`lang-option${lang === l ? ' active' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleLangSelect(l)
+                    }}
+                  >
+                    {l === 'ko' ? '한국어' : l === 'en' ? 'English' : 'Français'}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

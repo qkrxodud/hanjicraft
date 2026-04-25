@@ -112,27 +112,35 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1100px;
     margin: 0 auto;
     padding: 0 40px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     height: 60px;
-    justify-content: center;
     position: relative;
 }
 
 .nav-left, .nav-right {
     display: flex;
     gap: 0.2rem;
-    flex: 1;
 }
 
 .nav-left {
     justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-right-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .nav-right {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     gap: 0.2rem;
+    flex: 1;
 }
 
 .logo {
@@ -264,8 +272,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     gap: 1rem;
     align-items: center;
-    position: absolute;
-    right: 40px;
+    flex-shrink: 0;
+    margin-left: auto;
 }
 
 /* Language Switcher */
@@ -1624,10 +1632,9 @@ html[lang="en"] .logo p {
 
 @media (max-width: 768px) {
     .nav-container {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr auto;
         height: auto;
         padding: 12px 20px;
-        justify-content: space-between;
     }
 
     .nav-left {
@@ -1638,12 +1645,14 @@ html[lang="en"] .logo p {
         display: none;
     }
 
+    .nav-right-section {
+        justify-content: flex-end;
+    }
+
     .logo {
         padding: 0;
         border: none;
-        flex: 1;
         text-align: left;
-        max-width: 270px;
     }
 
     .logo h1 {
@@ -1652,10 +1661,6 @@ html[lang="en"] .logo p {
 
     .logo p {
         font-size: 0.55rem;
-    }
-
-    .nav-actions {
-        position: static;
     }
 
     .slide-content {
