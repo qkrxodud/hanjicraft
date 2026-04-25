@@ -131,6 +131,7 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1 1 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     min-width: 0;
 }
 
@@ -139,8 +140,9 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: flex-start;
     align-items: center;
     gap: 0.2rem;
-    flex: 1 1 0;
+    flex-shrink: 1;
     min-width: 0;
+    overflow: hidden;
 }
 
 .logo {
@@ -273,7 +275,6 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
     align-items: center;
     flex-shrink: 0;
-    margin-left: auto;
 }
 
 /* Language Switcher */
