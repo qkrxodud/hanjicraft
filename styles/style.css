@@ -7,7 +7,7 @@
 
 /* ===== 키보드 포커스 링 — 럭셔리 골드 ===== */
 :focus-visible {
-    outline: 1.5px solid #B8975A;
+    outline: 1.5px solid #C9A96E;
     outline-offset: 3px;
 }
 
@@ -18,10 +18,10 @@ html {
 
 body {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 2.0;
+    line-height: 2.1;
     color: #1C1C1C;
     background-color: #F5F0E8;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -44,7 +44,7 @@ ul {
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -58,12 +58,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     text-align: center;
-    margin-bottom: 6rem;
+    margin-bottom: 7rem;
     color: #1C1C1C;
     font-weight: 200;
-    letter-spacing: 5px;
+    letter-spacing: 8px;
     position: relative;
     text-transform: uppercase;
 }
@@ -71,23 +71,24 @@ h1, h2, h3, h4, h5, h6 {
 .section-title::after {
     content: '';
     position: absolute;
-    bottom: -20px;
+    bottom: -24px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
+    width: 48px;
     height: 1px;
-    background: #B8975A;
+    background: #C9A96E;
 }
 
 .section-label {
     display: block;
-    font-size: 0.65rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    letter-spacing: 5px;
-    color: #B8975A;
+    font-size: 0.62rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: #C9A96E;
     text-transform: uppercase;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
 @keyframes gradientShift {
@@ -100,16 +101,17 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(245, 240, 232, 0.97);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(28, 28, 28, 0.1);
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.12);
     z-index: 1000;
     transition: all 0.3s ease;
     box-shadow: none;
 }
 
 .nav-container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 40px;
     display: flex;
@@ -149,8 +151,22 @@ h1, h2, h3, h4, h5, h6 {
     flex: 0 0 auto;
     text-align: center;
     padding: 0 2.5rem;
-    border-left: 1px solid rgba(28,28,28,0.08);
-    border-right: 1px solid rgba(28,28,28,0.08);
+    border-left: 1px solid rgba(201,169,110,0.15);
+    border-right: 1px solid rgba(201,169,110,0.15);
+    position: relative;
+}
+
+/* 로고 하단 골드 디바이더 */
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 1px;
+    background: #C9A96E;
+    opacity: 0.5;
 }
 
 .logo h1 {
@@ -165,7 +181,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo p {
     font-size: 0.65rem;
-    color: #B8975A;
+    color: #C9A96E;
     margin-top: -2px;
     letter-spacing: 4px;
     font-weight: 300;
@@ -203,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 12px;
     right: 12px;
     height: 1px;
-    background: #B8975A;
+    background: #C9A96E;
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -225,8 +241,8 @@ h1, h2, h3, h4, h5, h6 {
     background: #F5F0E8;
     backdrop-filter: blur(20px);
     min-width: 220px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-    border: 1px solid rgba(28,28,28,0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(201,169,110,0.15);
     border-radius: 0;
     padding: 1rem 0;
     opacity: 0;
@@ -315,9 +331,9 @@ h1, h2, h3, h4, h5, h6 {
     top: 100%;
     right: 0;
     background: #F5F0E8;
-    border: 1px solid rgba(28,28,28,0.08);
+    border: 1px solid rgba(201,169,110,0.15);
     border-radius: 0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     min-width: 120px;
     z-index: 1001;
     opacity: 0;
@@ -436,9 +452,9 @@ html[lang="en"] .logo p {
 
 /* Brand Section */
 .brand-section {
-    padding: 10rem 0;
+    padding: 13rem 0;
     background: #EDE7DC;
-    border-top: 1px solid rgba(28,28,28,0.08);
+    border-top: 1px solid rgba(201,169,110,0.12);
 }
 
 .brand-header {
@@ -448,20 +464,21 @@ html[lang="en"] .logo p {
 
 .brand-subtitle {
     font-size: 0.9rem;
-    color: rgba(28,28,28,0.6);
-    margin-top: 1.5rem;
-    font-style: normal;
+    color: rgba(28,28,28,0.55);
+    margin-top: 1.8rem;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
     white-space: pre-line;
-    line-height: 2.0;
+    line-height: 2.2;
     letter-spacing: 0.5px;
     font-weight: 300;
-    max-width: 780px;
+    max-width: 680px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .brand-content {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -469,8 +486,8 @@ html[lang="en"] .logo p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    margin-bottom: 6rem;
-    border: 1px solid rgba(28,28,28,0.1);
+    margin-bottom: 7rem;
+    border: 1px solid rgba(201,169,110,0.2);
 }
 
 .brand-card {
@@ -482,13 +499,13 @@ html[lang="en"] .logo p {
 }
 
 .brand-card:first-child {
-    border-right: 1px solid rgba(28,28,28,0.1);
+    border-right: 1px solid rgba(201,169,110,0.2);
 }
 
 .brand-card:hover {
     background: #EDE7DC;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.06);
 }
 
 .brand-card h3 {
@@ -536,15 +553,15 @@ html[lang="en"] .logo p {
 }
 
 .value-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 52px rgba(0,0,0,0.07);
 }
 
 .value-icon {
     font-size: 2rem;
     margin-bottom: 2rem;
     display: block;
-    color: #B8975A;
+    color: #C9A96E;
     font-family: 'Cormorant Garamond', serif;
     letter-spacing: 4px;
     font-weight: 400;
@@ -723,7 +740,7 @@ html[lang="en"] .logo p {
 }
 
 .hero-indicator.active {
-    background: #B8975A;
+    background: #C9A96E;
     width: 44px;
 }
 
@@ -781,28 +798,28 @@ html[lang="en"] .logo p {
 .hero-btn {
     align-self: flex-start;
     display: inline-block;
-    padding: 14px 40px;
+    padding: 15px 44px;
     background: transparent;
     color: white;
     text-decoration: none;
     border-radius: 0;
-    border: 1px solid rgba(255,255,255,0.7);
+    border: 1px solid rgba(201,169,110,0.6);
     font-size: 0.7rem;
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
-    transition: all 0.3s ease;
+    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-btn:hover {
-    background: white;
-    color: #000;
-    border-color: white;
+    background: #C9A96E;
+    color: #0C0C0C;
+    border-color: #C9A96E;
     transform: translateY(-2px);
 }
 .hero-btn:active {
     transform: translateY(0);
-    background: rgba(255,255,255,0.88);
+    background: rgba(201,169,110,0.85);
 }
 
 
@@ -812,9 +829,9 @@ html[lang="en"] .logo p {
 
 /* Highlights Section */
 .highlights {
-    padding: 10rem 0;
+    padding: 13rem 0;
     background-color: #F5F0E8;
-    border-top: 1px solid rgba(28,28,28,0.08);
+    border-top: 1px solid rgba(201,169,110,0.12);
 }
 
 
@@ -835,8 +852,8 @@ html[lang="en"] .logo p {
 }
 
 .highlight-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.07);
 }
 
 .highlight-card img {
@@ -860,7 +877,7 @@ html[lang="en"] .logo p {
 .card-category {
     display: inline-block;
     background-color: transparent;
-    color: #b8975a;
+    color: #C9A96E;
     padding: 0;
     border-radius: 0;
     font-size: 0.72rem;
@@ -868,7 +885,7 @@ html[lang="en"] .logo p {
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-bottom: 1px solid #b8975a;
+    border-bottom: 1px solid #C9A96E;
     padding-bottom: 2px;
 }
 
@@ -903,23 +920,25 @@ html[lang="en"] .logo p {
     text-decoration: none;
     font-weight: 300;
     font-size: 0.72rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-bottom: 1px solid #B8975A;
-    transition: all 0.3s ease;
-    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(201,169,110,0.4);
+    transition: all 0.4s ease;
+    padding-bottom: 3px;
 }
 
 .card-link:hover {
-    color: #B8975A;
-    border-bottom-color: #B8975A;
+    color: #C9A96E;
+    border-bottom-color: #C9A96E;
 }
 
 /* Collection Delve Section */
 .collection-delve {
-    padding: 10rem 0;
+    padding: 13rem 0;
     background-color: #EDE7DC;
-    border-top: 1px solid rgba(28,28,28,0.08);
+    border-top: 1px solid rgba(201,169,110,0.12);
 }
 
 
@@ -953,8 +972,8 @@ html[lang="en"] .logo p {
 }
 
 .collection-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 52px rgba(0,0,0,0.08);
 }
 
 
@@ -993,9 +1012,9 @@ html[lang="en"] .logo p {
 
 /* Masterpieces Gallery */
 .masterpieces {
-    padding: 10rem 0;
+    padding: 13rem 0;
     background-color: #F5F0E8;
-    border-top: 1px solid rgba(28,28,28,0.08);
+    border-top: 1px solid rgba(201,169,110,0.12);
 }
 
 .masterpieces-grid {
@@ -1022,8 +1041,8 @@ html[lang="en"] .logo p {
 }
 
 .masterpiece-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 56px rgba(0,0,0,0.1);
 }
 
 /* 골드 언더라인 — hover 시 좌에서 우로 슬라이드 */
@@ -1034,7 +1053,7 @@ html[lang="en"] .logo p {
     left: 0;
     right: 0;
     height: 2px;
-    background: #B8975A;
+    background: #C9A96E;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1126,24 +1145,24 @@ html[lang="en"] .logo p {
     font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    border: 1px solid rgba(28,28,28,0.3);
-    padding: 16px 50px;
+    border: 1px solid rgba(201,169,110,0.35);
+    padding: 17px 54px;
     border-radius: 0;
-    transition: all 0.3s ease;
+    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .gallery-link:hover {
-    background: #1C1C1C;
+    background: #C9A96E;
     color: #F5F0E8;
-    border-color: #1C1C1C;
+    border-color: #C9A96E;
 }
 
 /* Featured Artworks — editorial rows */
 .featured-artworks {
-    padding-top: 8rem;
+    padding-top: 10rem;
     padding-bottom: 0;
     background-color: #EDE7DC;
-    border-top: 1px solid rgba(28,28,28,0.08);
+    border-top: 1px solid rgba(201,169,110,0.12);
 }
 
 /* ===== Editorial Rows ===== */
@@ -1155,11 +1174,11 @@ html[lang="en"] .logo p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 42vh;
-    border-top: 1px solid rgba(28,28,28,0.08);
+    border-top: 1px solid rgba(201,169,110,0.12);
 }
 
 .editorial-row:last-child {
-    border-bottom: 1px solid rgba(28,28,28,0.08);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
 }
 
 .editorial-row--reverse {
@@ -1173,6 +1192,20 @@ html[lang="en"] .logo p {
 .editorial-image {
     overflow: hidden;
     position: relative;
+}
+
+/* 이미지 위 세련된 그라디언트 오버레이 */
+.editorial-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(12,12,12,0.15) 100%);
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+.editorial-row:hover .editorial-image::after {
+    opacity: 1;
 }
 
 .editorial-image img {
@@ -1223,14 +1256,14 @@ html[lang="en"] .logo p {
 }
 
 .artwork-period {
-    font-size: 0.68rem;
-    color: #B8975A;
-    font-style: normal;
+    font-size: 0.72rem;
+    color: #C9A96E;
+    font-style: italic;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
 }
 
 .artwork-description {
@@ -1283,22 +1316,24 @@ html[lang="en"] .logo p {
     text-decoration: none;
     font-weight: 300;
     font-size: 0.72rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-bottom: 1px solid #B8975A;
-    padding-bottom: 2px;
-    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(201,169,110,0.4);
+    padding-bottom: 3px;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .artwork-link:hover {
-    color: #B8975A;
-    border-bottom-color: #B8975A;
+    color: #C9A96E;
+    border-bottom-color: #C9A96E;
     transform: translateX(4px);
 }
 
 /* Inquiry / Partnership Section */
 .inquiry-section {
-    padding: 10rem 0;
+    padding: 12rem 0;
     background-color: #000000;
     text-align: center;
     color: #ffffff;
@@ -1311,11 +1346,11 @@ html[lang="en"] .logo p {
 }
 
 .inquiry-section .section-title::after {
-    background: #b8975a;
+    background: #C9A96E;
 }
 
 .inquiry-section .section-label {
-    color: #b8975a;
+    color: #C9A96E;
 }
 
 .inquiry-lead {
@@ -1336,46 +1371,47 @@ html[lang="en"] .logo p {
 
 .inquiry-btn {
     display: inline-block;
-    padding: 16px 44px;
+    padding: 17px 48px;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 400;
-    transition: all 0.3s ease;
+    letter-spacing: 3px;
+    font-weight: 300;
+    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     border-radius: 0;
 }
 
 .inquiry-btn.primary {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #ffffff;
+    background-color: #C9A96E;
+    color: #0C0C0C;
+    border: 1px solid #C9A96E;
 }
 
 .inquiry-btn.primary:hover {
-    background-color: rgba(255, 255, 255, 0.85);
-    border-color: rgba(255, 255, 255, 0.85);
+    background-color: #F5F0E8;
+    color: #0C0C0C;
+    border-color: #F5F0E8;
     transform: translateY(-2px);
 }
 .inquiry-btn.primary:active {
     transform: translateY(0);
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #EDE7DC;
 }
 
 .inquiry-btn.secondary {
     background-color: transparent;
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(201,169,110,0.4);
 }
 
 .inquiry-btn.secondary:hover {
-    border-color: #ffffff;
-    color: #ffffff;
+    border-color: #C9A96E;
+    color: #C9A96E;
     transform: translateY(-2px);
 }
 .inquiry-btn.secondary:active {
     transform: translateY(0);
-    border-color: rgba(255,255,255,0.6);
+    border-color: rgba(201,169,110,0.6);
 }
 
 @media (max-width: 768px) {
@@ -1397,21 +1433,21 @@ html[lang="en"] .logo p {
 
 /* Footer */
 .footer {
-    background: #000;
+    background: #0F0F0F;
     color: rgba(255,255,255,0.6);
 }
 
 .footer-top {
     padding: 5rem 0 4rem;
     text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
 }
 
 .footer-logo h3 {
     font-size: 1.3rem;
-    color: #fff;
+    color: #C9A96E;
     font-weight: 200;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
     white-space: nowrap;
@@ -1419,7 +1455,7 @@ html[lang="en"] .logo p {
 
 .footer-logo p {
     font-size: 0.65rem;
-    color: #B8975A;
+    color: rgba(201,169,110,0.6);
     letter-spacing: 5px;
     text-transform: uppercase;
 }
@@ -1435,17 +1471,17 @@ html[lang="en"] .logo p {
     font-size: 0.75rem;
     letter-spacing: 1px;
     line-height: 2;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
 }
 
 .footer-info a {
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-info a:hover {
-    color: #fff;
+    color: #C9A96E;
 }
 
 .social-links {
@@ -1458,21 +1494,21 @@ html[lang="en"] .logo p {
     font-size: 0.72rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.35);
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #fff;
+    color: #C9A96E;
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    border-top: 1px solid rgba(201,169,110,0.1);
     padding: 1.5rem 0;
     text-align: center;
     font-size: 0.7rem;
     letter-spacing: 2px;
-    color: rgba(255,255,255,0.25);
+    color: rgba(201,169,110,0.25);
 }
 
 /* Bottom Navigation */
@@ -1510,9 +1546,9 @@ html[lang="en"] .logo p {
 }
 
 .bottom-nav-btn.primary {
-    background-color: #B8975A;
+    background-color: #C9A96E;
     color: #ffffff;
-    border: 2px solid #B8975A;
+    border: 2px solid #C9A96E;
     position: relative;
     display: inline-block;
     text-align: center;
@@ -1523,14 +1559,14 @@ html[lang="en"] .logo p {
 }
 
 .bottom-nav-btn.primary:hover {
-    background-color: #A07840;
-    border-color: #A07840;
+    background-color: #B08D50;
+    border-color: #B08D50;
     transform: translateY(-2px);
 }
 
 .bottom-nav-btn.primary.active {
-    background-color: #A07840;
-    border-color: #A07840;
+    background-color: #B08D50;
+    border-color: #B08D50;
 }
 
 .bottom-nav-btn:not(.primary) {
@@ -1566,7 +1602,7 @@ html[lang="en"] .logo p {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid rgba(28,28,28,0.12);
+    border: 1px solid rgba(201,169,110,0.15);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     opacity: 0;
     visibility: hidden;
@@ -1657,6 +1693,11 @@ html[lang="en"] .logo p {
         border: none;
         text-align: left;
         max-width: 270px;
+    }
+
+    /* 모바일에서 로고 하단 골드 디바이더 숨김 */
+    .logo::after {
+        display: none;
     }
 
     .logo h1 {
@@ -1760,11 +1801,11 @@ html[lang="en"] .logo p {
         min-width: 0;        /* flex 아이템이 50%를 초과하지 않도록 */
         padding: 1.2rem 0.75rem;
         border-right: none;
-        border-bottom: 1px solid rgba(28,28,28,0.08);
+        border-bottom: 1px solid rgba(201,169,110,0.12);
         overflow: hidden;
     }
     .hero-stat:nth-child(odd) {
-        border-right: 1px solid rgba(28,28,28,0.08);
+        border-right: 1px solid rgba(201,169,110,0.12);
     }
     .hero-stat:nth-child(3),
     .hero-stat:nth-child(4) {
@@ -2327,7 +2368,7 @@ html[lang="en"] .logo p {
     left: 0;
     height: 2px;
     width: 0%;
-    background: #B8975A;
+    background: #C9A96E;
     z-index: 10000;
     transition: width 0.08s linear;
 }
@@ -2337,6 +2378,8 @@ body {
     opacity: 0;
     transition: opacity 0.6s ease;
     background-color: #F5F0E8;
+    background-image: linear-gradient(180deg, #F5F0E8 0%, #F2ECE2 50%, #F5F0E8 100%);
+    background-attachment: fixed;
 }
 body.page-loaded {
     opacity: 1;
@@ -2369,7 +2412,7 @@ body.page-loaded {
     padding: 0 3rem;
 }
 .marquee-track span.gold {
-    color: #B8975A;
+    color: #C9A96E;
 }
 @keyframes marquee {
     from { transform: translateX(0); }
@@ -2380,13 +2423,13 @@ body.page-loaded {
 .hero-stats {
     display: flex;
     background: #F5F0E8;
-    border-bottom: 1px solid rgba(28,28,28,0.08);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
 }
 .hero-stat {
     flex: 1;
-    padding: 1.5rem 2rem;
+    padding: 2rem 2.5rem;
     text-align: center;
-    border-right: 1px solid rgba(28,28,28,0.08);
+    border-right: 1px solid rgba(201,169,110,0.12);
 }
 .hero-stat:last-child {
     border-right: none;
@@ -2413,7 +2456,7 @@ body.page-loaded {
 .section-divider {
     width: 40px;
     height: 1px;
-    background: #B8975A;
+    background: #C9A96E;
     margin: 2rem 0;
 }
 
@@ -2421,7 +2464,7 @@ body.page-loaded {
 .cursor-dot {
     width: 5px;
     height: 5px;
-    background: #B8975A;
+    background: #C9A96E;
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -2443,7 +2486,7 @@ body.page-loaded {
 .cursor-ring.hovering {
     width: 52px;
     height: 52px;
-    border-color: #B8975A;
+    border-color: #C9A96E;
 }
 
 @media (hover: none) {
@@ -2533,7 +2576,7 @@ body.page-loaded {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
     font-weight: 200;
-    color: #B8975A;
+    color: #C9A96E;
     letter-spacing: 8px;
     margin-bottom: 3rem;
 }
@@ -2613,7 +2656,7 @@ body.page-loaded {
 
 /* ===== 활성 nav 링크 하이라이트 ===== */
 .nav-link.nav-active {
-    color: #B8975A;
+    color: #C9A96E;
 }
 .nav-link.nav-active::after {
     transform: scaleX(1);
@@ -2667,10 +2710,10 @@ body.page-loaded {
     transform: translateY(0);
 }
 .scroll-top-btn:hover {
-    background: #B8975A;
+    background: #C9A96E;
 }
 .scroll-top-btn:active {
-    background: #9a7d48;
+    background: #B08D50;
     transform: scale(0.94);
 }
 @media (max-width: 768px) {
