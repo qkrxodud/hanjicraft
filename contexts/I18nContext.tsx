@@ -22,12 +22,14 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem('language') as Lang | null
     if (saved && ['ko', 'en', 'fr'].includes(saved)) {
       setLangState(saved)
+      document.documentElement.lang = saved
     }
   }, [])
 
   const setLang = useCallback((newLang: Lang) => {
     setLangState(newLang)
     localStorage.setItem('language', newLang)
+    document.documentElement.lang = newLang
   }, [])
 
   const t = useCallback(
