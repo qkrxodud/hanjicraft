@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/hanjicraft',
+  },
 }
 
 export default nextConfig

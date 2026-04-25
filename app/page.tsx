@@ -1,10 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useI18n } from '@/contexts/I18nContext'
 import Nav from '@/components/Nav'
 import ClientWrapper from '@/components/ClientWrapper'
+import { BASE_PATH } from '@/lib/config'
 
 export default function Home() {
   const { t } = useI18n()
@@ -34,7 +34,7 @@ export default function Home() {
         <div className="hero-container">
           <div className="hero-slider">
             <div className="slide active">
-              <img src="/img/01.webp" alt="Hanji Craft Exhibition" loading="eager" fetchPriority="high" />
+              <img src={`${BASE_PATH}/img/01.webp`} alt="Hanji Craft Exhibition" loading="eager" fetchPriority="high" />
               <div className="slide-content">
                 <h2>{t('hero.title')}</h2>
                 <p>{t('hero.description')}</p>
@@ -42,7 +42,7 @@ export default function Home() {
               </div>
             </div>
             <div className="slide">
-              <img src="/img/02.webp" alt="Hanji Craft Mastery" />
+              <img src={`${BASE_PATH}/img/02.webp`} alt="Hanji Craft Mastery" />
               <div className="slide-content">
                 <h2>{t('hero.slide2.title')}</h2>
                 <p>{t('hero.slide2.description')}</p>
@@ -50,7 +50,7 @@ export default function Home() {
               </div>
             </div>
             <div className="slide">
-              <img src="/img/08.webp" alt="Hanji Natural Beauty" />
+              <img src={`${BASE_PATH}/img/08.webp`} alt="Hanji Natural Beauty" />
               <div className="slide-content">
                 <h2>{t('hero.slide3.title')}</h2>
                 <p>{t('hero.slide3.description')}</p>
@@ -155,7 +155,7 @@ export default function Home() {
           </h2>
           <div className="highlights-grid">
             <div className="highlight-card featured">
-              <img src="/img/gallery/01.webp" alt="Featured Exhibition" loading="lazy" />
+              <img src={`${BASE_PATH}/img/gallery/01.webp`} alt="Featured Exhibition" loading="lazy" />
               <div className="card-content">
                 <span className="card-category">{t('highlights.exhibition.category')}</span>
                 <h3>{t('highlights.exhibition.title')}</h3>
@@ -164,7 +164,7 @@ export default function Home() {
               </div>
             </div>
             <div className="highlight-card">
-              <img src="/img/gallery/02.webp" alt="Collection Highlight" loading="lazy" />
+              <img src={`${BASE_PATH}/img/gallery/02.webp`} alt="Collection Highlight" loading="lazy" />
               <div className="card-content">
                 <span className="card-category">{t('highlights.collection.category')}</span>
                 <h3>{t('highlights.collection.title')}</h3>
@@ -173,7 +173,7 @@ export default function Home() {
               </div>
             </div>
             <div className="highlight-card">
-              <img src="/img/circle.webp" alt="Workshop" loading="lazy" />
+              <img src={`${BASE_PATH}/img/circle.webp`} alt="Workshop" loading="lazy" />
               <div className="card-content">
                 <span className="card-category">{t('highlights.workshop.category')}</span>
                 <h3>{t('highlights.workshop.title')}</h3>
@@ -194,14 +194,14 @@ export default function Home() {
           </h2>
           <div className="collection-grid">
             {[
-              { key: 'modern', img: '/img/makeing/08.webp' },
-              { key: 'techniques', img: '/img/makeing/03.webp' },
-              { key: 'forming', img: '/img/makeing/07.webp' },
-              { key: 'materials', img: '/img/makeing/02.webp' },
-              { key: 'tools', img: '/img/makeing/01.webp' },
-              { key: 'beating', img: '/img/makeing/06.webp' },
-              { key: 'preparation', img: '/img/makeing/04.webp' },
-              { key: 'soaking', img: '/img/makeing/05.webp' },
+              { key: 'modern', img: `${BASE_PATH}/img/makeing/08.webp` },
+              { key: 'techniques', img: `${BASE_PATH}/img/makeing/03.webp` },
+              { key: 'forming', img: `${BASE_PATH}/img/makeing/07.webp` },
+              { key: 'materials', img: `${BASE_PATH}/img/makeing/02.webp` },
+              { key: 'tools', img: `${BASE_PATH}/img/makeing/01.webp` },
+              { key: 'beating', img: `${BASE_PATH}/img/makeing/06.webp` },
+              { key: 'preparation', img: `${BASE_PATH}/img/makeing/04.webp` },
+              { key: 'soaking', img: `${BASE_PATH}/img/makeing/05.webp` },
             ].map(({ key, img }) => (
               <div key={key} className="collection-item">
                 <img src={img} alt={t(`collection.${key}.title`)} loading="lazy" />
@@ -225,15 +225,15 @@ export default function Home() {
         </div>
         <div className="masterpieces-grid">
           {[
-            { id: 'gallery09', img: '/img/09.webp', titleKey: 'masterpieces.lamp.title', descKey: 'masterpieces.lamp.description', periodKey: 'masterpieces.lamp.period', featured: true },
-            { id: 'takja', img: '/img/gallery/takja.webp', titleKey: 'masterpieces.vessels.title', periodKey: 'masterpieces.vessels.period' },
-            { id: 'process', img: '/img/gallery/about.webp', titleKey: 'masterpieces.daily.title', periodKey: 'masterpieces.daily.period' },
-            { id: 'gallery13', img: '/img/gallery/13.webp', titleKey: 'masterpieces.art.title', periodKey: 'masterpieces.art.period' },
-            { id: 'gallery11', img: '/img/gallery/11.webp', titleKey: 'masterpieces.architecture.title', periodKey: 'masterpieces.architecture.period' },
-            { id: 'gallery12', img: '/img/gallery/12.webp', titleKey: 'masterpieces.drawer.title', periodKey: 'masterpieces.drawer.period' },
-            { id: 'multi', img: '/img/gallery/multi.webp', titleKey: 'masterpieces.multi.title', periodKey: 'masterpieces.multi.period' },
-            { id: 'three_circle', img: '/img/gallery/3_circle.webp', titleKey: 'masterpieces.jiseung.title', periodKey: 'masterpieces.jiseung.period' },
-            { id: 'gallery10', img: '/img/gallery/10.webp', titleKey: 'masterpieces.empress.title', periodKey: 'masterpieces.empress.period' },
+            { id: 'gallery09', img: `${BASE_PATH}/img/09.webp`, titleKey: 'masterpieces.lamp.title', descKey: 'masterpieces.lamp.description', periodKey: 'masterpieces.lamp.period', featured: true },
+            { id: 'takja', img: `${BASE_PATH}/img/gallery/takja.webp`, titleKey: 'masterpieces.vessels.title', periodKey: 'masterpieces.vessels.period' },
+            { id: 'process', img: `${BASE_PATH}/img/gallery/about.webp`, titleKey: 'masterpieces.daily.title', periodKey: 'masterpieces.daily.period' },
+            { id: 'gallery13', img: `${BASE_PATH}/img/gallery/13.webp`, titleKey: 'masterpieces.art.title', periodKey: 'masterpieces.art.period' },
+            { id: 'gallery11', img: `${BASE_PATH}/img/gallery/11.webp`, titleKey: 'masterpieces.architecture.title', periodKey: 'masterpieces.architecture.period' },
+            { id: 'gallery12', img: `${BASE_PATH}/img/gallery/12.webp`, titleKey: 'masterpieces.drawer.title', periodKey: 'masterpieces.drawer.period' },
+            { id: 'multi', img: `${BASE_PATH}/img/gallery/multi.webp`, titleKey: 'masterpieces.multi.title', periodKey: 'masterpieces.multi.period' },
+            { id: 'three_circle', img: `${BASE_PATH}/img/gallery/3_circle.webp`, titleKey: 'masterpieces.jiseung.title', periodKey: 'masterpieces.jiseung.period' },
+            { id: 'gallery10', img: `${BASE_PATH}/img/gallery/10.webp`, titleKey: 'masterpieces.empress.title', periodKey: 'masterpieces.empress.period' },
           ].map(({ id, img, titleKey, descKey, periodKey, featured }) => (
             <MasterpieceItem key={id} id={id} img={img} title={t(titleKey)} description={descKey ? t(descKey) : undefined} period={t(periodKey!)} featured={!!featured} />
           ))}
@@ -258,9 +258,9 @@ export default function Home() {
         </div>
         <div className="editorial-rows">
           {[
-            { img: '/img/gallery/light_circle.webp', key: 'lamp', href: '/artwork/neak_circle', index: '01' },
-            { img: '/img/gallery/blue_circle.webp', key: 'armor', href: '/artwork/circle_ham', index: '02', reverse: true },
-            { img: '/img/two_circle.webp', key: 'craftsman', href: '/artwork/circle_pum', index: '03' },
+            { img: `${BASE_PATH}/img/gallery/light_circle.webp`, key: 'lamp', href: '/artwork/neak_circle', index: '01' },
+            { img: `${BASE_PATH}/img/gallery/blue_circle.webp`, key: 'armor', href: '/artwork/circle_ham', index: '02', reverse: true },
+            { img: `${BASE_PATH}/img/two_circle.webp`, key: 'craftsman', href: '/artwork/circle_pum', index: '03' },
           ].map(({ img, key, href, index, reverse }) => (
             <div key={key} className={`editorial-row${reverse ? ' editorial-row--reverse' : ''}`}>
               <div className="editorial-image">
@@ -370,7 +370,7 @@ function MasterpieceItem({
   function handleClick() {
     document.body.classList.remove('page-loaded')
     sessionStorage.setItem('scrollPosition', String(window.pageYOffset))
-    setTimeout(() => { window.location.href = `/artwork/${id}` }, 400)
+    setTimeout(() => { window.location.href = `${BASE_PATH}/artwork/${id}` }, 400)
   }
 
   return (

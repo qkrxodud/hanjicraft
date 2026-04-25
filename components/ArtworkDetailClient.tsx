@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { useI18n } from '@/contexts/I18nContext'
 import type { Lang } from '@/lib/translations'
+import { BASE_PATH } from '@/lib/config'
 
 // 아트워크 데이터 (artwork-detail.js 변환)
 const artworkData: Record<string, { ko: ArtworkLang; en: ArtworkLang; fr: ArtworkLang; image?: string; images?: string[] }> = {
@@ -135,7 +136,9 @@ export default function ArtworkDetailPage() {
   const id = typeof params?.id === 'string' ? params.id : ''
   const artwork = artworkData[id]
   const content: ArtworkLang | undefined = artwork ? (artwork[lang as Lang] ?? artwork.ko) : undefined
-  const imageUrls = artwork ? (artwork.images ?? (artwork.image ? [artwork.image] : [])) : []
+  const imageUrls = artwork
+    ? (artwork.images ?? (artwork.image ? [artwork.image] : [])).map((url) => `${BASE_PATH}${url}`)
+    : []
 
   // 스크롤 리빌 애니메이션
   useEffect(() => {
@@ -401,17 +404,17 @@ export default function ArtworkDetailPage() {
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
                       document.body.classList.remove('page-loaded')
-                      setTimeout(() => { window.location.href = `/artwork/${artId}` }, 400)
+                      setTimeout(() => { window.location.href = `${BASE_PATH}/artwork/${artId}` }, 400)
                     }}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault()
                         document.body.classList.remove('page-loaded')
-                        setTimeout(() => { window.location.href = `/artwork/${artId}` }, 400)
+                        setTimeout(() => { window.location.href = `${BASE_PATH}/artwork/${artId}` }, 400)
                       }
                     }}
                   >
-                    <img src={relatedImages[artId] ?? '/img/placeholder.webp'} alt={art.title} loading="lazy" />
+                    <img src={`${BASE_PATH}${relatedImages[artId] ?? '/img/placeholder.webp'}`} alt={art.title} loading="lazy" />
                     <div className="related-info">
                       <h3>{art.title}</h3>
                       <p>{art.period}</p>
