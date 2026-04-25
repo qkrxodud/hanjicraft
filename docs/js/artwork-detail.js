@@ -763,8 +763,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // 언어 전환 시 이전 carousel 애니메이션 루프 취소를 위한 외부 참조
+    let _carouselAnimationId = null;
+
     // Setup continuous scroll carousel
     function setupCarousel() {
+        // 이전 애니메이션 루프가 남아있으면 취소
+        if (_carouselAnimationId) {
+            cancelAnimationFrame(_carouselAnimationId);
+            _carouselAnimationId = null;
+        }
+
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const itemsWrapper = document.getElementById('relatedItemsWrapper');
@@ -831,6 +840,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             animationId = requestAnimationFrame(continuousScroll);
+            _carouselAnimationId = animationId; // 외부 참조 동기화 (언어 전환 시 취소용)
         }
 
         // 수동 네비게이션

@@ -192,25 +192,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', function() {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+        // 스크롤 방향 감지: 아래로 스크롤 시 숨김 (100px 이상 내려간 경우)
         if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down - hide navbar
             navbar.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up - show navbar
             navbar.style.transform = 'translateY(0)';
         }
 
-        // Add background when scrolled
+        // 히어로 영역(50px 이내)에서는 투명, 벗어나면 크림색 배경
+        // CSS .scrolled 클래스로 제어 — 인라인 background 제거
         if (scrollTop > 50) {
-            navbar.style.background = 'rgba(245, 240, 232, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(28,28,28,0.07)';
-        } else {
-            navbar.style.background = 'rgba(245, 240, 232, 0.97)';
-            navbar.style.boxShadow = 'none';
-        }
-
-        // Logo shrink effect on scroll
-        if (scrollTop > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');

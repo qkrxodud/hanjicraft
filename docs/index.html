@@ -52,7 +52,8 @@
         <div class="hero-container">
             <div class="hero-slider">
                 <div class="slide active">
-                    <img src="./img/01.webp" alt="Hanji Craft Exhibition">
+                    <!-- LCP 이미지: eager + high priority로 초기 렌더링 최적화 -->
+                    <img src="./img/01.webp" alt="Hanji Craft Exhibition" loading="eager" fetchpriority="high">
                     <div class="slide-content">
                         <h2 data-i18n="hero.title">홍현정 한지공예 연구소</h2>
                         <p data-i18n="hero.description">천 년의 결을 품은 한지, 그 강인함과 아름다움으로 빚어낸 오브제들이 당신의 공간에 스며듭니다.</p>
