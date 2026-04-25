@@ -1,3 +1,6 @@
+/* ===== Quiet Luxury Design System ===== */
+/* 팔레트: 크림/골드/차콜 — Hermès·Bottega Veneta 수준의 하이엔드 아트 디렉션 */
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -5,9 +8,21 @@
     box-sizing: border-box;
 }
 
+/* ===== CSS Custom Properties ===== */
+:root {
+    --cream-light: #FAF7F2;
+    --cream-base: #F5F0E8;
+    --cream-deep: #EDE7DC;
+    --gold: #C9A96E;
+    --gold-dim: rgba(201,169,110,0.15);
+    --charcoal: #1A1A1A;
+    --ink: #0A0A0A;
+    --warm-grey: rgba(26,26,26,0.45);
+}
+
 /* ===== 키보드 포커스 링 — 럭셔리 골드 ===== */
 :focus-visible {
-    outline: 1.5px solid #C9A96E;
+    outline: 1.5px solid var(--gold);
     outline-offset: 3px;
 }
 
@@ -18,10 +33,11 @@ html {
 
 body {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 2.1;
-    color: #1C1C1C;
-    background-color: #F5F0E8;
-    letter-spacing: 0.6px;
+    font-size: 0.82rem;
+    line-height: 2.2;
+    color: var(--charcoal);
+    background-color: var(--cream-base);
+    letter-spacing: 0.8px;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -54,16 +70,16 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     line-height: 1.3;
-    color: #1C1C1C;
+    color: var(--charcoal);
 }
 
 .section-title {
-    font-size: 3.2rem;
+    font-size: clamp(2rem, 4vw, 3.8rem);
     text-align: center;
     margin-bottom: 7rem;
-    color: #1C1C1C;
-    font-weight: 200;
-    letter-spacing: 8px;
+    color: var(--charcoal);
+    font-weight: 100;
+    letter-spacing: 12px;
     position: relative;
     text-transform: uppercase;
 }
@@ -76,17 +92,16 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(-50%);
     width: 48px;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold);
 }
 
 .section-label {
     display: block;
-    font-size: 0.62rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: 4px;
-    color: #C9A96E;
+    font-size: 0.6rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: var(--gold);
     text-transform: uppercase;
     margin-bottom: 1.4rem;
 }
@@ -96,18 +111,48 @@ h1, h2, h3, h4, h5, h6 {
     50% { background-position: 100% 50%; }
 }
 
-/* Top Navigation */
+/* ===== Top Navigation ===== */
 .top-nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(245, 240, 232, 0.92);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: none;
+}
+
+/* 투명 상태일 때 로고/링크 흰색 */
+.top-nav:not(.scrolled) .logo h1,
+.top-nav:not(.scrolled) .logo p,
+.top-nav:not(.scrolled) .nav-link {
+    color: rgba(250,247,242,0.9);
+}
+.top-nav:not(.scrolled) .logo {
+    border-color: rgba(250,247,242,0.15);
+}
+.top-nav:not(.scrolled) .logo::after {
+    background: rgba(250,247,242,0.25);
+}
+.top-nav:not(.scrolled) .lang-btn {
+    color: rgba(250,247,242,0.9);
+    border-color: rgba(250,247,242,0.3);
+}
+.top-nav:not(.scrolled) .lang-btn:hover {
+    background-color: rgba(250,247,242,0.15);
+    color: #fff;
+    border-color: rgba(250,247,242,0.5);
+}
+
+/* 스크롤 시 크림 배경 전환 */
+.top-nav.scrolled {
+    background: rgba(245,240,232,0.95);
+    border-bottom: 1px solid rgba(201,169,110,0.12);
     backdrop-filter: blur(24px) saturate(1.8);
     -webkit-backdrop-filter: blur(24px) saturate(1.8);
-    border-bottom: 1px solid rgba(201, 169, 110, 0.12);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    box-shadow: none;
 }
 
 .nav-container {
@@ -151,8 +196,8 @@ h1, h2, h3, h4, h5, h6 {
     flex: 0 0 auto;
     text-align: center;
     padding: 0 2.5rem;
-    border-left: 1px solid rgba(201,169,110,0.15);
-    border-right: 1px solid rgba(201,169,110,0.15);
+    border-left: 1px solid var(--gold-dim);
+    border-right: 1px solid var(--gold-dim);
     position: relative;
 }
 
@@ -165,13 +210,13 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(-50%);
     width: 28px;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold);
     opacity: 0.5;
 }
 
 .logo h1 {
     font-size: 1.1rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     margin-bottom: 0;
     font-weight: 300;
     letter-spacing: 3px;
@@ -181,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo p {
     font-size: 0.65rem;
-    color: #C9A96E;
+    color: var(--gold);
     margin-top: -2px;
     letter-spacing: 4px;
     font-weight: 300;
@@ -201,7 +246,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
     font-weight: 300;
-    color: #1C1C1C;
+    color: var(--charcoal);
     padding: 8px 12px;
     transition: all 0.3s ease;
     border-radius: 0;
@@ -219,13 +264,13 @@ h1, h2, h3, h4, h5, h6 {
     left: 12px;
     right: 12px;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #1C1C1C;
+    color: var(--charcoal);
     background-color: transparent;
 }
 
@@ -238,11 +283,11 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 100%;
     left: 0;
-    background: #F5F0E8;
+    background: var(--cream-base);
     backdrop-filter: blur(20px);
     min-width: 220px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(201,169,110,0.15);
+    border: 1px solid var(--gold-dim);
     border-radius: 0;
     padding: 1rem 0;
     opacity: 0;
@@ -260,7 +305,7 @@ h1, h2, h3, h4, h5, h6 {
 .dropdown-content a {
     display: block;
     padding: 0.8rem 1.5rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -278,7 +323,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dropdown-content a:hover {
-    color: #1C1C1C;
+    color: var(--charcoal);
     background: rgba(28,28,28,0.04);
 }
 
@@ -307,7 +352,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.7rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     min-width: 45px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -330,8 +375,8 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     top: 100%;
     right: 0;
-    background: #F5F0E8;
-    border: 1px solid rgba(201,169,110,0.15);
+    background: var(--cream-base);
+    border: 1px solid var(--gold-dim);
     border-radius: 0;
     box-shadow: 0 8px 32px rgba(0,0,0,0.06);
     min-width: 120px;
@@ -358,7 +403,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
     font-size: 0.72rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     letter-spacing: 2px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
@@ -370,19 +415,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lang-option.active {
-    background-color: #1C1C1C;
-    color: #F5F0E8;
+    background-color: var(--charcoal);
+    color: var(--cream-base);
 }
 
 .lang-btn:hover {
-    background-color: #1C1C1C;
-    color: #F5F0E8;
-    border-color: #1C1C1C;
+    background-color: var(--charcoal);
+    color: var(--cream-base);
+    border-color: var(--charcoal);
 }
 
 /* Language-specific font optimization */
 html[lang="ko"] {
-    font-family: 'Noto Sans KR', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
 }
 
 html[lang="en"] {
@@ -395,7 +440,7 @@ html[lang="fr"] {
 
 /* Language-specific heading fonts */
 html[lang="ko"] h1, html[lang="ko"] h2, html[lang="ko"] h3, html[lang="ko"] h4, html[lang="ko"] h5, html[lang="ko"] h6 {
-    font-family: 'Noto Serif KR', 'Batang', '바탕', serif;
+    font-family: 'Noto Serif KR', 'Batang', serif;
 }
 
 html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3, html[lang="en"] h4, html[lang="en"] h5, html[lang="en"] h6 {
@@ -450,11 +495,11 @@ html[lang="en"] .logo p {
 }
 
 
-/* Brand Section */
+/* ===== Brand Section — 에디토리얼 레이아웃 ===== */
 .brand-section {
-    padding: 13rem 0;
-    background: #EDE7DC;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    padding: 14rem 0;
+    background: var(--cream-light);
+    border-top: 1px solid var(--gold-dim);
 }
 
 .brand-header {
@@ -463,8 +508,8 @@ html[lang="en"] .logo p {
 }
 
 .brand-subtitle {
-    font-size: 0.9rem;
-    color: rgba(28,28,28,0.55);
+    font-size: 0.85rem;
+    color: var(--warm-grey);
     margin-top: 1.8rem;
     font-style: italic;
     font-family: 'Cormorant Garamond', serif;
@@ -486,41 +531,54 @@ html[lang="en"] .logo p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    margin-bottom: 7rem;
-    border: 1px solid rgba(201,169,110,0.2);
+    margin-bottom: 8rem;
+    border: none;
 }
 
 .brand-card {
-    background: #F5F0E8;
-    padding: 4rem;
+    background: transparent;
+    padding: 5rem;
     border-radius: 0;
     border: none;
+    border-right: 1px solid var(--gold-dim);
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
-.brand-card:first-child {
-    border-right: 1px solid rgba(201,169,110,0.2);
+/* 카드 상단 골드 라인 포인트 */
+.brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5rem;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+}
+
+.brand-card:last-child {
+    border-right: none;
 }
 
 .brand-card:hover {
-    background: #EDE7DC;
+    background: rgba(201,169,110,0.04);
     transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.04);
 }
 
 .brand-card h3 {
-    font-size: 1.6rem;
-    color: #1C1C1C;
-    margin-bottom: 1.5rem;
-    font-weight: 200;
-    letter-spacing: 3px;
+    font-size: 2rem;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+    font-weight: 100;
+    letter-spacing: 4px;
     text-transform: uppercase;
 }
 
 .brand-card p {
-    color: rgba(28,28,28,0.6);
-    line-height: 2.0;
-    font-size: 0.9rem;
+    color: var(--warm-grey);
+    line-height: 2.2;
+    font-size: 0.85rem;
     letter-spacing: 0.5px;
 }
 
@@ -530,9 +588,9 @@ html[lang="en"] .logo p {
 
 .values-title {
     font-size: 2rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     margin-bottom: 4rem;
-    font-weight: 200;
+    font-weight: 100;
     letter-spacing: 4px;
     text-transform: uppercase;
 }
@@ -544,48 +602,51 @@ html[lang="en"] .logo p {
 }
 
 .value-card {
-    background: #F5F0E8;
+    background: transparent;
     padding: 3rem 2rem;
     border-radius: 0;
     border: none;
+    border-right: 1px solid var(--gold-dim);
     transition: all 0.3s ease;
     text-align: center;
 }
 
+.value-card:last-child {
+    border-right: none;
+}
+
 .value-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 52px rgba(0,0,0,0.07);
 }
 
 .value-icon {
     font-size: 2rem;
     margin-bottom: 2rem;
     display: block;
-    color: #C9A96E;
+    color: var(--gold);
     font-family: 'Cormorant Garamond', serif;
     letter-spacing: 4px;
     font-weight: 400;
 }
 
 .value-card h4 {
-    font-size: 1.1rem;
-    color: #1C1C1C;
+    font-size: 0.85rem;
+    color: var(--charcoal);
     margin-bottom: 1rem;
     font-weight: 400;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
-    font-size: 0.85rem;
 }
 
 .value-card p {
-    color: rgba(28,28,28,0.55);
-    line-height: 2.0;
-    font-size: 0.9rem;
+    color: var(--warm-grey);
+    line-height: 2.2;
+    font-size: 0.82rem;
     letter-spacing: 0.5px;
 }
 
-/* Responsive Design for Brand Section */
+/* 브랜드 섹션 반응형 */
 @media (max-width: 1024px) {
     .values-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -608,9 +669,18 @@ html[lang="en"] .logo p {
         margin-bottom: 3rem;
     }
 
-    .brand-card:first-child {
+    .brand-card {
         border-right: none;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--gold-dim);
+        padding: 2.5rem 2rem;
+    }
+
+    .brand-card::before {
+        left: 2rem;
+    }
+
+    .brand-card:last-child {
+        border-bottom: none;
     }
 
     .values-grid {
@@ -618,12 +688,14 @@ html[lang="en"] .logo p {
         gap: 1rem;
     }
 
-    .brand-card {
-        padding: 2rem;
+    .value-card {
+        border-right: none;
+        border-bottom: 1px solid var(--gold-dim);
+        padding: 2rem 1.5rem;
     }
 
-    .value-card {
-        padding: 1.5rem;
+    .value-card:last-child {
+        border-bottom: none;
     }
 
     .values-title {
@@ -638,7 +710,11 @@ html[lang="en"] .logo p {
     }
 
     .brand-card {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .brand-card::before {
+        left: 1.5rem;
     }
 
     .brand-card h3 {
@@ -651,7 +727,7 @@ html[lang="en"] .logo p {
     }
 }
 
-/* Hero Section */
+/* ===== Hero Section — 좌측 하단 패널 ===== */
 .hero {
     min-height: 100dvh;
     position: relative;
@@ -660,8 +736,6 @@ html[lang="en"] .logo p {
     display: flex;
     align-items: center;
 }
-
-
 
 .hero-container {
     position: relative;
@@ -690,7 +764,6 @@ html[lang="en"] .logo p {
     opacity: 1;
 }
 
-/* ===== Hero 슬라이드 인디케이터 ===== */
 /* ===== 히어로 스크롤 힌트 ===== */
 .hero-scroll-hint {
     position: absolute;
@@ -717,6 +790,7 @@ html[lang="en"] .logo p {
     .hero-scroll-hint { display: none; }
 }
 
+/* ===== Hero 슬라이드 인디케이터 ===== */
 .hero-indicators {
     position: absolute;
     bottom: 2rem;
@@ -739,7 +813,7 @@ html[lang="en"] .logo p {
 }
 
 .hero-indicator.active {
-    background: #C9A96E;
+    background: var(--gold);
     width: 44px;
 }
 
@@ -753,67 +827,70 @@ html[lang="en"] .logo p {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.8);
+    filter: brightness(0.75);
 }
 
-
-
+/* 히어로 텍스트 — 좌측 하단 패널 */
 .slide-content {
     position: absolute;
-    top: 0;
-    left: 0;
     bottom: 0;
-    width: 62%;
-    background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, transparent 100%);
+    left: 0;
+    width: 45%;
+    min-width: 340px;
+    padding: 3rem 3.5rem 4rem;
+    background: linear-gradient(135deg, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.5) 100%);
+    backdrop-filter: blur(2px);
     color: white;
-    padding: 0 5rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 1.2rem;
+    justify-content: flex-end;
+    align-items: flex-start;
     text-align: left;
     z-index: 2;
 }
 
 .slide-content h2 {
-    font-size: 3.2rem;
-    color: white;
-    margin-bottom: 1.5rem;
-    font-weight: 200;
-    letter-spacing: 2px;
-    line-height: 1.2;
+    font-size: clamp(2.8rem, 5vw, 5.5rem);
+    color: var(--cream-light);
+    margin-bottom: 0;
+    font-weight: 100;
+    letter-spacing: 1px;
+    line-height: 1.05;
     white-space: nowrap;
 }
 
 .slide-content p {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 2.5rem;
+    font-size: 0.78rem;
+    color: rgba(250,247,242,0.7);
+    margin-bottom: 0;
     line-height: 2;
-    max-width: 380px;
-    letter-spacing: 0.5px;
+    max-width: 280px;
+    letter-spacing: 1.5px;
     font-weight: 300;
 }
 
 .hero-btn {
     align-self: flex-start;
     display: inline-block;
-    padding: 15px 44px;
+    padding: 13px 36px;
     background: transparent;
     color: white;
     text-decoration: none;
     border-radius: 0;
     border: 1px solid rgba(201,169,110,0.6);
-    font-size: 0.7rem;
-    letter-spacing: 4px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
     font-weight: 300;
+    font-family: 'Roboto', sans-serif;
     transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-btn:hover {
-    background: #C9A96E;
-    color: #0C0C0C;
-    border-color: #C9A96E;
+    background: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
     transform: translateY(-2px);
 }
 .hero-btn:active {
@@ -822,18 +899,12 @@ html[lang="en"] .logo p {
 }
 
 
-
-
-
-
-/* Highlights Section */
+/* ===== Highlights Section ===== */
 .highlights {
-    padding: 13rem 0;
-    background-color: #F5F0E8;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    padding: 14rem 0;
+    background-color: var(--cream-base);
+    border-top: 1px solid var(--gold-dim);
 }
-
-
 
 .highlights-grid {
     display: grid;
@@ -842,7 +913,7 @@ html[lang="en"] .logo p {
 }
 
 .highlight-card {
-    background: #F5F0E8;
+    background: var(--cream-base);
     border-radius: 0;
     overflow: hidden;
     border: none;
@@ -871,12 +942,10 @@ html[lang="en"] .logo p {
     position: relative;
 }
 
-
-
 .card-category {
     display: inline-block;
     background-color: transparent;
-    color: #C9A96E;
+    color: var(--gold);
     padding: 0;
     border-radius: 0;
     font-size: 0.72rem;
@@ -884,24 +953,22 @@ html[lang="en"] .logo p {
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    border-bottom: 1px solid #C9A96E;
+    border-bottom: 1px solid var(--gold);
     padding-bottom: 2px;
 }
 
-
-
 .card-content h3 {
     font-size: 1.3rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     margin-bottom: 0.8rem;
     font-weight: 400;
     line-height: 1.3;
 }
 
 .card-content p {
-    color: rgba(28,28,28,0.55);
-    font-size: 0.9rem;
-    line-height: 2.0;
+    color: var(--warm-grey);
+    font-size: 0.82rem;
+    line-height: 2.2;
     margin-bottom: 1rem;
     letter-spacing: 0.5px;
 }
@@ -915,29 +982,30 @@ html[lang="en"] .logo p {
 }
 
 .card-link {
-    color: #1C1C1C;
+    color: var(--charcoal);
     text-decoration: none;
     font-weight: 300;
-    font-size: 0.72rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-size: 0.65rem;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 1px solid rgba(201,169,110,0.4);
-    transition: all 0.4s ease;
-    padding-bottom: 3px;
+    letter-spacing: 3px;
+    border: 1px solid currentColor;
+    padding: 13px 36px;
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-link:hover {
-    color: #C9A96E;
-    border-bottom-color: #C9A96E;
+    background: var(--charcoal);
+    color: var(--cream-light);
+    border-color: var(--charcoal);
 }
 
-/* Collection Delve Section */
+/* ===== Collection Delve Section ===== */
 .collection-delve {
-    padding: 13rem 0;
-    background-color: #EDE7DC;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    padding: 14rem 0;
+    background-color: var(--cream-deep);
+    border-top: 1px solid var(--gold-dim);
 }
 
 
@@ -963,7 +1031,7 @@ html[lang="en"] .logo p {
     flex: 0 0 280px;
     scroll-snap-align: start;
     text-align: center;
-    background: #F5F0E8;
+    background: var(--cream-base);
     border-radius: 0;
     overflow: hidden;
     border: none;
@@ -995,7 +1063,7 @@ html[lang="en"] .logo p {
 
 .item-content h3 {
     font-size: 1.2rem;
-    color: #1C1C1C;
+    color: var(--charcoal);
     margin-bottom: 0.8rem;
     font-weight: 300;
     letter-spacing: 2px;
@@ -1003,24 +1071,24 @@ html[lang="en"] .logo p {
 }
 
 .item-content p {
-    color: rgba(28,28,28,0.55);
-    line-height: 2.0;
-    font-size: 0.9rem;
+    color: var(--warm-grey);
+    line-height: 2.2;
+    font-size: 0.82rem;
     letter-spacing: 0.5px;
 }
 
-/* Masterpieces Gallery */
+/* ===== Masterpieces Gallery — 드라마틱 그리드 ===== */
 .masterpieces {
-    padding: 13rem 0;
-    background-color: #F5F0E8;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    padding: 14rem 0;
+    background-color: var(--cream-base);
+    border-top: 1px solid var(--gold-dim);
 }
 
 .masterpieces-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 280px);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 360px;
+    gap: 4px;
     margin-bottom: 3rem;
 }
 
@@ -1030,7 +1098,7 @@ html[lang="en"] .logo p {
     border-radius: 0;
     cursor: pointer;
     transition: all 0.3s ease;
-    background: #EDE7DC;
+    background: var(--cream-deep);
     border: none;
 }
 
@@ -1040,8 +1108,7 @@ html[lang="en"] .logo p {
 }
 
 .masterpiece-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 56px rgba(0,0,0,0.1);
+    z-index: 2;
 }
 
 /* 골드 언더라인 — hover 시 좌에서 우로 슬라이드 */
@@ -1052,7 +1119,7 @@ html[lang="en"] .logo p {
     left: 0;
     right: 0;
     height: 2px;
-    background: #C9A96E;
+    background: var(--gold);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1070,22 +1137,29 @@ html[lang="en"] .logo p {
 }
 
 .masterpiece-item:hover img {
-    transform: scale(1.07);
+    transform: scale(1.04);
 }
 
+/* 호버 시 텍스트 슬라이드업 */
 .masterpiece-info {
-    padding: 3.5rem 1.5rem 1.2rem;
+    padding: 2.5rem 1.5rem 1.2rem;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, rgba(14,10,6,0.92) 0%, rgba(14,10,6,0.35) 55%, transparent 100%);
+    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 100%);
     height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     border-top: none;
     z-index: 2;
+    transform: translateY(12px);
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+}
+
+.masterpiece-item:hover .masterpiece-info {
+    transform: translateY(0);
 }
 
 .masterpiece-info h3 {
@@ -1138,33 +1212,33 @@ html[lang="en"] .logo p {
 
 .gallery-link {
     display: inline-block;
-    color: #1C1C1C;
+    color: var(--charcoal);
     text-decoration: none;
     font-weight: 300;
-    font-size: 0.72rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     border: 1px solid rgba(201,169,110,0.35);
-    padding: 17px 54px;
+    padding: 13px 36px;
     border-radius: 0;
     transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    font-family: 'Roboto', sans-serif;
 }
 
 .gallery-link:hover {
-    background: #C9A96E;
-    color: #F5F0E8;
-    border-color: #C9A96E;
+    background: var(--gold);
+    color: var(--cream-base);
+    border-color: var(--gold);
 }
 
-/* Featured Artworks — editorial rows */
+/* ===== Featured Artworks — editorial rows ===== */
 .featured-artworks {
     padding-top: 10rem;
     padding-bottom: 0;
-    background-color: #EDE7DC;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    background-color: var(--cream-deep);
+    border-top: 1px solid var(--gold-dim);
 }
 
-/* ===== Editorial Rows ===== */
 .editorial-rows {
     margin-top: 4rem;
 }
@@ -1173,11 +1247,11 @@ html[lang="en"] .logo p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 42vh;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    border-top: 1px solid var(--gold-dim);
 }
 
 .editorial-row:last-child {
-    border-bottom: 1px solid rgba(201,169,110,0.12);
+    border-bottom: 1px solid var(--gold-dim);
 }
 
 .editorial-row--reverse {
@@ -1224,7 +1298,7 @@ html[lang="en"] .logo p {
     flex-direction: column;
     justify-content: center;
     padding: 4rem 4.5rem;
-    background: #EDE7DC;
+    background: var(--cream-deep);
     position: relative;
     overflow: hidden;
 }
@@ -1246,9 +1320,9 @@ html[lang="en"] .logo p {
 .editorial-text h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem;
-    font-weight: 200;
+    font-weight: 100;
     letter-spacing: 3px;
-    color: #1C1C1C;
+    color: var(--charcoal);
     margin-bottom: 0.6rem;
     text-transform: uppercase;
     line-height: 1.2;
@@ -1256,7 +1330,7 @@ html[lang="en"] .logo p {
 
 .artwork-period {
     font-size: 0.72rem;
-    color: #C9A96E;
+    color: var(--gold);
     font-style: italic;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
@@ -1266,9 +1340,9 @@ html[lang="en"] .logo p {
 }
 
 .artwork-description {
-    color: rgba(28,28,28,0.55);
-    line-height: 2.0;
-    font-size: 0.88rem;
+    color: var(--warm-grey);
+    line-height: 2.2;
+    font-size: 0.82rem;
     margin-bottom: 1.5rem;
     letter-spacing: 0.3px;
     font-weight: 300;
@@ -1311,54 +1385,54 @@ html[lang="en"] .logo p {
 
 .artwork-link {
     display: inline-block;
-    color: #1C1C1C;
+    color: var(--charcoal);
     text-decoration: none;
     font-weight: 300;
-    font-size: 0.72rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-size: 0.65rem;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 1px solid rgba(201,169,110,0.4);
-    padding-bottom: 3px;
+    letter-spacing: 3px;
+    border: 1px solid currentColor;
+    padding: 13px 36px;
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .artwork-link:hover {
-    color: #C9A96E;
-    border-bottom-color: #C9A96E;
-    transform: translateX(4px);
+    background: var(--charcoal);
+    color: var(--cream-light);
+    border-color: var(--charcoal);
 }
 
-/* Inquiry / Partnership Section */
+/* ===== Inquiry / Partnership Section — 크림 배경 ===== */
 .inquiry-section {
-    padding: 12rem 0;
-    background-color: #000000;
+    padding: 14rem 0;
+    background-color: var(--cream-light);
     text-align: center;
-    color: #ffffff;
+    color: var(--charcoal);
+    border-top: 1px solid var(--gold-dim);
 }
 
 .inquiry-section .section-title {
-    color: #ffffff;
+    color: var(--charcoal);
     font-size: 3rem;
-    letter-spacing: 5px;
+    letter-spacing: 12px;
 }
 
 .inquiry-section .section-title::after {
-    background: #C9A96E;
+    background: var(--gold);
 }
 
 .inquiry-section .section-label {
-    color: #C9A96E;
+    color: var(--gold);
 }
 
 .inquiry-lead {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.9;
-    max-width: 600px;
-    margin: 0 auto 3rem;
-    letter-spacing: 0.3px;
+    font-size: 0.85rem;
+    color: var(--warm-grey);
+    line-height: 2.2;
+    max-width: 520px;
+    margin: 0 auto 4rem;
+    letter-spacing: 0.8px;
 }
 
 .inquiry-cta-group {
@@ -1370,47 +1444,47 @@ html[lang="en"] .logo p {
 
 .inquiry-btn {
     display: inline-block;
-    padding: 17px 48px;
+    padding: 13px 36px;
     text-decoration: none;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 300;
+    font-family: 'Roboto', sans-serif;
     transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     border-radius: 0;
 }
 
 .inquiry-btn.primary {
-    background-color: #C9A96E;
-    color: #0C0C0C;
-    border: 1px solid #C9A96E;
+    background-color: var(--charcoal);
+    color: var(--cream-light);
+    border: 1px solid var(--charcoal);
 }
 
 .inquiry-btn.primary:hover {
-    background-color: #F5F0E8;
-    color: #0C0C0C;
-    border-color: #F5F0E8;
+    background-color: var(--gold);
+    color: var(--ink);
+    border-color: var(--gold);
     transform: translateY(-2px);
 }
 .inquiry-btn.primary:active {
     transform: translateY(0);
-    background-color: #EDE7DC;
+    background-color: rgba(201,169,110,0.85);
 }
 
 .inquiry-btn.secondary {
     background-color: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--charcoal);
+    border: 1px solid var(--charcoal);
 }
 
 .inquiry-btn.secondary:hover {
-    border-color: #C9A96E;
-    color: #C9A96E;
+    background: var(--charcoal);
+    color: var(--cream-light);
     transform: translateY(-2px);
 }
 .inquiry-btn.secondary:active {
     transform: translateY(0);
-    border-color: rgba(201,169,110,0.6);
 }
 
 @media (max-width: 768px) {
@@ -1430,31 +1504,34 @@ html[lang="en"] .logo p {
     }
 }
 
-/* Footer */
+/* ===== Footer — 미니멀 럭셔리 ===== */
 .footer {
-    background: #0F0F0F;
+    background: var(--ink);
     color: rgba(255,255,255,0.6);
+    padding: 6rem 0 3rem;
+    border-top: 1px solid rgba(201,169,110,0.1);
 }
 
 .footer-top {
     padding: 5rem 0 4rem;
     text-align: center;
-    border-bottom: 1px solid rgba(201,169,110,0.12);
+    border-bottom: 1px solid rgba(201,169,110,0.08);
+    margin-bottom: 4rem;
 }
 
 .footer-logo h3 {
-    font-size: 1.3rem;
-    color: #C9A96E;
-    font-weight: 200;
-    letter-spacing: 4px;
+    font-size: 1.4rem;
+    color: var(--cream-light);
+    font-weight: 100;
+    letter-spacing: 6px;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
     white-space: nowrap;
 }
 
 .footer-logo p {
-    font-size: 0.65rem;
-    color: rgba(201,169,110,0.6);
+    font-size: 0.58rem;
+    color: var(--gold);
     letter-spacing: 5px;
     text-transform: uppercase;
 }
@@ -1470,17 +1547,17 @@ html[lang="en"] .logo p {
     font-size: 0.75rem;
     letter-spacing: 1px;
     line-height: 2;
-    color: rgba(255,255,255,0.35);
+    color: rgba(250,247,242,0.45);
 }
 
 .footer-info a {
-    color: rgba(255,255,255,0.35);
+    color: rgba(250,247,242,0.45);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-info a:hover {
-    color: #C9A96E;
+    color: var(--gold);
 }
 
 .social-links {
@@ -1493,24 +1570,24 @@ html[lang="en"] .logo p {
     font-size: 0.72rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: rgba(250,247,242,0.45);
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #C9A96E;
+    color: var(--gold);
 }
 
 .footer-bottom {
     border-top: 1px solid rgba(201,169,110,0.1);
     padding: 1.5rem 0;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 2px;
-    color: rgba(201,169,110,0.25);
+    color: rgba(250,247,242,0.2);
 }
 
-/* Bottom Navigation */
+/* ===== Bottom Navigation ===== */
 .bottom-nav {
     position: fixed;
     bottom: 20px;
@@ -1528,14 +1605,14 @@ html[lang="en"] .logo p {
 
 .bottom-nav-btn {
     padding: 12px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 0.9rem;
+    border-radius: 0;
+    font-weight: 300;
+    font-size: 0.75rem;
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     border: none;
     cursor: pointer;
 }
@@ -1545,27 +1622,29 @@ html[lang="en"] .logo p {
 }
 
 .bottom-nav-btn.primary {
-    background-color: #C9A96E;
-    color: #ffffff;
-    border: 2px solid #C9A96E;
+    background-color: var(--charcoal);
+    color: var(--cream-light);
+    border: 1px solid var(--charcoal);
     position: relative;
     display: inline-block;
     text-align: center;
     border-radius: 0;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-weight: 300;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
 }
 
 .bottom-nav-btn.primary:hover {
-    background-color: #B08D50;
-    border-color: #B08D50;
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
     transform: translateY(-2px);
 }
 
 .bottom-nav-btn.primary.active {
-    background-color: #B08D50;
-    border-color: #B08D50;
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
 }
 
 .bottom-nav-btn:not(.primary) {
@@ -1592,8 +1671,8 @@ html[lang="en"] .logo p {
 
 .primary-menu-item {
     padding: 10px 16px;
-    background: #F5F0E8;
-    color: #1C1C1C;
+    background: var(--cream-base);
+    color: var(--charcoal);
     text-decoration: none;
     border-radius: 0;
     font-weight: 300;
@@ -1601,7 +1680,7 @@ html[lang="en"] .logo p {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid rgba(201,169,110,0.15);
+    border: 1px solid var(--gold-dim);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     opacity: 0;
     visibility: hidden;
@@ -1621,14 +1700,14 @@ html[lang="en"] .logo p {
 .primary-menu-item[data-delay="3"] { transition-delay: 0.25s; }
 
 .primary-menu-item:hover {
-    background-color: #1C1C1C;
-    color: #F5F0E8;
-    border-color: #1C1C1C;
+    background-color: var(--charcoal);
+    color: var(--cream-base);
+    border-color: var(--charcoal);
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(0,0,0,0.15);
 }
 
-/* Responsive Design */
+/* ===== Responsive Design ===== */
 @media (max-width: 1200px) {
     .logo h1 {
         font-size: 1.05rem;
@@ -1707,14 +1786,21 @@ html[lang="en"] .logo p {
         font-size: 0.55rem;
     }
 
+    /* 모바일 nav 투명 상태 — 로고/버튼 흰색 */
+    .top-nav:not(.scrolled) .logo h1,
+    .top-nav:not(.scrolled) .logo p {
+        color: rgba(250,247,242,0.9);
+    }
+
     .slide-content {
         width: 100%;
-        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
-        padding: 0 2rem;
+        min-width: unset;
+        background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, transparent 60%);
+        padding: 0 2rem 3rem;
         justify-content: flex-end;
-        padding-bottom: 3rem;
-        text-align: center;
         align-items: center;
+        text-align: center;
+        backdrop-filter: none;
     }
 
     .slide-content h2 {
@@ -1724,7 +1810,8 @@ html[lang="en"] .logo p {
     }
 
     .slide-content p {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
+        max-width: 100%;
     }
 
     .hero-btn {
@@ -1745,7 +1832,7 @@ html[lang="en"] .logo p {
 
     .masterpieces-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(5, 220px);
+        grid-auto-rows: 220px;
         gap: 1rem;
     }
 
@@ -1797,14 +1884,14 @@ html[lang="en"] .logo p {
     }
     .hero-stat {
         flex: 0 0 50%;
-        min-width: 0;        /* flex 아이템이 50%를 초과하지 않도록 */
+        min-width: 0;
         padding: 1.2rem 0.75rem;
         border-right: none;
-        border-bottom: 1px solid rgba(201,169,110,0.12);
+        border-bottom: 1px solid var(--gold-dim);
         overflow: hidden;
     }
     .hero-stat:nth-child(odd) {
-        border-right: 1px solid rgba(201,169,110,0.12);
+        border-right: 1px solid var(--gold-dim);
     }
     .hero-stat:nth-child(3),
     .hero-stat:nth-child(4) {
@@ -1816,7 +1903,7 @@ html[lang="en"] .logo p {
     }
     .hero-stat-label {
         letter-spacing: 1.5px;
-        word-break: break-word;     /* 공백 없는 긴 문자열 강제 줄바꿈 */
+        word-break: break-word;
         overflow-wrap: anywhere;
         white-space: normal;
     }
@@ -1857,9 +1944,16 @@ html[lang="en"] .logo p {
     }
     .footer-top {
         padding: 3rem 0 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .footer {
+        padding: 3rem 0 2rem;
     }
 
     /* 터치 디바이스: masterpiece 설명 항상 표시 */
+    .masterpiece-info {
+        transform: translateY(0);
+    }
     .masterpiece-info p {
         opacity: 1;
         transform: translateY(0);
@@ -1886,18 +1980,13 @@ html[lang="en"] .logo p {
         text-align: center;
     }
 
-    /* 히어로 본문 — max-width 해제 */
-    .slide-content p {
-        max-width: 100%;
-    }
-
     /* 입점 문의 섹션 */
     .inquiry-section .section-title {
         font-size: 2rem;
         letter-spacing: 3px;
     }
     .inquiry-lead {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
         padding: 0 1rem;
         margin-bottom: 2rem;
     }
@@ -1949,7 +2038,7 @@ html[lang="en"] .logo p {
 
     .masterpieces-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 260px);
+        grid-auto-rows: 260px;
     }
 
     .masterpiece-item.featured {
@@ -2004,6 +2093,8 @@ html[lang="en"] .logo p {
     }
     .value-card {
         padding: 1.5rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid var(--gold-dim);
     }
 
     /* 히어로 스탯 480px */
@@ -2026,17 +2117,13 @@ html[lang="en"] .logo p {
     }
     .bottom-nav-btn.primary {
         padding: 11px 16px;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         min-height: 44px;
     }
 
     /* 갤러리 섹션 */
     .masterpieces {
         padding: 3rem 0;
-    }
-    /* 암묵적 행 높이 보장 (9개 아이템, 6개만 명시적) */
-    .masterpieces-grid {
-        grid-auto-rows: 260px;
     }
 
     /* 컬렉션 아이템 */
@@ -2051,7 +2138,7 @@ html[lang="en"] .logo p {
     /* 히어로 버튼 */
     .hero-btn {
         padding: 13px 28px;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         letter-spacing: 3px;
         min-width: 160px;
     }
@@ -2069,7 +2156,7 @@ html[lang="en"] .logo p {
         letter-spacing: 2px;
     }
     .inquiry-lead {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         line-height: 1.8;
         padding: 0 0.75rem;
     }
@@ -2086,8 +2173,12 @@ html[lang="en"] .logo p {
     }
 
     /* 푸터 */
+    .footer {
+        padding: 2rem 0 1rem;
+    }
     .footer-top {
         padding: 2rem 0 1.5rem;
+        margin-bottom: 1.5rem;
     }
     .footer-content {
         padding: 1.5rem 0 1rem;
@@ -2183,8 +2274,6 @@ html[lang="en"] .logo p {
     overflow: hidden;
     transition: all 0.3s ease;
 }
-
-/* masterpiece overlay — gradient overlay 방식으로 변경됨 (위 .masterpiece-info 블록 참조) */
 
 /* ===== Highlight Card Image Zoom ===== */
 .highlight-card img {
@@ -2355,7 +2444,7 @@ html[lang="en"] .logo p {
     top: 0;
     bottom: 0;
     width: 80px;
-    background: linear-gradient(to right, transparent, #EDE7DC);
+    background: linear-gradient(to right, transparent, var(--cream-deep));
     pointer-events: none;
     z-index: 2;
 }
@@ -2367,7 +2456,7 @@ html[lang="en"] .logo p {
     left: 0;
     height: 2px;
     width: 0%;
-    background: #C9A96E;
+    background: var(--gold);
     z-index: 10000;
     transition: width 0.08s linear;
 }
@@ -2379,7 +2468,7 @@ html[lang="en"] .logo p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #F5F0E8;
+    background: var(--cream-base);
     z-index: 99999;
     display: flex;
     align-items: center;
@@ -2399,7 +2488,7 @@ html[lang="en"] .logo p {
 .loader-symbol {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3rem;
-    color: #C9A96E;
+    color: var(--gold);
     font-weight: 300;
     letter-spacing: 4px;
     animation: loaderPulse 1.8s ease-in-out infinite;
@@ -2408,7 +2497,7 @@ html[lang="en"] .logo p {
     display: block;
     width: 48px;
     height: 1px;
-    background: linear-gradient(to right, transparent, #C9A96E, transparent);
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
     animation: loaderExpand 1.8s ease-in-out infinite;
 }
 @keyframes loaderPulse {
@@ -2424,8 +2513,8 @@ html[lang="en"] .logo p {
 body {
     opacity: 0;
     transition: opacity 0.6s ease;
-    background-color: #F5F0E8;
-    background-image: linear-gradient(180deg, #F5F0E8 0%, #F2ECE2 50%, #F5F0E8 100%);
+    background-color: var(--cream-base);
+    background-image: linear-gradient(180deg, var(--cream-base) 0%, #F2ECE2 50%, var(--cream-base) 100%);
     background-attachment: fixed;
 }
 body.page-loaded {
@@ -2441,7 +2530,7 @@ body.page-loaded {
 .marquee-strip {
     width: 100%;
     overflow: hidden;
-    background: #000;
+    background: var(--ink);
     padding: 12px 0;
     white-space: nowrap;
 }
@@ -2451,15 +2540,15 @@ body.page-loaded {
 }
 .marquee-track span {
     font-family: 'Roboto', sans-serif;
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 300;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #fff;
+    color: rgba(250,247,242,0.6);
     padding: 0 3rem;
 }
 .marquee-track span.gold {
-    color: #C9A96E;
+    color: var(--gold);
 }
 @keyframes marquee {
     from { transform: translateX(0); }
@@ -2469,14 +2558,14 @@ body.page-loaded {
 /* ===== Hero stat strip ===== */
 .hero-stats {
     display: flex;
-    background: #F5F0E8;
-    border-bottom: 1px solid rgba(201,169,110,0.12);
+    background: var(--cream-base);
+    border-bottom: 1px solid var(--gold-dim);
 }
 .hero-stat {
     flex: 1;
     padding: 2rem 2.5rem;
     text-align: center;
-    border-right: 1px solid rgba(201,169,110,0.12);
+    border-right: 1px solid var(--gold-dim);
 }
 .hero-stat:last-child {
     border-right: none;
@@ -2487,14 +2576,14 @@ body.page-loaded {
     font-weight: 200;
     letter-spacing: 2px;
     line-height: 1;
-    color: #1C1C1C;
+    color: var(--charcoal);
     display: block;
 }
 .hero-stat-label {
     font-size: 0.6rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(28,28,28,0.58);
+    color: var(--warm-grey);
     margin-top: 4px;
     display: block;
 }
@@ -2503,7 +2592,7 @@ body.page-loaded {
 .section-divider {
     width: 40px;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold);
     margin: 2rem 0;
 }
 
@@ -2511,7 +2600,7 @@ body.page-loaded {
 .cursor-dot {
     width: 5px;
     height: 5px;
-    background: #C9A96E;
+    background: var(--gold);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
@@ -2533,7 +2622,7 @@ body.page-loaded {
 .cursor-ring.hovering {
     width: 52px;
     height: 52px;
-    border-color: #C9A96E;
+    border-color: var(--gold);
 }
 
 @media (hover: none) {
@@ -2585,10 +2674,10 @@ body.page-loaded {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== Philosophy Interstitial ===== */
+/* ===== Philosophy Interstitial — 강렬하게 ===== */
 .philosophy-strip {
-    background: #1C1C1C;
-    padding: 9rem 0;
+    background: var(--ink);
+    padding: 10rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -2620,25 +2709,43 @@ body.page-loaded {
 
 .philosophy-label {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 200;
-    color: #C9A96E;
-    letter-spacing: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: rgba(201,169,110,0.7);
+    letter-spacing: 6px;
+    text-transform: uppercase;
     margin-bottom: 3rem;
 }
 
 .philosophy-strip blockquote {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
-    font-weight: 200;
-    color: rgba(255,255,255,0.82);
-    line-height: 1.9;
-    letter-spacing: 1px;
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    font-weight: 100;
+    font-style: italic;
+    color: var(--cream-light);
+    line-height: 1.6;
+    letter-spacing: 2px;
     border: none;
     margin: 0;
-    font-style: normal;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
     white-space: pre-line;
+}
+
+/* 인용 부호 골드 */
+.philosophy-strip blockquote::before {
+    content: '\201C';
+    font-size: 6rem;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    top: -2rem;
+    left: -1rem;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+    font-style: normal;
 }
 
 @media (max-width: 768px) {
@@ -2651,12 +2758,17 @@ body.page-loaded {
     .philosophy-strip blockquote {
         font-size: 1.4rem;
     }
+    .philosophy-strip blockquote::before {
+        font-size: 4rem;
+        top: -1.5rem;
+        left: -0.5rem;
+    }
     .philosophy-label {
-        font-size: 2rem;
+        font-size: 0.55rem;
     }
 }
 
-/* ===== Masterpieces — full-bleed 풀블리드 ===== */
+/* ===== Masterpieces — full-bleed ===== */
 .masterpieces .masterpieces-grid {
     margin-top: 5rem;
 }
@@ -2678,6 +2790,9 @@ body.page-loaded {
 
 /* ===== 터치 디바이스: 갤러리 설명 항상 표시 ===== */
 @media (pointer: coarse) {
+    .masterpiece-info {
+        transform: translateY(0);
+    }
     .masterpiece-info p {
         opacity: 1;
         transform: translateY(0);
@@ -2693,7 +2808,6 @@ body.page-loaded {
     }
     .value-card:hover {
         transform: none;
-        box-shadow: none;
     }
     .masterpiece-item:hover .masterpiece-info p {
         opacity: 1;
@@ -2703,14 +2817,13 @@ body.page-loaded {
 
 /* ===== 활성 nav 링크 하이라이트 ===== */
 .nav-link.nav-active {
-    color: #C9A96E;
+    color: var(--gold);
 }
 .nav-link.nav-active::after {
     transform: scaleX(1);
 }
 
 /* ===== 이미지 지연 로딩 fade-in ===== */
-/* artwork-detail 메인 이미지(.detail-image)는 별도 애니메이션으로 처리되므로 제외 */
 .masterpiece-item img[loading="lazy"],
 .highlight-card img[loading="lazy"],
 .collection-item img[loading="lazy"],
@@ -2736,8 +2849,8 @@ body.page-loaded {
     right: 1.5rem;
     width: 44px;
     height: 44px;
-    background: #1C1C1C;
-    color: #F5F0E8;
+    background: var(--charcoal);
+    color: var(--cream-base);
     border: none;
     border-radius: 0;
     font-size: 1rem;
@@ -2757,7 +2870,7 @@ body.page-loaded {
     transform: translateY(0);
 }
 .scroll-top-btn:hover {
-    background: #C9A96E;
+    background: var(--gold);
 }
 .scroll-top-btn:active {
     background: #B08D50;

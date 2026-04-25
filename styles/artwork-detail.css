@@ -1,4 +1,4 @@
-/* Artwork Detail Page Styles — Luxury Gallery Redesign */
+/* Artwork Detail Page Styles — Quiet Luxury Redesign */
 
 /* ===== Detail page nav: center-logo with back link ===== */
 .top-nav .nav-container {
@@ -14,35 +14,36 @@
     flex: 1;
 }
 .back-nav-link {
-    font-size: 0.7rem;
-    letter-spacing: 2.5px;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    color: #1C1C1C;
+    color: var(--charcoal, #1A1A1A);
     font-weight: 300;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    font-family: 'Roboto', sans-serif;
 }
 .back-nav-link:hover {
-    color: #C9A96E;
+    color: var(--gold, #C9A96E);
     opacity: 1;
 }
 .top-nav .logo {
     flex: 0 0 auto;
     text-align: center;
     padding: 0 2.5rem;
-    border-left: 1px solid rgba(201,169,110,0.15);
-    border-right: 1px solid rgba(201,169,110,0.15);
+    border-left: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
+    border-right: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
 }
 .top-nav .logo h1 {
     font-size: 1.1rem;
     font-weight: 300;
     letter-spacing: 3px;
     line-height: 1.1;
-    color: #1C1C1C;
+    color: var(--charcoal, #1A1A1A);
 }
 .top-nav .logo p {
     font-size: 0.65rem;
-    color: #C9A96E;
+    color: var(--gold, #C9A96E);
     letter-spacing: 4px;
     text-transform: uppercase;
     line-height: 1.1;
@@ -57,7 +58,7 @@
 .artwork-detail {
     padding-top: 80px;
     padding-bottom: 0;
-    background: #F5F0E8;
+    background: var(--cream-base, #F5F0E8);
     min-height: 100vh;
 }
 
@@ -80,7 +81,7 @@
     top: 60px;
     height: calc(100vh - 60px);
     overflow: hidden;
-    background: #EDE7DC;
+    background: var(--cream-deep, #EDE7DC);
 }
 
 .detail-image img,
@@ -117,7 +118,7 @@
     width: 64px;
     flex-shrink: 0;
     overflow-y: auto;
-    background: #EDE7DC;
+    background: var(--cream-deep, #EDE7DC);
     padding: 4px;
     scrollbar-width: none;
     flex-wrap: nowrap;
@@ -137,7 +138,7 @@
     transition: all 0.3s ease;
 }
 .thumbnail.active {
-    border-color: #C9A96E;
+    border-color: var(--gold, #C9A96E);
     opacity: 1;
 }
 .thumbnail:hover {
@@ -215,10 +216,9 @@
 /* ===== Text / Info area ===== */
 .detail-info {
     padding: 5rem 5rem 6rem;
-    background: #F5F0E8;
+    background: var(--cream-base, #F5F0E8);
     display: flex;
     flex-direction: column;
-    /* 애니메이션 초기값은 아래 별도 블록에서 처리 */
 }
 
 /* 컬렉션 라벨 — 타이틀 위 작은 골드 텍스트 */
@@ -228,7 +228,7 @@
     font-size: 0.58rem;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #C9A96E;
+    color: var(--gold, #C9A96E);
     font-weight: 300;
     margin-bottom: 1.4rem;
 }
@@ -236,9 +236,9 @@
 .detail-info h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3.2rem;
-    font-weight: 300;
+    font-weight: 100;
     letter-spacing: 2px;
-    color: #1C1C1C;
+    color: var(--charcoal, #1A1A1A);
     margin-bottom: 0;
     line-height: 1.18;
 }
@@ -247,7 +247,7 @@
 .detail-title-line {
     width: 44px;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold, #C9A96E);
     margin: 2.2rem 0 2.8rem;
     flex-shrink: 0;
 }
@@ -255,7 +255,7 @@
 .artwork-meta {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid rgba(201,169,110,0.15);
+    border-bottom: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
     margin-bottom: 2.5rem;
     padding-bottom: 1.8rem;
     gap: 0.9rem;
@@ -270,7 +270,7 @@
     font-size: 0.6rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #C9A96E;
+    color: var(--gold, #C9A96E);
     font-weight: 300;
     width: 90px;
     flex-shrink: 0;
@@ -278,16 +278,16 @@
 }
 
 .meta-value {
-    font-size: 0.88rem;
-    color: rgba(28,28,28,0.75);
+    font-size: 0.85rem;
+    color: var(--warm-grey, rgba(26,26,26,0.45));
     font-weight: 300;
     letter-spacing: 0.5px;
 }
 
 .artwork-description {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     line-height: 2.2;
-    color: rgba(28,28,28,0.6);
+    color: var(--warm-grey, rgba(26,26,26,0.45));
     font-weight: 300;
     letter-spacing: 0.3px;
 }
@@ -298,7 +298,7 @@
 
 /* 스토리 블록 — 풀블리드 검정 */
 .artwork-story {
-    background: #0C0C0C;
+    background: var(--ink, #0A0A0A);
     padding: 4rem 4rem 4.5rem;
     margin-top: 4rem;
     position: relative;
@@ -313,7 +313,7 @@
     left: 4rem;
     right: 4rem;
     height: 1px;
-    background: linear-gradient(to right, #C9A96E 0%, rgba(184,151,90,0.2) 60%, transparent 100%);
+    background: linear-gradient(to right, var(--gold, #C9A96E) 0%, rgba(201,169,110,0.2) 60%, transparent 100%);
 }
 
 /* 대형 紙 워터마크 */
@@ -336,15 +336,15 @@
     font-size: 0.58rem;
     font-weight: 300;
     letter-spacing: 5px;
-    color: #C9A96E;
+    color: var(--gold, #C9A96E);
     margin-bottom: 2.2rem;
     text-transform: uppercase;
 }
 
 .artwork-story p {
-    font-size: 0.98rem;
+    font-size: 0.9rem;
     line-height: 2.4;
-    color: rgba(255,255,255,0.68);
+    color: rgba(250,247,242,0.68);
     font-weight: 300;
     white-space: pre-line;
     letter-spacing: 0.3px;
@@ -366,19 +366,19 @@
 /* ===== Related Artworks ===== */
 .related-artworks {
     padding: 10rem 0;
-    background: #EDE7DC;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    background: var(--cream-deep, #EDE7DC);
+    border-top: 1px solid var(--gold-dim, rgba(201,169,110,0.12));
 }
 
 .related-artworks .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
-    font-weight: 200;
-    letter-spacing: 5px;
+    font-weight: 100;
+    letter-spacing: 8px;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 4rem;
-    color: #1C1C1C;
+    color: var(--charcoal, #1A1A1A);
     position: relative;
 }
 .related-artworks .section-title::after {
@@ -389,7 +389,7 @@
     transform: translateX(-50%);
     width: 40px;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold, #C9A96E);
 }
 
 /* Carousel Container */
@@ -428,7 +428,7 @@
 
 .related-item {
     flex: 0 0 260px;
-    background: #F5F0E8;
+    background: var(--cream-base, #F5F0E8);
     border-radius: 0;
     box-shadow: none;
     border: none;
@@ -451,20 +451,20 @@
 }
 .related-info {
     padding: 1.2rem 1.4rem 1.6rem;
-    border-top: 1px solid rgba(201,169,110,0.12);
+    border-top: 1px solid var(--gold-dim, rgba(201,169,110,0.12));
 }
 .related-info h3 {
     font-size: 0.85rem;
     font-weight: 300;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #1C1C1C;
+    color: var(--charcoal, #1A1A1A);
     margin-bottom: 0.5rem;
     line-height: 1.3;
 }
 .related-info p {
     font-size: 0.7rem;
-    color: rgba(28,28,28,0.4);
+    color: var(--warm-grey, rgba(26,26,26,0.45));
     letter-spacing: 1px;
     font-style: normal;
 }
@@ -475,8 +475,8 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 0;
-    background: #1C1C1C;
-    color: #fff;
+    background: var(--charcoal, #1A1A1A);
+    color: var(--cream-light, #FAF7F2);
     width: 44px;
     height: 44px;
     box-shadow: none;
@@ -490,7 +490,8 @@
     justify-content: center;
 }
 .carousel-btn:hover {
-    background: #C9A96E;
+    background: var(--gold, #C9A96E);
+    color: var(--ink, #0A0A0A);
     box-shadow: none;
     transform: translateY(-50%);
 }
@@ -507,7 +508,7 @@
     transform: translateY(-50%);
 }
 .carousel-btn:disabled:hover {
-    background: #1C1C1C;
+    background: var(--charcoal, #1A1A1A);
     box-shadow: none;
     transform: translateY(-50%);
 }
@@ -522,55 +523,58 @@
 
 /* ===== Detail Footer — luxury dark style ===== */
 .detail-footer {
-    background: #0F0F0F;
+    background: var(--ink, #0A0A0A);
     padding: 3rem 0 2rem;
     margin-top: 0;
+    border-top: 1px solid rgba(201,169,110,0.1);
 }
 .detail-footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(201,169,110,0.12);
+    border-bottom: 1px solid rgba(201,169,110,0.08);
     margin-bottom: 1rem;
 }
 .footer-main h3 {
-    color: #C9A96E;
+    color: var(--cream-light, #FAF7F2);
     font-size: 1.2rem;
-    font-weight: 200;
-    letter-spacing: 3px;
+    font-weight: 100;
+    letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
 }
 .footer-contact {
     display: flex;
     gap: 1.5rem;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.4);
+    font-size: 0.82rem;
+    color: rgba(250,247,242,0.45);
 }
 .footer-contact a {
-    color: rgba(255,255,255,0.4);
+    color: rgba(250,247,242,0.45);
     text-decoration: none;
     transition: color 0.3s ease;
 }
-.footer-contact a:hover { color: #C9A96E; }
+.footer-contact a:hover { color: var(--gold, #C9A96E); }
 .footer-back-btn {
     background: transparent;
     border: 1px solid rgba(201,169,110,0.35);
-    color: rgba(255,255,255,0.6);
+    color: rgba(250,247,242,0.6);
     border-radius: 0;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    padding: 12px 30px;
+    padding: 13px 36px;
     transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     text-decoration: none;
     display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
 }
 .footer-back-btn:hover {
-    background: #C9A96E;
-    color: #0C0C0C;
-    border-color: #C9A96E;
+    background: var(--gold, #C9A96E);
+    color: var(--ink, #0A0A0A);
+    border-color: var(--gold, #C9A96E);
 }
 .detail-footer .footer-bottom {
     border-top: none;
@@ -578,9 +582,9 @@
     text-align: center;
 }
 .detail-footer .footer-bottom p {
-    color: rgba(201,169,110,0.25);
+    color: rgba(250,247,242,0.2);
     letter-spacing: 2px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     margin: 0;
 }
 
@@ -688,7 +692,7 @@
         font-size: 0.82rem;
     }
     .artwork-description {
-        font-size: 0.88rem;
+        font-size: 0.82rem;
         line-height: 2;
     }
     /* 스토리 풀블리드 — 좌우 여백 돌파 */
@@ -711,11 +715,11 @@
         margin-bottom: 1.5rem;
     }
     .artwork-story p {
-        font-size: 0.88rem;
+        font-size: 0.85rem;
         line-height: 2.2;
     }
 
-    /* 이미지 하단 → 크림 그라디언트 페이드 */
+    /* 이미지 하단 크림 그라디언트 페이드 */
     .main-image::after {
         content: '';
         position: absolute;
@@ -746,7 +750,7 @@
     .carousel-btn {
         display: none;
     }
-    /* 좌우 패딩으로 다음 카드 살짝 노출 → 스와이프 유도 */
+    /* 좌우 패딩으로 다음 카드 살짝 노출 — 스와이프 유도 */
     .related-carousel {
         overflow-x: auto;
         overflow-y: hidden;
@@ -759,14 +763,13 @@
     .related-carousel::-webkit-scrollbar { display: none; }
     .related-items-wrapper {
         gap: 0.75rem;
-        /* 마지막 카드 오른쪽 여백 확보 */
         padding-right: 1.5rem;
     }
     .related-item {
         flex: 0 0 68vw;
         max-width: 300px;
         scroll-snap-align: start;
-        background: #F5F0E8;
+        background: var(--cream-base, #F5F0E8);
     }
     .related-item img {
         height: calc(68vw * 0.65);
@@ -812,7 +815,7 @@
         text-align: center;
     }
     .footer-back-btn {
-        font-size: 0.62rem;
+        font-size: 0.6rem;
         padding: 10px 24px;
     }
     .detail-footer .footer-bottom {
@@ -869,7 +872,7 @@
         font-size: 0.78rem;
     }
     .artwork-description {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         line-height: 1.95;
     }
     /* 480px 풀블리드 */
@@ -889,7 +892,7 @@
         right: -0.5rem;
     }
     .artwork-story p {
-        font-size: 0.85rem;
+        font-size: 0.78rem;
         line-height: 2.1;
     }
 
@@ -930,7 +933,7 @@
         font-size: 0.8rem;
     }
     .footer-back-btn {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
         padding: 8px 20px;
     }
 }
@@ -984,8 +987,6 @@
     overflow: hidden;
 }
 
-/* story 섹션 — 위 기존 블록에서 이미 리디자인됨 */
-
 /* 이미지 영역 진입 — 오른쪽에서 슬라이드 */
 .detail-image,
 .detail-image-gallery {
@@ -1026,7 +1027,7 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: #C9A96E;
+    background: var(--gold, #C9A96E);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1087,7 +1088,7 @@
     left: 0;
     height: 2px;
     width: 0%;
-    background: #C9A96E;
+    background: var(--gold, #C9A96E);
     z-index: 10000;
     transition: width 0.08s linear;
 }
@@ -1161,11 +1162,10 @@
 /* ===== Page entrance ===== */
 body {
     opacity: 0;
-    background-color: #F5F0E8;
+    background-color: var(--cream-base, #F5F0E8);
     transition: opacity 0.6s ease;
 }
 body.page-loaded {
     opacity: 1;
-    background-color: #F5F0E8;
+    background-color: var(--cream-base, #F5F0E8);
 }
-
