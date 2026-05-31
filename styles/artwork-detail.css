@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     height: 60px;
-    max-width: 1000px;
+    max-width: 1240px;
     margin: 0 auto;
     padding: 0 40px;
 }
@@ -30,14 +30,14 @@
 .top-nav .logo {
     flex: 0 0 auto;
     text-align: center;
-    padding: 0 2.5rem;
+    padding: 0 1.8rem;
     border-left: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
     border-right: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
 }
 .top-nav .logo h1 {
     font-size: 1.1rem;
     font-weight: 300;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     line-height: 1.1;
     color: var(--charcoal, #1A1A1A);
 }
@@ -81,18 +81,29 @@
     top: 60px;
     height: calc(100vh - 60px);
     overflow: hidden;
-    background: var(--cream-deep, #EDE7DC);
+    /* 전시 매트 효과 — 가운데로 은은하게 모이는 미색 비네팅 */
+    background: radial-gradient(ellipse at center, #F2ECE1 0%, var(--cream-deep, #EAE2D2) 80%);
+}
+
+/* 단일 이미지: 작품을 가운데 띄워 온전히 보여줌 */
+.detail-image.single {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3.5rem;
 }
 
 .detail-image img,
 .main-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    /* cover→contain: 세로 입체물 상하 잘림 방지, 전체 실루엣 노출 */
+    object-fit: contain;
     border-radius: 0;
     box-shadow: none;
     cursor: zoom-in;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s var(--ease-soft, ease);
+    filter: drop-shadow(0 22px 44px rgba(28,28,28,0.14));
 }
 
 .main-image img:hover {
@@ -103,6 +114,11 @@
     height: 100%;
     margin-bottom: 0;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    box-sizing: border-box;
 }
 
 /* ===== Image Gallery — vertical thumbnail strip ===== */
@@ -114,12 +130,12 @@
 .image-thumbnails {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    width: 64px;
+    gap: 6px;
+    width: 88px;
     flex-shrink: 0;
     overflow-y: auto;
-    background: var(--cream-deep, #EDE7DC);
-    padding: 4px;
+    background: var(--cream-deep, #EAE2D2);
+    padding: 6px;
     scrollbar-width: none;
     flex-wrap: nowrap;
     margin-bottom: 0;
@@ -127,19 +143,25 @@
 .image-thumbnails::-webkit-scrollbar { display: none; }
 
 .thumbnail {
-    width: 56px;
-    height: 56px;
+    width: 76px;
+    height: 76px;
     border-radius: 0;
     border: 1px solid transparent;
-    opacity: 0.5;
+    opacity: 0.45;
     flex-shrink: 0;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    /* 실제 <button> — 기본 크롬 제거 */
+    background: none;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
 }
 .thumbnail.active {
     border-color: var(--gold, #C9A96E);
     opacity: 1;
+    box-shadow: 0 4px 14px rgba(28,28,28,0.1);
 }
 .thumbnail:hover {
     opacity: 0.9;
@@ -207,6 +229,8 @@
     z-index: 3;
     text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     pointer-events: none;
+    /* 고정폭 숫자 — 이미지 전환 시 자릿수 폭 변화로 인한 흔들림 방지 */
+    font-variant-numeric: tabular-nums;
 }
 .counter-sep {
     opacity: 0.5;
@@ -233,7 +257,7 @@
     margin-bottom: 1.4rem;
 }
 
-.detail-info h1 {
+.detail-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 3.2rem;
     font-weight: 100;
@@ -241,6 +265,17 @@
     color: var(--charcoal, #1A1A1A);
     margin-bottom: 0;
     line-height: 1.18;
+    /* EN/FR 제목도 균형 줄바꿈(KO는 아래 규칙에서 별도 지정) */
+    text-wrap: balance;
+}
+
+/* 한글 작품명: 낱글자 끊김 방지 + 균형 줄바꿈 */
+html[lang="ko"] .detail-title {
+    font-size: 2.9rem;
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    word-break: keep-all;
+    text-wrap: balance;
 }
 
 /* 타이틀 하단 골드 구분선 */
@@ -278,16 +313,16 @@
 }
 
 .meta-value {
-    font-size: 0.85rem;
-    color: var(--warm-grey, rgba(26,26,26,0.45));
+    font-size: 0.9rem;
+    color: var(--ink-soft, rgba(26,26,26,0.72));
     font-weight: 300;
     letter-spacing: 0.5px;
 }
 
 .artwork-description {
-    font-size: 0.85rem;
-    line-height: 2.2;
-    color: var(--warm-grey, rgba(26,26,26,0.45));
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: var(--ink-soft, rgba(26,26,26,0.72));
     font-weight: 300;
     letter-spacing: 0.3px;
 }
@@ -435,6 +470,9 @@
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
+    /* 실제 <a> 링크 — 기본 밑줄/링크색 제거 */
+    text-decoration: none;
+    color: inherit;
 }
 .related-item:hover {
     transform: translateY(-5px);
@@ -548,10 +586,10 @@
     display: flex;
     gap: 1.5rem;
     font-size: 0.82rem;
-    color: rgba(250,247,242,0.45);
+    color: rgba(250,247,242,0.62); /* 검정 푸터 위 AA 대비 충족(약 7:1) */
 }
 .footer-contact a {
-    color: rgba(250,247,242,0.45);
+    color: rgba(250,247,242,0.62); /* 검정 푸터 위 AA 대비 충족(약 7:1) */
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -582,7 +620,7 @@
     text-align: center;
 }
 .detail-footer .footer-bottom p {
-    color: rgba(250,247,242,0.2);
+    color: rgba(250,247,242,0.52); /* 저작권 — AA 대비 충족(약 5.5:1), 여전히 가장 은은하게 */
     letter-spacing: 2px;
     font-size: 0.65rem;
     margin: 0;
@@ -622,7 +660,11 @@
     .detail-image-gallery {
         position: relative;
         top: auto;
-        height: 52vh;
+        height: 64vh;
+    }
+    .detail-image.single,
+    .main-image {
+        padding: 1.5rem;
     }
     .detail-image-gallery {
         flex-direction: column;
@@ -664,7 +706,7 @@
         letter-spacing: 3px;
         margin-bottom: 1rem;
     }
-    .detail-info h1 {
+    .detail-title {
         font-size: 1.9rem;
         letter-spacing: 1px;
         line-height: 1.25;
@@ -692,8 +734,8 @@
         font-size: 0.82rem;
     }
     .artwork-description {
-        font-size: 0.82rem;
-        line-height: 2;
+        font-size: 0.88rem;
+        line-height: 2.05;
     }
     /* 스토리 풀블리드 — 좌우 여백 돌파 */
     .artwork-story {
@@ -772,8 +814,9 @@
         background: var(--cream-base, #F5F0E8);
     }
     .related-item img {
-        height: calc(68vw * 0.65);
-        max-height: 200px;
+        height: calc(68vw * 0.85);
+        max-height: 240px;
+        object-position: center top;
         width: 100%;
         object-fit: cover;
     }
@@ -835,7 +878,11 @@
     /* ----- 이미지 높이 ----- */
     .detail-image,
     .detail-image-gallery {
-        height: 46vh;
+        height: 58vh;
+    }
+    .detail-image.single,
+    .main-image {
+        padding: 1rem;
     }
 
     /* ----- 정보 영역 ----- */
@@ -847,7 +894,7 @@
         letter-spacing: 2.5px;
         margin-bottom: 0.9rem;
     }
-    .detail-info h1 {
+    .detail-title {
         font-size: 1.6rem;
         letter-spacing: 0.5px;
         line-height: 1.25;
@@ -872,8 +919,8 @@
         font-size: 0.78rem;
     }
     .artwork-description {
-        font-size: 0.78rem;
-        line-height: 1.95;
+        font-size: 0.84rem;
+        line-height: 2.05;
     }
     /* 480px 풀블리드 */
     .artwork-story {
@@ -902,8 +949,9 @@
         max-width: 280px;
     }
     .related-item img {
-        height: calc(76vw * 0.65);
-        max-height: 200px;
+        height: calc(76vw * 0.85);
+        max-height: 240px;
+        object-position: center top;
     }
 
     /* ----- 썸네일 ----- */
@@ -1257,12 +1305,19 @@ body.page-loaded {
     line-height: 1;
     margin-bottom: -1rem;
 }
-.artwork-not-found h2 {
+.artwork-not-found h2,
+.artwork-not-found h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.8rem;
     font-weight: 300;
     color: var(--charcoal, #1C1C1C);
     letter-spacing: 2px;
+}
+
+/* 한글 제목은 명조로 */
+html[lang="ko"] .artwork-not-found h2,
+html[lang="ko"] .artwork-not-found h1 {
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
 }
 .artwork-not-found p {
     font-size: 0.85rem;
@@ -1271,10 +1326,10 @@ body.page-loaded {
 }
 .artwork-not-found .back-link {
     margin-top: 0.5rem;
-    font-size: 0.6rem;
+    font-size: 0.66rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold, #C9A96E);
+    color: var(--gold-text, #6E5526);
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -1370,6 +1425,9 @@ body.page-loaded {
     transition: background 0.35s cubic-bezier(0.22,1,0.36,1);
     position: relative;
     overflow: hidden;
+    /* 실제 <a> 링크 — 기본 밑줄/링크색 제거 */
+    text-decoration: none;
+    color: inherit;
 }
 
 .artwork-nav-item::before {

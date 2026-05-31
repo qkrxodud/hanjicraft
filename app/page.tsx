@@ -11,6 +11,9 @@ export default function Home() {
 
   return (
     <>
+      {/* 본문 바로가기 — 키보드/스크린리더 사용자가 내비를 건너뛰도록 */}
+      <a href="#main-content" className="skip-link">{t('a11y.skipToContent')}</a>
+
       {/* Page Preloader */}
       <div id="page-loader" aria-hidden="true">
         <div className="loader-inner">
@@ -22,13 +25,11 @@ export default function Home() {
       {/* Scroll Progress Bar */}
       <div className="scroll-progress" id="scrollProgress"></div>
 
-      {/* Custom Cursor */}
-      <div className="cursor-dot" id="cursorDot"></div>
-      <div className="cursor-ring" id="cursorRing"></div>
-
       {/* Navigation */}
       <Nav />
 
+      {/* 메인 콘텐츠 랜드마크 — skip-link 포커스 타깃 */}
+      <main id="main-content" tabIndex={-1}>
       {/* Hero Section */}
       <section id="hero" className="hero">
         <div className="hero-container">
@@ -58,11 +59,13 @@ export default function Home() {
               </div>
             </div>
           </div>
+          <button className="hero-arrow prev" id="heroPrev" aria-label="이전 슬라이드">‹</button>
+          <button className="hero-arrow next" id="heroNext" aria-label="다음 슬라이드">›</button>
           <div className="hero-scroll-hint" aria-hidden="true">
             <span className="scroll-hint-line"></span>
           </div>
           <div className="hero-indicators">
-            <button className="hero-indicator active" data-index="0" aria-label="슬라이드 1"></button>
+            <button className="hero-indicator active" data-index="0" aria-label="슬라이드 1" aria-current="true"></button>
             <button className="hero-indicator" data-index="1" aria-label="슬라이드 2"></button>
             <button className="hero-indicator" data-index="2" aria-label="슬라이드 3"></button>
           </div>
@@ -89,8 +92,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Marquee Strip */}
-      <div className="marquee-strip">
+      {/* Marquee Strip — 순수 장식(중복 키워드), 스크린리더에서 제외 */}
+      <div className="marquee-strip" aria-hidden="true">
         <div className="marquee-track">
           {['한지공예', 'HANJI CRAFT', '홍현정한지공예연구소', 'TRADITION', 'CRAFTSMANSHIP', '천년의 기술', 'MAISON OBJET', 'KOREAN HERITAGE'].flatMap((text, i) => [
             <span key={`t${i}`}>{text}</span>,
@@ -109,7 +112,7 @@ export default function Home() {
         <div className="container">
           <div className="brand-header">
             <h2 className="section-title">
-              <span className="section-label">BRAND</span>
+              <span className="section-label" aria-hidden="true">BRAND</span>
               {t('brand.title')}
             </h2>
             <p className="brand-subtitle">{t('brand.subtitle')}</p>
@@ -150,12 +153,13 @@ export default function Home() {
       <section id="highlights" className="highlights">
         <div className="container">
           <h2 className="section-title">
-            <span className="section-label">EXHIBITION</span>
+            <span className="section-label" aria-hidden="true">EXHIBITION</span>
             {t('highlights.title')}
           </h2>
           <div className="highlights-grid">
             <div className="highlight-card featured">
-              <img src={`${BASE_PATH}/img/gallery/01.webp`} alt="Featured Exhibition" loading="lazy" />
+              {/* 인접한 h3 제목·설명이 의미를 전달하므로 이미지는 장식 처리(중복 안내 방지) */}
+              <img src={`${BASE_PATH}/img/gallery/01.webp`} alt="" loading="lazy" />
               <div className="card-content">
                 <span className="card-category">{t('highlights.exhibition.category')}</span>
                 <h3>{t('highlights.exhibition.title')}</h3>
@@ -164,7 +168,7 @@ export default function Home() {
               </div>
             </div>
             <div className="highlight-card">
-              <img src={`${BASE_PATH}/img/gallery/02.webp`} alt="Collection Highlight" loading="lazy" />
+              <img src={`${BASE_PATH}/img/gallery/02.webp`} alt="" loading="lazy" />
               <div className="card-content">
                 <span className="card-category">{t('highlights.collection.category')}</span>
                 <h3>{t('highlights.collection.title')}</h3>
@@ -173,7 +177,7 @@ export default function Home() {
               </div>
             </div>
             <div className="highlight-card">
-              <img src={`${BASE_PATH}/img/circle.webp`} alt="Workshop" loading="lazy" />
+              <img src={`${BASE_PATH}/img/circle.webp`} alt="" loading="lazy" />
               <div className="card-content">
                 <span className="card-category">{t('highlights.workshop.category')}</span>
                 <h3>{t('highlights.workshop.title')}</h3>
@@ -189,10 +193,15 @@ export default function Home() {
       <section id="collections" className="collection-delve">
         <div className="container">
           <h2 className="section-title">
-            <span className="section-label">COLLECTION</span>
+            <span className="section-label" aria-hidden="true">COLLECTION</span>
             {t('collection.title')}
           </h2>
-          <div className="collection-grid">
+          <div
+            className="collection-grid"
+            tabIndex={0}
+            role="group"
+            aria-label={`${t('collection.title')} — ${t('a11y.scrollHint')}`}
+          >
             {[
               { key: 'modern', img: `${BASE_PATH}/img/makeing/08.webp` },
               { key: 'techniques', img: `${BASE_PATH}/img/makeing/03.webp` },
@@ -202,8 +211,9 @@ export default function Home() {
               { key: 'beating', img: `${BASE_PATH}/img/makeing/06.webp` },
               { key: 'preparation', img: `${BASE_PATH}/img/makeing/04.webp` },
               { key: 'soaking', img: `${BASE_PATH}/img/makeing/05.webp` },
-            ].map(({ key, img }) => (
+            ].map(({ key, img }, i) => (
               <div key={key} className="collection-item">
+                <span className="collection-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
                 <img src={img} alt={t(`collection.${key}.title`)} loading="lazy" />
                 <div className="item-content">
                   <h3>{t(`collection.${key}.title`)}</h3>
@@ -219,7 +229,7 @@ export default function Home() {
       <section id="gallery" className="masterpieces">
         <div className="container">
           <h2 className="section-title">
-            <span className="section-label">GALLERY</span>
+            <span className="section-label" aria-hidden="true">GALLERY</span>
             {t('masterpieces.title')}
           </h2>
         </div>
@@ -243,7 +253,8 @@ export default function Home() {
       {/* Philosophy Strip */}
       <div className="philosophy-strip">
         <div className="philosophy-inner">
-          <span className="philosophy-label">{t('philosophy.label')}</span>
+          {/* 장식 kicker(紙/PAPER) — 인용구가 주제를 전달하므로 다른 섹션 eyebrow와 동일하게 접근성 트리에서 제외 */}
+          <span className="philosophy-label" aria-hidden="true">{t('philosophy.label')}</span>
           <blockquote>{t('philosophy.quote')}</blockquote>
         </div>
       </div>
@@ -252,7 +263,7 @@ export default function Home() {
       <section id="about" className="featured-artworks">
         <div className="container">
           <h2 className="section-title">
-            <span className="section-label">ARTWORKS</span>
+            <span className="section-label" aria-hidden="true">ARTWORKS</span>
             {t('featured.title')}
           </h2>
         </div>
@@ -264,7 +275,8 @@ export default function Home() {
           ].map(({ img, key, href, index, reverse }) => (
             <div key={key} className={`editorial-row${reverse ? ' editorial-row--reverse' : ''}`}>
               <div className="editorial-image">
-                <img src={img} alt={t(`featured.${key}.title`)} loading="lazy" />
+                {/* 인접 h3 제목이 동일 의미를 전달하므로 이미지는 장식 처리(중복 안내 방지) */}
+                <img src={img} alt="" loading="lazy" />
               </div>
               <div className="editorial-text">
                 <span className="editorial-index">{index}</span>
@@ -282,7 +294,7 @@ export default function Home() {
       <section id="inquiry" className="inquiry-section">
         <div className="container">
           <h2 className="section-title">
-            <span className="section-label">PARTNERSHIP</span>
+            <span className="section-label" aria-hidden="true">PARTNERSHIP</span>
             {t('inquiry.title')}
           </h2>
           <p className="inquiry-lead">{t('inquiry.description')}</p>
@@ -293,6 +305,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="footer">
@@ -313,12 +326,12 @@ export default function Home() {
             </div>
             <div className="footer-social">
               <div className="social-links">
-                <a href="https://www.instagram.com/hhj_hanj1craft">{t('footer.social.instagram')}</a>
+                <a href="https://www.instagram.com/hhj_hanj1craft" target="_blank" rel="noopener noreferrer">{t('footer.social.instagram')}</a>
               </div>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>{t('footer.copyright')}</p>
+            <p>© {new Date().getFullYear()} {t('footer.copyright')}</p>
           </div>
         </div>
       </footer>
@@ -326,18 +339,18 @@ export default function Home() {
       {/* Bottom Navigation */}
       <div className="bottom-nav">
         <div className="bottom-nav-primary-menu" id="primary-menu">
-          <button className="bottom-nav-btn primary" id="primary-menu-btn">{t('fab.menu')}</button>
+          <button className="bottom-nav-btn primary" id="primary-menu-btn" aria-haspopup="true" aria-expanded="false" aria-controls="primary-submenu">{t('fab.menu')}</button>
           <div className="primary-submenu" id="primary-submenu">
-            <a href="https://notagshop.com/collections/kcdf/products/hong-hyun-jeong-hanji-craft-studio-ramie-wind-bell" className="primary-menu-item" data-delay="0">
+            <a href="https://notagshop.com/collections/kcdf/products/hong-hyun-jeong-hanji-craft-studio-ramie-wind-bell" className="primary-menu-item" data-delay="0" target="_blank" rel="noopener noreferrer">
               <span>{t('fab.lamp')}</span>
             </a>
-            <a href="https://en.pinkoi.com/store/kcdf" className="primary-menu-item" data-delay="1">
+            <a href="https://en.pinkoi.com/store/kcdf" className="primary-menu-item" data-delay="1" target="_blank" rel="noopener noreferrer">
               <span>{t('fab.lighting')}</span>
             </a>
-            <a href="https://mom.maison-objet.com/en/product/1728990/hong-hyun-jeong-hanji-craft-studio-ramie-wind-bell" className="primary-menu-item" data-delay="2">
+            <a href="https://mom.maison-objet.com/en/product/1728990/hong-hyun-jeong-hanji-craft-studio-ramie-wind-bell" className="primary-menu-item" data-delay="2" target="_blank" rel="noopener noreferrer">
               <span>{t('fab.process')}</span>
             </a>
-            <a href="https://shopee.sg/-HONG-HYUN-JEONG-HANJI-CRAFT-STUDIO-Ramie-Wind-Bell-i.100487979.48701184622" className="primary-menu-item" data-delay="3">
+            <a href="https://shopee.sg/-HONG-HYUN-JEONG-HANJI-CRAFT-STUDIO-Ramie-Wind-Bell-i.100487979.48701184622" className="primary-menu-item" data-delay="3" target="_blank" rel="noopener noreferrer">
               <span>{t('fab.explore')}</span>
             </a>
           </div>
@@ -367,20 +380,20 @@ function MasterpieceItem({
   period: string
   featured?: boolean
 }) {
-  function handleClick() {
+  function handleNavigate(e: React.MouseEvent) {
+    // 보조 클릭(새 탭/창)은 브라우저 기본 동작에 맡겨 링크의 이점을 유지한다
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
+    // 일반 좌클릭은 페이드아웃 전환을 보존하기 위해 직접 내비게이션
+    e.preventDefault()
     document.body.classList.remove('page-loaded')
-    sessionStorage.setItem('scrollPosition', String(window.pageYOffset))
-    setTimeout(() => { window.location.href = `${BASE_PATH}/artwork/${id}` }, 400)
+    setTimeout(() => { window.location.href = `${BASE_PATH}/artwork/${id}/` }, 400)
   }
 
   return (
-    <div
+    <Link
+      href={`/artwork/${id}`}
       className={`masterpiece-item${featured ? ' featured' : ''}`}
-      role="button"
-      tabIndex={0}
-      onClick={handleClick}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick() } }}
-      style={{ cursor: 'pointer' }}
+      onClick={handleNavigate}
     >
       <img src={img} alt={title} loading="lazy" />
       <div className="masterpiece-info">
@@ -388,6 +401,6 @@ function MasterpieceItem({
         {description && <p>{description}</p>}
         <span className="artwork-details">{period}</span>
       </div>
-    </div>
+    </Link>
   )
 }
