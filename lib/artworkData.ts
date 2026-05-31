@@ -304,16 +304,3 @@ export const artworkData: Record<string, ArtworkEntry> = {
     image: '/img/gallery/3_circle.webp',
   },
 }
-
-export const relatedArtworks = [
-  { id: 'gallery01', image: '/img/gallery/01.webp' },
-  { id: 'gallery09', image: '/img/gallery/09.webp' },
-  { id: 'gallery10', image: '/img/gallery/10.webp' },
-  { id: 'gallery11', image: '/img/gallery/11.webp' },
-  { id: 'gallery12', image: '/img/gallery/12.webp' },
-  { id: 'gallery13', image: '/img/gallery/13.webp' },
-  { id: 'lamp',      image: '/img/02.webp' },
-  { id: 'takja',     image: '/img/takja.webp' },
-  { id: 'circle',    image: '/img/gallery/circle.webp' },
-  { id: 'multi',     image: '/img/gallery/multi.webp' },
-]

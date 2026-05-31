@@ -6,6 +6,10 @@ export const translations = {
       title: '홍현정한지공예 연구소',
       subtitle: 'Hong hyun-jeong hanji craft studio',
     },
+    a11y: {
+      skipToContent: '본문 바로가기',
+      scrollHint: '방향키로 좌우 스크롤',
+    },
     nav: {
       home: '홈',
       brand: '브랜드소개',
@@ -152,14 +156,12 @@ export const translations = {
     },
     footer: {
       contact: {
-        phone: '전화: -',
         email: '이메일:',
         emailAddress: 'hongcraftstudio@gmail.com',
         address: '부산 남구 수영로 39번가길 17-5 반야정사 사찰 내(우편번호:48419)',
       },
-      links: { title: '바로가기', lamp: '한지 조명', armor: '종이 갑옷', process: '제작 과정', intro: '한지 소개' },
-      social: { title: '소셜 미디어', instagram: '인스타그램' },
-      copyright: '© 2024 홍현정한지공예 연구소. 모든 권리 보유.',
+      social: { instagram: '인스타그램' },
+      copyright: '홍현정한지공예 연구소. 모든 권리 보유.',
     },
     inquiry: {
       title: '컬렉션 입점 문의',
@@ -171,12 +173,12 @@ export const translations = {
       menu: '구매하기',
       explore: '쇼피',
       lamp: '노태그샵 글로벌',
-      armor: '종이 갑옷',
       lighting: '핀코이',
       process: '메종오브제 몰',
     },
     artworkDetail: {
       storyTitle: '작품 이야기',
+      zoom: '이미지 확대 보기',
       prevWork: '이전 작품',
       nextWork: '다음 작품',
       notFound: {
@@ -188,17 +190,6 @@ export const translations = {
     related: {
       title: '관련 작품',
       backLink: '← 컬렉션으로 돌아가기',
-      artworks: {
-        gallery01: { title: '한지 모시 무드등', period: '색상은 전통 오방색을 베이스로 제작됩니다.(청, 적, 황, 백, 흑)' },
-        gallery03: { title: '한지 조각품 컬렉션', period: '한지의 가능성을 탐구한 현대 조각 작품' },
-        gallery09: { title: '오방색과 모란의 조화를 담은 자수함', period: '오방색과 모란의 조화: 오방색 자수함' },
-        gallery10: { title: '황후의 시간(The Empress\'s Time)', period: '왕후의 아침을 여는 고결한 목련의 빛' },
-        gallery11: { title: '무드등(염원:기원의 빛)', period: '오방색을 활용한 전통한지 무드등' },
-        gallery12: { title: '장무상망', period: '오래도록 서로 잊지말자는 약속을 담은 오브제' },
-        gallery13: { title: '마음을 담는 보석함', period: '한국전통 패물함(혼구용품)' },
-        lamp: { title: '바람의결 - 모시풍경', period: '색상은 전통 오방색을 베이스로 제작됩니다.' },
-        takja: { title: '찻상(명상/우담바라를 기다리며)', period: '명상 - 우담바라를 기다리며' },
-      },
     },
   },
 
@@ -206,6 +197,10 @@ export const translations = {
     logo: {
       title: 'Hong Hyun-jeong Hanji Craft Studio',
       subtitle: 'Traditional Korean Paper Artistry',
+    },
+    a11y: {
+      skipToContent: 'Skip to content',
+      scrollHint: 'Use arrow keys to scroll',
     },
     nav: {
       home: 'Home',
@@ -348,14 +343,12 @@ export const translations = {
     },
     footer: {
       contact: {
-        phone: 'Phone: -',
         email: 'Email:',
         emailAddress: 'hongcraftstudio@gmail.com',
         address: '17-5 Suyeong-ro 39beon-gil, Nam-gu, Busan, Inside Banyajeongsa Temple (Postal Code: 48419)',
       },
-      links: { title: 'Quick Links', lamp: 'Hanji Lamp', armor: 'Paper Armor', process: 'Craft Process', intro: 'About Hanji' },
-      social: { title: 'Social Media', instagram: 'Instagram' },
-      copyright: '© 2024 Hong hyun-jeong hanji craft studio. All rights reserved.',
+      social: { instagram: 'Instagram' },
+      copyright: 'Hong hyun-jeong hanji craft studio. All rights reserved.',
     },
     inquiry: {
       title: 'Collection Inquiry',
@@ -367,12 +360,12 @@ export const translations = {
       menu: 'Shop',
       explore: 'Shopee',
       lamp: 'Notag Shop Global',
-      armor: 'Paper Armor',
       lighting: 'Pinkoi',
       process: 'Maison & Objet Mall',
     },
     artworkDetail: {
       storyTitle: 'The Story Behind the Artwork',
+      zoom: 'Enlarge image',
       prevWork: 'Previous Work',
       nextWork: 'Next Work',
       notFound: {
@@ -384,17 +377,6 @@ export const translations = {
     related: {
       title: 'Related Artworks',
       backLink: '← Back to Collection',
-      artworks: {
-        gallery01: { title: 'Hanji Ramie Mood Lamp', period: 'Colors are made based on traditional five-element colors (blue, red, yellow, white, black)' },
-        gallery03: { title: 'Hanji Sculpture Collection', period: 'Contemporary sculpture exploring the possibilities of hanji' },
-        gallery09: { title: 'Embroidery Box with Harmony of Five Colors and Peonies', period: 'Five Colors and Peony Harmony: Five Colors Embroidery Box' },
-        gallery10: { title: "The Empress's Time", period: "Noble magnolia light opening the queen's morning" },
-        gallery11: { title: 'Mood Lamp (Wish: Light of Prayer)', period: 'Traditional hanji mood lamp using five colors' },
-        gallery12: { title: 'Eternal Remembrance', period: 'Object containing the promise not to forget each other for a long time' },
-        gallery13: { title: 'Jewelry Box that Holds the Heart', period: 'Traditional Korean accessory box (wedding items)' },
-        lamp: { title: "Wind's Edge - Ramie Wind Bell", period: 'Contemporary, 21st Century' },
-        takja: { title: 'Traditional Paper Armor', period: 'Joseon Dynasty, 17th Century' },
-      },
     },
   },
 
@@ -402,6 +384,10 @@ export const translations = {
     logo: {
       title: 'Atelier Hanji Hong Hyun-jeong',
       subtitle: 'Artisanat Papier Traditionnel Coréen',
+    },
+    a11y: {
+      skipToContent: 'Aller au contenu',
+      scrollHint: 'Flèches pour défiler',
     },
     nav: {
       home: 'Accueil',
@@ -544,14 +530,12 @@ export const translations = {
     },
     footer: {
       contact: {
-        phone: 'Téléphone: -',
         email: 'Email:',
         emailAddress: 'hongcraftstudio@gmail.com',
         address: "17-5 Suyeong-ro 39beon-gil, Nam-gu, Busan, À l'intérieur du temple Banyajeongsa (Code postal: 48419)",
       },
-      links: { title: 'Liens Rapides', lamp: 'Lampe Hanji', armor: 'Armure en Papier', process: 'Processus Artisanal', intro: 'À propos du Hanji' },
-      social: { title: 'Réseaux Sociaux', instagram: 'Instagram' },
-      copyright: '© 2024 Hong hyun-jeong hanji craft studio. Tous droits réservés.',
+      social: { instagram: 'Instagram' },
+      copyright: 'Hong hyun-jeong hanji craft studio. Tous droits réservés.',
     },
     inquiry: {
       title: 'Demande de Collection',
@@ -563,12 +547,12 @@ export const translations = {
       menu: 'Boutique',
       explore: 'Shopee',
       lamp: 'Notag Shop Global',
-      armor: 'Armure en Papier',
       lighting: 'Pinkoi',
       process: 'Maison & Objet Mall',
     },
     artworkDetail: {
       storyTitle: "L'Histoire Derrière l'Œuvre",
+      zoom: "Agrandir l'image",
       prevWork: 'Œuvre Précédente',
       nextWork: 'Œuvre Suivante',
       notFound: {
@@ -580,17 +564,6 @@ export const translations = {
     related: {
       title: 'Œuvres Connexes',
       backLink: '← Retour à la Collection',
-      artworks: {
-        gallery01: { title: 'Lampe d\'Ambiance Hanji-Ramie', period: 'Les couleurs sont faites sur la base des couleurs traditionnelles à cinq éléments' },
-        gallery03: { title: 'Collection de Sculptures en Hanji', period: 'Sculpture contemporaine explorant les possibilités du hanji' },
-        gallery09: { title: 'Boîte à Broderie avec Harmonie des Cinq Couleurs et Pivoines', period: 'Harmonie des cinq couleurs et pivoines : Boîte broderie cinq couleurs' },
-        gallery10: { title: "Le Temps de l'Impératrice", period: 'Lumière noble de magnolia ouvrant le matin de la reine' },
-        gallery11: { title: "Lampe d'Ambiance (Souhait : Lumière de Prière)", period: "Lampe d'ambiance hanji traditionnelle utilisant cinq couleurs" },
-        gallery12: { title: 'Souvenir Éternel', period: "Objet contenant la promesse de ne pas s'oublier longtemps" },
-        gallery13: { title: 'Boîte à Bijoux qui Porte le Cœur', period: 'Boîte accessoires traditionnelle coréenne (articles de mariage)' },
-        lamp: { title: 'Bord du Vent - Paysage de Ramie', period: 'Contemporain, 21e Siècle' },
-        takja: { title: 'Armure en Papier Traditionnelle', period: 'Dynastie Joseon, 17e Siècle' },
-      },
     },
   },
 } as const
