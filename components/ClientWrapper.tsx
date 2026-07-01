@@ -24,17 +24,22 @@ export default function ClientWrapper() {
     // ===== 페이지 프리로더 =====
     // React 마운트 시점에 이미 load 이벤트가 지난 경우도 처리
     const pageLoader = document.getElementById('page-loader')
+    // 본문 노출은 멱등 처리 — load 콜백·안전망 타임아웃이 중복 호출돼도 한 번만 실행
+    let revealed = false
+    const reveal = () => {
+      if (revealed) return
+      revealed = true
+      if (pageLoader) {
+        pageLoader.classList.add('fade-out')
+        pageLoader.addEventListener('transitionend', function handler() {
+          pageLoader.style.display = 'none'
+          pageLoader.removeEventListener('transitionend', handler)
+        })
+      }
+      document.body.classList.add('page-loaded')
+    }
     const triggerLoaded = () => {
-      const t = setTimeout(() => {
-        if (pageLoader) {
-          pageLoader.classList.add('fade-out')
-          pageLoader.addEventListener('transitionend', function handler() {
-            pageLoader.style.display = 'none'
-            pageLoader.removeEventListener('transitionend', handler)
-          })
-        }
-        document.body.classList.add('page-loaded')
-      }, 400)
+      const t = setTimeout(reveal, 400)
       timeouts.push(t)
     }
 
@@ -43,6 +48,15 @@ export default function ClientWrapper() {
     } else {
       on(window, 'load', triggerLoaded)
     }
+    // 안전망: 멈춘 리소스 등으로 load 이벤트가 비정상 지연돼도 8초 후 본문을 노출해
+    // 무한 빈 화면(opacity:0) 상태를 방지한다(정상 로드 시에는 위에서 먼저 노출되어 영향 없음)
+    const revealSafety = setTimeout(reveal, 8000)
+    timeouts.push(revealSafety)
+    // bfcache 복원 대응: 작품 이동 시 페이드아웃(page-loaded 제거)된 상태로 뒤로가기 복원되면
+    // 본문이 opacity:0(빈 화면)으로 남으므로, 복원 시 본문을 다시 노출한다
+    on(window, 'pageshow', ((e: Event) => {
+      if ((e as PageTransitionEvent).persisted) document.body.classList.add('page-loaded')
+    }) as EventListener)
 
     // ===== 스크롤 진행 바 =====
     const scrollProgress = document.getElementById('scrollProgress')
@@ -50,19 +64,16 @@ export default function ClientWrapper() {
       // 문서 높이를 캐싱 — 매 스크롤마다 scrollHeight를 읽는 강제 레이아웃 제거.
       // 지연 이미지 로드 등으로 높이가 바뀌면 ResizeObserver가 갱신.
       let docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const updateDocHeight = () => { docHeight = document.documentElement.scrollHeight - window.innerHeight }
+      const renderProgress = () => {
+        scrollProgress.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + '%'
+      }
+      // 문서 높이 변화(리사이즈·지연 이미지 로드) 시 캐시 갱신 + 진행 바도 즉시 반영(다음 스크롤까지 stale 방지)
+      const updateDocHeight = () => { docHeight = document.documentElement.scrollHeight - window.innerHeight; renderProgress() }
       const docHeightObserver = new ResizeObserver(updateDocHeight)
       docHeightObserver.observe(document.body)
       cleanups.push(() => docHeightObserver.disconnect())
       on(window, 'resize', updateDocHeight, { passive: true })
-      on(
-        window,
-        'scroll',
-        () => {
-          scrollProgress.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + '%'
-        },
-        { passive: true },
-      )
+      on(window, 'scroll', renderProgress, { passive: true })
     }
 
     // ===== 숫자 카운트업 =====
@@ -244,7 +255,18 @@ export default function ClientWrapper() {
     // ===== 스크롤 투 탑 =====
     const scrollTopBtn = document.getElementById('scrollTopBtn')
     if (scrollTopBtn) {
-      on(window, 'scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 600), { passive: true })
+      const footer = document.querySelector('.footer')
+      const updateScrollTopBtn = () => {
+        // 푸터가 플로팅 버튼 높이까지 올라오면 주소 텍스트를 가리므로 버튼을 숨긴다
+        const overlapsFooter = footer
+          ? footer.getBoundingClientRect().top < scrollTopBtn.getBoundingClientRect().bottom
+          : false
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 600 && !overlapsFooter)
+      }
+      on(window, 'scroll', updateScrollTopBtn, { passive: true })
+      on(window, 'resize', updateScrollTopBtn, { passive: true })
+      // 초기 1회 반영 — 해시 URL 등으로 이미 스크롤된 위치(scrollY>600)에 로드돼도 버튼 가시성이 올바르게 적용되도록
+      updateScrollTopBtn()
       on(scrollTopBtn, 'click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         // 맨 위로 이동 후 포커스를 문서 상단(main)으로 옮겨 키보드 탐색이 위에서 이어지게 한다
@@ -439,6 +461,15 @@ export default function ClientWrapper() {
           primaryMenuBtn.classList.remove('active')
           primaryMenuBtn.setAttribute('aria-expanded', 'false')
           primaryMenuBtn.focus()
+        }
+      }) as EventListener)
+      // Tab 등으로 포커스가 메뉴 밖으로 나가면 닫는다(disclosure 표준 — 열린 채 방치 방지)
+      on(primaryMenu, 'focusout', ((e: FocusEvent) => {
+        if (primaryMenuIsOpen && !primaryMenu.contains(e.relatedTarget as Node)) {
+          primaryMenuIsOpen = false
+          primaryMenu.classList.remove('active')
+          primaryMenuBtn.classList.remove('active')
+          primaryMenuBtn.setAttribute('aria-expanded', 'false')
         }
       }) as EventListener)
     }

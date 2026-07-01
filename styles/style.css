@@ -57,6 +57,25 @@ html {
     box-shadow: 0 0 0 4px rgba(201,169,110,0.3);
 }
 
+/* 투명 상태의 상단 내비 — 뒤에 어두운 스크림이 깔려 다크 골드텍스트 링이 묻히므로(대비<3:1) 밝은 골드로 전환 */
+.top-nav:not(.scrolled) :focus-visible {
+    outline-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201,169,110,0.3);
+}
+
+/* ===== 시각적으로만 숨김(스크린리더 전용) — 라이브 리전·보조 텍스트용 ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* ===== 본문 바로가기 링크 — 포커스 시에만 노출 ===== */
 .skip-link {
     position: fixed;
@@ -106,6 +125,11 @@ body {
     overflow-x: hidden;
     /* 모바일 탭 하이라이트 — 기본 회색 플래시 대신 브랜드 골드 틴트(터치 피드백은 유지) */
     -webkit-tap-highlight-color: rgba(201, 169, 110, 0.25);
+    /* 얇은 세리프(Cormorant 200/300)·라이트 본문이 또렷하고 가볍게 렌더되도록 안티앨리어싱 —
+       기본 subpixel 렌더의 무거움을 덜어 의도한 가벼운 고급감을 살리고, 특히 어두운 섹션의
+       흰 텍스트 가독성을 높인다(macOS WebKit/Blink·Firefox 한정 점진적 개선, 레이아웃 무변화) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* 본문 자간: 한글은 사각 모듈이라 자간을 벌리면 어절 인지가 깨짐 → 0, 라틴만 소폭 */
@@ -176,6 +200,15 @@ html[lang="ko"] .editorial-text h3 {
     text-transform: none;
     word-break: keep-all;
     font-weight: 200;
+}
+
+/* 콘텐츠·카드 헤딩에도 줄바꿈 균형 적용 — 여러 줄 제목의 마지막 줄 고아 단어 방지(.section-title과 일관, 미지원 브라우저는 무시) */
+.editorial-text h3,
+.item-content h3,
+.masterpiece-info h3,
+.values-title,
+.value-card h4 {
+    text-wrap: balance;
 }
 
 .section-title::after {
@@ -727,6 +760,13 @@ html[lang="en"] .logo p {
     letter-spacing: 0.5px;
 }
 
+/* 중앙 정렬 다줄 텍스트는 balance로 줄 길이를 고르게 — 가운데 정렬 특유의 들쭉날쭉함을 완화(pretty보다 중앙정렬에 적합, 미지원 브라우저는 무시) */
+.value-card p,
+.inquiry-lead,
+.brand-subtitle {
+    text-wrap: balance;
+}
+
 /* 브랜드 섹션 반응형 */
 @media (max-width: 1024px) {
     .values-grid {
@@ -838,16 +878,21 @@ html[lang="en"] .logo p {
     width: 100%;
     height: 100%;
     opacity: 0;
+    /* 비활성 슬라이드를 접근성 트리·탭 순서·포인터에서 제거(안 보이는 슬라이드의 링크로 키보드 진입/스크린리더 중복 낭독 방지). 페이드아웃이 끝난 뒤 hidden 처리 */
+    visibility: hidden;
     transform: scale(1.03);
     /* 더 길고 부드러운 크로스페이드 + 살짝 줌 settle */
-    transition: opacity 1.1s var(--ease-soft), transform 1.4s var(--ease-soft);
+    transition: opacity 1.1s var(--ease-soft), transform 1.4s var(--ease-soft), visibility 0s 1.1s;
     z-index: 0;
 }
 
 .slide.active {
     opacity: 1;
+    visibility: visible;
     transform: scale(1);
     z-index: 1;
+    /* 활성화 시에는 즉시 보이게(지연 없이) */
+    transition: opacity 1.1s var(--ease-soft), transform 1.4s var(--ease-soft), visibility 0s;
 }
 
 /* ===== 히어로 수동 화살표 ===== */
@@ -887,8 +932,16 @@ html[lang="en"] .logo p {
 .hero-arrow:active {
     transform: translateY(-50%) scale(0.94);
 }
-.hero-arrow:focus-visible {
+/* 히어로 컨트롤은 밝은 램프~어두운 하단 스크림까지 배경이 크게 변하므로,
+   어느 배경에서도 보이도록 밝은 골드 외곽선 + 어두운 헤일로의 이중 톤 포커스 링 사용(WCAG 1.4.11) */
+.hero-arrow:focus-visible,
+.hero-indicator:focus-visible {
     opacity: 1;
+    /* --gold(#C9A96E, 휘도 0.42)는 중간 휘도(0.11~0.12) 램프 위에서 3:1에 1pt 미달이라,
+       포커스 링 전용으로 한 단계 밝은 골드를 써서 어두운 스크림·중간톤·밝은 바닥 모두에서 3:1 충족 */
+    outline: 2px solid #E3C88C;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(10,10,10,0.85);
 }
 @media (max-width: 768px) {
     .hero-arrow {
@@ -972,13 +1025,15 @@ html[lang="en"] .logo p {
     filter: brightness(0.92);
 }
 
-/* 전폭 하단 스크림 — 박스 없이 작품 위로 자연스럽게 깔리는 가독 레이어 */
+/* 전폭 하단 스크림 — 박스 없이 작품 위로 자연스럽게 깔리는 가독 레이어
+   밝은 스튜디오 배경(예: 슬라이드1 흰 바닥) 위에서도 크림색 제목/부제가 WCAG 대비를 충족하도록
+   더 깊고(0.8) 더 높게(70%) 확장 */
 .slide::after {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.22) 26%, rgba(0,0,0,0) 52%);
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.52) 26%, rgba(0,0,0,0.24) 48%, rgba(0,0,0,0) 70%);
     z-index: 1;
 }
 
@@ -1021,6 +1076,8 @@ html[lang="en"] .logo p {
     font-weight: 100;
     letter-spacing: 1px;
     line-height: 1.0;
+    /* 스크림이 옅어지는 상단부가 밝은 배경 픽셀과 겹쳐도 글자 외곽이 유지되도록 옅은 그림자 */
+    text-shadow: 0 2px 18px rgba(0,0,0,0.5);
 }
 
 /* 한글 히어로 제목: 긴 문구 안전 줄바꿈 */
@@ -1037,6 +1094,7 @@ html[lang="ko"] .slide-content h2 {
     max-width: 360px;
     letter-spacing: 1px;
     font-weight: 300;
+    text-shadow: 0 1px 12px rgba(0,0,0,0.55);
 }
 
 .hero-btn {
@@ -1109,6 +1167,12 @@ html[lang="ko"] .slide-content h2 {
 .highlight-card:hover {
     transform: none;
     box-shadow: none;
+}
+
+/* 이미지를 감싼 보조 클릭 링크 — 이미지 고정 높이는 유지하고 인라인 여백만 제거 + 클릭 커서 */
+.card-image-link {
+    display: block;
+    cursor: pointer;
 }
 
 .highlight-card img {
@@ -1261,7 +1325,8 @@ html[lang="ko"] .slide-content h2 {
 
 /* 단계 연결선 — 번호에서 카드 우측 끝까지 이어져 다음 단계로 흐르는 타임라인 */
 .collection-item:not(:last-child)::after {
-    content: '\203A';
+    /* 장식용 구분 화살표 — 빈 대체텍스트로 스크린리더 접근명에서 제외 */
+    content: '\203A' / '';
     position: absolute;
     top: 1.55rem;
     left: 4.8rem;
@@ -1382,7 +1447,9 @@ html[lang="ko"] .slide-content h2 {
     transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.masterpiece-item:hover img {
+/* 키보드 포커스 시에도 이미지 줌 — 지난 설명 노출과 함께 포커스 상태를 hover와 일치시킴 */
+.masterpiece-item:hover img,
+.masterpiece-item:focus-within img {
     transform: scale(1.06);
 }
 
@@ -1419,7 +1486,8 @@ html[lang="ko"] .slide-content h2 {
     transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
 }
 
-.masterpiece-item:hover .masterpiece-info {
+.masterpiece-item:hover .masterpiece-info,
+.masterpiece-item:focus-within .masterpiece-info {
     transform: translateY(0);
 }
 
@@ -1434,13 +1502,15 @@ html[lang="ko"] .slide-content h2 {
     transform-origin: left;
     transition: transform 0.5s var(--ease-soft) 0.05s;
 }
-.masterpiece-item:hover .masterpiece-info::before {
+.masterpiece-item:hover .masterpiece-info::before,
+.masterpiece-item:focus-within .masterpiece-info::before {
     transform: scaleX(1);
 }
 
 /* 호버 시 'VIEW ›' 어포던스 등장 */
 .masterpiece-info::after {
-    content: 'VIEW \203A';
+    /* 시각적 클릭 어포던스 — 카드 링크 이름에 'VIEW ›'가 중복 낭독되지 않도록 빈 대체텍스트 지정 */
+    content: 'VIEW \203A' / '';
     font-family: 'Roboto', sans-serif;
     font-size: 0.6rem;
     letter-spacing: 3px;
@@ -1451,7 +1521,9 @@ html[lang="ko"] .slide-content h2 {
     transform: translateY(8px);
     transition: opacity 0.4s ease 0.1s, transform 0.45s var(--ease-soft) 0.1s;
 }
-.masterpiece-item:hover .masterpiece-info::after {
+/* hover뿐 아니라 키보드 포커스 시에도 'VIEW ›' 클릭 어포던스 노출(키보드 사용자도 클릭 가능 단서 확인) */
+.masterpiece-item:hover .masterpiece-info::after,
+.masterpiece-item:focus-within .masterpiece-info::after {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1484,7 +1556,9 @@ html[lang="ko"] .slide-content h2 {
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.masterpiece-item:hover .masterpiece-info p {
+/* hover뿐 아니라 키보드 포커스 시에도 설명을 노출(키보드 사용자도 마우스 사용자와 동일하게 설명 확인) */
+.masterpiece-item:hover .masterpiece-info p,
+.masterpiece-item:focus-within .masterpiece-info p {
     opacity: 1;
     transform: translateY(0);
 }
@@ -1499,38 +1573,14 @@ html[lang="ko"] .slide-content h2 {
 
 .artwork-details {
     font-size: 0.65rem;
-    color: rgba(255,255,255,0.45);
+    /* 항상 노출되는 의미 텍스트 — 다크 스크림 위 가독성 확보 위해 0.45→0.6(상위 설명문 0.65보다 낮게 유지) */
+    color: rgba(255,255,255,0.6);
     font-style: normal;
     letter-spacing: 2px;
     text-transform: uppercase;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.gallery-navigation {
-    text-align: center;
-}
-
-.gallery-link {
-    display: inline-block;
-    color: var(--charcoal);
-    text-decoration: none;
-    font-weight: 300;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border: 1px solid rgba(201,169,110,0.35);
-    padding: 13px 36px;
-    border-radius: 0;
-    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    font-family: 'Roboto', sans-serif;
-}
-
-.gallery-link:hover {
-    background: var(--gold);
-    color: var(--cream-base);
-    border-color: var(--gold);
 }
 
 /* ===== Featured Artworks — editorial rows ===== */
@@ -1583,6 +1633,14 @@ html[lang="ko"] .slide-content h2 {
     opacity: 1;
 }
 
+/* 이미지를 감싼 보조 클릭 링크 — 컨테이너 크기를 그대로 전달 + 클릭 커서 */
+.editorial-image-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
 .editorial-image img {
     width: 100%;
     height: 100%;
@@ -1603,6 +1661,17 @@ html[lang="ko"] .slide-content h2 {
     background: var(--cream-deep);
     position: relative;
     overflow: hidden;
+}
+
+/* 본문 단락 줄길이(measure) 캡 — 와이드/초광폭 화면에서 줄이 과도하게 길어져 가독성이 떨어지지 않도록
+   이상적 한글 줄길이(~45자) 폭으로 제한. 통상 폭(1440px·576px)에선 영향 없음 */
+.editorial-text p {
+    max-width: 680px;
+}
+
+/* CTA 버튼도 같은 폭으로 캡 — flex column의 stretch로 전폭 늘어나, 초광폭에서 캡된 본문 단락과 어긋나는 정렬을 맞춤 */
+.editorial-text .artwork-link {
+    max-width: 680px;
 }
 
 .editorial-index {
@@ -1792,6 +1861,23 @@ html[lang="ko"] .slide-content h2 {
     transform: translateY(0);
 }
 
+/* 외부/새 탭으로 열리는 링크임을 알리는 장식 화살표(스크린리더 제외) — 인콰이어리·푸터 공통 */
+.ext-arrow {
+    margin-left: 0.4em;
+    font-size: 0.9em;
+    letter-spacing: 0;
+    line-height: 1;
+    display: inline-block;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.inquiry-btn .ext-arrow {
+    margin-left: 0.6em;
+}
+
+.inquiry-btn.secondary:hover .ext-arrow {
+    transform: translate(2px, -2px);
+}
+
 @media (max-width: 768px) {
     .inquiry-section {
         padding: 5rem 0;
@@ -1853,6 +1939,7 @@ html[lang="ko"] .slide-content h2 {
     letter-spacing: 1px;
     line-height: 2;
     color: rgba(250,247,242,0.62); /* 검정 푸터 위 AA 대비 충족(약 7:1) */
+    font-style: normal; /* address 요소 기본 이탤릭 해제 — 기존 정자체 외관 유지 */
 }
 
 .footer-info a {
@@ -2076,6 +2163,15 @@ html[lang="ko"] .slide-content h2 {
         max-width: 270px;
     }
 
+    /* FR/EN 로고는 데스크톱용 2rem 패딩(html[lang] specificity)이 모바일 규칙을 덮어 브랜드명이 잘리므로, 동일 specificity로 패딩 제거(270px 박스에 전체 명칭이 들어가게).
+       추가로 base .logo의 flex:0 0 auto가 모바일 .logo{flex:1}(동일 0,1,0이나 미적용)을 이겨 로고가 콘텐츠 폭에 갇혀 ellipsis가 났음 — 동일 specificity(0,2,0)로 flex를 키워 가용폭(약 272px)까지 확장하면 EN/FR 제목(185/157px)이 한 줄에 온전히 들어감 */
+    html[lang="fr"] .logo,
+    html[lang="en"] .logo {
+        padding: 0;
+        flex: 1 1 auto;
+        max-width: none;
+    }
+
     /* 모바일에서 로고 하단 골드 디바이더 숨김 */
     .logo::after {
         display: none;
@@ -2087,6 +2183,13 @@ html[lang="ko"] .slide-content h2 {
 
     .logo p {
         font-size: 0.55rem;
+    }
+
+    /* 로고 홈링크는 모바일에서 텍스트 높이(약 12~17px)만큼만 탭 영역이라 작았음 → 상하 패딩으로 탭 타깃을 ≥44px로 확대.
+       내비는 이미 44px 언어버튼으로 높이가 확보돼 있어 nav 높이·텍스트 위치 변화 없이 클릭 영역만 키움(수직 패딩만, 가로 레이아웃 불변) */
+    .logo a {
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
 
     /* 모바일 nav 투명 상태 — 로고/버튼 흰색 */
@@ -2130,6 +2233,11 @@ html[lang="ko"] .slide-content h2 {
     .highlights-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    /* 1단 그리드에서는 featured 카드의 span 2를 해제 — 미해제 시 암묵적 빈 컬럼(width:0)이 생겨
+       둘째 highlight 카드(모시 풍경)가 붕괴되는 문제 수정 */
+    .highlight-card.featured {
+        grid-column: auto;
     }
 
 
@@ -2308,6 +2416,13 @@ html[lang="ko"] .slide-content h2 {
     .footer-info p {
         font-size: 0.7rem;
     }
+    /* 푸터 텍스트 링크의 모바일 탭 영역을 키움(패딩으로 ≥24px, 음수마진으로 시각 위치/줄 간격 보존) */
+    .footer-info a,
+    .social-links a {
+        display: inline-block;
+        padding: 7px 4px;
+        margin: -7px -4px;
+    }
 
     /* 마키 스트립 폰트 축소 */
     .marquee-track span {
@@ -2409,6 +2524,11 @@ html[lang="ko"] .slide-content h2 {
         padding: 1.5rem 1rem;
         border-right: none;
         border-bottom: 1px solid var(--gold-dim);
+    }
+    /* 2×2 마지막 행(끝 2개 카드)은 하단 보더 제거 — :last-child(카드 4)만 제거하면 좌하 카드에
+       하단 보더가 비대칭으로 매달리는 문제 수정 */
+    .value-card:nth-last-child(-n+2) {
+        border-bottom: none;
     }
 
     /* 히어로 스탯 480px */
@@ -2767,6 +2887,11 @@ html[lang="ko"] .slide-content h2 {
         flex: 0 0 64vw !important;
         max-width: 280px;
     }
+    /* 좁은 모바일에서 긴 EN/FR 브랜드명이 로고 박스(약 203px)를 넘어 잘리므로 폰트를 소폭 축소해 전체 명칭 노출 */
+    html[lang="fr"] .logo h1,
+    html[lang="en"] .logo h1 {
+        font-size: 0.76rem;
+    }
 }
 
 /* Collection scroll hint fade edges */
@@ -3015,7 +3140,8 @@ body:has(.artwork-not-found) {
 }
 
 .philosophy-strip::before {
-    content: '韓紙';
+    /* 대형 韓紙 워터마크 — 장식이므로 빈 대체텍스트(/ '')로 스크린리더 낭독 제외 */
+    content: '韓紙' / '';
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3062,11 +3188,15 @@ body:has(.artwork-not-found) {
     margin: 0 auto;
     position: relative;
     white-space: pre-line;
+    /* 수동 줄바꿈(\n)을 유지하되, 폭을 넘겨 자연 줄바꿈되는 부분의 줄 길이를 고르게 — 큰 중앙정렬
+       디스플레이 인용구가 들쭉날쭉하지 않도록(미지원 브라우저는 무시, 줄 수·높이 불변) */
+    text-wrap: balance;
 }
 
 /* 인용 부호 골드 */
 .philosophy-strip blockquote::before {
-    content: '\201C';
+    /* 장식용 큰따옴표 — 인용문 본문이 의미를 전달하므로 빈 대체텍스트로 스크린리더 낭독 제외 */
+    content: '\201C' / '';
     font-size: 6rem;
     color: var(--gold);
     opacity: 0.4;
@@ -3113,11 +3243,6 @@ body:has(.artwork-not-found) {
     }
 }
 
-@media (max-width: 768px) {
-    /* 데스크탑 전용 커서 숨김 */
-    .cursor-dot, .cursor-ring { display: none; }
-}
-
 /* ===== 터치 디바이스: 갤러리 설명 항상 표시 ===== */
 @media (pointer: coarse) {
     .masterpiece-info {
@@ -3142,6 +3267,12 @@ body:has(.artwork-not-found) {
     .masterpiece-item:hover .masterpiece-info p {
         opacity: 1;
         transform: translateY(0);
+    }
+    /* 언어 전환 옵션 — 터치 환경에서 권장 탭 영역(44px) 확보(국제 방문자의 주요 동작, 기존 34px) */
+    .lang-option {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -3191,14 +3322,18 @@ body:has(.artwork-not-found) {
     align-items: center;
     justify-content: center;
     opacity: 0;
+    /* 숨김 시 키보드 탭 순서에서도 제외(visibility는 페이드 후 적용되도록 지연 트랜지션) */
+    visibility: hidden;
     pointer-events: none;
     transform: translateY(12px);
-    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease;
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, visibility 0s 0.35s;
 }
 .scroll-top-btn.visible {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, visibility 0s;
 }
 .scroll-top-btn:hover {
     background: var(--gold);
@@ -3223,6 +3358,9 @@ body:has(.artwork-not-found) {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        /* 지연도 0으로 — 스태거·visibility 지연 등이 모션 최소화 시에도 즉시 적용되게 */
+        animation-delay: 0s !important;
+        transition-delay: 0s !important;
     }
     .marquee-track {
         animation: none;
