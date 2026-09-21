@@ -129,7 +129,6 @@ export const translations = {
       multi: { title: '화양연화(華樣年華)', period: '조선왕실의 예단' },
       jiseung: { title: '지승(紙繩)키링', period: '한지를 꼬아 만든 지승키링' },
       empress: { title: '황후의 시간(The Empress\'s Time)', period: '한지 좌식 화장대' },
-      link: '제작 과정 보기',
     },
     featured: {
       title: '한지 지승 공예',
@@ -168,6 +167,20 @@ export const translations = {
       description:
         '홍현정한지공예 연구소의 작품은 엄선된 프리미엄 채널을 통해 소개됩니다.\n백화점 바이어 및 갤러리 관계자분의 입점·전시 문의를 환영합니다.',
       button: { contact: '이메일로 문의하기', instagram: '인스타그램 보기' },
+    },
+    collab: {
+      title: '협업 소식',
+      date: '2026 추석 · 한가위',
+      partners: 'LOUIS VUITTON × 홍현정한지공예연구소',
+      headline: '보름달 아래,\n한지의 결이\n루이비통을 만나다',
+      body:
+        '2026년 추석, 홍현정한지공예연구소의 한지 모시 티코스터가 루이비통 추석 기프트 캠페인 화보에 함께합니다. 천연풀로 한지와 모시를 결합해 손으로 빚은 티코스터가 월병과 주얼리 곁에서 한가위의 정취를 받치고 있습니다.',
+      note: '화보 왼쪽 위, 월병을 받치고 있는 원형 오브제가 저희 연구소의 작품입니다.',
+      cta: { artwork: '티코스터 자세히 보기', gallery: '갤러리 보기' },
+      marker: '한지 모시 티코스터',
+      imageAlt:
+        '루이비통 2026 추석 기프트 캠페인 화보 — 월병과 주얼리 곁에 놓인 한지 모시 티코스터',
+      caption: 'Louis Vuitton 2026 추석 기프트 캠페인 © Louis Vuitton',
     },
     fab: {
       menu: '구매하기',
@@ -318,7 +331,6 @@ export const translations = {
       multi: { title: 'Flower-like Years (華樣年華)', period: 'Wedding gifts of the Joseon Royal Court' },
       jiseung: { title: 'Jiseung (Paper Rope) Keyring', period: 'Jiseung keyring made by twisting hanji' },
       empress: { title: "The Empress's Time", period: 'Hanji floor-sitting dressing table' },
-      link: 'View Craft Process',
     },
     featured: {
       title: 'Hanji Jiseung Craft',
@@ -355,6 +367,20 @@ export const translations = {
       description:
         'The works of Hong Hyun-jeong Hanji Craft Studio are presented through carefully selected premium channels.\nWe welcome inquiries from department store buyers and gallery representatives.',
       button: { contact: 'Contact via Email', instagram: 'View Instagram' },
+    },
+    collab: {
+      title: 'Collaboration News',
+      date: 'Chuseok 2026 · Korean Harvest Moon Festival',
+      partners: 'LOUIS VUITTON × Hong Hyun-jeong Hanji Craft Studio',
+      headline: 'Beneath the full moon,\nthe grain of hanji\nmeets Louis Vuitton',
+      body:
+        'For Chuseok 2026, the hanji ramie tea coaster of Hong Hyun-jeong Hanji Craft Studio joins the Louis Vuitton Chuseok gift campaign. Hanji and ramie, bonded by hand with natural paste, rest beside mooncakes and fine jewelry — quietly holding the spirit of the harvest moon.',
+      note: 'At the upper left of the image, the round object holding the mooncake is a work of our studio.',
+      cta: { artwork: 'Discover the Tea Coaster', gallery: 'View Gallery' },
+      marker: 'Hanji Ramie Tea Coaster',
+      imageAlt:
+        'Louis Vuitton 2026 Chuseok gift campaign image — a hanji ramie tea coaster placed beside mooncakes and jewelry',
+      caption: 'Louis Vuitton 2026 Chuseok Gift Campaign © Louis Vuitton',
     },
     fab: {
       menu: 'Shop',
@@ -505,7 +531,6 @@ export const translations = {
       multi: { title: 'Années Fleuries (華樣年華)', period: 'Cadeaux de mariage de la Cour Royale Joseon' },
       jiseung: { title: 'Porte-clés Jiseung (Corde de Papier)', period: 'Porte-clés jiseung fait en tordant le hanji' },
       empress: { title: "Le Temps de l'Impératrice", period: 'Coiffeuse hanji assise au sol' },
-      link: 'Voir le Processus Artisanal',
     },
     featured: {
       title: 'Artisanat Hanji Jiseung',
@@ -542,6 +567,20 @@ export const translations = {
       description:
         "Les œuvres de l'Atelier Hanji Hong Hyun-jeong sont présentées via des canaux premium soigneusement sélectionnés.\nNous accueillons les demandes d'acheteurs de grands magasins et de représentants de galeries.",
       button: { contact: 'Contacter par Email', instagram: 'Voir Instagram' },
+    },
+    collab: {
+      title: 'Actualité Collaboration',
+      date: 'Chuseok 2026 · Fête coréenne de la Pleine Lune des Moissons',
+      partners: 'LOUIS VUITTON × Atelier Hanji Hong Hyun-jeong',
+      headline: 'Sous la pleine lune,\nle grain du hanji\nrencontre Louis Vuitton',
+      body:
+        "Pour le Chuseok 2026, le sous-verre à thé en hanji et ramie de l'Atelier Hanji Hong Hyun-jeong figure dans la campagne de cadeaux Chuseok de Louis Vuitton. Assemblés à la main avec une colle naturelle, le hanji et le ramie reposent auprès des gâteaux de lune et de la joaillerie, portant en silence l'esprit de la pleine lune des moissons.",
+      note: "En haut à gauche de l'image, l'objet circulaire qui soutient le gâteau de lune est une œuvre de notre atelier.",
+      cta: { artwork: 'Découvrir le Sous-verre', gallery: 'Voir la Galerie' },
+      marker: 'Sous-verre Thé Hanji-Ramie',
+      imageAlt:
+        'Campagne de cadeaux Chuseok 2026 de Louis Vuitton — sous-verre à thé en hanji et ramie posé auprès de gâteaux de lune et de joaillerie',
+      caption: 'Campagne de Cadeaux Chuseok 2026 Louis Vuitton © Louis Vuitton',
     },
     fab: {
       menu: 'Boutique',

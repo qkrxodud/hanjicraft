@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { useI18n } from '@/contexts/I18nContext'
 import Nav from '@/components/Nav'
 import ClientWrapper from '@/components/ClientWrapper'
-import { BASE_PATH } from '@/lib/config'
+import PopupNaver from '@/components/PopupNaver'
+import { BASE_PATH, SHOW_COLLABORATION, SHOW_NAVER_POPUP } from '@/lib/config'
 
 export default function Home() {
   const { t, lang } = useI18n()
@@ -134,6 +135,56 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      {/* Collaboration Section — 루이비통 2026 추석 기프트 캠페인 협업 소식 (SHOW_COLLABORATION으로 노출 제어) */}
+      {SHOW_COLLABORATION && (
+      <section id="collaboration" className="collab-section">
+        <div className="container">
+          <div className="collab-header">
+            {/* .section-title을 재사용해 ClientWrapper의 스크롤 리빌·타이포 스케일을 그대로 상속(정렬만 좌측으로 재정의) */}
+            <h2 className="section-title collab-title">
+              <span className="section-label" aria-hidden="true">COLLABORATION</span>
+              {t('collab.title')}
+            </h2>
+            <span className="collab-date">{t('collab.date')}</span>
+          </div>
+
+          <div className="collab-grid">
+            <div className="collab-text">
+              <p className="collab-partners">{t('collab.partners')}</p>
+              <h3 className="collab-headline">{t('collab.headline')}</h3>
+              <p className="collab-body">{t('collab.body')}</p>
+              <p className="collab-note">{t('collab.note')}</p>
+              <div className="collab-cta-group">
+                {/* 기존 인콰이어리 버튼 스타일 재사용 — 사이트 전역 CTA 일관성 유지 */}
+                <Link href="/artwork/circle" className="inquiry-btn primary">{t('collab.cta.artwork')}</Link>
+                <a href="#gallery" className="inquiry-btn secondary">{t('collab.cta.gallery')}</a>
+              </div>
+            </div>
+
+            <figure className="collab-figure">
+              <div className="collab-image-wrap">
+                {/* 화보 속 작품 위치가 본문만으로는 전달되지 않으므로 정보성 alt를 제공 */}
+                <img
+                  src={`${BASE_PATH}/img/collab-chuseok-2026.jpg`}
+                  alt={t('collab.imageAlt')}
+                  width={1280}
+                  height={1600}
+                  loading="lazy"
+                />
+                {/* 작품 위치 마커·리더 라인 — 순수 시각 보조(같은 내용을 collab.note가 텍스트로 전달) */}
+                <span className="collab-marker" aria-hidden="true"></span>
+                <span className="collab-marker-label" aria-hidden="true">
+                  <span className="collab-marker-line"></span>
+                  {t('collab.marker')}
+                </span>
+              </div>
+              <figcaption className="collab-caption">{t('collab.caption')}</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      )}
 
       {/* Brand Section */}
       <section id="brand" className="brand-section">
@@ -411,6 +462,9 @@ export default function Home() {
 
       {/* Client-side effects */}
       <ClientWrapper />
+
+      {/* NAVER 팝업스토어 모달 (세션당 1회) — SHOW_NAVER_POPUP으로 노출 제어 */}
+      {SHOW_NAVER_POPUP && <PopupNaver />}
     </>
   )
 }

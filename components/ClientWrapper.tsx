@@ -162,7 +162,7 @@ export default function ClientWrapper() {
       revealObserver.observe(philosophyQuote)
     }
     document
-      .querySelectorAll('.section-title, .brand-subtitle, .inquiry-lead, .values-title')
+      .querySelectorAll('.section-title, .brand-subtitle, .inquiry-lead, .values-title, .collab-text, .collab-figure')
       .forEach((el) => {
         el.classList.add('reveal')
         revealObserver.observe(el)

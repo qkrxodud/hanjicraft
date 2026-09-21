@@ -102,7 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             opacity:0으로 시작해 JS로 노출되는 콘텐츠/이미지를 즉시 표시한다(미설정 시 JS-off 화면이 사실상 빈 페이지).
             라이트박스·드롭다운·FAB 서브메뉴 등 'JS로 여는' 요소는 제외해 닫힌 상태가 유지되게 한다. */}
         <noscript>
-          <style>{`body{opacity:1 !important}#page-loader{display:none !important}.reveal,.editorial-reveal,.detail-reveal,.title-reveal h1,.meta-item,.detail-image-gallery,.detail-info,.related-item,.related-artworks .section-title,.slide-content .hero-btn,.slide:first-child{opacity:1 !important;transform:none !important;clip-path:none !important}img[loading="lazy"]{opacity:1 !important}`}</style>
+          <style>{`body{opacity:1 !important}#page-loader{display:none !important}.reveal,.editorial-reveal,.detail-reveal,.detail-image-gallery,.detail-info,.related-item,.related-artworks .section-title,.slide-content .hero-btn,.slide:first-child{opacity:1 !important;transform:none !important;clip-path:none !important}img[loading="lazy"]{opacity:1 !important}`}</style>
         </noscript>
       </head>
       <body>

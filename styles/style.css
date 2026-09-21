@@ -191,15 +191,23 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
-/* 한글 제목: 라틴용 와이드 트래킹/대문자 해제 — 명조 응집감 회복 */
+/* 한글 제목: 라틴용 와이드 트래킹/대문자 해제 — 명조 응집감 회복.
+   4px는 "제 작  과 정"처럼 음절이 낱글자로 흩어져 읽혀 2px로 좁힌다(사각 모듈인 한글은
+   같은 자간이라도 라틴보다 훨씬 벌어져 보인다). */
 html[lang="ko"] .section-title,
 html[lang="ko"] .values-title,
 html[lang="ko"] .item-content h3,
 html[lang="ko"] .editorial-text h3 {
-    letter-spacing: 4px;
+    letter-spacing: 2px;
     text-transform: none;
     word-break: keep-all;
     font-weight: 200;
+}
+
+/* 본문 크기(1.2~1.6rem) 한글 헤딩은 2px도 성기게 보여 한 단계 더 좁힌다 */
+html[lang="ko"] .item-content h3,
+html[lang="ko"] .editorial-text h3 {
+    letter-spacing: 1px;
 }
 
 /* 콘텐츠·카드 헤딩에도 줄바꿈 균형 적용 — 여러 줄 제목의 마지막 줄 고아 단어 방지(.section-title과 일관, 미지원 브라우저는 무시) */
@@ -233,10 +241,6 @@ html[lang="ko"] .editorial-text h3 {
     margin-bottom: 1.1rem;
 }
 
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
 
 /* ===== Top Navigation ===== */
 .top-nav {
@@ -461,16 +465,6 @@ html[lang="ko"] .editorial-text h3 {
     font-weight: 300;
 }
 
-.search-btn {
-    background: none;
-    border: 1px solid var(--gold-dim);
-    padding: 8px 12px;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.85rem;
-    color: var(--charcoal);
-}
 
 .lang-dropdown {
     position: absolute;
@@ -1222,14 +1216,6 @@ html[lang="ko"] .slide-content h2 {
     letter-spacing: 0.5px;
 }
 
-.card-date {
-    color: var(--warm-grey);
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
-    display: block;
-}
 
 .card-link {
     color: var(--charcoal);
@@ -1774,6 +1760,284 @@ html[lang="ko"] .slide-content h2 {
     border-color: var(--charcoal);
 }
 
+/* ===== Collaboration Section — 협업 소식(루이비통 2026 추석) ===== */
+.collab-section {
+    padding: 12rem 0;
+    background-color: var(--cream-base);
+    border-top: 1px solid var(--gold-dim);
+    color: var(--charcoal);
+}
+
+/* 헤더 — 좌측 라벨/제목 + 우측 날짜, 하단 얇은 골드 보더 */
+.collab-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 1.6rem;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    border-bottom: 1px solid var(--gold-dim);
+}
+
+/* .section-title 상속 후 중앙정렬·하단 골드선만 해제 */
+.section-title.collab-title {
+    font-size: clamp(1.9rem, 3.2vw, 3rem);
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.section-title.collab-title::after {
+    display: none;
+}
+
+.collab-title .section-label {
+    margin-bottom: 0.9rem;
+}
+
+.collab-date {
+    flex-shrink: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--warm-grey);
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+}
+
+/* 2열 그리드 — 좌: 텍스트 / 우: 화보 */
+.collab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+}
+
+.collab-partners {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    margin-bottom: 1.8rem;
+}
+
+.collab-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    font-weight: 200;
+    line-height: 1.35;
+    letter-spacing: 1px;
+    color: var(--charcoal);
+    white-space: pre-line;
+    word-break: keep-all;
+    margin-bottom: 2.2rem;
+}
+
+.collab-body {
+    font-size: 0.9rem;
+    line-height: 1.95;
+    letter-spacing: 0.5px;
+    color: var(--ink-soft);
+    word-break: keep-all;
+    margin-bottom: 1.4rem;
+}
+
+.collab-note {
+    font-size: 0.78rem;
+    line-height: 1.85;
+    letter-spacing: 0.5px;
+    color: var(--warm-grey);
+    word-break: keep-all;
+    margin-bottom: 2.8rem;
+}
+
+/* CTA — .inquiry-btn 스타일을 그대로 재사용하고 정렬만 좌측으로 */
+.collab-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.collab-cta-group .inquiry-btn {
+    padding: 15px 32px;
+}
+
+/* 화보 figure */
+.collab-figure {
+    margin: 0;
+}
+
+.collab-image-wrap {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(26,26,26,0.16);
+}
+
+.collab-image-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 화보 속 티코스터 위치 마커 — 원본 화보(1280×1600) 좌상단 오브제 위치에 맞춘 비율값 */
+.collab-marker {
+    position: absolute;
+    left: 1%;
+    top: 1%;
+    width: 36%;
+    aspect-ratio: 1;
+    border: 1.5px solid rgba(201,169,110,0.95);
+    border-radius: 50%;
+    /* 밝은 오브제 위에서도 링이 묻히지 않도록 얇은 어두운 헤일로를 덧댄다 */
+    box-shadow: 0 0 0 1px rgba(10,10,10,0.22), 0 0 22px rgba(201,169,110,0.28);
+    pointer-events: none;
+    animation: collabMarkerPulse 3s ease-in-out infinite;
+}
+
+@keyframes collabMarkerPulse {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(1.05); }
+}
+
+/* 마커 리더 라인 + 라벨 */
+.collab-marker-label {
+    position: absolute;
+    left: 38%;
+    top: 15%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--cream-light);
+    text-shadow: 0 1px 6px rgba(10,10,10,0.65);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.collab-marker-line {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: rgba(201,169,110,0.9);
+}
+
+.collab-caption {
+    margin-top: 1.1rem;
+    text-align: right;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 1.4px;
+    color: var(--warm-grey);
+}
+
+/* 협업 섹션 태블릿·모바일 */
+@media (max-width: 768px) {
+    .collab-section {
+        padding: 5rem 0;
+    }
+
+    .collab-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .collab-date {
+        padding-bottom: 0;
+        font-size: 0.62rem;
+        letter-spacing: 2.5px;
+    }
+
+    /* 1-컬럼 스택 — 화보를 텍스트 아래로 */
+    .collab-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .collab-headline {
+        margin-bottom: 1.8rem;
+    }
+
+    .collab-note {
+        margin-bottom: 2.2rem;
+    }
+
+    .collab-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .collab-cta-group .inquiry-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .collab-marker-label {
+        font-size: 0.58rem;
+        letter-spacing: 1.5px;
+        gap: 7px;
+    }
+
+    .collab-marker-line {
+        width: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .collab-section {
+        padding: 3.5rem 0;
+    }
+
+    .section-title.collab-title {
+        font-size: 1.6rem;
+    }
+
+    .collab-date {
+        font-size: 0.55rem;
+    }
+
+    .collab-partners {
+        font-size: 0.58rem;
+        letter-spacing: 2px;
+        margin-bottom: 1.2rem;
+    }
+
+    .collab-headline {
+        font-size: 1.55rem;
+    }
+
+    .collab-body {
+        font-size: 0.82rem;
+        line-height: 1.85;
+    }
+
+    .collab-note {
+        font-size: 0.72rem;
+    }
+
+    .collab-marker-label {
+        font-size: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    .collab-marker-line {
+        width: 14px;
+    }
+
+    .collab-caption {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+}
+
 /* ===== Inquiry / Partnership Section — 크림 배경 ===== */
 .inquiry-section {
     padding: 15rem 0;
@@ -2252,11 +2516,6 @@ html[lang="ko"] .slide-content h2 {
         grid-row: span 1;
     }
 
-    .featured-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
     .footer-content {
         flex-direction: column;
         gap: 1.5rem;
@@ -2473,10 +2732,6 @@ html[lang="ko"] .slide-content h2 {
     }
     .masterpiece-item.featured img {
         object-position: center;
-    }
-
-    .visit-main h2 {
-        font-size: 2rem;
     }
 
     /* 섹션 패딩 480px 추가 축소 */
@@ -3076,13 +3331,6 @@ body:has(.artwork-not-found) {
     .hero-stat-label { font-size: 0.6rem; letter-spacing: 1.5px; margin-top: 0.6rem; }
 }
 
-/* ===== Section divider line ===== */
-.section-divider {
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    margin: 2rem 0;
-}
 
 /* ===== Hero parallax container ===== */
 .slide img {
@@ -3123,11 +3371,6 @@ body:has(.artwork-not-found) {
     }
 }
 
-/* ===== Counter animation ===== */
-@keyframes countUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
 
 /* ===== Philosophy Interstitial — 강렬하게 ===== */
 .philosophy-strip {
@@ -3291,6 +3534,7 @@ body:has(.artwork-not-found) {
 .collection-item img[loading="lazy"],
 .editorial-image img[loading="lazy"],
 .related-item img[loading="lazy"],
+.collab-image-wrap img[loading="lazy"],
 .thumbnail img[loading="lazy"] {
     opacity: 0;
     transition: opacity 0.55s ease;
@@ -3300,6 +3544,7 @@ body:has(.artwork-not-found) {
 .collection-item img.img-loaded,
 .editorial-image img.img-loaded,
 .related-item img.img-loaded,
+.collab-image-wrap img.img-loaded,
 .thumbnail img.img-loaded {
     opacity: 1;
 }
@@ -3365,16 +3610,134 @@ body:has(.artwork-not-found) {
     .marquee-track {
         animation: none;
     }
+    /* 협업 화보 마커 펄스 정지 — 위치 표시 자체는 유지 */
+    .collab-marker {
+        animation: none;
+        opacity: 0.9;
+        transform: none;
+    }
     html {
         scroll-behavior: auto;
     }
     /* 스크롤 리빌 비활성화 — 콘텐츠를 즉시 표시(관찰자 의존·팝인 제거, 상세 페이지와 일관) */
     .reveal,
     .editorial-reveal,
-    .reveal-stagger,
-    .title-reveal {
+    .reveal-stagger {
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
+    }
+}
+
+/* ===== 숫자 표기 — 세리프 숫자가 'I/O'로 읽히는 문제 =====
+   Cormorant Garamond의 얇은 자획(100~200)에서는 1에 위아래 세리프가 붙어 대문자 I처럼,
+   0은 O처럼 보여 "1,000"이 "I,OOO", "01"이 "OI"로 읽힌다. 숫자만 단독으로 노출되는
+   통계·인덱스에 한해 자획이 또렷한 Noto Serif KR(이미 로드 중)로 바꾸고 라틴용 넓은 자간을
+   0으로 되돌린다. 세리프 톤은 그대로라 럭셔리 아트디렉션은 유지된다. */
+.hero-stat-number,
+.collection-index,
+.editorial-index {
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
+    font-weight: 300;
+    letter-spacing: 0;
+    /* 라이닝(높이가 같은) 숫자 + 고정폭 — 카운트업 중 자릿수 폭 변화로 인한 흔들림 방지 */
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* ===== 한글 자간 — 라틴 대문자 기준 트래킹이 한글을 낱글자로 흩어놓는 문제 =====
+   "자 세 히  보 기"·"컬 렉 션  보 기"처럼 어절 인지가 깨지던 UI 텍스트만 자간을 좁힌다.
+   .section-label(COLLECTION·GALLERY 등) 같은 라틴 전용 라벨은 원래 트래킹을 유지하고,
+   EN/FR에서도 규칙이 적용되지 않아 라틴 레이아웃은 그대로다. */
+html[lang="ko"] .hero-btn,
+html[lang="ko"] .card-link,
+html[lang="ko"] .artwork-link,
+html[lang="ko"] .inquiry-btn,
+html[lang="ko"] .bottom-nav-btn,
+html[lang="ko"] .primary-menu-item,
+html[lang="ko"] .card-category,
+html[lang="ko"] .artwork-details,
+html[lang="ko"] .artwork-period,
+html[lang="ko"] .hero-stat-label,
+html[lang="ko"] .value-card h4,
+html[lang="ko"] .social-links a,
+html[lang="ko"] .footer-bottom,
+html[lang="ko"] .nav-link {
+    letter-spacing: 0.5px;
+}
+
+/* 큰 한글 헤딩·워드마크는 완전히 붙이면 답답해 1~2px만 남긴다 */
+html[lang="ko"] .brand-card h3,
+html[lang="ko"] .masterpiece-info h3,
+html[lang="ko"] .logo h1 {
+    letter-spacing: 1px;
+}
+html[lang="ko"] .footer-logo h3 {
+    letter-spacing: 2px;
+}
+
+/* ===== 모바일 여백·겹침 정리 ===== */
+@media (max-width: 768px) {
+    /* 인디케이터(bottom 5.5rem)가 슬라이드 설명문 위를 가로질러 밑줄처럼 보이던 겹침 —
+       콘텐츠 아래 최하단으로 내린다 */
+    .hero-indicators {
+        bottom: 1.2rem;
+    }
+
+    /* 히어로 CTA가 화면 하단·구매 FAB와 맞붙어 잘린 것처럼 보이던 문제 —
+       인디케이터(약 2.6rem)와 겹치지 않을 만큼 하단 여백 확보 */
+    .slide-content {
+        padding-bottom: 4.5rem;
+    }
+
+    /* 섹션 상하 여백 — 데스크탑 기준(11rem)에서 줄였어도 모바일에선 버튼 아래로
+       빈 크림 화면이 한 화면 가까이 남아 콘텐츠가 끊긴 것처럼 보였다 */
+    .highlights,
+    .collection-delve,
+    .masterpieces,
+    .brand-section,
+    .inquiry-section {
+        padding: 4rem 0;
+    }
+    .featured-artworks {
+        padding-top: 4rem;
+    }
+    .card-content {
+        padding: 1.6rem 1.6rem 1.8rem;
+    }
+    .section-title {
+        margin-bottom: 2.6rem;
+    }
+
+    /* 에디토리얼 CTA — flex column의 stretch로 전폭까지 늘어나 글자만 왼쪽에 몰려 보였다.
+       좁은 화면에서는 다른 CTA(.card-link·.hero-btn)처럼 글자 폭에 맞춘다 */
+    .editorial-text .artwork-link {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    /* 작은 화면에서는 2px도 벌어져 보여 한 단계 더 좁힌다 */
+    html[lang="ko"] .section-title,
+    html[lang="ko"] .values-title {
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 480px) {
+    .highlights,
+    .collection-delve,
+    .masterpieces,
+    .brand-section,
+    .inquiry-section {
+        padding: 3rem 0;
+    }
+    .featured-artworks {
+        padding-top: 3rem;
+    }
+    .card-content {
+        padding: 1.4rem 1.4rem 1.6rem;
+    }
+    .section-title {
+        margin-bottom: 2.1rem;
     }
 }
