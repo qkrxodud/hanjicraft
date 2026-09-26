@@ -1,9 +1,17 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
 import { useI18n } from '@/contexts/I18nContext'
 import type { Lang } from '@/lib/translations'
+
+// 섹션 앵커 — 순서가 페이지의 섹션 순서와 같아야 스크롤 하이라이트가 자연스럽다
+const NAV_ITEMS = [
+  { href: '#brand', key: 'nav.brand' },
+  { href: '#highlights', key: 'nav.exhibitions' },
+  { href: '#collections', key: 'nav.collections' },
+  { href: '#gallery', key: 'nav.gallery' },
+  { href: '#about', key: 'nav.about' },
+]
 
 export default function Nav() {
   const { t, lang, setLang } = useI18n()
@@ -36,7 +44,7 @@ export default function Nav() {
     const onFocusOut = (e: FocusEvent) => {
       if (switcher && !switcher.contains(e.relatedTarget as Node)) setDropdownOpen(false)
     }
-    // 스크롤 시 닫는다 — 상단 내비가 스크롤다운 시 숨으면서 열린 드롭다운이 화면 밖으로 끌려가 방치되는 문제 방지
+    // 스크롤 시 닫는다 — 헤더가 스크롤다운 시 숨으면서 열린 드롭다운이 화면 밖으로 끌려가는 문제 방지
     const onScroll = () => setDropdownOpen(false)
     document.addEventListener('click', onDocClick)
     document.addEventListener('keydown', onKey)
@@ -60,75 +68,64 @@ export default function Nav() {
   return (
     <nav className="top-nav" aria-label={navLandmark[lang]}>
       <div className="nav-container">
-        <ul className="nav-menu nav-left">
-          <li className="nav-item">
-            <a href="#hero" className="nav-link">{t('nav.home')}</a>
-          </li>
-          <li className="nav-item">
-            <a href="#brand" className="nav-link">{t('nav.brand')}</a>
-          </li>
-          <li className="nav-item">
-            <a href="#highlights" className="nav-link">{t('nav.exhibitions')}</a>
-          </li>
-        </ul>
-
         <div className="logo">
-          {/* 로고 클릭 시 최상단으로 이동 — 보편적 '로고=홈' 관례이자 상세 페이지 로고(→/)와의 동작 일관성.
-              상단 내비가 고정이라 스크롤 후에도 항상 노출되는 복귀 어포던스를 제공한다 */}
-          <a href="#hero" style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-            <h1>{t('logo.title')}</h1>
-            <p>{t('logo.subtitle')}</p>
+          {/* 로고 클릭 시 최상단으로 이동 — 보편적 '로고=홈' 관례이자 상세 페이지 로고(→/)와의 동작 일관성 */}
+          <a href="#hero">
+            {/* 장식용 한자 심볼 — 옆의 브랜드명이 의미를 전달하므로 접근성 트리에서 제외 */}
+            <span className="logo-mark" aria-hidden="true">紙</span>
+            {/* 홈의 h1은 히어로 제목이므로 로고는 heading이 아닌 텍스트로 둔다(h1 중복 방지) */}
+            <span className="logo-text">
+              <span className="logo-title">{t('logo.title')}</span>
+              <span className="logo-sub">{t('logo.subtitle')}</span>
+            </span>
           </a>
         </div>
 
-        <div className="nav-right-section">
-          <ul className="nav-menu nav-right">
-            <li className="nav-item">
-              <a href="#collections" className="nav-link">{t('nav.collections')}</a>
+        <ul className="nav-menu">
+          {NAV_ITEMS.map(({ href, key }) => (
+            <li key={href}>
+              <a href={href} className="nav-link">{t(key)}</a>
             </li>
-            <li className="nav-item">
-              <a href="#gallery" className="nav-link">{t('nav.gallery')}</a>
-            </li>
-            <li className="nav-item">
-              <a href="#about" className="nav-link">{t('nav.about')}</a>
-            </li>
-          </ul>
+          ))}
+          <li>
+            <a href="#inquiry" className="nav-link nav-link--cta">{t('nav.contact')}</a>
+          </li>
+        </ul>
 
-          <div className="nav-actions">
-            <div className="language-switcher" ref={switcherRef}>
-              <button
-                type="button"
-                ref={langBtnRef}
-                className="lang-btn"
-                aria-expanded={dropdownOpen}
-                aria-controls="lang-dropdown-nav"
-                aria-label={switcherLabel[lang]}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setDropdownOpen((o) => !o)
-                }}
-              >
-                {langLabels[lang]}
-              </button>
-              <div id="lang-dropdown-nav" className={`lang-dropdown${dropdownOpen ? ' show' : ''}`}>
-                {(['ko', 'en', 'fr'] as Lang[]).map((l) => (
-                  <button
-                    type="button"
-                    key={l}
-                    className={`lang-option${lang === l ? ' active' : ''}`}
-                    // 옵션 라벨이 외국어 고유명(English/Français)이라 페이지 언어와 다를 때
-                    // 스크린리더가 잘못 발음하지 않도록 각 옵션에 해당 언어를 명시(WCAG 3.1.2)
-                    lang={l}
-                    aria-current={lang === l ? 'true' : undefined}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      handleLangSelect(l)
-                    }}
-                  >
-                    {langNames[l]}
-                  </button>
-                ))}
-              </div>
+        <div className="nav-actions">
+          <div className="language-switcher" ref={switcherRef}>
+            <button
+              type="button"
+              ref={langBtnRef}
+              className="lang-btn"
+              aria-expanded={dropdownOpen}
+              aria-controls="lang-dropdown-nav"
+              aria-label={switcherLabel[lang]}
+              onClick={(e) => {
+                e.stopPropagation()
+                setDropdownOpen((o) => !o)
+              }}
+            >
+              {langLabels[lang]}
+            </button>
+            <div id="lang-dropdown-nav" className={`lang-dropdown${dropdownOpen ? ' show' : ''}`}>
+              {(['ko', 'en', 'fr'] as Lang[]).map((l) => (
+                <button
+                  type="button"
+                  key={l}
+                  className={`lang-option${lang === l ? ' active' : ''}`}
+                  // 옵션 라벨이 외국어 고유명(English/Français)이라 페이지 언어와 다를 때
+                  // 스크린리더가 잘못 발음하지 않도록 각 옵션에 해당 언어를 명시(WCAG 3.1.2)
+                  lang={l}
+                  aria-current={lang === l ? 'true' : undefined}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleLangSelect(l)
+                  }}
+                >
+                  {langNames[l]}
+                </button>
+              ))}
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { I18nProvider } from '@/contexts/I18nContext'
 import LangChangeAnnouncer from '@/components/LangChangeAnnouncer'
+import SWRegister from '@/components/SWRegister'
 import './globals.css'
 
 // 프로덕션(GitHub Pages) 절대 URL — 소셜 공유 미리보기 이미지·정규 URL 해석 기준
@@ -88,8 +89,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Gowun Batang=한글 제목, Noto Serif KR=본문, Cormorant Garamond=라틴 라벨·숫자 */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@200;300;400&family=Roboto:wght@300;400&family=Noto+Serif+KR:wght@300;400&family=Noto+Sans+KR:wght@300;400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
           rel="stylesheet"
         />
         <link
@@ -98,16 +100,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F5F0E8'/><text y='.9em' font-size='80' x='50%25' text-anchor='middle' fill='%23B8975A' font-family='serif'>紙</text></svg>"
         />
         {/* JS 비활성 시 본문이 빈 화면으로 남지 않도록 폴백.
-            body 노출 + 프리로더 제거에 더해, 스크롤 reveal(IntersectionObserver)·지연 이미지(img-loaded)처럼
+            body 노출에 더해, 스크롤 reveal(IntersectionObserver)·지연 이미지(img-loaded)처럼
             opacity:0으로 시작해 JS로 노출되는 콘텐츠/이미지를 즉시 표시한다(미설정 시 JS-off 화면이 사실상 빈 페이지).
-            라이트박스·드롭다운·FAB 서브메뉴 등 'JS로 여는' 요소는 제외해 닫힌 상태가 유지되게 한다. */}
+            라이트박스·드롭다운 등 'JS로 여는' 요소는 제외해 닫힌 상태가 유지되게 한다. */}
         <noscript>
-          <style>{`body{opacity:1 !important}#page-loader{display:none !important}.reveal,.editorial-reveal,.detail-reveal,.detail-image-gallery,.detail-info,.related-item,.related-artworks .section-title,.slide-content .hero-btn,.slide:first-child{opacity:1 !important;transform:none !important;clip-path:none !important}img[loading="lazy"]{opacity:1 !important}`}</style>
+          <style>{`body{opacity:1 !important}.reveal,.detail-reveal,.detail-image-gallery,.detail-info,.related-item,.related-artworks .section-title{opacity:1 !important;transform:none !important;clip-path:none !important}img[loading="lazy"]{opacity:1 !important}`}</style>
         </noscript>
       </head>
       <body>
+        {/* 닥종이 결 오버레이 — 평탄한 화면 위에 한지의 섬유결·요철을 얹는 장식 레이어.
+            fixed라 스크롤과 무관하게 지면 전체를 덮어, 크림/차콜 어느 섹션에서도 같은 질감이 유지된다. */}
+        <div className="paper-texture" aria-hidden="true"></div>
         <I18nProvider>
           <LangChangeAnnouncer />
+          <SWRegister />
           {children}
         </I18nProvider>
       </body>

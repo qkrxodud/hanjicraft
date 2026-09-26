@@ -1,7 +1,7 @@
 /* Artwork Detail Page Styles — Quiet Luxury Redesign */
 
 /* ===== Detail page nav: center-logo with back link ===== */
-.top-nav .nav-container {
+.detail-nav .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,35 +22,35 @@
     text-decoration: none;
     /* hover 시 바뀌는 색을 부드럽게 — 기존 opacity 트랜지션은 opacity가 변하지 않아 무의미했음 */
     transition: color 0.3s ease;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
 }
 .back-nav-link:hover {
     /* 크림 배경의 상단 nav 위에서 hover 텍스트 대비 확보(밝은 골드는 1.9:1로 미달) → 가독 골드(약 4.7:1) */
     color: var(--gold-text, #6E5526);
     opacity: 1;
 }
-.top-nav .logo {
+.detail-nav .logo {
     flex: 0 0 auto;
     text-align: center;
     padding: 0 1.8rem;
     border-left: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
     border-right: 1px solid var(--gold-dim, rgba(201,169,110,0.15));
 }
-.top-nav .logo h1 {
+.detail-nav .logo h1 {
     font-size: 1.1rem;
     font-weight: 300;
     letter-spacing: 2px;
     line-height: 1.1;
     color: var(--charcoal, #1A1A1A);
 }
-.top-nav .logo p {
+.detail-nav .logo p {
     font-size: 0.65rem;
     color: var(--gold, #C9A96E);
     letter-spacing: 4px;
     text-transform: uppercase;
     line-height: 1.1;
 }
-.top-nav .nav-actions {
+.detail-nav .nav-actions {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -221,7 +221,7 @@
     position: absolute;
     bottom: 1.2rem;
     right: 1.4rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.6rem;
     letter-spacing: 3px;
     color: rgba(255,255,255,0.85);
@@ -247,7 +247,7 @@
 /* 컬렉션 라벨 — 타이틀 위 작은 골드 텍스트 */
 .detail-studio-label {
     display: block;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.58rem;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -340,7 +340,7 @@ html[lang="ko"] .detail-title {
 }
 
 .artwork-story h3 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.58rem;
     font-weight: 300;
     letter-spacing: 5px;
@@ -547,7 +547,7 @@ html[lang="ko"] .detail-title {
     transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     text-decoration: none;
     display: inline-block;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-weight: 300;
 }
 .footer-back-btn:hover {
@@ -574,18 +574,18 @@ html[lang="ko"] .detail-title {
     .nav-left-action { display: flex; align-items: center; }
     /* 텍스트 백링크의 터치 타깃을 24px 이상으로(WCAG 2.5.8) */
     .nav-left-action .back-nav-link { padding: 8px 6px; margin: -8px -6px; }
-    .top-nav .nav-container {
+    .detail-nav .nav-container {
         padding: 0 16px;
         height: 56px;
     }
-    .top-nav .logo {
+    .detail-nav .logo {
         padding: 0 0.8rem;
         max-width: 52vw;
         overflow: hidden;
         border-left: none;
         border-right: none;
     }
-    .top-nav .logo h1 {
+    .detail-nav .logo h1 {
         font-size: 0.7rem;
         letter-spacing: 1px;
         white-space: nowrap;
@@ -597,7 +597,7 @@ html[lang="ko"] .detail-title {
     html[lang="en"] .nav-left-action ~ .logo h1 {
         font-size: 0.85rem;
     }
-    .top-nav .logo p {
+    .detail-nav .logo p {
         display: none;
     }
 
@@ -838,7 +838,7 @@ html[lang="ko"] .detail-title {
     html[lang="ko"] .detail-title {
         font-size: 1.6rem;
     }
-    /* 상세 내비 로고: KO만 .top-nav .logo의 좌우 패딩(0.8rem)을 그대로 받아 FR/EN(패딩 0)보다 콘텐츠 폭이 ~25px 좁았음
+    /* 상세 내비 로고: KO만 .detail-nav .logo의 좌우 패딩(0.8rem)을 그대로 받아 FR/EN(패딩 0)보다 콘텐츠 폭이 ~25px 좁았음
        → 좁은 화면(≤340px급)에서 KO 브랜드명이 먼저 잘리던 언어 간 비대칭 해소. 홈 내비엔 .nav-left-action 형제가 없어 무영향 */
     html[lang="ko"] .nav-left-action ~ .logo {
         padding-left: 0;
@@ -1098,7 +1098,7 @@ html[lang="ko"] .detail-title {
 }
 .lightbox-caption {
     margin-top: 1.5rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.65rem;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -1112,15 +1112,23 @@ html[lang="ko"] .detail-title {
     font-variant-numeric: tabular-nums;
 }
 
-/* ===== Page entrance ===== */
-body {
-    opacity: 0;
-    background-color: var(--cream-base, #F5F0E8);
-    transition: opacity 0.6s ease;
+/* ===== Page entrance =====
+   진입 페이드를 JS(page-loaded 클래스)가 아니라 CSS 애니메이션으로 처리한다.
+   opacity:0 + JS 게이트 방식은 React 번들이 로드·하이드레이션될 때까지 본문을 숨겨
+   느린 회선에서 FCP가 수 초씩 밀렸다(측정: 6.2s). CSS 애니메이션은 스타일시트가
+   파싱되는 즉시 시작되므로 첫 페인트에 바로 나타난다. */
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-body.page-loaded {
-    opacity: 1;
+body {
     background-color: var(--cream-base, #F5F0E8);
+    animation: pageFadeIn 0.5s ease both;
+}
+/* 페이지 이탈 페이드(상세 페이지 내비게이션 전환용) — JS가 클래스만 얹는다 */
+body.page-leaving {
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 /* ===== 에디토리얼 작품 번호 ===== */
@@ -1172,7 +1180,7 @@ body.page-loaded {
 
 .nav-direction {
     display: block;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.53rem;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -1242,7 +1250,7 @@ html[lang="ko"] .artwork-not-found h1 {
     text-transform: uppercase;
     color: var(--gold-text, #6E5526);
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-weight: 300;
     transition: opacity 0.3s ease;
 }
@@ -1370,7 +1378,7 @@ html[lang="ko"] .artwork-not-found h1 {
 }
 
 .nav-direction {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-body);
     font-size: 0.58rem;
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -1415,6 +1423,44 @@ html[lang="ko"] .artwork-not-found h1 {
         justify-content: center;
     }
 }
+
+/* ===== 어두운 면의 강조색 =====
+   단청 홍(--accent)은 크림 위에서는 또렷하지만 검정에 가까운 면 위에서는 대비가 2:1대로 떨어진다.
+   커스텀 프로퍼티는 상속되므로, 어두운 블록에서만 --gold 계열을 밝은 금색으로 재정의해
+   그 안의 모든 var(--gold) 참조(제목·구분선·워터마크)를 한 번에 전환한다. */
+.artwork-story,
+.detail-footer,
+.lightbox-overlay {
+    --gold: var(--accent-dark);
+    --gold-text: var(--accent-dark);
+    --gold-dim: rgba(201, 164, 91, 0.18);
+}
+
+/* ===== 리디자인 타입 정렬 =====
+   홈이 Gowun Batang(제목) + Noto Serif KR(본문)으로 바뀌었으므로, 상세 페이지의
+   한글 제목 계열도 같은 서체로 맞춘다. 라틴 전용 라벨·번호는 Cormorant를 유지한다. */
+.detail-title,
+.related-artworks .section-title,
+.artwork-not-found h1,
+.artwork-story h3,
+.nav-title {
+    font-family: var(--font-head);
+    font-weight: 400;
+}
+/* 라틴 대문자 기준의 넓은 트래킹(8px)이 한글 제목을 낱글자로 흩어놓던 문제 */
+.related-artworks .section-title {
+    font-size: clamp(24px, 5vw, 38px);
+    letter-spacing: -0.005em;
+    text-transform: none;
+}
+/* 리디자인 스케일 — 기존 3.2rem/weight100은 새 팔레트에서 지나치게 가늘게 읽힌다 */
+.detail-title,
+html[lang="ko"] .detail-title {
+    font-size: clamp(28px, 5.6vw, 46px);
+    letter-spacing: -0.005em;
+    line-height: 1.32;
+}
+/* 타이틀 하단 구분선·스토리 상단 라인 등 골드 장식은 --gold 토큰을 통해 단청 홍으로 전환된다 */
 
 /* ===== 숫자 표기 — 메인(style.css)과 동일 처리 =====
    Cormorant Garamond의 얇은 자획에서는 0이 O, 1이 I처럼 읽혀 작품 번호 "01"이 "OI"가 된다.

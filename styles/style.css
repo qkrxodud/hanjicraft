@@ -1,69 +1,167 @@
-/* ===== Quiet Luxury Design System ===== */
-/* 팔레트: 크림/골드/차콜 — Hermès·Bottega Veneta 수준의 하이엔드 아트 디렉션 */
+/* ===== 홍현정한지공예 연구소 — 리디자인 디자인 시스템 =====
+   닥종이 크림 바탕에 단청 홍(#8C2B2B)을 유일한 강조색으로 쓰는 에디토리얼 레이아웃.
+   전면 유동(clamp + auto-fit grid) 구성이라 브레이크포인트는 내비 정도에만 둔다. */
 
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
+/* ===== Design tokens ===== */
+:root {
+    /* 지면 */
+    --paper: #F3EDE1;          /* 기본 배경 */
+    --paper2: #EDE4D4;         /* 교차 섹션·카드 배경 */
+    --paper3: #E7DCC8;         /* 이미지 로딩 전 플레이스홀더 */
+    --paper-light: #FBF7EF;    /* 어두운 면 위 텍스트 */
+
+    /* 먹 */
+    --ink: #2E2823;
+    --ink-body: #4B423A;       /* 본문 */
+    --muted: #6E6154;          /* 캡션·보조 */
+    --line: rgba(46, 40, 35, 0.14);
+
+    /* 강조 — 단청 홍. 크림 위 대비 약 7:1로 본문 크기에서도 AA 충족 */
+    --accent: #8C2B2B;
+    --accent-dark: #C9A45B;    /* 어두운 면(문의·푸터) 위 강조 */
+
+    /* 어두운 면 */
+    --dark: #2A241E;
+    --dark-deep: #211C17;
+
+    /* 리듬 */
+    --pad: clamp(72px, 9vw, 150px);   /* 섹션 상하 여백 */
+    --gut: clamp(20px, 5vw, 72px);    /* 좌우 여백 */
+    --maxw: 1280px;
+
+    /* 서체 */
+    --font-head: 'Gowun Batang', 'Noto Serif KR', serif;
+    --font-body: 'Noto Serif KR', 'Gowun Batang', serif;
+    --font-latin: 'Cormorant Garamond', serif;
+
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    /* ===== 하위 호환 토큰 =====
+       artwork-detail.css가 아래 이름으로 색을 참조한다. 이름은 유지하고 값만
+       새 팔레트로 매핑해 상세 페이지가 자동으로 같은 톤을 따르게 한다. */
+    --cream-light: var(--paper-light);
+    --cream-base: var(--paper);
+    --cream-deep: var(--paper2);
+    --gold: var(--accent);
+    --gold-text: var(--accent);
+    --gold-dim: var(--line);
+    --charcoal: var(--ink);
+    --ink-soft: var(--ink-body);
+    --warm-grey: var(--muted);
+    --ease-soft: var(--ease);
+}
+
+/* ===== Reset ===== */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* 본문 단락 — 마지막 줄 고아 단어를 줄여 가독성·고급감 향상(미지원 브라우저는 무시되는 점진적 개선) */
+html {
+    scroll-behavior: smooth;
+    /* 고정 헤더 아래로 앵커 타깃이 가려지지 않게(메뉴가 2줄로 감기는 경우까지 여유를 둔다) */
+    scroll-padding-top: 120px;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background-color: var(--paper);
+    /* 한지를 뜰 때 생기는 미세한 농담 — 위쪽은 빛을 머금고 아래쪽은 닥물이 가라앉은 듯 */
+    background-image:
+        radial-gradient(150% 90% at 10% 0%, rgba(255, 252, 245, 0.7) 0%, rgba(255, 252, 245, 0) 55%),
+        radial-gradient(130% 80% at 90% 100%, rgba(186, 160, 118, 0.1) 0%, rgba(186, 160, 118, 0) 60%);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: clamp(14px, 3.4vw, 16px);
+    line-height: 1.9;
+    letter-spacing: 0.01em;
+    word-break: keep-all;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(140, 43, 43, 0.18);
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, figure, dl, dd {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-head);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+}
+
 p {
     text-wrap: pretty;
 }
 
-/* 텍스트 선택 하이라이트 — 기본 파란색 대신 브랜드 골드 틴트(텍스트 색은 유지해 명·암 배경 모두 가독) */
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease, opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
 ::selection {
-    background: rgba(201, 169, 110, 0.45);
-}
-::-moz-selection {
-    background: rgba(201, 169, 110, 0.45);
+    background: rgba(140, 43, 43, 0.2);
 }
 
-/* 앵커·skip-link·키보드 포커스 등 모든 scroll-into-view가 고정 내비(60px) 아래로 가려지지 않게 컨테이너 차원에서 오프셋
-   (JS 클릭은 수동 scrollTo라 영향 없음 — 이중 오프셋 방지) */
-html {
-    scroll-padding-top: 76px;
-}
-
-/* ===== CSS Custom Properties ===== */
-:root {
-    /* 닥종이 미색 — 황적기를 머금어 약간 따뜻하게 */
-    --cream-light: #FAF6EE;
-    --cream-base: #F3EDE1;
-    --cream-deep: #EAE2D2;
-    --gold: #C9A96E;            /* 선·점 등 비텍스트 장식 전용 */
-    --gold-text: #6E5526;       /* 크림 위 가독 골드(텍스트용, ~4.7:1 AA) */
-    --gold-dim: rgba(201,169,110,0.15);
-    --charcoal: #1A1A1A;
-    --ink: #0A0A0A;
-    --ink-soft: rgba(26,26,26,0.72);   /* 본문 먹 — 또렷한 농도 */
-    --warm-grey: rgba(26,26,26,0.62);  /* 캡션·메타 등 보조 텍스트 */
-    --ease-soft: cubic-bezier(0.22, 1, 0.36, 1); /* 빠르게 출발해 길게 감속 */
-}
-
-/* ===== 키보드 포커스 링 — 가독 골드 + 헤일로(대비 3:1+) ===== */
+/* ===== 포커스 링 ===== */
 :focus-visible {
-    outline: 2px solid var(--gold-text);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(110,85,38,0.18);
+    box-shadow: 0 0 0 4px rgba(140, 43, 43, 0.16);
 }
-
-/* 어두운 표면(푸터·라이트박스) 위에서는 더 밝은 골드로 포커스 링 대비 확보(검정 배경 위 3:1+) */
-.footer :focus-visible,
+/* 어두운 면 위에서는 밝은 금색으로 대비 확보 */
+.contact-section :focus-visible,
+.site-footer :focus-visible,
+.hero :focus-visible,
 .lightbox-overlay :focus-visible {
-    outline-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(201,169,110,0.3);
+    outline-color: var(--accent-dark);
+    box-shadow: 0 0 0 4px rgba(201, 164, 91, 0.3);
 }
 
-/* 투명 상태의 상단 내비 — 뒤에 어두운 스크림이 깔려 다크 골드텍스트 링이 묻히므로(대비<3:1) 밝은 골드로 전환 */
-.top-nav:not(.scrolled) :focus-visible {
-    outline-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(201,169,110,0.3);
+/* ===== 닥종이 결 =====
+   한지는 닥섬유가 한 방향으로 길게 눕고 그 위에 불규칙한 요철이 남는다.
+   긴 결(가로 반복선) + 짧은 결(세로 반복선) + 노이즈 세 겹을 multiply로 얹어
+   사진·크림면·차콜면 어디서나 같은 종이 위에 인쇄된 것처럼 보이게 한다. */
+.paper-texture {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+    background-image:
+        /* 불규칙한 요철 */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.28'/%3E%3C/svg%3E"),
+        /* 짧은 결 */
+        repeating-linear-gradient(0deg, rgba(120, 98, 70, 0.035) 0 1px, transparent 1px 5px),
+        /* 닥섬유가 눕는 긴 결 — 정확한 수평은 인쇄물처럼 보이므로 4도 기울인다 */
+        repeating-linear-gradient(94deg, rgba(120, 98, 70, 0.05) 0 1px, transparent 1px 9px);
 }
 
-/* ===== 시각적으로만 숨김(스크린리더 전용) — 라이브 리전·보조 텍스트용 ===== */
+/* ===== 유틸리티 ===== */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -76,3668 +174,1387 @@ html {
     border: 0;
 }
 
-/* ===== 본문 바로가기 링크 — 포커스 시에만 노출 ===== */
 .skip-link {
     position: fixed;
     top: 0;
-    left: 1.5rem;
+    left: var(--gut);
     z-index: 2000;
-    transform: translateY(-120%);
-    padding: 0.85rem 1.6rem;
-    background: var(--charcoal);
-    color: var(--cream-light);
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid var(--gold);
-    transition: transform 0.3s var(--ease-soft);
+    transform: translateY(-140%);
+    padding: 12px 22px;
+    background: var(--ink);
+    color: var(--paper-light);
+    font-family: var(--font-latin);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    border-radius: 999px;
+    transition: transform 0.3s var(--ease);
 }
 .skip-link:focus,
 .skip-link:focus-visible {
-    transform: translateY(0.6rem);
+    transform: translateY(12px);
     outline: none;
     box-shadow: none;
 }
-/* main은 skip-link의 포커스 타깃(tabindex=-1)일 뿐 — 전체 화면 아웃라인 억제 */
+
 #main-content:focus,
 #main-content:focus-visible {
     outline: none;
     box-shadow: none;
 }
 
-html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+.shell {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-inline: var(--gut);
 }
 
-body {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.85;
-    color: var(--charcoal);
-    background-color: var(--cream-base);
-    /* 닥섬유 결 — 배경에 미세한 가로 결을 더해 종이감 부여 */
-    background-image: repeating-linear-gradient(0deg, rgba(26,26,26,0.012) 0 1px, transparent 1px 3px);
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    /* 모바일 탭 하이라이트 — 기본 회색 플래시 대신 브랜드 골드 틴트(터치 피드백은 유지) */
-    -webkit-tap-highlight-color: rgba(201, 169, 110, 0.25);
-    /* 얇은 세리프(Cormorant 200/300)·라이트 본문이 또렷하고 가볍게 렌더되도록 안티앨리어싱 —
-       기본 subpixel 렌더의 무거움을 덜어 의도한 가벼운 고급감을 살리고, 특히 어두운 섹션의
-       흰 텍스트 가독성을 높인다(macOS WebKit/Blink·Firefox 한정 점진적 개선, 레이아웃 무변화) */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* 본문 자간: 한글은 사각 모듈이라 자간을 벌리면 어절 인지가 깨짐 → 0, 라틴만 소폭 */
-html[lang="ko"] body { letter-spacing: 0; word-break: keep-all; }
-html[lang="en"] body, html[lang="fr"] body { letter-spacing: 0.4px; }
-html[lang="en"] body { line-height: 1.7; }
-
-/* ===== 닥종이 결 오버레이 — 평탄한 디지털 크림에 종이 표면감 부여 ===== */
-.grain-overlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9;
-    mix-blend-mode: multiply;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-}
-
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
-
+/* 상세 페이지(artwork-detail.css)가 쓰는 컨테이너 — 같은 리듬으로 맞춘다 */
 .container {
-    max-width: 1000px;
+    max-width: var(--maxw);
     margin: 0 auto;
-    padding: 0 20px;
+    padding-inline: var(--gut);
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    line-height: 1.3;
-    color: var(--charcoal);
+/* ===== 섹션 공통 ===== */
+.section {
+    padding-block: var(--pad);
+}
+/* 화면 밖 섹션은 레이아웃·페인트를 건너뛰어 첫 렌더를 가볍게 한다.
+   contain-intrinsic-size로 대략의 높이를 예약해 스크롤바 튐을 막는다(지원 브라우저 한정 점진 개선) */
+.section,
+.quote-section,
+.contact-section,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+}
+.section--alt {
+    background: var(--paper2);
+    border-block: 1px solid var(--line);
 }
 
-.section-title {
-    font-size: clamp(2.4rem, 4.6vw, 4.8rem);
-    text-align: center;
-    margin-bottom: clamp(3.5rem, 5vw, 5.5rem);
-    color: var(--charcoal);
-    font-weight: 100;
-    letter-spacing: 10px;
-    position: relative;
-    text-transform: uppercase;
-    /* 줄바꿈 시 줄 길이를 균형 있게(미지원 브라우저는 무시) */
-    text-wrap: balance;
-}
-
-/* 한글 제목: 라틴용 와이드 트래킹/대문자 해제 — 명조 응집감 회복.
-   4px는 "제 작  과 정"처럼 음절이 낱글자로 흩어져 읽혀 2px로 좁힌다(사각 모듈인 한글은
-   같은 자간이라도 라틴보다 훨씬 벌어져 보인다). */
-html[lang="ko"] .section-title,
-html[lang="ko"] .values-title,
-html[lang="ko"] .item-content h3,
-html[lang="ko"] .editorial-text h3 {
-    letter-spacing: 2px;
-    text-transform: none;
-    word-break: keep-all;
-    font-weight: 200;
-}
-
-/* 본문 크기(1.2~1.6rem) 한글 헤딩은 2px도 성기게 보여 한 단계 더 좁힌다 */
-html[lang="ko"] .item-content h3,
-html[lang="ko"] .editorial-text h3 {
-    letter-spacing: 1px;
-}
-
-/* 콘텐츠·카드 헤딩에도 줄바꿈 균형 적용 — 여러 줄 제목의 마지막 줄 고아 단어 방지(.section-title과 일관, 미지원 브라우저는 무시) */
-.editorial-text h3,
-.item-content h3,
-.masterpiece-info h3,
-.values-title,
-.value-card h4 {
-    text-wrap: balance;
-}
-
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-}
-
-.section-label {
+/* 라틴 아이브로 — 넓은 트래킹은 라틴 전용 라벨에만 쓴다 */
+.eyebrow {
     display: block;
-    font-size: 0.72rem;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    letter-spacing: 4px;
-    color: var(--gold-text);
+    font-family: var(--font-latin);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    margin-bottom: 1.1rem;
+    color: var(--accent);
 }
 
-
-/* ===== Top Navigation ===== */
-.top-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: none;
-    z-index: 1000;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    box-shadow: none;
+.section-heading {
+    margin-top: 14px;
+    font-size: clamp(26px, 5.6vw, 44px);
+    letter-spacing: -0.005em;
 }
 
-/* 투명 내비 상단 스크림 — 밝은 히어로 위에서도 흰 글자 가독 확보 */
-.top-nav:not(.scrolled)::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    height: 160%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.18) 60%, rgba(0,0,0,0));
-    pointer-events: none;
-    z-index: -1;
+.section-lead {
+    margin-top: 22px;
+    font-family: var(--font-latin);
+    font-style: italic;
+    font-size: clamp(15px, 3.4vw, 19px);
+    letter-spacing: 0.02em;
+    color: var(--muted);
 }
 
-/* 투명 상태 글자에 옅은 그림자 — 어떤 히어로 이미지 위에서도 가독 보장 */
-.top-nav:not(.scrolled) .logo h1,
-.top-nav:not(.scrolled) .logo p,
-.top-nav:not(.scrolled) .nav-link {
-    text-shadow: 0 1px 8px rgba(0,0,0,0.35);
-}
-
-/* 투명 상태일 때 로고/링크 흰색 */
-.top-nav:not(.scrolled) .logo h1,
-.top-nav:not(.scrolled) .logo p,
-.top-nav:not(.scrolled) .nav-link {
-    color: rgba(250,247,242,0.9);
-}
-.top-nav:not(.scrolled) .logo {
-    border-color: rgba(250,247,242,0.15);
-}
-.top-nav:not(.scrolled) .logo::after {
-    background: rgba(250,247,242,0.25);
-}
-.top-nav:not(.scrolled) .lang-btn {
-    color: rgba(250,247,242,0.9);
-    border-color: rgba(250,247,242,0.3);
-}
-.top-nav:not(.scrolled) .lang-btn:hover {
-    background-color: rgba(250,247,242,0.15);
-    color: #fff;
-    border-color: rgba(250,247,242,0.5);
-}
-
-/* 스크롤 시 크림 배경 전환 */
-.top-nav.scrolled {
-    background: rgba(243,237,225,0.98);
-    border-bottom: 1px solid rgba(201,169,110,0.12);
-    /* 배경이 98% 불투명이라 backdrop blur는 보이지 않으면서 고정 내비의 매 프레임 backdrop 재계산 비용만 유발 → 제거(스크롤 성능) */
-}
-
-.nav-container {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    position: relative;
-}
-
-.nav-left {
-    flex: 1 1 0;
-    display: flex;
-    gap: 0.2rem;
-    justify-content: flex-end;
-    align-items: center;
-    min-width: 0;
-}
-
-.nav-right-section {
-    flex: 1 1 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 0;
-}
-
-.nav-right {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.2rem;
-    flex-shrink: 1;
-    min-width: 0;
-    overflow: hidden;
-}
-
-.logo {
-    flex: 0 0 auto;
-    text-align: center;
-    padding: 0 1.8rem;
-    border-left: 1px solid var(--gold-dim);
-    border-right: 1px solid var(--gold-dim);
-    position: relative;
-}
-
-/* 로고 하단 골드 디바이더 */
-.logo::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 28px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0.5;
-}
-
-.logo h1 {
-    font-size: 1.1rem;
-    color: var(--charcoal);
-    margin-bottom: 0;
-    font-weight: 300;
-    letter-spacing: 2px;
-    line-height: 1.1;
-    white-space: nowrap;
-}
-
-.logo p {
-    font-size: 0.65rem;
-    color: var(--gold);
-    margin-top: -2px;
-    letter-spacing: 4px;
-    font-weight: 300;
-    line-height: 1.1;
-    white-space: nowrap;
-    text-transform: uppercase;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 0.2rem;
-}
-
-.nav-item {
-    position: relative;
-}
-
-.nav-link {
-    font-weight: 300;
-    color: var(--charcoal);
-    padding: 14px 10px;
-    transition: all 0.3s ease;
-    border-radius: 0;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 1.6px;
-    white-space: nowrap;
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 12px;
-    right: 12px;
-    height: 1px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.nav-link:hover {
-    color: var(--charcoal);
-    background-color: transparent;
-}
-
-.nav-link:hover::after {
-    transform: scaleX(1);
-}
-
-
-/* 레거시 hover 드롭다운(.dropdown-content) 제거 — 현재 언어 선택은 React .lang-dropdown 사용(미사용 dead CSS 정리) */
-
-.nav-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-/* Language Switcher */
-.language-switcher {
-    position: relative;
-    display: inline-block;
-}
-
-.lang-btn {
-    background: none;
-    border: 1px solid rgba(28,28,28,0.3);
-    padding: 12px 14px;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.7rem;
-    color: var(--charcoal);
-    min-width: 48px;
-    min-height: 44px;
+/* ===== 버튼 ===== */
+.pill {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    background: transparent;
+}
+.pill .arrow {
+    font-family: var(--font-latin);
+}
+.pill--solid {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper-light);
+}
+.pill--solid:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--paper-light);
+}
+.pill--ghost:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper-light);
+}
+/* 어두운 면 위 변형 */
+.pill--light {
+    background: var(--paper-light);
+    border-color: var(--paper-light);
+    color: var(--dark);
+}
+.pill--light:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+    color: var(--dark);
+}
+.pill--outline-light {
+    border-color: rgba(243, 237, 225, 0.4);
+    color: var(--paper-light);
+}
+.pill--outline-light:hover {
+    background: rgba(243, 237, 225, 0.12);
+    color: var(--paper-light);
+}
+.pill:active {
+    transform: translateY(1px);
 }
 
+/* 밑줄형 텍스트 링크 */
+.link-underline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--line);
+}
+.link-underline:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
 
+.ext-arrow {
+    margin-left: 0.4em;
+    font-family: var(--font-latin);
+    font-size: 0.9em;
+}
+
+/* ===== 헤더 ===== */
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    background: rgba(243, 237, 225, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    transition: transform 0.4s var(--ease);
+}
+
+.nav-container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 12px var(--gut);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 24px;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo-mark {
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    font-family: var(--font-head);
+    font-size: 16px;
+    line-height: 1;
+    color: var(--accent);
+}
+.logo-text {
+    display: block;
+    min-width: 0;
+}
+/* .logo h1/p는 상세 페이지(artwork-detail) 마크업, .logo-title/.logo-sub는 홈 헤더 */
+.logo h1,
+.logo-title {
+    display: block;
+    font-family: var(--font-head);
+    font-size: clamp(14px, 3.4vw, 17px);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: var(--ink);
+}
+/* 로마자 부제 — 좁은 화면에서는 자리만 차지해 숨긴다 */
+.logo p,
+.logo-sub {
+    display: block;
+    margin-top: 1px;
+    font-family: var(--font-latin);
+    font-style: italic;
+    font-size: 11px;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* 메뉴 길이는 언어마다 크게 다르다(EN/FR가 KO보다 훨씬 길다).
+   고정 폭을 가정하지 않고 자리가 모자라면 다음 줄로 흘려보내, 어떤 언어에서도
+   언어 버튼이 화면 밖으로 밀리거나 항목이 잘리지 않게 한다. */
+.nav-menu {
+    flex: 1 1 260px;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.nav-link:hover {
+    background: rgba(46, 40, 35, 0.05);
+    color: var(--ink);
+}
+.nav-link.nav-active {
+    color: var(--ink);
+    background: rgba(46, 40, 35, 0.06);
+}
+.nav-link--cta {
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 8px 14px;
+}
+.nav-link--cta:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.nav-actions {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+/* ===== 언어 전환 ===== */
+.language-switcher {
+    position: relative;
+}
+.lang-btn {
+    min-width: 44px;
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: transparent;
+    font-family: var(--font-latin);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    cursor: pointer;
+}
+.lang-btn:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+}
 .lang-dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     right: 0;
-    background: var(--cream-base);
-    border: 1px solid var(--gold-dim);
-    border-radius: 0;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-    min-width: 120px;
-    z-index: 1001;
+    min-width: 140px;
+    padding: 6px;
+    background: var(--paper-light);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(46, 40, 35, 0.12);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s var(--ease), visibility 0.25s;
+    z-index: 90;
 }
-
 .lang-dropdown.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
-
 .lang-option {
     display: block;
     width: 100%;
-    padding: 10px 15px;
-    background: none;
+    min-height: 40px;
+    padding: 0 14px;
     border: none;
+    border-radius: 10px;
+    background: transparent;
     text-align: left;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--muted);
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    font-size: 0.72rem;
-    color: var(--charcoal);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
 }
-
 .lang-option:hover {
-    background-color: rgba(28,28,28,0.04);
+    background: rgba(46, 40, 35, 0.05);
+    color: var(--ink);
 }
-
 .lang-option.active {
-    background-color: var(--charcoal);
-    color: var(--cream-base);
+    color: var(--accent);
 }
 
-.lang-btn:hover {
-    background-color: var(--charcoal);
-    color: var(--cream-base);
-    border-color: var(--charcoal);
-}
-
-/* Language-specific font optimization */
-html[lang="ko"] {
-    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-}
-
-html[lang="en"] {
-    font-family: 'Roboto', 'Arial', sans-serif;
-}
-
-html[lang="fr"] {
-    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-}
-
-/* Language-specific heading fonts */
-html[lang="ko"] h1, html[lang="ko"] h2, html[lang="ko"] h3, html[lang="ko"] h4, html[lang="ko"] h5, html[lang="ko"] h6 {
-    font-family: 'Noto Serif KR', 'Batang', serif;
-}
-
-html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3, html[lang="en"] h4, html[lang="en"] h5, html[lang="en"] h6 {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-}
-
-html[lang="fr"] h1, html[lang="fr"] h2, html[lang="fr"] h3, html[lang="fr"] h4, html[lang="fr"] h5, html[lang="fr"] h6 {
-    font-family: 'Cormorant Garamond', 'Garamond', serif;
-}
-
-/* French language specific adjustments */
-html[lang="fr"] .nav-link {
-    font-size: 0.75rem;
-    padding: 8px 10px;
-    letter-spacing: 0.3px;
-}
-
-html[lang="fr"] .logo {
-    padding: 0 2rem;
-}
-
-html[lang="fr"] .logo h1 {
-    font-size: 1.3rem;
-    letter-spacing: 0.2px;
-}
-
-html[lang="fr"] .logo p {
-    font-size: 0.7rem;
-    letter-spacing: 0.3px;
-}
-
-/* 프랑스어 장문 단어 줄바꿈 — 정돈된 여백 유지 */
-html[lang="fr"] .brand-card p,
-html[lang="fr"] .value-card p,
-html[lang="fr"] .card-content p,
-html[lang="fr"] .item-content p,
-html[lang="fr"] .artwork-description,
-html[lang="fr"] .inquiry-lead {
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    overflow-wrap: break-word;
-}
-
-
-/* English language specific adjustments */
-html[lang="en"] .nav-link {
-    font-size: 0.75rem;
-    padding: 8px 10px;
-    letter-spacing: 0.3px;
-}
-
-html[lang="en"] .logo {
-    padding: 0 2rem;
-}
-
-html[lang="en"] .logo h1 {
-    font-size: 1.3rem;
-    letter-spacing: 0.2px;
-}
-
-html[lang="en"] .logo p {
-    font-size: 0.7rem;
-    letter-spacing: 0.3px;
-}
-
-
-/* ===== Brand Section — 에디토리얼 레이아웃 ===== */
-.brand-section {
-    padding: 13rem 0;
-    background: var(--cream-light);
-    border-top: 1px solid var(--gold-dim);
-}
-
-.brand-header {
-    text-align: center;
-    margin-bottom: 4rem;
-}
-
-.brand-subtitle {
-    font-size: 0.85rem;
-    color: var(--warm-grey);
-    margin-top: 1.8rem;
-    font-style: italic;
-    font-family: 'Cormorant Garamond', serif;
-    white-space: pre-line;
-    line-height: 2.2;
-    letter-spacing: 0.5px;
-    font-weight: 300;
-    max-width: 680px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.brand-content {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.brand-mission {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-bottom: 8rem;
-    border: none;
-}
-
-.brand-card {
-    background: transparent;
-    padding: 5rem;
-    border-radius: 0;
-    border: none;
-    border-right: 1px solid var(--gold-dim);
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-}
-
-/* 카드 상단 골드 라인 포인트 */
-.brand-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 5rem;
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-}
-
-.brand-card:last-child {
-    border-right: none;
-}
-
-.brand-card:hover {
-    background: rgba(201,169,110,0.05);
-    transform: none;
-    box-shadow: none;
-}
-
-.brand-card h3 {
-    font-size: 2rem;
-    color: var(--charcoal);
-    margin-bottom: 2rem;
-    font-weight: 100;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-.brand-card p {
-    color: var(--ink-soft);
-    line-height: 1.85;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-}
-
-.brand-values {
-    text-align: center;
-}
-
-.values-title {
-    font-size: 2rem;
-    color: var(--charcoal);
-    margin-bottom: 4rem;
-    font-weight: 100;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-}
-
-.value-card {
-    background: transparent;
-    padding: 3rem 2rem;
-    border-radius: 0;
-    border: none;
-    border-right: 1px solid var(--gold-dim);
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.value-card:last-child {
-    border-right: none;
-}
-
-.value-card:hover {
-    transform: translateY(-5px);
-}
-
-.value-icon {
-    font-size: 2.8rem;
-    margin-bottom: 1.8rem;
-    display: block;
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 4px;
-    font-weight: 300;
-    opacity: 0.92;
-}
-
-.value-card h4 {
-    font-size: 0.85rem;
-    color: var(--charcoal);
-    margin-bottom: 1rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
-}
-
-.value-card p {
-    color: var(--ink-soft);
-    line-height: 1.85;
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
-}
-
-/* 중앙 정렬 다줄 텍스트는 balance로 줄 길이를 고르게 — 가운데 정렬 특유의 들쭉날쭉함을 완화(pretty보다 중앙정렬에 적합, 미지원 브라우저는 무시) */
-.value-card p,
-.inquiry-lead,
-.brand-subtitle {
-    text-wrap: balance;
-}
-
-/* 브랜드 섹션 반응형 */
-@media (max-width: 1024px) {
-    .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-
-    .brand-mission {
-        gap: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .brand-section {
-        padding: 5rem 0;
-    }
-
-    .brand-mission {
-        grid-template-columns: 1fr;
-        gap: 0;
-        margin-bottom: 3rem;
-    }
-
-    .brand-card {
-        border-right: none;
-        border-bottom: 1px solid var(--gold-dim);
-        padding: 2.5rem 2rem;
-    }
-
-    .brand-card::before {
-        left: 2rem;
-    }
-
-    .brand-card:last-child {
-        border-bottom: none;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .value-card {
-        border-right: none;
-        border-bottom: 1px solid var(--gold-dim);
-        padding: 2rem 1.5rem;
-    }
-
-    .value-card:last-child {
-        border-bottom: none;
-    }
-
-    .values-title {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .brand-header {
-        margin-bottom: 2rem;
-    }
-
-    .brand-card {
-        padding: 2rem 1.5rem;
-    }
-
-    .brand-card::before {
-        left: 1.5rem;
-    }
-
-    .brand-card h3 {
-        font-size: 1.3rem;
-    }
-
-    .value-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-}
-
-/* ===== Hero Section — 좌측 하단 패널 ===== */
+/* ===== 히어로 ===== */
 .hero {
-    min-height: 100dvh;
     position: relative;
-    background: #000;
+    min-height: min(88vh, 760px);
+    display: grid;
+    align-items: end;
+    background: var(--paper3);
     overflow: hidden;
-    display: flex;
-    align-items: center;
 }
 
-.hero-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-}
-
-.hero-slider {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-}
-
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    /* 비활성 슬라이드를 접근성 트리·탭 순서·포인터에서 제거(안 보이는 슬라이드의 링크로 키보드 진입/스크린리더 중복 낭독 방지). 페이드아웃이 끝난 뒤 hidden 처리 */
-    visibility: hidden;
-    transform: scale(1.03);
-    /* 더 길고 부드러운 크로스페이드 + 살짝 줌 settle */
-    transition: opacity 1.1s var(--ease-soft), transform 1.4s var(--ease-soft), visibility 0s 1.1s;
-    z-index: 0;
-}
-
-.slide.active {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-    z-index: 1;
-    /* 활성화 시에는 즉시 보이게(지연 없이) */
-    transition: opacity 1.1s var(--ease-soft), transform 1.4s var(--ease-soft), visibility 0s;
-}
-
-/* ===== 히어로 수동 화살표 ===== */
-.hero-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 6;
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(20,20,20,0.18);
-    border: 1px solid rgba(250,247,242,0.35);
-    color: var(--cream-light);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    line-height: 1;
-    cursor: pointer;
-    border-radius: 50%;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    opacity: 0;
-    transition: opacity 0.4s var(--ease-soft), background 0.3s ease, border-color 0.3s ease;
-}
-.hero:hover .hero-arrow {
-    opacity: 1;
-}
-.hero-arrow.prev { left: 2rem; }
-.hero-arrow.next { right: 2rem; }
-.hero-arrow:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--ink);
-}
-.hero-arrow:active {
-    transform: translateY(-50%) scale(0.94);
-}
-/* 히어로 컨트롤은 밝은 램프~어두운 하단 스크림까지 배경이 크게 변하므로,
-   어느 배경에서도 보이도록 밝은 골드 외곽선 + 어두운 헤일로의 이중 톤 포커스 링 사용(WCAG 1.4.11) */
-.hero-arrow:focus-visible,
-.hero-indicator:focus-visible {
-    opacity: 1;
-    /* --gold(#C9A96E, 휘도 0.42)는 중간 휘도(0.11~0.12) 램프 위에서 3:1에 1pt 미달이라,
-       포커스 링 전용으로 한 단계 밝은 골드를 써서 어두운 스크림·중간톤·밝은 바닥 모두에서 3:1 충족 */
-    outline: 2px solid #E3C88C;
-    outline-offset: 3px;
-    box-shadow: 0 0 0 4px rgba(10,10,10,0.85);
-}
-@media (max-width: 768px) {
-    .hero-arrow {
-        width: 44px;
-        height: 44px;
-        font-size: 1.4rem;
-        opacity: 1;
-        background: rgba(20,20,20,0.28);
-    }
-    .hero-arrow.prev { left: 0.8rem; }
-    .hero-arrow.next { right: 0.8rem; }
-}
-
-/* ===== 히어로 스크롤 힌트 ===== */
-.hero-scroll-hint {
-    position: absolute;
-    bottom: 2.5rem;
-    left: 2.5rem;
-    z-index: 10;
-    display: flex;
-    align-items: flex-end;
-}
-.scroll-hint-line {
-    display: block;
-    width: 1px;
-    height: 48px;
-    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.7));
-    animation: scrollHintDrop 1.8s ease-in-out infinite;
-}
-@keyframes scrollHintDrop {
-    0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
-    40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-    60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
-    100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
-}
-@media (max-width: 768px) {
-    .hero-scroll-hint { display: none; }
-}
-
-/* ===== Hero 슬라이드 인디케이터 ===== */
-.hero-indicators {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0.6rem;
-    z-index: 10;
-}
-
-.hero-indicator {
-    width: 28px;
-    height: 2px;
-    background: rgba(255,255,255,0.35);
-    border: none;
-    border-radius: 0;
-    cursor: pointer;
-    transition: background 0.4s ease, width 0.4s ease;
-    /* 가는 선(2px)은 콘텐츠 박스에 유지하되, 상단 패딩으로 탭 히트 영역을 24px로 확대(WCAG 2.5.8) */
-    box-sizing: content-box;
-    padding-top: 22px;
-    background-clip: content-box;
-}
-
-.hero-indicator.active {
-    /* background-color 롱핸드 — background 단축속성은 background-clip을 초기화하므로 사용 금지 */
-    background-color: var(--gold);
-    width: 44px;
-}
-
-@media (max-width: 768px) {
-    .hero-indicators {
-        bottom: 5.5rem;
-    }
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.92);
-}
-
-/* 전폭 하단 스크림 — 박스 없이 작품 위로 자연스럽게 깔리는 가독 레이어
-   밝은 스튜디오 배경(예: 슬라이드1 흰 바닥) 위에서도 크림색 제목/부제가 WCAG 대비를 충족하도록
-   더 깊고(0.8) 더 높게(70%) 확장 */
-.slide::after {
-    content: '';
+.hero-media {
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.52) 26%, rgba(0,0,0,0.24) 48%, rgba(0,0,0,0) 70%);
-    z-index: 1;
+}
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+}
+.hero-slide.active {
+    opacity: 1;
+}
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* 하단으로 갈수록 짙어지는 스크림 — 크림색 텍스트의 대비 확보 */
+.hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(120% 75% at 12% 100%, rgba(18, 14, 11, 0.78) 0%, rgba(18, 14, 11, 0.42) 45%, rgba(18, 14, 11, 0) 78%),
+        linear-gradient(180deg, rgba(26, 21, 17, 0.42) 0%, rgba(26, 21, 17, 0.5) 42%, rgba(20, 16, 12, 0.84) 100%);
 }
 
-/* 히어로 텍스트 — 좌측 하단, 박스 없는 에디토리얼 블록 */
-.slide-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+.hero-inner {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    max-width: 760px;
-    padding: 3rem 4rem 5rem;
-    background: none;
-    color: white;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(96px, 14vw, 160px) var(--gut) clamp(40px, 7vw, 72px);
+    color: var(--paper-light);
+}
+
+/* ===== 관지(款識) — 족자 오른편의 세로쓰기 낙관 기둥 =====
+   히어로 상단의 빈 영역(카피는 하단 좌측)에 두어 어떤 화면에서도 텍스트와 겹치지 않는다 */
+.hero-scroll-seal {
+    position: absolute;
+    top: clamp(110px, 16vw, 170px);
+    right: var(--gut);
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    gap: 1.3rem;
-    justify-content: flex-end;
-    align-items: flex-start;
-    text-align: left;
-    z-index: 2;
+    align-items: center;
+    gap: 16px;
 }
-
-/* 제목 위 가는 골드 룰 — 에디토리얼 격 (진입 시 좌→우 와이프) */
-.slide-content::before {
-    content: '';
-    display: block;
-    width: 44px;
-    height: 1px;
-    background: var(--gold);
-    opacity: 0;
-    margin-bottom: 0.4rem;
-    transform: scaleX(0);
-    transform-origin: left;
+.hero-scroll-text {
+    writing-mode: vertical-rl;
+    font-family: var(--font-head);
+    font-size: clamp(11px, 2.6vw, 14px);
+    letter-spacing: 0.42em;
+    color: rgba(251, 247, 239, 0.65);
 }
-
-.slide-content h2 {
-    font-size: clamp(3.2rem, 6.6vw, 7rem);
-    color: var(--cream-light);
-    margin-bottom: 0;
-    font-weight: 100;
-    letter-spacing: 1px;
-    line-height: 1.0;
-    /* 스크림이 옅어지는 상단부가 밝은 배경 픽셀과 겹쳐도 글자 외곽이 유지되도록 옅은 그림자 */
-    text-shadow: 0 2px 18px rgba(0,0,0,0.5);
-}
-
-/* 한글 히어로 제목: 긴 문구 안전 줄바꿈 */
-html[lang="ko"] .slide-content h2 {
-    letter-spacing: -0.5px;
-    word-break: keep-all;
-}
-
-.slide-content p {
-    font-size: 0.82rem;
-    color: rgba(250,247,242,0.85);
-    margin-bottom: 0;
-    line-height: 1.95;
-    max-width: 360px;
-    letter-spacing: 1px;
-    font-weight: 300;
-    text-shadow: 0 1px 12px rgba(0,0,0,0.55);
-}
-
-.hero-btn {
-    align-self: flex-start;
-    display: inline-block;
-    padding: 13px 36px;
-    background: transparent;
-    color: white;
-    text-decoration: none;
-    border-radius: 0;
-    border: 1px solid rgba(201,169,110,0.6);
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 300;
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-btn:hover {
-    background: var(--gold);
-    color: var(--ink);
-    border-color: var(--gold);
-    transform: translateY(-2px);
-}
-.hero-btn:active {
-    transform: translateY(0);
-    background: rgba(201,169,110,0.85);
-}
-
-
-/* ===== Highlights Section ===== */
-.highlights {
-    padding: 11rem 0;
-    background-color: var(--cream-base);
-    border-top: 1px solid var(--gold-dim);
-}
-
-/* 쇼케이스 섹션은 더 넓게 — 작품이 화면을 채워 임팩트 부여 */
-.highlights .container {
-    max-width: 1280px;
-}
-
-.highlights-grid {
+/* 인주로 눌러 찍은 인장 — 모서리가 살짝 뭉개진 붉은 전각 */
+.hero-seal {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 1.6rem;
-}
-
-/* 태블릿: 3열은 카드가 너무 좁아짐 → 대표작 풀폭 + 나머지 2개 2열 */
-@media (max-width: 1024px) {
-    .highlights-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 1.4rem;
-    }
-    .highlight-card.featured {
-        grid-column: span 2;
-    }
-}
-
-.highlight-card {
-    background: var(--cream-base);
-    border-radius: 0;
-    overflow: hidden;
-    border: none;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.highlight-card:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-/* 이미지를 감싼 보조 클릭 링크 — 이미지 고정 높이는 유지하고 인라인 여백만 제거 + 클릭 커서 */
-.card-image-link {
-    display: block;
-    cursor: pointer;
-}
-
-.highlight-card img {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    transition: transform 0.6s var(--ease-soft, ease);
-}
-
-.highlight-card.featured img {
-    height: 560px;
-}
-
-.card-content {
-    padding: 2rem 2rem 2.4rem;
-    position: relative;
-}
-
-.card-category {
-    display: inline-block;
-    background-color: transparent;
-    color: var(--gold-text);
-    padding: 0;
-    border-radius: 0;
-    font-size: 0.72rem;
-    font-weight: 400;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 1px solid var(--gold);
-    padding-bottom: 2px;
-}
-
-.card-content h3 {
-    font-size: 1.3rem;
-    color: var(--charcoal);
-    margin-bottom: 0.8rem;
-    font-weight: 400;
-    line-height: 1.3;
-}
-
-.card-content p {
-    color: var(--ink-soft);
-    font-size: 0.88rem;
-    line-height: 2.2;
-    margin-bottom: 1rem;
-    letter-spacing: 0.5px;
-}
-
-
-.card-link {
-    color: var(--charcoal);
-    text-decoration: none;
-    font-weight: 300;
-    font-size: 0.65rem;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border: 1px solid currentColor;
-    padding: 13px 36px;
-    display: inline-block;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.card-link:hover {
-    background: var(--charcoal);
-    color: var(--cream-light);
-    border-color: var(--charcoal);
-}
-
-/* ===== Collection Delve Section ===== */
-.collection-delve {
-    padding: 11rem 0;
-    background-color: var(--cream-deep);
-    border-top: 1px solid var(--gold-dim);
-}
-
-/* 제작 과정 트랙을 더 넓게 — 더 많은 공정 카드가 시원하게 펼쳐지도록 */
-.collection-delve .container {
-    max-width: 1280px;
-}
-
-
-/* Horizontal scroll track for collection */
-.collection-grid {
-    display: flex;
-    gap: 1.6rem;
-    overflow-x: auto;
-    padding-bottom: 2rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    cursor: grab;
-}
-.collection-grid::-webkit-scrollbar {
-    display: none;
-}
-.collection-grid:active {
-    cursor: grabbing;
-}
-
-.collection-item {
-    flex: 0 0 380px;
-    scroll-snap-align: start;
-    text-align: center;
-    background: var(--cream-base);
-    border-radius: 0;
-    overflow: hidden;
-    border: none;
-    position: relative;
-    transition: all 0.4s var(--ease-soft, ease);
-}
-
-/* 번호/연결선 가독용 상단 스크림 */
-.collection-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5rem;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.34), transparent);
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* 제작 과정 단계 번호 — 이미지 좌상단 에디토리얼 인덱스 */
-.collection-index {
-    position: absolute;
-    top: 1.1rem;
-    left: 1.5rem;
-    z-index: 3;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 300;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    background: rgba(140, 43, 43, 0.92);
+    border-radius: 3px;
+    font-family: var(--font-head);
+    font-size: 15px;
     line-height: 1;
-    letter-spacing: 1px;
-    color: var(--cream-light);
-    text-shadow: 0 1px 12px rgba(0,0,0,0.45);
-    pointer-events: none;
+    color: #FBF7EF;
+    box-shadow: 0 0 0 1px rgba(140, 43, 43, 0.35);
 }
 
-/* 단계 연결선 — 번호에서 카드 우측 끝까지 이어져 다음 단계로 흐르는 타임라인 */
-.collection-item:not(:last-child)::after {
-    /* 장식용 구분 화살표 — 빈 대체텍스트로 스크린리더 접근명에서 제외 */
-    content: '\203A' / '';
-    position: absolute;
-    top: 1.55rem;
-    left: 4.8rem;
-    right: 1rem;
-    height: 1.5rem;
-    border-top: 1px solid var(--gold);
-    color: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    line-height: 0.1;
-    text-align: right;
+.hero-eyebrow {
+    font-family: var(--font-latin);
+    font-style: italic;
+    font-size: clamp(13px, 3vw, 16px);
+    letter-spacing: 0.2em;
     opacity: 0.9;
-    z-index: 2;
-    pointer-events: none;
-    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    margin-bottom: 18px;
 }
 
-.collection-item:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-
-.collection-item img {
-    width: 100%;
-    height: 360px;
-    object-fit: cover;
-    transition: transform 0.5s var(--ease-soft, ease);
-}
-
-
-.collection-item:hover img {
-    transform: scale(1.03);
-}
-
-
-.item-content {
-    padding: 1.8rem 1.8rem 2rem;
-}
-
-.item-content h3 {
-    font-size: 1.2rem;
-    color: var(--charcoal);
-    margin-bottom: 0.8rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.item-content p {
-    color: var(--ink-soft);
-    line-height: 1.85;
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
-}
-
-/* ===== Masterpieces Gallery — 드라마틱 그리드 ===== */
-.masterpieces {
-    padding: 14rem 0;
-    background-color: var(--cream-base);
-    border-top: 1px solid var(--gold-dim);
-}
-
-.masterpieces-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: clamp(320px, 30vw, 460px);
-    gap: 4px;
-    margin-bottom: 3rem;
-    width: 100%;
-}
-
-.masterpiece-item {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: var(--cream-deep);
-    border: none;
-    /* 실제 <a> 링크 — 기본 밑줄/링크색 제거 */
-    text-decoration: none;
-    color: inherit;
-}
-
-.masterpiece-item.featured {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.masterpiece-item:hover {
-    z-index: 2;
-}
-
-/* 골드 언더라인 — hover 시 좌에서 우로 슬라이드 */
-.masterpiece-item::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    z-index: 5;
-}
-.masterpiece-item:hover::after {
-    transform: scaleX(1);
-}
-
-.masterpiece-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* 키보드 포커스 시에도 이미지 줌 — 지난 설명 노출과 함께 포커스 상태를 hover와 일치시킴 */
-.masterpiece-item:hover img,
-.masterpiece-item:focus-within img {
-    transform: scale(1.06);
-}
-
-/* 호버 시 작품 전체에 어두운 베일 — 텍스트 가독·몰입 강화 */
-.masterpiece-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(8,8,8,0.72) 0%, rgba(8,8,8,0.12) 45%, rgba(8,8,8,0.18) 100%);
-    opacity: 0;
-    transition: opacity 0.5s var(--ease-soft);
-    z-index: 1;
-    pointer-events: none;
-}
-.masterpiece-item:hover::before {
-    opacity: 1;
-}
-
-/* 호버 시 텍스트 슬라이드업 */
-.masterpiece-info {
-    padding: 2.5rem 1.5rem 1.4rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 100%);
-    height: auto;
+/* 슬라이드마다 제목 줄 수가 달라 CTA 위치가 튀므로 가장 긴 조합(제목 2줄 + 본문 2줄)만큼
+   최소 높이를 잡고, 내용은 아래(=CTA 쪽)에 붙인다. 짧은 카피일 때 빈 공간이 위로 가서
+   CTA와의 간격은 항상 일정하게 유지된다. */
+.hero-copy {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    border-top: none;
-    z-index: 2;
-    transform: translateY(12px);
-    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+    min-height: calc(
+        2.56 * clamp(30px, 7.4vw, 66px)          /* 제목 2줄 */
+        + clamp(18px, 3vw, 28px)                 /* 제목·본문 간격 */
+        + 4 * clamp(14px, 3.5vw, 18px)           /* 본문 2줄(line-height 2) */
+    );
+}
+.hero-title {
+    font-size: clamp(30px, 7.4vw, 66px);
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    max-width: 18em;
+    color: var(--paper-light);
+    white-space: pre-line;
+}
+.hero-body {
+    margin-top: clamp(18px, 3vw, 28px);
+    max-width: 30em;
+    font-size: clamp(14px, 3.5vw, 18px);
+    line-height: 2;
+    color: rgba(251, 247, 239, 0.86);
+}
+/* 슬라이드가 바뀔 때마다 재생되는 진입 페이드 */
+.hero-copy > * {
+    animation: heroIn 0.9s var(--ease) both;
+}
+.hero-body {
+    animation-delay: 0.1s;
+}
+@keyframes heroIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
 }
 
-.masterpiece-item:hover .masterpiece-info,
-.masterpiece-item:focus-within .masterpiece-info {
-    transform: translateY(0);
+.hero-actions {
+    margin-top: clamp(26px, 4vw, 40px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 18px;
+}
+.hero-actions .pill {
+    border-color: rgba(251, 247, 239, 0.55);
+    color: var(--paper-light);
+}
+.hero-actions .pill:hover {
+    background: var(--paper-light);
+    border-color: var(--paper-light);
+    color: var(--ink);
 }
 
-/* 제목 위 골드 룰 — 호버 시 좌→우 와이프 */
-.masterpiece-info::before {
-    content: '';
+.hero-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 6px;
+}
+.hero-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 1px solid rgba(251, 247, 239, 0.7);
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    transition: width 0.6s var(--ease), background 0.6s ease;
+}
+.hero-dot.active {
     width: 26px;
-    height: 1px;
-    background: var(--gold);
-    margin-bottom: 0.9rem;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s var(--ease-soft) 0.05s;
-}
-.masterpiece-item:hover .masterpiece-info::before,
-.masterpiece-item:focus-within .masterpiece-info::before {
-    transform: scaleX(1);
+    background: var(--paper-light);
 }
 
-/* 호버 시 'VIEW ›' 어포던스 등장 */
-.masterpiece-info::after {
-    /* 시각적 클릭 어포던스 — 카드 링크 이름에 'VIEW ›'가 중복 낭독되지 않도록 빈 대체텍스트 지정 */
-    content: 'VIEW \203A' / '';
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-top: 0.9rem;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.4s ease 0.1s, transform 0.45s var(--ease-soft) 0.1s;
+/* ===== 지표 스트립 ===== */
+.stat-strip {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
 }
-/* hover뿐 아니라 키보드 포커스 시에도 'VIEW ›' 클릭 어포던스 노출(키보드 사용자도 클릭 가능 단서 확인) */
-.masterpiece-item:hover .masterpiece-info::after,
-.masterpiece-item:focus-within .masterpiece-info::after {
-    opacity: 1;
-    transform: translateY(0);
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: clamp(24px, 4vw, 48px);
+    padding-block: clamp(36px, 5vw, 64px);
+}
+.stat-value {
+    font-family: var(--font-latin);
+    font-size: clamp(34px, 7vw, 52px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--accent);
+    /* 라이닝 숫자 — 세리프 기본 숫자가 I/O처럼 읽히지 않도록 */
+    font-variant-numeric: lining-nums tabular-nums;
+}
+.stat-unit {
+    font-size: 0.5em;
+    letter-spacing: 0.05em;
+}
+/* 지역처럼 숫자가 아닌 값은 한글 본문 서체로 */
+.stat-value--text {
+    font-family: var(--font-head);
+    font-size: clamp(17px, 3.6vw, 22px);
+    line-height: 1.5;
+    color: var(--ink);
+    white-space: pre-line;
+}
+.stat-label {
+    margin-top: 10px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
 }
 
-.masterpiece-info h3 {
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
-    color: #fff;
-    font-weight: 300;
-    line-height: 1.25;
-    letter-spacing: 1px;
-    text-transform: none;
+/* ===== 마키 ===== */
+.marquee-strip {
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    padding-block: 14px;
+    background: var(--paper2);
+    border-bottom: 1px solid var(--line);
 }
-
-.masterpiece-info p {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.4;
-    margin-bottom: 0.2rem;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* hover뿐 아니라 키보드 포커스 시에도 설명을 노출(키보드 사용자도 마우스 사용자와 동일하게 설명 확인) */
-.masterpiece-item:hover .masterpiece-info p,
-.masterpiece-item:focus-within .masterpiece-info p {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 터치 디바이스(hover 불가): 캡션 상시 노출 */
-@media (hover: none) {
-    .masterpiece-info p {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.artwork-details {
-    font-size: 0.65rem;
-    /* 항상 노출되는 의미 텍스트 — 다크 스크림 위 가독성 확보 위해 0.45→0.6(상위 설명문 0.65보다 낮게 유지) */
-    color: rgba(255,255,255,0.6);
-    font-style: normal;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: drift 46s linear infinite;
+    font-family: var(--font-latin);
+    font-size: 13px;
+    letter-spacing: 0.26em;
+    color: var(--muted);
     white-space: nowrap;
 }
-
-/* ===== Featured Artworks — editorial rows ===== */
-.featured-artworks {
-    padding-top: 10rem;
-    padding-bottom: 0;
-    background-color: var(--cream-deep);
-    border-top: 1px solid var(--gold-dim);
+@keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
-.editorial-rows {
-    margin-top: 4rem;
+/* ===== 협업 소식(SHOW_COLLABORATION) ===== */
+.collab-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px 24px;
 }
-
-.editorial-row {
+.collab-date {
+    font-family: var(--font-latin);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+}
+.collab-grid {
+    margin-top: clamp(30px, 5vw, 56px);
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 42vh;
-    border-top: 1px solid var(--gold-dim);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
 }
-
-.editorial-row:last-child {
-    border-bottom: 1px solid var(--gold-dim);
+.collab-partners {
+    font-family: var(--font-latin);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
 }
-
-.editorial-row--reverse {
-    direction: rtl;
+.collab-headline {
+    margin-top: 14px;
+    font-size: clamp(24px, 5vw, 38px);
+    line-height: 1.4;
+    white-space: pre-line;
 }
-
-.editorial-row--reverse > * {
-    direction: ltr;
+.collab-body {
+    margin-top: 18px;
+    font-size: clamp(14px, 3.4vw, 16px);
+    line-height: 2.1;
+    color: var(--ink-body);
 }
-
-.editorial-image {
-    overflow: hidden;
-    position: relative;
+.collab-note {
+    margin-top: 14px;
+    padding-left: 14px;
+    border-left: 2px solid var(--accent);
+    font-size: 14px;
+    line-height: 1.95;
+    color: var(--muted);
 }
-
-/* 이미지 위 세련된 그라디언트 오버레이 */
-.editorial-image::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 60%, rgba(12,12,12,0.15) 100%);
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-    opacity: 0;
-}
-.editorial-row:hover .editorial-image::after {
-    opacity: 1;
-}
-
-/* 이미지를 감싼 보조 클릭 링크 — 컨테이너 크기를 그대로 전달 + 클릭 커서 */
-.editorial-image-link {
-    display: block;
+.collab-figure img {
     width: 100%;
-    height: 100%;
-    cursor: pointer;
+    border: 1px solid var(--line);
+}
+.collab-figure figcaption {
+    margin-top: 12px;
+    font-family: var(--font-latin);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
 }
 
-.editorial-image img {
+/* ===== 브랜드 ===== */
+.brand-intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(28px, 5vw, 80px);
+    align-items: start;
+}
+.brand-body {
+    display: grid;
+    gap: 18px;
+    font-size: clamp(14px, 3.5vw, 17px);
+    line-height: 2.1;
+    color: var(--ink-body);
+}
+
+.brand-cards {
+    margin-top: clamp(40px, 6vw, 80px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(20px, 3vw, 32px);
+}
+.brand-card {
+    padding: clamp(24px, 4vw, 36px);
+    background: var(--paper2);
+    border: 1px solid var(--line);
+}
+.brand-card h3 {
+    font-size: clamp(18px, 4vw, 24px);
+}
+.brand-card p {
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 2;
+    color: var(--ink-body);
+}
+
+.values-label {
+    margin-top: clamp(44px, 6vw, 80px);
+    color: var(--muted);
+}
+/* 1px 간격 + 배경색으로 만드는 헤어라인 그리드 */
+.values-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+.value-card {
+    background: var(--paper);
+    padding: clamp(24px, 4vw, 36px);
+}
+.value-icon {
+    font-family: var(--font-head);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--accent);
+}
+.value-card h4 {
+    margin-top: 16px;
+    font-size: 19px;
+}
+.value-card p {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.95;
+    color: var(--muted);
+}
+
+/* ===== 카드 그리드(메종 오브제 출품작) ===== */
+.card-grid {
+    margin-top: clamp(30px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: clamp(20px, 3vw, 36px);
+}
+.work-card {
+    display: block;
+    background: var(--paper);
+    border: 1px solid var(--line);
+}
+.work-card:hover {
+    box-shadow: 0 18px 40px rgba(46, 40, 35, 0.1);
+}
+.work-card-media {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--paper3);
+}
+.work-card-media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    display: block;
+    transition: transform 1.2s var(--ease);
 }
-
-.editorial-row:hover .editorial-image img {
+.work-card:hover .work-card-media img {
     transform: scale(1.04);
 }
-
-.editorial-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 4rem 4.5rem;
-    background: var(--cream-deep);
-    position: relative;
-    overflow: hidden;
+.work-card-body {
+    padding: clamp(20px, 3vw, 28px);
 }
-
-/* 본문 단락 줄길이(measure) 캡 — 와이드/초광폭 화면에서 줄이 과도하게 길어져 가독성이 떨어지지 않도록
-   이상적 한글 줄길이(~45자) 폭으로 제한. 통상 폭(1440px·576px)에선 영향 없음 */
-.editorial-text p {
-    max-width: 680px;
-}
-
-/* CTA 버튼도 같은 폭으로 캡 — flex column의 stretch로 전폭 늘어나, 초광폭에서 캡된 본문 단락과 어긋나는 정렬을 맞춤 */
-.editorial-text .artwork-link {
-    max-width: 680px;
-}
-
-.editorial-index {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 4.5rem;
-    font-weight: 200;
-    color: rgba(28,28,28,0.05);
-    line-height: 1;
-    display: block;
-    position: absolute;
-    top: 2rem;
-    right: 2.5rem;
-    letter-spacing: 4px;
-    pointer-events: none;
-}
-
-.editorial-text h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 100;
-    letter-spacing: 3px;
-    color: var(--charcoal);
-    margin-bottom: 0.6rem;
+.work-card-kicker {
+    font-family: var(--font-latin);
+    font-size: 12px;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    line-height: 1.2;
+    color: var(--muted);
 }
-
-.artwork-period {
-    font-size: 0.72rem;
-    color: var(--gold-text);
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
+.work-card h3 {
+    margin-top: 10px;
+    font-size: clamp(18px, 4vw, 23px);
 }
-
-.artwork-description {
-    color: var(--ink-soft);
-    line-height: 1.85;
-    font-size: 0.82rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.3px;
-    font-weight: 300;
-}
-
-@media (max-width: 768px) {
-    .editorial-row {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        direction: ltr !important;
-    }
-    .editorial-row--reverse {
-        direction: ltr;
-    }
-    .editorial-image {
-        height: 55vw;
-        min-height: 260px;
-    }
-    .editorial-text {
-        padding: 3rem 2rem 3.5rem;
-    }
-    .editorial-index {
-        font-size: 4rem;
-        top: 1.5rem;
-        right: 1.5rem;
-    }
-    .editorial-text h3 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .editorial-image {
-        height: 65vw;
-    }
-    .editorial-text {
-        padding: 2.5rem 1.5rem;
-    }
-}
-
-.artwork-link {
-    display: inline-block;
-    color: var(--charcoal);
-    text-decoration: none;
-    font-weight: 300;
-    font-size: 0.65rem;
-    font-family: 'Roboto', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border: 1px solid currentColor;
-    padding: 13px 36px;
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.artwork-link:hover {
-    background: var(--charcoal);
-    color: var(--cream-light);
-    border-color: var(--charcoal);
-}
-
-/* ===== Collaboration Section — 협업 소식(루이비통 2026 추석) ===== */
-.collab-section {
-    padding: 12rem 0;
-    background-color: var(--cream-base);
-    border-top: 1px solid var(--gold-dim);
-    color: var(--charcoal);
-}
-
-/* 헤더 — 좌측 라벨/제목 + 우측 날짜, 하단 얇은 골드 보더 */
-.collab-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
-    padding-bottom: 1.6rem;
-    margin-bottom: clamp(3rem, 5vw, 4.5rem);
-    border-bottom: 1px solid var(--gold-dim);
-}
-
-/* .section-title 상속 후 중앙정렬·하단 골드선만 해제 */
-.section-title.collab-title {
-    font-size: clamp(1.9rem, 3.2vw, 3rem);
-    text-align: left;
-    margin-bottom: 0;
-}
-
-.section-title.collab-title::after {
-    display: none;
-}
-
-.collab-title .section-label {
-    margin-bottom: 0.9rem;
-}
-
-.collab-date {
-    flex-shrink: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    color: var(--warm-grey);
-    white-space: nowrap;
-    padding-bottom: 0.5rem;
-}
-
-/* 2열 그리드 — 좌: 텍스트 / 우: 화보 */
-.collab-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(3rem, 6vw, 6rem);
-    align-items: center;
-}
-
-.collab-partners {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold-text);
-    margin-bottom: 1.8rem;
-}
-
-.collab-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.9rem, 4vw, 2.9rem);
-    font-weight: 200;
-    line-height: 1.35;
-    letter-spacing: 1px;
-    color: var(--charcoal);
-    white-space: pre-line;
-    word-break: keep-all;
-    margin-bottom: 2.2rem;
-}
-
-.collab-body {
-    font-size: 0.9rem;
+.work-card p {
+    margin-top: 12px;
+    font-size: 14px;
     line-height: 1.95;
-    letter-spacing: 0.5px;
-    color: var(--ink-soft);
-    word-break: keep-all;
-    margin-bottom: 1.4rem;
+    color: var(--muted);
 }
 
-.collab-note {
-    font-size: 0.78rem;
-    line-height: 1.85;
-    letter-spacing: 0.5px;
-    color: var(--warm-grey);
-    word-break: keep-all;
-    margin-bottom: 2.8rem;
+/* ===== 제작 과정 ===== */
+.process-grid {
+    margin-top: clamp(30px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: clamp(20px, 3vw, 32px);
 }
-
-/* CTA — .inquiry-btn 스타일을 그대로 재사용하고 정렬만 좌측으로 */
-.collab-cta-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+.process-item {
+    display: grid;
+    gap: 14px;
 }
-
-.collab-cta-group .inquiry-btn {
-    padding: 15px 32px;
-}
-
-/* 화보 figure */
-.collab-figure {
-    margin: 0;
-}
-
-.collab-image-wrap {
+.process-media {
     position: relative;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-    box-shadow: 0 24px 60px rgba(26,26,26,0.16);
+    background: var(--paper3);
 }
-
-.collab-image-wrap img {
-    display: block;
+.process-media img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
-
-/* 화보 속 티코스터 위치 마커 — 원본 화보(1280×1600) 좌상단 오브제 위치에 맞춘 비율값 */
-.collab-marker {
+/* 장(章) 번호 — 한자 숫자를 세로 전각처럼 종이 조각 위에 얹는다 */
+.process-no {
     position: absolute;
-    left: 1%;
-    top: 1%;
-    width: 36%;
-    aspect-ratio: 1;
-    border: 1.5px solid rgba(201,169,110,0.95);
-    border-radius: 50%;
-    /* 밝은 오브제 위에서도 링이 묻히지 않도록 얇은 어두운 헤일로를 덧댄다 */
-    box-shadow: 0 0 0 1px rgba(10,10,10,0.22), 0 0 22px rgba(201,169,110,0.28);
-    pointer-events: none;
-    animation: collabMarkerPulse 3s ease-in-out infinite;
-}
-
-@keyframes collabMarkerPulse {
-    0%, 100% { opacity: 0.9; transform: scale(1); }
-    50%      { opacity: 0.55; transform: scale(1.05); }
-}
-
-/* 마커 리더 라인 + 라벨 */
-.collab-marker-label {
-    position: absolute;
-    left: 38%;
-    top: 15%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.66rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: var(--cream-light);
-    text-shadow: 0 1px 6px rgba(10,10,10,0.65);
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.collab-marker-line {
-    display: block;
-    width: 36px;
-    height: 1px;
-    background: rgba(201,169,110,0.9);
-}
-
-.collab-caption {
-    margin-top: 1.1rem;
-    text-align: right;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 300;
-    letter-spacing: 1.4px;
-    color: var(--warm-grey);
-}
-
-/* 협업 섹션 태블릿·모바일 */
-@media (max-width: 768px) {
-    .collab-section {
-        padding: 5rem 0;
-    }
-
-    .collab-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.9rem;
-        padding-bottom: 1.2rem;
-    }
-
-    .collab-date {
-        padding-bottom: 0;
-        font-size: 0.62rem;
-        letter-spacing: 2.5px;
-    }
-
-    /* 1-컬럼 스택 — 화보를 텍스트 아래로 */
-    .collab-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .collab-headline {
-        margin-bottom: 1.8rem;
-    }
-
-    .collab-note {
-        margin-bottom: 2.2rem;
-    }
-
-    .collab-cta-group {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .collab-cta-group .inquiry-btn {
-        width: 100%;
-        max-width: 320px;
-    }
-
-    .collab-marker-label {
-        font-size: 0.58rem;
-        letter-spacing: 1.5px;
-        gap: 7px;
-    }
-
-    .collab-marker-line {
-        width: 22px;
-    }
-}
-
-@media (max-width: 480px) {
-    .collab-section {
-        padding: 3.5rem 0;
-    }
-
-    .section-title.collab-title {
-        font-size: 1.6rem;
-    }
-
-    .collab-date {
-        font-size: 0.55rem;
-    }
-
-    .collab-partners {
-        font-size: 0.58rem;
-        letter-spacing: 2px;
-        margin-bottom: 1.2rem;
-    }
-
-    .collab-headline {
-        font-size: 1.55rem;
-    }
-
-    .collab-body {
-        font-size: 0.82rem;
-        line-height: 1.85;
-    }
-
-    .collab-note {
-        font-size: 0.72rem;
-    }
-
-    .collab-marker-label {
-        font-size: 0.5rem;
-        letter-spacing: 1px;
-    }
-
-    .collab-marker-line {
-        width: 14px;
-    }
-
-    .collab-caption {
-        font-size: 0.55rem;
-        letter-spacing: 1px;
-    }
-}
-
-/* ===== Inquiry / Partnership Section — 크림 배경 ===== */
-.inquiry-section {
-    padding: 15rem 0;
-    background-color: var(--cream-light);
-    text-align: center;
-    color: var(--charcoal);
-    border-top: 1px solid var(--gold-dim);
-}
-
-.inquiry-section .section-title {
-    color: var(--charcoal);
-    font-size: 3rem;
-    letter-spacing: 12px;
-}
-
-.inquiry-section .section-title::after {
-    background: var(--gold);
-}
-
-.inquiry-section .section-label {
-    color: var(--gold-text);
-}
-
-.inquiry-lead {
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    line-height: 1.85;
-    max-width: 520px;
-    margin: 0 auto 4rem;
-    letter-spacing: 0.8px;
-}
-
-.inquiry-cta-group {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.inquiry-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 16px 42px;
-    text-decoration: none;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 300;
-    font-family: 'Roboto', sans-serif;
-    transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    border-radius: 0;
-}
-
-.inquiry-btn.primary {
-    background-color: var(--charcoal);
-    color: var(--cream-light);
-    border: 1px solid var(--charcoal);
-}
-
-.inquiry-btn.primary:hover {
-    background-color: var(--gold);
-    color: var(--ink);
-    border-color: var(--gold);
-    transform: translateY(-2px);
-}
-.inquiry-btn.primary:active {
-    transform: translateY(0);
-    background-color: rgba(201,169,110,0.85);
-}
-
-.inquiry-btn.secondary {
-    background-color: transparent;
-    color: var(--charcoal);
-    border: 1px solid var(--charcoal);
-}
-
-.inquiry-btn.secondary:hover {
-    background: var(--charcoal);
-    color: var(--cream-light);
-    transform: translateY(-2px);
-}
-.inquiry-btn.secondary:active {
-    transform: translateY(0);
-}
-
-/* 외부/새 탭으로 열리는 링크임을 알리는 장식 화살표(스크린리더 제외) — 인콰이어리·푸터 공통 */
-.ext-arrow {
-    margin-left: 0.4em;
-    font-size: 0.9em;
-    letter-spacing: 0;
+    left: 0;
+    top: 0;
+    padding: 10px 12px;
+    background: var(--paper);
+    font-family: var(--font-head);
+    font-size: 16px;
     line-height: 1;
-    display: inline-block;
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    color: var(--accent);
+    border-bottom: 1px solid var(--line);
+    border-right: 1px solid var(--line);
 }
-.inquiry-btn .ext-arrow {
-    margin-left: 0.6em;
+.process-item h3 {
+    font-size: 17px;
+}
+.process-item p {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--muted);
 }
 
-.inquiry-btn.secondary:hover .ext-arrow {
-    transform: translate(2px, -2px);
+/* ===== 갤러리 ===== */
+.gallery-grid {
+    margin-top: clamp(30px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(20px, 3vw, 32px);
 }
-
-@media (max-width: 768px) {
-    .inquiry-section {
-        padding: 5rem 0;
+.gallery-item {
+    display: grid;
+    gap: 14px;
+}
+.gallery-media {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--paper3);
+    border: 1px solid var(--line);
+}
+.gallery-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease);
+}
+.gallery-item:hover .gallery-media img {
+    transform: scale(1.04);
+}
+.gallery-item h3 {
+    font-size: clamp(16px, 3.6vw, 19px);
+    line-height: 1.5;
+}
+/* 여러 열로 깔릴 때만 2줄분을 확보해 설명문 기준선을 가로로 맞춘다(1열에서는 불필요한 여백) */
+@media (min-width: 560px) {
+    .gallery-item h3 {
+        min-height: 3em;
     }
-
-    .inquiry-cta-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .inquiry-btn {
-        width: 100%;
-        max-width: 280px;
-        text-align: center;
-    }
+}
+.gallery-item:hover h3 {
+    color: var(--accent);
+}
+.gallery-item p {
+    margin-top: 8px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: var(--muted);
 }
 
-/* ===== Footer — 미니멀 럭셔리 ===== */
-.footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.6);
-    padding: 6rem 0 3rem;
-    border-top: 1px solid rgba(201,169,110,0.1);
-}
-
-.footer-top {
-    padding: 5rem 0 4rem;
+/* ===== 인용 ===== */
+.quote-section {
+    padding-block: clamp(80px, 11vw, 170px);
     text-align: center;
-    border-bottom: 1px solid rgba(201,169,110,0.08);
-    margin-bottom: 4rem;
+}
+.quote-mark {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 30px;
+    line-height: 1;
+    color: var(--accent);
+}
+.quote-section blockquote {
+    max-width: 900px;
+    margin: 26px auto 0;
+    font-family: var(--font-head);
+    font-size: clamp(20px, 4.6vw, 34px);
+    line-height: 1.75;
+    letter-spacing: -0.005em;
+    white-space: pre-line;
+}
+/* 세로쓰기 서책의 인용 부호 「」 — 홍색으로 가볍게 얹는다 */
+.quote-section blockquote::before {
+    content: '「';
+    color: var(--accent);
+    opacity: 0.65;
+    margin-right: 0.15em;
+}
+.quote-section blockquote::after {
+    content: '」';
+    color: var(--accent);
+    opacity: 0.65;
+    margin-left: 0.15em;
 }
 
-.footer-logo h3 {
-    font-size: 1.4rem;
-    color: var(--cream-light);
-    font-weight: 100;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    white-space: nowrap;
+/* ===== 지승 공예 로우 ===== */
+.editorial-rows {
+    margin-top: clamp(30px, 5vw, 56px);
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
 }
-
-.footer-logo p {
-    font-size: 0.58rem;
-    color: var(--gold);
-    letter-spacing: 5px;
-    text-transform: uppercase;
+.editorial-row {
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(20px, 4vw, 48px);
+    align-items: center;
+    padding: clamp(20px, 3vw, 32px);
 }
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 3rem 0 2rem;
+.editorial-media {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--paper3);
 }
-
-.footer-info p {
-    font-size: 0.75rem;
-    letter-spacing: 1px;
+.editorial-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s var(--ease);
+}
+.editorial-row:hover .editorial-media img {
+    transform: scale(1.03);
+}
+.editorial-no {
+    font-family: var(--font-head);
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+}
+.editorial-text h3 {
+    margin-top: 12px;
+    font-size: clamp(20px, 4.4vw, 28px);
+}
+.editorial-lead {
+    margin-top: 12px;
+    font-size: clamp(14px, 3.4vw, 16px);
+    color: var(--ink-body);
+}
+.editorial-desc {
+    margin-top: 14px;
+    max-width: 42em;
+    font-size: 14px;
     line-height: 2;
-    color: rgba(250,247,242,0.62); /* 검정 푸터 위 AA 대비 충족(약 7:1) */
-    font-style: normal; /* address 요소 기본 이탤릭 해제 — 기존 정자체 외관 유지 */
+    color: var(--muted);
+}
+.editorial-text .link-underline {
+    margin-top: 20px;
 }
 
-.footer-info a {
-    color: rgba(250,247,242,0.62); /* 검정 푸터 위 AA 대비 충족(약 7:1) */
-    text-decoration: none;
-    transition: color 0.3s ease;
+/* ===== 입점 문의 ===== */
+.contact-section {
+    padding-block: var(--pad);
+    background: var(--dark);
+    color: var(--paper);
 }
-
-.footer-info a:hover {
-    color: var(--gold);
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(28px, 5vw, 64px);
+    align-items: center;
 }
-
-.social-links {
+.contact-section .eyebrow {
+    color: var(--accent-dark);
+}
+.contact-section h2 {
+    margin-top: 14px;
+    font-size: clamp(26px, 5.6vw, 42px);
+    color: var(--paper);
+}
+.contact-lead {
+    font-size: clamp(14px, 3.4vw, 17px);
+    line-height: 2.1;
+    color: rgba(243, 237, 225, 0.82);
+    white-space: pre-line;
+}
+.contact-actions {
+    margin-top: 26px;
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.social-links a {
-    font-size: 0.72rem;
-    letter-spacing: 3px;
+/* ===== 푸터 ===== */
+.site-footer {
+    background: var(--dark-deep);
+    color: rgba(243, 237, 225, 0.7);
+    padding: clamp(44px, 6vw, 72px) 0 28px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(24px, 4vw, 48px);
+}
+.site-footer h3 {
+    font-size: 19px;
+    color: var(--paper);
+}
+/* 낙관 — 서화 말미의 붉은 인장 */
+.brand-seal {
+    display: inline-grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    margin-left: 12px;
+    vertical-align: -4px;
+    background: var(--accent);
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 1;
+    color: #FBF7EF;
+}
+.footer-romanized {
+    margin-top: 8px;
+    font-family: var(--font-latin);
+    font-style: italic;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+}
+.footer-info {
+    font-size: 14px;
+    line-height: 2;
+    font-style: normal;
+}
+.footer-info a:hover,
+.footer-links a:hover {
+    color: var(--accent-dark);
+}
+.footer-col-label {
+    font-family: var(--font-latin);
+    font-size: 12px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(250,247,242,0.62); /* 검정 푸터 위 AA 대비 충족(약 7:1) */
-    transition: color 0.3s ease;
+    color: rgba(243, 237, 225, 0.5);
 }
-
-.social-links a:hover {
-    color: var(--gold);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(201,169,110,0.1);
-    padding: 1.5rem 0;
-    text-align: center;
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    color: rgba(250,247,242,0.52); /* 저작권 — AA 대비 충족(약 5.5:1), 여전히 가장 은은하게 */
-}
-
-/* ===== Bottom Navigation ===== */
-.bottom-nav {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 1rem;
-    z-index: 1000;
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
-}
-.bottom-nav.nav-hidden {
-    transform: translateY(80px);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.bottom-nav-btn {
-    padding: 12px 20px;
-    border-radius: 0;
-    font-weight: 300;
-    font-size: 0.75rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-}
-
-.bottom-nav-primary-menu {
-    position: relative;
-}
-
-.bottom-nav-btn.primary {
-    background-color: var(--charcoal);
-    color: var(--cream-light);
-    border: 1px solid var(--charcoal);
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    border-radius: 0;
-    letter-spacing: 2px;
-    font-weight: 300;
-    font-size: 0.65rem;
-}
-
-.bottom-nav-btn.primary:hover {
-    background-color: var(--gold);
-    border-color: var(--gold);
-    color: var(--ink);
-    transform: translateY(-2px);
-}
-
-.bottom-nav-btn.primary.active {
-    background-color: var(--gold);
-    border-color: var(--gold);
-    color: var(--ink);
-}
-
-.bottom-nav-btn:not(.primary) {
-    background-color: white;
-    color: #1a1a1a;
-    border: 2px solid #1a1a1a;
-}
-
-.bottom-nav-btn:not(.primary):hover {
-    background-color: #f0f0f0;
-    transform: translateY(-2px);
-}
-
-/* Primary Menu Floating Items */
-.primary-submenu {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    display: flex;
-    flex-direction: column;
+.footer-links {
+    margin-top: 12px;
+    display: grid;
     gap: 8px;
-    min-width: 180px;
+    font-size: 14px;
+}
+.footer-bottom {
+    max-width: var(--maxw);
+    margin: clamp(32px, 5vw, 56px) auto 0;
+    padding: 20px var(--gut) 0;
+    border-top: 1px solid rgba(243, 237, 225, 0.14);
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: rgba(243, 237, 225, 0.5);
 }
 
-.primary-menu-item {
-    padding: 10px 16px;
-    background: var(--cream-base);
-    color: var(--charcoal);
-    text-decoration: none;
-    border-radius: 0;
-    font-weight: 300;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid var(--gold-dim);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    white-space: nowrap;
+/* ===== 한글 자간 보정 =====
+   넓은 트래킹(.2em 안팎)은 라틴 대문자 라벨 기준이라, 한글이 들어가면 음절이 낱글자로
+   흩어져 읽힌다. 한국어일 때만 해당 요소의 자간을 좁힌다(EN/FR는 원래 트래킹 유지). */
+html[lang="ko"] .work-card-kicker,
+html[lang="ko"] .collab-date,
+html[lang="ko"] .collab-partners {
+    letter-spacing: 0.04em;
 }
 
-.bottom-nav-primary-menu.active .primary-menu-item {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.primary-menu-item[data-delay="0"] { transition-delay: 0.1s; }
-.primary-menu-item[data-delay="1"] { transition-delay: 0.15s; }
-.primary-menu-item[data-delay="2"] { transition-delay: 0.2s; }
-.primary-menu-item[data-delay="3"] { transition-delay: 0.25s; }
-
-.primary-menu-item:hover {
-    background-color: var(--charcoal);
-    color: var(--cream-base);
-    border-color: var(--charcoal);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
-}
-
-/* ===== Responsive Design ===== */
-@media (max-width: 1200px) {
-    .logo h1 {
-        font-size: 1.05rem;
-    }
-    .logo p {
-        font-size: 0.6rem;
-    }
-    .nav-left, .nav-right {
-        gap: 0.1rem;
-    }
-    .nav-link {
-        padding: 8px 8px;
-        font-size: 0.68rem;
-        letter-spacing: 1.5px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .logo h1 {
-        font-size: 0.95rem;
-    }
-    .logo p {
-        font-size: 0.55rem;
-    }
-    .logo {
-        padding: 0 1.5rem;
-    }
-    /* 태블릿: 가로 섹션 메뉴가 좁아 언어버튼과 겹치므로 링크 숨김.
-       빈 nav-left/nav-right(flex:1) 스페이서는 유지해 로고 중앙 정렬 보존 */
-    .nav-left .nav-item,
-    .nav-right .nav-item {
-        display: none;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        height: auto;
-        padding: 12px 20px;
-        justify-content: space-between;
-    }
-
-    .nav-left {
-        display: none;
-    }
-
-    .nav-right {
-        display: none;
-    }
-
-    .nav-right-section {
-        flex: 0 0 auto;
-        min-width: unset;
-    }
-
-    .logo {
-        flex: 1;
-        padding: 0;
-        border: none;
-        text-align: left;
-        max-width: 270px;
-    }
-
-    /* FR/EN 로고는 데스크톱용 2rem 패딩(html[lang] specificity)이 모바일 규칙을 덮어 브랜드명이 잘리므로, 동일 specificity로 패딩 제거(270px 박스에 전체 명칭이 들어가게).
-       추가로 base .logo의 flex:0 0 auto가 모바일 .logo{flex:1}(동일 0,1,0이나 미적용)을 이겨 로고가 콘텐츠 폭에 갇혀 ellipsis가 났음 — 동일 specificity(0,2,0)로 flex를 키워 가용폭(약 272px)까지 확장하면 EN/FR 제목(185/157px)이 한 줄에 온전히 들어감 */
-    html[lang="fr"] .logo,
-    html[lang="en"] .logo {
-        padding: 0;
-        flex: 1 1 auto;
-        max-width: none;
-    }
-
-    /* 모바일에서 로고 하단 골드 디바이더 숨김 */
-    .logo::after {
-        display: none;
-    }
-
-    .logo h1 {
-        font-size: 1.05rem;
-    }
-
-    .logo p {
-        font-size: 0.55rem;
-    }
-
-    /* 로고 홈링크는 모바일에서 텍스트 높이(약 12~17px)만큼만 탭 영역이라 작았음 → 상하 패딩으로 탭 타깃을 ≥44px로 확대.
-       내비는 이미 44px 언어버튼으로 높이가 확보돼 있어 nav 높이·텍스트 위치 변화 없이 클릭 영역만 키움(수직 패딩만, 가로 레이아웃 불변) */
-    .logo a {
-        padding-top: 16px;
-        padding-bottom: 16px;
-    }
-
-    /* 모바일 nav 투명 상태 — 로고/버튼 흰색 */
-    .top-nav:not(.scrolled) .logo h1,
-    .top-nav:not(.scrolled) .logo p {
-        color: rgba(250,247,242,0.9);
-    }
-
-    .slide-content {
-        width: 100%;
-        min-width: unset;
-        background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, transparent 60%);
-        padding: 0 2rem 3rem;
-        justify-content: flex-end;
-        align-items: center;
-        text-align: center;
-        backdrop-filter: none;
-    }
-
-    .slide-content h2 {
-        font-size: 2.2rem;
-        letter-spacing: 1.5px;
-        white-space: normal;
-    }
-
-    .slide-content p {
-        font-size: 0.82rem;
-        max-width: 100%;
-    }
-
-    .hero-btn {
-        align-self: center;
-    }
-
-    .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 4rem;
-        letter-spacing: 3px;
-    }
-
-    .highlights-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    /* 1단 그리드에서는 featured 카드의 span 2를 해제 — 미해제 시 암묵적 빈 컬럼(width:0)이 생겨
-       둘째 highlight 카드(모시 풍경)가 붕괴되는 문제 수정 */
-    .highlight-card.featured {
-        grid-column: auto;
-    }
-
-
-    .masterpieces-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 220px;
-        gap: 1rem;
-    }
-
-    .masterpiece-item.featured {
-        grid-column: span 2;
-        grid-row: span 1;
-    }
-
-    .footer-content {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .bottom-nav {
-        bottom: 15px;
-        right: 15px;
-        flex-direction: column;
-    }
-
-    .bottom-nav-btn {
-        padding: 10px 16px;
-        font-size: 0.85rem;
-    }
-
-    .primary-submenu {
-        bottom: 50px;
-        min-width: 160px;
-    }
-
-    .primary-menu-item {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-    }
-
-    /* 히어로: 모바일에서 100svh */
-    .hero-container {
-        height: 100vh;
-        height: 100svh;
-        min-height: 520px;
-    }
-    /* 히어로 스탯: 모바일 가로 스크롤 스트립 */
-    .hero-stats {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        /* 오른쪽 끝에 다음 카드 살짝 노출 — 스와이프 유도 */
-        scroll-snap-type: x mandatory;
-        scroll-padding-left: 0;
-    }
-    .hero-stats::-webkit-scrollbar { display: none; }
-    .hero-stat {
-        flex: 0 0 44vw;
-        min-width: 140px;
-        padding: 0.9rem 1rem;
-        border-right: 1px solid var(--gold-dim);
-        border-bottom: none;
-        scroll-snap-align: start;
-        overflow: visible;
-    }
-    .hero-stat:last-child {
-        padding-right: 1.5rem;
-        min-width: 160px;
-    }
-    .hero-stat-number {
-        font-size: 1.7rem;
-        letter-spacing: 1px;
-    }
-    .hero-stat-label {
-        font-size: 0.55rem;
-        letter-spacing: 1.5px;
-        white-space: normal;
-        word-break: keep-all;
-        line-height: 1.5;
-        margin-top: 2px;
-    }
-
-    /* 섹션 패딩 모바일 최적화 */
-    .highlights {
-        padding: 5rem 0;
-    }
-    .collection-delve {
-        padding: 5rem 0;
-    }
-    .featured-artworks {
-        padding-top: 5rem;
-    }
-    .brand-section {
-        padding: 5rem 0;
-    }
-
-    /* 카드 콘텐츠 패딩 축소 */
-    .card-content {
-        padding: 1.8rem;
-    }
-
-    /* 섹션 타이틀 하단 여백 축소 */
-    .section-title {
-        margin-bottom: 3.5rem;
-    }
-
-    /* 브랜드 서브타이틀 — 영문 장문 줄바꿈 방지 */
-    .brand-subtitle {
-        font-size: 0.8rem;
-    }
-
-    /* 푸터 로고 */
-    .footer-logo h3 {
-        white-space: normal;
-        word-break: keep-all;
-    }
-    .footer-top {
-        padding: 3rem 0 2.5rem;
-        margin-bottom: 2rem;
-    }
-    .footer {
-        padding: 3rem 0 2rem;
-    }
-
-    /* 터치 디바이스: masterpiece 설명 항상 표시 */
-    .masterpiece-info {
-        transform: translateY(0);
-    }
-    .masterpiece-info p {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* 갤러리 섹션 */
-    .masterpieces {
-        padding: 5rem 0;
-    }
-    .masterpieces .masterpieces-grid {
-        margin-top: 2.5rem;
-    }
-
-    /* 컬렉션 아이템 콘텐츠 패딩 */
-    .item-content {
-        padding: 1.6rem;
-    }
-
-    /* 히어로 버튼 — 모바일에서 더 넓게 */
-    .hero-btn {
-        padding: 14px 36px;
-        width: auto;
-        min-width: 180px;
-        text-align: center;
-    }
-
-    /* 입점 문의 섹션 */
-    .inquiry-section .section-title {
-        font-size: 2rem;
-        letter-spacing: 3px;
-    }
-    .inquiry-lead {
-        font-size: 0.82rem;
-        padding: 0 1rem;
-        margin-bottom: 2rem;
-    }
-
-    /* 푸터 콘텐츠 패딩 */
-    .footer-content {
-        padding: 2rem 0 1.5rem;
-    }
-    .footer-info p {
-        font-size: 0.7rem;
-    }
-    /* 푸터 텍스트 링크의 모바일 탭 영역을 키움(패딩으로 ≥24px, 음수마진으로 시각 위치/줄 간격 보존) */
-    .footer-info a,
-    .social-links a {
-        display: inline-block;
-        padding: 7px 4px;
-        margin: -7px -4px;
-    }
-
-    /* 마키 스트립 폰트 축소 */
-    .marquee-track span {
-        padding: 0 1.8rem;
-        font-size: 0.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 20px;
-    }
-
-    .nav-container {
-        padding: 0 15px;
-    }
-
-    .logo h1 {
-        font-size: 0.88rem;
-        line-height: 1.2;
-    }
-
-    .logo p {
-        font-size: 0.48rem;
-        line-height: 1.2;
-        margin-top: -1px;
-    }
-
-    .slide-content {
-        padding: 2rem 1rem 1rem;
-    }
-
-    .slide-content h2 {
-        font-size: 1.9rem;
-        letter-spacing: 1px;
-        white-space: normal;
-    }
-
-    .masterpieces-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 46vw;
-        gap: 4px;
-    }
-
-    .masterpiece-item.featured {
-        grid-column: span 2;
-        grid-row: span 1;
-    }
-    .masterpiece-item.featured img {
-        object-position: center;
-    }
-
-    /* 섹션 패딩 480px 추가 축소 */
-    .highlights {
-        padding: 3.5rem 0;
-    }
-    .collection-delve {
-        padding: 3.5rem 0;
-    }
-    .featured-artworks {
-        padding-top: 3.5rem;
-    }
-    .brand-section {
-        padding: 3.5rem 0;
-    }
-    .inquiry-section {
-        padding: 3.5rem 0;
-    }
-
-    /* 섹션 타이틀 추가 최적화 */
-    .section-title {
-        font-size: 1.7rem;
-        margin-bottom: 2.5rem;
-        letter-spacing: 1.5px;
-        word-break: keep-all;
-    }
-
-    /* 카드 패딩 */
-    .card-content {
-        padding: 1.4rem;
-    }
-    .highlight-card img {
-        height: 200px;
-    }
-    .highlight-card.featured img {
-        height: 240px;
-    }
-
-    /* 핵심 가치 2x2 그리드 */
-    .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
-    }
-    .value-card {
-        padding: 1.5rem 1rem;
-        border-right: none;
-        border-bottom: 1px solid var(--gold-dim);
-    }
-    /* 2×2 마지막 행(끝 2개 카드)은 하단 보더 제거 — :last-child(카드 4)만 제거하면 좌하 카드에
-       하단 보더가 비대칭으로 매달리는 문제 수정 */
-    .value-card:nth-last-child(-n+2) {
-        border-bottom: none;
-    }
-
-    /* 히어로 스탯 480px */
-    .hero-stat {
-        flex: 0 0 52vw;
-        min-width: 150px;
-        padding: 0.75rem 1rem;
-    }
-    .hero-stat-number {
-        font-size: 1.6rem;
-        letter-spacing: 0.5px;
-    }
-    .hero-stat-label {
-        font-size: 0.51rem;
-        letter-spacing: 1px;
-        margin-top: 2px;
-    }
-
-    /* FAB 버튼 */
-    .bottom-nav {
-        bottom: 12px;
-        right: 12px;
-    }
-    .bottom-nav-btn.primary {
-        padding: 11px 16px;
-        font-size: 0.6rem;
-        min-height: 44px;
-    }
-
-    /* 갤러리 섹션 */
-    .masterpieces {
-        padding: 3rem 0;
-    }
-
-    /* 컬렉션 아이템 */
-    .item-content {
-        padding: 1.2rem;
-    }
-    .item-content h3 {
-        font-size: 1rem;
-        letter-spacing: 1px;
-    }
-
-    /* 히어로 버튼 */
-    .hero-btn {
-        padding: 13px 28px;
-        font-size: 0.6rem;
-        letter-spacing: 3px;
-        min-width: 160px;
-    }
-
-    /* 마키 스트립 */
-    .marquee-track span {
-        padding: 0 1.2rem;
-        font-size: 0.58rem;
-        letter-spacing: 2px;
-    }
-
-    /* 입점 문의 */
-    .inquiry-section .section-title {
-        font-size: 1.6rem;
-        letter-spacing: 2px;
-    }
-    .inquiry-lead {
-        font-size: 0.78rem;
-        line-height: 1.8;
-        padding: 0 0.75rem;
-    }
-
-    /* editorial 텍스트 h3 — 480px에서 letter-spacing 과다 줄바꿈 방지 */
-    .editorial-text h3 {
-        font-size: 1.25rem;
-        letter-spacing: 1.5px;
-    }
-
-    /* 브랜드 서브타이틀 — 영문 장문 */
-    .brand-subtitle {
-        font-size: 0.72rem;
-    }
-
-    /* 푸터 */
-    .footer {
-        padding: 2rem 0 1rem;
-    }
-    .footer-top {
-        padding: 2rem 0 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    .footer-content {
-        padding: 1.5rem 0 1rem;
-        gap: 1rem;
-    }
-    .footer-bottom {
-        padding: 1rem 0;
-        font-size: 0.62rem;
-    }
-    .footer-logo h3 {
-        font-size: 1.1rem;
-    }
-    .footer-logo p {
-        font-size: 0.58rem;
-    }
-
-    /* editorial 이미지 높이 */
-    .editorial-image {
-        min-height: 56vw;
-    }
-    .editorial-text {
-        padding: 2.5rem 1.5rem;
-    }
-}
-
-/* ===== Hero Load Animation ===== */
-.slide-content h2,
-.slide-content p,
-.slide-content .hero-btn {
-    opacity: 0;
-    transform: translateY(40px);
-}
-
-/* 진입 시퀀스: 골드 룰 와이프 → 타이틀 마스크 라이즈 → 본문 → 버튼 */
-.slide.active .slide-content::before {
-    animation: heroLine 0.9s var(--ease-soft) 0.2s forwards;
-}
-.slide.active .slide-content h2 {
-    animation: heroRise 1.3s var(--ease-soft) 0.4s forwards;
-}
-.slide.active .slide-content p {
-    animation: heroFadeUp 1.1s var(--ease-soft) 0.85s forwards;
-}
-.slide.active .slide-content .hero-btn {
-    animation: heroFadeUp 1.1s var(--ease-soft) 1.05s forwards;
-}
-
-/* 활성 슬라이드 이미지: 천천히 수축하는 켄번즈로 시네마틱 진입 */
-.slide.active img {
-    animation: heroKenBurns 9s var(--ease-soft) forwards;
-}
-
-@keyframes heroLine {
-    from { transform: scaleX(0); opacity: 0; }
-    to   { transform: scaleX(1); opacity: 0.9; }
-}
-@keyframes heroRise {
-    from { opacity: 0; transform: translateY(48px); clip-path: inset(0 0 100% 0); }
-    to   { opacity: 1; transform: translateY(0);    clip-path: inset(0 0 -14% 0); }
-}
-@keyframes heroFadeUp {
-    to { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroKenBurns {
-    from { transform: scale(1.09); }
-    to   { transform: scale(1.03); }
-}
-
-/* ===== Scroll Reveal Animation ===== */
+/* ===== 스크롤 리빌 ===== */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s var(--ease-soft), transform 0.8s var(--ease-soft);
+    transform: translateY(16px);
+    transition: opacity 1.1s var(--ease), transform 1.1s var(--ease);
 }
 .reveal.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
-/* Staggered delays for grid items */
-.reveal-stagger:nth-child(1) { transition-delay: 0s; }
-.reveal-stagger:nth-child(2) { transition-delay: 0.1s; }
-.reveal-stagger:nth-child(3) { transition-delay: 0.15s; }
-.reveal-stagger:nth-child(4) { transition-delay: 0.2s; }
-.reveal-stagger:nth-child(5) { transition-delay: 0.25s; }
-.reveal-stagger:nth-child(6) { transition-delay: 0.3s; }
-.reveal-stagger:nth-child(7) { transition-delay: 0.35s; }
-.reveal-stagger:nth-child(8) { transition-delay: 0.4s; }
-.reveal-stagger:nth-child(9) { transition-delay: 0.45s; }
-
-/* Section title slide-in from left */
-.section-title.reveal {
+/* 지연 이미지 페이드인 */
+img[loading="lazy"] {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.8s var(--ease-soft), transform 0.8s var(--ease-soft);
+    transition: opacity 0.8s ease;
 }
-.section-title.reveal.visible {
+img[loading="lazy"].img-loaded {
     opacity: 1;
-    transform: translateY(0);
 }
 
-/* ===== Navigation Scrolled State ===== */
-.top-nav.scrolled .logo h1 {
-    font-size: 0.95rem;
-    transition: font-size 0.3s ease;
-}
-.top-nav.scrolled .logo p {
-    opacity: 0;
-    height: 0;
-    margin: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-/* ===== Highlight Card Image Zoom ===== */
-.highlight-card img {
-    transition: transform 0.6s ease;
-}
-.highlight-card:hover img {
-    transform: scale(1.06);
-}
-
-@media (max-width: 480px) {
-    .logo h1 {
-        font-size: 0.9rem;
-        white-space: normal;
-        word-break: keep-all;
-        letter-spacing: 1.5px;
-    }
-
-    .logo p {
-        font-size: 0.5rem;
-        letter-spacing: 2px;
-    }
-
-    .philosophy-strip {
-        padding: 4rem 0;
-    }
-    .philosophy-strip::before {
-        font-size: 6rem;
-    }
-    .philosophy-strip blockquote {
-        font-size: 1.15rem;
-        line-height: 2;
-        padding: 0 1.5rem;
-    }
-    .philosophy-label {
-        font-size: 1.5rem;
-        letter-spacing: 5px;
-    }
-}
-
-/* French responsive adjustments */
-@media (max-width: 1200px) {
-    html[lang="fr"] .nav-link {
-        font-size: 0.7rem;
-        padding: 6px 8px;
-    }
-
-    html[lang="fr"] .logo h1 {
-        font-size: 1.1rem;
-    }
-
-    html[lang="fr"] .logo p {
-        font-size: 0.6rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    html[lang="fr"] .nav-link {
-        font-size: 0.6rem;
-        padding: 5px 5px;
-    }
-
-    html[lang="fr"] .logo h1 {
-        font-size: 1rem;
-    }
-
-    html[lang="fr"] .logo p {
-        font-size: 0.55rem;
-    }
-}
-
-/* English responsive adjustments */
-@media (max-width: 1200px) {
-    html[lang="en"] .nav-link {
-        font-size: 0.7rem;
-        padding: 6px 8px;
-    }
-
-    html[lang="en"] .logo h1 {
-        font-size: 1.1rem;
-    }
-
-    html[lang="en"] .logo p {
-        font-size: 0.6rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    html[lang="en"] .nav-link {
-        font-size: 0.6rem;
-        padding: 5px 5px;
-    }
-
-    html[lang="en"] .logo h1 {
-        font-size: 1rem;
-    }
-
-    html[lang="en"] .logo p {
-        font-size: 0.58rem;
-    }
-}
-
-/* Nav shrink on scroll */
-.top-nav.scrolled .logo p {
-    opacity: 0;
-    max-height: 0;
-    margin: 0;
-    overflow: hidden;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-}
-.top-nav .logo p {
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-    max-height: 20px;
-}
-
-/* Collection — horizontal scroll track */
-.collection-grid {
-    display: flex !important;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 2rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    cursor: grab;
-    grid-template-columns: unset !important;
-}
-.collection-grid::-webkit-scrollbar {
-    display: none;
-}
-.collection-grid:active {
-    cursor: grabbing;
-}
-.collection-item {
-    flex: 0 0 380px !important;
-    scroll-snap-align: start;
-}
-
-@media (max-width: 768px) {
-    .collection-grid {
-        padding-left: 20px;
-        padding-right: 20px;
-        gap: 1rem;
-    }
-    .collection-item {
-        flex: 0 0 220px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .collection-grid {
-        padding-left: 15px;
-        padding-right: 15px;
-        gap: 0.8rem;
-    }
-    .collection-item {
-        flex: 0 0 64vw !important;
-        max-width: 280px;
-    }
-    /* 좁은 모바일에서 긴 EN/FR 브랜드명이 로고 박스(약 203px)를 넘어 잘리므로 폰트를 소폭 축소해 전체 명칭 노출 */
-    html[lang="fr"] .logo h1,
-    html[lang="en"] .logo h1 {
-        font-size: 0.76rem;
-    }
-}
-
-/* Collection scroll hint fade edges */
-.collection-delve {
-    position: relative;
-}
-.collection-delve::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 80px;
-    background: linear-gradient(to right, transparent, var(--cream-deep));
-    pointer-events: none;
-    z-index: 2;
-}
-
-/* ===== Scroll Progress Bar ===== */
+/* ===== 상세 페이지와 공유하는 크롬 ===== */
 .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
     height: 2px;
-    width: 0%;
-    background: var(--gold);
-    z-index: 10000;
-    transition: width 0.08s linear;
+    width: 0;
+    background: var(--accent);
+    z-index: 200;
 }
 
-/* ===== Page Loader ===== */
-#page-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--cream-base);
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.6s ease;
-}
-#page-loader.fade-out {
-    opacity: 0;
-    pointer-events: none;
-}
-.loader-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-}
-.loader-symbol {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    color: var(--gold);
-    font-weight: 300;
-    letter-spacing: 4px;
-    animation: loaderPulse 1.8s ease-in-out infinite;
-}
-.loader-line {
-    display: block;
-    width: 48px;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--gold), transparent);
-    animation: loaderExpand 1.8s ease-in-out infinite;
-}
-@keyframes loaderPulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
-}
-@keyframes loaderExpand {
-    0%, 100% { transform: scaleX(0.2); opacity: 0.3; }
-    50% { transform: scaleX(1); opacity: 1; }
-}
-
-/* ===== Page entrance animation ===== */
-body {
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    background-color: var(--cream-base);
-    background-image: linear-gradient(180deg, var(--cream-base) 0%, #F2ECE2 50%, var(--cream-base) 100%);
-    /* background-attachment:fixed 제거 — 스크롤 시 고정 배경 재페인트(모바일 잰크) 방지.
-       그라데이션은 채널당 ~1 차이로 사실상 무의미해 시각 변화 없음 */
-}
-body.page-loaded {
-    opacity: 1;
-}
-/* JS로 page-loaded가 붙지 않는 페이지(404 등)도 보이도록 폴백 */
-body:has(.artwork-not-found) {
-    opacity: 1;
-}
-
-/* ===== Marquee strip ===== */
-/* 마키 호버 시 일시정지 — 접근성 */
-.marquee-strip:hover .marquee-track {
-    animation-play-state: paused;
-}
-
-.marquee-strip {
-    width: 100%;
-    overflow: hidden;
-    background: var(--ink);
-    padding: 12px 0;
-    white-space: nowrap;
-}
-.marquee-track {
-    display: inline-flex;
-    animation: marquee 60s linear infinite;
-}
-.marquee-track span {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 300;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: rgba(250,247,242,0.42);
-    padding: 0 3rem;
-}
-.marquee-track span.gold {
-    color: var(--gold);
-}
-@keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-}
-
-/* ===== Hero stat strip ===== */
-.hero-stats {
-    display: flex;
-    background: var(--cream-base);
-    border-bottom: 1px solid var(--gold-dim);
-}
-.hero-stat {
-    flex: 1;
-    padding: 3.4rem 2.5rem;
-    text-align: center;
-    border-right: 1px solid var(--gold-dim);
-}
-.hero-stat:last-child {
-    border-right: none;
-}
-.hero-stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 4.2vw, 4.6rem);
-    font-weight: 200;
-    letter-spacing: 1px;
-    line-height: 1;
-    color: var(--charcoal);
-    display: block;
-    /* 고정폭 숫자 — 카운트업 중 자릿수 폭 변화로 인한 흔들림(지터) 방지 */
-    font-variant-numeric: tabular-nums;
-}
-.hero-stat-label {
-    font-size: 0.68rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold-text);
-    margin-top: 0.9rem;
-    display: block;
-}
-
-/* 모바일 통계: 2×2 그리드로 정돈 (base 규칙이 윗쪽 @media를 덮으므로 base 뒤에 재정의) */
-@media (max-width: 600px) {
-    .hero-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        overflow-x: visible;
-    }
-    .hero-stat {
-        flex: none;
-        min-width: 0;
-        padding: 2rem 1rem;
-        border-right: 1px solid var(--gold-dim);
-        border-bottom: none;
-    }
-    .hero-stat:nth-child(2n) { border-right: none; }
-    .hero-stat:nth-child(-n+2) { border-bottom: 1px solid var(--gold-dim); }
-    .hero-stat-number { font-size: 2.6rem; letter-spacing: 1px; }
-    .hero-stat-label { font-size: 0.6rem; letter-spacing: 1.5px; margin-top: 0.6rem; }
-}
-
-
-/* ===== Hero parallax container ===== */
-.slide img {
-    transform-origin: center center;
-    will-change: transform;
-}
-
-/* ===== Editorial reveal ===== */
-.editorial-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.editorial-reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 데스크탑에서만 좌우 슬라이드인 — 모바일에서는 translateX 제거 */
-@media (min-width: 769px) {
-    .editorial-image.editorial-reveal {
-        transform: translateX(20px);
-    }
-    .editorial-text.editorial-reveal {
-        transform: translateX(-20px);
-        transition-delay: 0.15s;
-    }
-    .editorial-row--reverse .editorial-image.editorial-reveal {
-        transform: translateX(-20px);
-    }
-    .editorial-row--reverse .editorial-text.editorial-reveal {
-        transform: translateX(20px);
-    }
-    .editorial-image.editorial-reveal.visible,
-    .editorial-text.editorial-reveal.visible {
-        transform: translateX(0);
-    }
-}
-
-
-/* ===== Philosophy Interstitial — 강렬하게 ===== */
-.philosophy-strip {
-    background: var(--ink);
-    padding: 13rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    border-top: none;
-}
-
-.philosophy-strip::before {
-    /* 대형 韓紙 워터마크 — 장식이므로 빈 대체텍스트(/ '')로 스크린리더 낭독 제외 */
-    content: '韓紙' / '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22rem;
-    font-weight: 200;
-    color: rgba(255,255,255,0.025);
-    pointer-events: none;
-    white-space: nowrap;
-    line-height: 1;
-}
-
-.philosophy-inner {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 40px;
-    position: relative;
-    z-index: 1;
-}
-
-.philosophy-label {
-    display: block;
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 300;
-    color: rgba(201,169,110,0.7);
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    margin-bottom: 3rem;
-}
-
-.philosophy-strip blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-    font-weight: 100;
-    font-style: italic;
-    color: var(--cream-light);
-    line-height: 1.6;
-    letter-spacing: 2px;
-    border: none;
-    margin: 0;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    white-space: pre-line;
-    /* 수동 줄바꿈(\n)을 유지하되, 폭을 넘겨 자연 줄바꿈되는 부분의 줄 길이를 고르게 — 큰 중앙정렬
-       디스플레이 인용구가 들쭉날쭉하지 않도록(미지원 브라우저는 무시, 줄 수·높이 불변) */
-    text-wrap: balance;
-}
-
-/* 인용 부호 골드 */
-.philosophy-strip blockquote::before {
-    /* 장식용 큰따옴표 — 인용문 본문이 의미를 전달하므로 빈 대체텍스트로 스크린리더 낭독 제외 */
-    content: '\201C' / '';
-    font-size: 6rem;
-    color: var(--gold);
-    opacity: 0.4;
-    position: absolute;
-    top: -2rem;
-    left: -1rem;
-    font-family: 'Cormorant Garamond', serif;
-    line-height: 1;
-    font-style: normal;
-}
-
-@media (max-width: 768px) {
-    .philosophy-strip {
-        padding: 5rem 0;
-    }
-    .philosophy-strip::before {
-        font-size: 10rem;
-    }
-    .philosophy-strip blockquote {
-        font-size: 1.4rem;
-    }
-    .philosophy-strip blockquote::before {
-        font-size: 4rem;
-        top: -1.5rem;
-        left: -0.5rem;
-    }
-    .philosophy-label {
-        font-size: 0.55rem;
-    }
-}
-
-/* ===== Masterpieces — full-bleed ===== */
-.masterpieces .masterpieces-grid {
-    margin-top: 5rem;
-}
-@media (max-width: 768px) {
-    .masterpieces .masterpieces-grid {
-        margin-top: 3rem;
-    }
-}
-@media (max-width: 480px) {
-    .masterpieces .masterpieces-grid {
-        margin-top: 2rem;
-    }
-}
-
-/* ===== 터치 디바이스: 갤러리 설명 항상 표시 ===== */
-@media (pointer: coarse) {
-    .masterpiece-info {
-        transform: translateY(0);
-    }
-    .masterpiece-info p {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    /* hover 효과 제거 — 터치에선 필요 없음 */
-    .highlight-card:hover {
-        transform: none;
-        box-shadow: none;
-    }
-    .collection-item:hover {
-        transform: none;
-        box-shadow: none;
-    }
-    .value-card:hover {
-        transform: none;
-    }
-    .masterpiece-item:hover .masterpiece-info p {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    /* 언어 전환 옵션 — 터치 환경에서 권장 탭 영역(44px) 확보(국제 방문자의 주요 동작, 기존 34px) */
-    .lang-option {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-    }
-}
-
-/* ===== 활성 nav 링크 하이라이트 ===== */
-.nav-link.nav-active {
-    /* 크림 내비 위 AA 가독 골드(#C9A96E는 크림 위 1.92로 미달) — 골드 언더라인(::after)이 하이라이트 보강 */
-    color: var(--gold-text);
-}
-.nav-link.nav-active::after {
-    transform: scaleX(1);
-}
-
-/* ===== 이미지 지연 로딩 fade-in ===== */
-.masterpiece-item img[loading="lazy"],
-.highlight-card img[loading="lazy"],
-.collection-item img[loading="lazy"],
-.editorial-image img[loading="lazy"],
-.related-item img[loading="lazy"],
-.collab-image-wrap img[loading="lazy"],
-.thumbnail img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity 0.55s ease;
-}
-.masterpiece-item img.img-loaded,
-.highlight-card img.img-loaded,
-.collection-item img.img-loaded,
-.editorial-image img.img-loaded,
-.related-item img.img-loaded,
-.collab-image-wrap img.img-loaded,
-.thumbnail img.img-loaded {
-    opacity: 1;
-}
-
-/* ===== 스크롤 투 탑 버튼 ===== */
 .scroll-top-btn {
     position: fixed;
-    bottom: 5.5rem;
-    right: 1.5rem;
-    width: 44px;
-    height: 44px;
-    background: var(--charcoal);
-    color: var(--cream-base);
-    border: none;
-    border-radius: 0;
-    font-size: 1rem;
+    right: clamp(14px, 3vw, 28px);
+    bottom: clamp(14px, 3vw, 28px);
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(243, 237, 225, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--ink);
+    font-size: 16px;
     cursor: pointer;
-    z-index: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     opacity: 0;
-    /* 숨김 시 키보드 탭 순서에서도 제외(visibility는 페이드 후 적용되도록 지연 트랜지션) */
     visibility: hidden;
-    pointer-events: none;
-    transform: translateY(12px);
-    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, visibility 0s 0.35s;
+    transform: translateY(10px);
+    transition: opacity 0.35s ease, transform 0.35s var(--ease), visibility 0.35s, background 0.3s ease;
+    z-index: 70;
 }
 .scroll-top-btn.visible {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease, visibility 0s;
+    transform: none;
 }
 .scroll-top-btn:hover {
-    background: var(--gold);
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
 }
-.scroll-top-btn:active {
-    background: #B08D50;
-    transform: scale(0.94);
+
+/* 상세 페이지 제목 계열 — 홈의 .section-heading과 같은 스케일로 */
+.section-title {
+    font-family: var(--font-head);
+    font-weight: 400;
+    font-size: clamp(26px, 5.6vw, 44px);
+    letter-spacing: -0.005em;
+    color: var(--ink);
 }
-@media (max-width: 768px) {
-    .scroll-top-btn {
-        bottom: 7rem;
-        right: 1rem;
-        width: 44px;
-        height: 44px;
-        font-size: 0.95rem;
+
+.social-links {
+    display: grid;
+    gap: 8px;
+    font-size: 14px;
+}
+
+/* ===== 모바일 — 작품을 감상하는 지면 =====
+   좁은 화면에서는 한 번에 한 점씩 보게 되므로, 격자형 카드가 아니라
+   한지에 배접해 걸어둔 낱장처럼 보이도록 구성을 바꾼다. */
+@media (max-width: 760px) {
+    :root {
+        /* 지면 여백을 조금 넓혀 작품이 화면 가장자리에 붙지 않게 */
+        --gut: 24px;
+    }
+
+    /* 세로로 긴 한글 본문은 행간을 조금 더 열어야 명조가 답답하지 않다 */
+    body {
+        line-height: 2;
+    }
+
+    /* 섹션 머리글 — 가운데 정렬 + 짧은 홍색 괘선(전통 인쇄물의 판심처럼) */
+    .section .eyebrow,
+    .section-heading,
+    .contact-section .eyebrow,
+    .contact-section h2 {
+        text-align: center;
+    }
+    .section-heading {
+        position: relative;
+        padding-bottom: 28px;
+    }
+    .section-heading::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 2px;
+        width: 32px;
+        height: 1px;
+        transform: translateX(-50%);
+        background: var(--accent);
+        opacity: 0.55;
+    }
+    /* 괘선 가운데의 작은 마름모 — 단청 장식의 점정(點睛)처럼 */
+    .section-heading::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 5px;
+        height: 5px;
+        transform: translateX(-50%) rotate(45deg);
+        background: var(--paper);
+        border: 1px solid var(--accent);
+    }
+    .section-lead {
+        text-align: center;
+    }
+
+    /* ===== 작품 플레이트 =====
+       사진 둘레를 지면보다 밝은 종이색으로 두르고(배접 여백), 아래로 낮고 넓은
+       그림자를 깔아 낱장이 지면에서 살짝 떠 보이게 한다. */
+    .gallery-media,
+    .work-card-media,
+    .editorial-media {
+        position: relative;
+        aspect-ratio: auto;
+        padding: 11px;
+        background: var(--paper-light);
+        border: 1px solid var(--line);
+        box-shadow: 0 18px 32px -14px rgba(46, 40, 35, 0.3);
+    }
+    /* 광곽(匡郭) — 옛 서책 판면의 이중 괘선. 바깥 테두리 안쪽에 가는 선을 한 겹 더 두른다 */
+    .gallery-media::before,
+    .work-card-media::before,
+    .editorial-media::before {
+        content: '';
+        position: absolute;
+        inset: 5px;
+        border: 1px solid rgba(140, 43, 43, 0.22);
+        pointer-events: none;
+        z-index: 1;
+    }
+    /* 감상이 목적이므로 자르지도, 빈 띠를 남기지도 않는다 — 원본 비율 그대로 두어
+       낱장마다 높이가 달라지는 화첩처럼 읽히게 한다(마크업의 width/height가 자리를 먼저 잡아준다) */
+    .gallery-media img,
+    .work-card-media img,
+    .editorial-media img {
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: fill;
+    }
+
+    /* 작품 사이를 넉넉히 띄워 한 점씩 머물러 보게 한다 */
+    .gallery-grid,
+    .card-grid {
+        gap: clamp(44px, 11vw, 64px);
+    }
+
+    /* ===== 갤러리 캡션 — 작품명 아래 짧은 괘선, 가운데 정렬 ===== */
+    .gallery-item {
+        gap: 0;
+    }
+    .gallery-item > div:last-child,
+    .work-card-body {
+        margin-top: 22px;
+        text-align: center;
+    }
+    .gallery-item h3::after,
+    .work-card h3::after {
+        content: '';
+        display: block;
+        width: 22px;
+        height: 1px;
+        margin: 14px auto 0;
+        background: var(--line);
+    }
+    .gallery-item p,
+    .work-card p {
+        margin-top: 12px;
+    }
+
+    /* 출품작 카드 — 테두리 상자를 걷어내고 작품 자체만 남긴다 */
+    .work-card {
+        background: transparent;
+        border: none;
+    }
+    .work-card:hover {
+        box-shadow: none;
+    }
+    .work-card-body {
+        padding: 0;
+    }
+
+    /* ===== 지승 공예 — 설명이 길어 본문은 좌측 정렬을 유지 ===== */
+    .editorial-rows {
+        gap: 0;
+        background: transparent;
+        border: none;
+    }
+    .editorial-row {
+        padding: clamp(32px, 8vw, 44px) 0;
+        border-bottom: 1px solid var(--line);
+    }
+    .editorial-row:last-child {
+        border-bottom: none;
+    }
+    .editorial-no,
+    .editorial-text h3 {
+        text-align: center;
+    }
+    .editorial-text h3 {
+        margin-top: 10px;
+    }
+    .editorial-lead {
+        text-align: center;
+        color: var(--muted);
+    }
+    .editorial-text .link-underline {
+        display: flex;
+        justify-content: center;
+        margin-inline: auto;
+        width: fit-content;
+    }
+
+    /* ===== 제작 과정 — 기록 사진이라 액자 없이, 번호만 또렷하게 ===== */
+    .process-grid {
+        gap: clamp(30px, 8vw, 44px);
+    }
+
+    /* ===== 작품 이미지 등장 — 천천히 내려앉듯 ===== */
+    .gallery-media img[loading="lazy"],
+    .work-card-media img[loading="lazy"],
+    .editorial-media img[loading="lazy"] {
+        transform: scale(1.03);
+        transition: opacity 1.4s ease, transform 1.8s var(--ease);
+    }
+    .gallery-media img.img-loaded,
+    .work-card-media img.img-loaded,
+    .editorial-media img.img-loaded {
+        transform: none;
+    }
+
+    /* 인용 — 좁은 화면에서 행간을 더 열어 비문처럼 읽히게 */
+    .quote-section blockquote {
+        line-height: 1.95;
     }
 }
 
-/* ===== prefers-reduced-motion 접근성 ===== */
+/* 태블릿 폭(2열)에서는 낱장마다 높이가 달라지면 열이 어긋나 산만해진다.
+   한 점씩 보는 1열에서만 원본 비율을 살리고, 2열부터는 정사각으로 맞춘다. */
+@media (min-width: 560px) and (max-width: 760px) {
+    .gallery-media img,
+    .work-card-media img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+}
+
+/* ===== 반응형 — 헤더 ===== */
+@media (max-width: 880px) {
+    .nav-container {
+        flex-wrap: wrap;
+        padding: 10px var(--gut);
+        row-gap: 4px;
+    }
+    .logo {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+    .logo p,
+    .logo-sub {
+        display: none;
+    }
+    .nav-actions {
+        order: 2;
+    }
+    /* 메뉴는 둘째 줄에서 가로 스크롤 — 여러 줄로 늘어나 헤더가 화면을 잡아먹는 것을 막는다 */
+    .nav-menu {
+        order: 3;
+        flex: 1 0 100%;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+        margin-inline: calc(-1 * var(--gut));
+        padding-inline: var(--gut);
+        scroll-padding-inline: var(--gut);
+        /* 오른쪽 끝을 흐리게 — 더 스크롤할 메뉴가 있다는 어포던스 */
+        -webkit-mask-image: linear-gradient(to right, #000 86%, transparent 100%);
+        mask-image: linear-gradient(to right, #000 86%, transparent 100%);
+    }
+    .nav-menu::-webkit-scrollbar {
+        display: none;
+    }
+    .nav-link {
+        padding: 6px 10px;
+    }
+    html {
+        scroll-padding-top: 116px;
+    }
+}
+
+/* ===== 모션 최소화 ===== */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-        /* 지연도 0으로 — 스태거·visibility 지연 등이 모션 최소화 시에도 즉시 적용되게 */
         animation-delay: 0s !important;
         transition-delay: 0s !important;
-    }
-    .marquee-track {
-        animation: none;
-    }
-    /* 협업 화보 마커 펄스 정지 — 위치 표시 자체는 유지 */
-    .collab-marker {
-        animation: none;
-        opacity: 0.9;
-        transform: none;
     }
     html {
         scroll-behavior: auto;
     }
-    /* 스크롤 리빌 비활성화 — 콘텐츠를 즉시 표시(관찰자 의존·팝인 제거, 상세 페이지와 일관) */
-    .reveal,
-    .editorial-reveal,
-    .reveal-stagger {
+    .marquee-track {
+        animation: none;
+    }
+    .reveal {
         opacity: 1 !important;
         transform: none !important;
-        transition: none !important;
     }
-}
-
-/* ===== 숫자 표기 — 세리프 숫자가 'I/O'로 읽히는 문제 =====
-   Cormorant Garamond의 얇은 자획(100~200)에서는 1에 위아래 세리프가 붙어 대문자 I처럼,
-   0은 O처럼 보여 "1,000"이 "I,OOO", "01"이 "OI"로 읽힌다. 숫자만 단독으로 노출되는
-   통계·인덱스에 한해 자획이 또렷한 Noto Serif KR(이미 로드 중)로 바꾸고 라틴용 넓은 자간을
-   0으로 되돌린다. 세리프 톤은 그대로라 럭셔리 아트디렉션은 유지된다. */
-.hero-stat-number,
-.collection-index,
-.editorial-index {
-    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
-    font-weight: 300;
-    letter-spacing: 0;
-    /* 라이닝(높이가 같은) 숫자 + 고정폭 — 카운트업 중 자릿수 폭 변화로 인한 흔들림 방지 */
-    font-variant-numeric: lining-nums tabular-nums;
-}
-
-/* ===== 한글 자간 — 라틴 대문자 기준 트래킹이 한글을 낱글자로 흩어놓는 문제 =====
-   "자 세 히  보 기"·"컬 렉 션  보 기"처럼 어절 인지가 깨지던 UI 텍스트만 자간을 좁힌다.
-   .section-label(COLLECTION·GALLERY 등) 같은 라틴 전용 라벨은 원래 트래킹을 유지하고,
-   EN/FR에서도 규칙이 적용되지 않아 라틴 레이아웃은 그대로다. */
-html[lang="ko"] .hero-btn,
-html[lang="ko"] .card-link,
-html[lang="ko"] .artwork-link,
-html[lang="ko"] .inquiry-btn,
-html[lang="ko"] .bottom-nav-btn,
-html[lang="ko"] .primary-menu-item,
-html[lang="ko"] .card-category,
-html[lang="ko"] .artwork-details,
-html[lang="ko"] .artwork-period,
-html[lang="ko"] .hero-stat-label,
-html[lang="ko"] .value-card h4,
-html[lang="ko"] .social-links a,
-html[lang="ko"] .footer-bottom,
-html[lang="ko"] .nav-link {
-    letter-spacing: 0.5px;
-}
-
-/* 큰 한글 헤딩·워드마크는 완전히 붙이면 답답해 1~2px만 남긴다 */
-html[lang="ko"] .brand-card h3,
-html[lang="ko"] .masterpiece-info h3,
-html[lang="ko"] .logo h1 {
-    letter-spacing: 1px;
-}
-html[lang="ko"] .footer-logo h3 {
-    letter-spacing: 2px;
-}
-
-/* ===== 모바일 여백·겹침 정리 ===== */
-@media (max-width: 768px) {
-    /* 인디케이터(bottom 5.5rem)가 슬라이드 설명문 위를 가로질러 밑줄처럼 보이던 겹침 —
-       콘텐츠 아래 최하단으로 내린다 */
-    .hero-indicators {
-        bottom: 1.2rem;
-    }
-
-    /* 히어로 CTA가 화면 하단·구매 FAB와 맞붙어 잘린 것처럼 보이던 문제 —
-       인디케이터(약 2.6rem)와 겹치지 않을 만큼 하단 여백 확보 */
-    .slide-content {
-        padding-bottom: 4.5rem;
-    }
-
-    /* 섹션 상하 여백 — 데스크탑 기준(11rem)에서 줄였어도 모바일에선 버튼 아래로
-       빈 크림 화면이 한 화면 가까이 남아 콘텐츠가 끊긴 것처럼 보였다 */
-    .highlights,
-    .collection-delve,
-    .masterpieces,
-    .brand-section,
-    .inquiry-section {
-        padding: 4rem 0;
-    }
-    .featured-artworks {
-        padding-top: 4rem;
-    }
-    .card-content {
-        padding: 1.6rem 1.6rem 1.8rem;
-    }
-    .section-title {
-        margin-bottom: 2.6rem;
-    }
-
-    /* 에디토리얼 CTA — flex column의 stretch로 전폭까지 늘어나 글자만 왼쪽에 몰려 보였다.
-       좁은 화면에서는 다른 CTA(.card-link·.hero-btn)처럼 글자 폭에 맞춘다 */
-    .editorial-text .artwork-link {
-        align-self: flex-start;
-    }
-}
-
-@media (max-width: 600px) {
-    /* 작은 화면에서는 2px도 벌어져 보여 한 단계 더 좁힌다 */
-    html[lang="ko"] .section-title,
-    html[lang="ko"] .values-title {
-        letter-spacing: 1px;
-    }
-}
-
-@media (max-width: 480px) {
-    .highlights,
-    .collection-delve,
-    .masterpieces,
-    .brand-section,
-    .inquiry-section {
-        padding: 3rem 0;
-    }
-    .featured-artworks {
-        padding-top: 3rem;
-    }
-    .card-content {
-        padding: 1.4rem 1.4rem 1.6rem;
-    }
-    .section-title {
-        margin-bottom: 2.1rem;
+    img[loading="lazy"] {
+        opacity: 1 !important;
     }
 }

@@ -9,9 +9,9 @@ const HIDE_UNTIL_KEY = 'hanji_naver_popup_hide_until'
 // 숨김 유지 기간(24시간)
 const HIDE_DURATION_MS = 24 * 60 * 60 * 1000
 
-// 명조/고딕 폰트는 layout.tsx에 없으므로 폴백 체인으로 처리한다.
-const SERIF = "'Nanum Myeongjo', 'Noto Serif KR', serif"
-const SANS = "'Noto Sans KR', sans-serif"
+// 리디자인 서체 토큰과 동일한 스택 — 다시 노출할 때 사이트와 어긋나지 않도록.
+const SERIF = "'Gowun Batang', 'Noto Serif KR', serif"
+const SANS = "'Noto Serif KR', 'Gowun Batang', serif"
 
 // keyframes는 styles/*.css를 건드리지 않고 컴포넌트 내부에서 <style>로 주입한다.
 const POPUP_KEYFRAMES = `

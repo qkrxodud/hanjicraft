@@ -17,9 +17,12 @@ export const translations = {
       collections: '제작 과정',
       gallery: '갤러리',
       about: '한지 지승 공예',
+      contact: '입점 문의',
     },
     hero: {
-      title: '홍현정 한지공예 연구소',
+      // 로마자 워드마크 — 히어로 상단 이탤릭 아이브로(3개 언어 공통 표기)
+      eyebrow: 'Hong hyun-jeong hanji craft studio',
+      title: '천 년의 결을 품은 한지,\n그 강인함과 아름다움',
       description:
         '천 년의 결을 품은 한지, 그 강인함과 아름다움으로 빚어낸 오브제들이 당신의 공간에 스며듭니다.',
       button: '컬렉션 보기',
@@ -33,11 +36,12 @@ export const translations = {
         description:
           '한지 고유의 결과 빛깔, 그 안에 깃든 한국의 정신을 세계와 나눕니다.',
       },
+      // 수치는 언어 공통이라 마크업에 두고, 단위(unit)와 설명(label)만 번역한다
       stat: {
-        years: '년 전통',
-        artworks: '점 이상의 작품',
-        exhibitions: '회 국제 전시',
-        countries: '포르투갈·프랑스·남미·북미',
+        years: { unit: '년', label: '전통의 시간' },
+        artworks: { unit: '+', label: '작품' },
+        exhibitions: { unit: '회', label: '국제 전시' },
+        regions: { value: '포르투갈 · 프랑스\n남미 · 북미', label: '소개된 지역' },
       },
     },
     philosophy: {
@@ -68,6 +72,8 @@ export const translations = {
     },
     brand: {
       title: '브랜드 소개',
+      // 제목 아래 이탤릭 라틴 태그라인 — 한글 제목과 대비되는 에디토리얼 장치
+      tagline: 'Twenty years along the grain of paper',
       subtitle:
         '한지의 결에 매료되어 걸어온 20년.\n홍현정한지공예연구소는 한지·모시·옻칠이라는 천년의 소재로 일상을 품격 있게 만드는 오브제를 빚습니다.\n디자인 전공자의 심미안과 장인의 손끝으로 재해석된 전통의 색채는 파리 메종 오브제를 비롯해 북미·유럽의 프리미엄 시장에서 한국 공예의 가치를 알리고 있습니다.',
       mission: {
@@ -182,12 +188,12 @@ export const translations = {
         '루이비통 2026 추석 기프트 캠페인 화보 — 월병과 주얼리 곁에 놓인 한지 모시 티코스터',
       caption: 'Louis Vuitton 2026 추석 기프트 캠페인 © Louis Vuitton',
     },
-    fab: {
-      menu: '구매하기',
-      explore: '쇼피',
-      lamp: '노태그샵 글로벌',
-      lighting: '핀코이',
-      process: '메종오브제 몰',
+    // 판매 채널 — 플로팅 버튼에서 푸터 SHOP 칼럼으로 이동
+    shop: {
+      notag: '노태그샵 글로벌',
+      pinkoi: '핀코이',
+      maison: '메종오브제 몰',
+      shopee: '쇼피',
     },
     artworkDetail: {
       storyTitle: '작품 이야기',
@@ -222,9 +228,11 @@ export const translations = {
       collections: 'Craft Process',
       gallery: 'Gallery',
       about: 'Hanji Jiseung Craft',
+      contact: 'Partnership',
     },
     hero: {
-      title: 'Hong Hyun-jeong Hanji Craft Studio',
+      eyebrow: 'Hong hyun-jeong hanji craft studio',
+      title: 'Hanji — a thousand years\nof strength and beauty',
       description:
         'Where a thousand years of Korean paper heritage meets contemporary design — objects of quiet luxury crafted for discerning spaces.',
       button: 'Explore Collection',
@@ -239,10 +247,10 @@ export const translations = {
           'The quiet strength and translucence of hanji — Korea\'s most treasured material — shared with the world.',
       },
       stat: {
-        years: 'Years of Tradition',
-        artworks: 'Artworks Created',
-        exhibitions: 'International Shows',
-        countries: 'PT · FR · Americas',
+        years: { unit: 'yrs', label: 'Of Tradition' },
+        artworks: { unit: '+', label: 'Artworks' },
+        exhibitions: { unit: '', label: 'International Shows' },
+        regions: { value: 'Portugal · France\nAmericas', label: 'Presented In' },
       },
     },
     philosophy: {
@@ -273,6 +281,7 @@ export const translations = {
     },
     brand: {
       title: 'Brand Story',
+      tagline: 'Twenty years along the grain of paper',
       subtitle:
         'Captivated by the texture of hanji for 20 years. Hong Hyun-jeong Hanji Craft Studio creates everyday objects using traditional Korean materials: hanji, ramie, and lacquer.\nCombining the perspective of a design major with long-cultivated craft skills, we redraw traditional colors with modern sensibilities.',
       mission: {
@@ -382,12 +391,11 @@ export const translations = {
         'Louis Vuitton 2026 Chuseok gift campaign image — a hanji ramie tea coaster placed beside mooncakes and jewelry',
       caption: 'Louis Vuitton 2026 Chuseok Gift Campaign © Louis Vuitton',
     },
-    fab: {
-      menu: 'Shop',
-      explore: 'Shopee',
-      lamp: 'Notag Shop Global',
-      lighting: 'Pinkoi',
-      process: 'Maison & Objet Mall',
+    shop: {
+      notag: 'Notag Shop Global',
+      pinkoi: 'Pinkoi',
+      maison: 'Maison & Objet Mall',
+      shopee: 'Shopee',
     },
     artworkDetail: {
       storyTitle: 'The Story Behind the Artwork',
@@ -422,9 +430,11 @@ export const translations = {
       collections: 'Processus',
       gallery: 'Galerie',
       about: 'Artisanat Hanji',
+      contact: 'Contact',
     },
     hero: {
-      title: "Atelier d'Artisanat Hanji Hong Hyun-jeong",
+      eyebrow: 'Hong hyun-jeong hanji craft studio',
+      title: 'Le hanji — mille ans\nde force et de beauté',
       description:
         "Là où mille ans de papier coréen rencontrent le design contemporain — des objets d'un luxe subtil, conçus pour des espaces d'exception.",
       button: 'Explorer la Collection',
@@ -439,10 +449,10 @@ export const translations = {
           "La force tranquille et la translucidité du hanji — le matériau le plus précieux de Corée — partagés avec le monde.",
       },
       stat: {
-        years: 'Ans de Tradition',
-        artworks: 'Œuvres Créées',
-        exhibitions: "Expositions Int'l",
-        countries: 'PT · FR · Amériques',
+        years: { unit: 'ans', label: 'De Tradition' },
+        artworks: { unit: '+', label: 'Œuvres' },
+        exhibitions: { unit: '', label: 'Expositions Int’l' },
+        regions: { value: 'Portugal · France\nAmériques', label: 'Présenté En' },
       },
     },
     philosophy: {
@@ -473,6 +483,7 @@ export const translations = {
     },
     brand: {
       title: 'Histoire de la Marque',
+      tagline: 'Vingt ans au fil du papier',
       subtitle:
         "Fasciné par la texture du hanji depuis 20 ans. Hong Hyun-jeong Hanji Craft Studio crée des objets du quotidien en utilisant des matériaux traditionnels coréens : hanji, ramie et laque.\nCombinant la perspective d'un diplômé en design avec des compétences artisanales cultivées depuis longtemps.",
       mission: {
@@ -582,12 +593,11 @@ export const translations = {
         'Campagne de cadeaux Chuseok 2026 de Louis Vuitton — sous-verre à thé en hanji et ramie posé auprès de gâteaux de lune et de joaillerie',
       caption: 'Campagne de Cadeaux Chuseok 2026 Louis Vuitton © Louis Vuitton',
     },
-    fab: {
-      menu: 'Boutique',
-      explore: 'Shopee',
-      lamp: 'Notag Shop Global',
-      lighting: 'Pinkoi',
-      process: 'Maison & Objet Mall',
+    shop: {
+      notag: 'Notag Shop Global',
+      pinkoi: 'Pinkoi',
+      maison: 'Maison & Objet Mall',
+      shopee: 'Shopee',
     },
     artworkDetail: {
       storyTitle: "L'Histoire Derrière l'Œuvre",

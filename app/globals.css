@@ -14,19 +14,11 @@
   /* 화면 전용 크롬·고정요소·장식 숨김 (인쇄물에 불필요) */
   .hero,
   .top-nav,
-  .bottom-nav,
   .scroll-progress,
-  .scroll-top,
   .scroll-top-btn,
-  .cursor-dot,
-  .cursor-ring,
   .marquee-strip,
-  .hero-arrow,
-  .hero-indicators,
-  .scroll-hint,
   .language-switcher,
   .skip-link,
-  #page-loader,
   .lightbox,
   .image-nav,
   .carousel-btn {
@@ -34,22 +26,21 @@
   }
 
   /* 어두운 배경 섹션을 흰 배경+짙은 텍스트로 — 잉크 절약 및 가독성(흰 글자가 사라지는 문제 방지) */
-  .footer,
+  .site-footer,
+  .contact-section,
   .detail-footer,
-  .artwork-story,
-  .philosophy-strip {
+  .artwork-story {
     background: #fff !important;
   }
-  .footer, .footer *,
+  .site-footer, .site-footer *,
+  .contact-section, .contact-section *,
   .detail-footer, .detail-footer *,
-  .artwork-story, .artwork-story *,
-  .philosophy-strip, .philosophy-strip * {
+  .artwork-story, .artwork-story * {
     color: #1a1a1a !important;
     text-shadow: none !important;
   }
   /* 흰 배경이 된 섹션의 장식 워터마크(반투명 흰 글자)가 짙게 찍히지 않도록 제거 */
-  .artwork-story::before,
-  .philosophy-strip::before {
+  .artwork-story::before {
     content: none !important;
   }
 
@@ -61,9 +52,11 @@
     max-width: 100% !important;
     page-break-inside: avoid;
   }
-  /* 지연 이미지는 화면에서 JS(img-loaded)로 노출되므로, 스크롤 전 인쇄 시 빈 칸으로 찍히지 않도록 강제 표시 */
-  img[loading="lazy"] {
+  /* 지연 이미지·스크롤 리빌은 화면에서 JS로 노출되므로, 스크롤 전 인쇄 시 빈 칸으로 찍히지 않도록 강제 표시 */
+  img[loading="lazy"],
+  .reveal {
     opacity: 1 !important;
+    transform: none !important;
   }
   /* 관련작품 캐러셀 — 인쇄 시 transform·클리핑 해제하고 모든 실제 항목을 줄바꿈 표시(중간 위치 잘림 방지),
      무한 스크롤용 복제본(aria-hidden)은 숨겨 중복 출력 방지 */

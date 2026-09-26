@@ -88,11 +88,12 @@ export default function ArtworkDetailClient() {
   const relatedIds = ARTWORK_ORDER.filter((aid) => aid !== id)
 
   // 페이지 진입 + 스크롤 리빌 애니메이션
+  // 진입 페이드는 CSS 애니메이션(artwork-detail.css의 pageFadeIn)이 처리 — JS는 이탈 클래스 정리만 담당
   useEffect(() => {
-    const t1 = setTimeout(() => document.body.classList.add('page-loaded'), 100)
-    // bfcache 복원 대응: 작품 이동 시 페이드아웃(page-loaded 제거)된 상태로 뒤로가기 복원되면
-    // 본문이 opacity:0(빈 화면)으로 남으므로, 복원 시 본문을 다시 노출한다
-    const onPageShow = (e: PageTransitionEvent) => { if (e.persisted) document.body.classList.add('page-loaded') }
+    // bfcache 복원 대응: 작품 이동 시 페이드아웃(page-leaving)된 상태로 뒤로가기 복원되면
+    // 본문이 opacity:0(빈 화면)으로 남으므로, 복원 시 이탈 클래스를 걷어낸다
+    document.body.classList.remove('page-leaving')
+    const onPageShow = (e: PageTransitionEvent) => { if (e.persisted) document.body.classList.remove('page-leaving') }
     window.addEventListener('pageshow', onPageShow as EventListener)
 
     const observer = new IntersectionObserver(
@@ -156,7 +157,6 @@ export default function ArtworkDetailClient() {
     })
 
     return () => {
-      clearTimeout(t1)
       clearTimeout(t2)
       observer.disconnect()
       docHObserver.disconnect()
@@ -287,7 +287,7 @@ export default function ArtworkDetailClient() {
       const target = `${BASE_PATH}/artwork/${targetId}/`
       // 모션 최소화 선호 시 페이드아웃 지연 없이 즉시 이동(페이드가 보이지 않는데 멈춘 듯한 대기만 남는 문제 방지)
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { window.location.href = target; return }
-      document.body.classList.remove('page-loaded')
+      document.body.classList.add('page-leaving')
       setTimeout(() => { window.location.href = target }, 350)
     },
     [],
@@ -313,7 +313,8 @@ export default function ArtworkDetailClient() {
       <div className="scroll-progress" id="scrollProgress" aria-hidden="true" />
 
       {/* 상단 네비게이션 */}
-      <nav className="top-nav scrolled" aria-label={navLandmark[lang] ?? navLandmark.ko}>
+      {/* detail-nav — 상세 전용 내비 규칙(artwork-detail.css)이 홈 헤더까지 덮지 않도록 스코프를 준다 */}
+      <nav className="top-nav detail-nav scrolled" aria-label={navLandmark[lang] ?? navLandmark.ko}>
         <div className="nav-container">
           <div className="nav-left-action">
             <Link href="/#gallery" className="back-nav-link">← {t('nav.gallery')}</Link>
